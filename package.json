@@ -1,0 +1,20 @@
+{
+  "name": "A_D4",
+  "version": "1.0.0",
+  "description": "紺野瑛介, 高橋光輝",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InfovisHandsOn/A_D4.git"
+  },
+  "keywords": [],
+  "author": "Koki Takahashi <hakatasiloving@gmail.com> (http://hakatashi.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/InfovisHandsOn/A_D4/issues"
+  },
+  "homepage": "https://github.com/InfovisHandsOn/A_D4#readme"
+}
