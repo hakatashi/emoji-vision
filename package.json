@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/InfovisHandsOn/A_D4/issues"
   },
-  "homepage": "https://github.com/InfovisHandsOn/A_D4#readme"
+  "homepage": "https://github.com/InfovisHandsOn/A_D4#readme",
+  "dependencies": {
+    "emoji-data": "^0.2.0",
+    "tar": "^4.0.2",
+    "unbzip2-stream": "^1.2.5"
+  }
 }
