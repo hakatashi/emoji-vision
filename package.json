@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/InfovisHandsOn/A_D4#readme",
   "dependencies": {
+    "concat-stream": "^1.6.0",
     "emoji-data": "^0.2.0",
     "tar": "^4.0.2",
     "unbzip2-stream": "^1.2.5"
