@@ -33,11 +33,20 @@ if (cluster.isWorker) {
 	const reader = fs.createReadStream(TAR_PATH);
 	const parser = new tar.Parse();
 
+	let running = process.env.FROM ? false : true;
+
 	parser.on('entry', (entry) => {
 		if (entry.type !== 'File') {
 			entry.resume();
 			return;
 		}
+
+		if (!running && !entry.path.startsWith(process.env.FROM)) {
+			entry.resume();
+			return;
+		}
+
+		running = true;
 
 		const filename = path.basename(entry.path, '.json.bz2');
 		const fileId = parseInt(filename);
