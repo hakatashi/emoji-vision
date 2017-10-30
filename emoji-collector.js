@@ -47,7 +47,7 @@ if (cluster.isWorker) {
 			return;
 		}
 
-		if (fileId % CPUs !== cluster.worker.id) {
+		if (fileId % CPUs !== cluster.worker.id % CPUs) {
 			entry.resume();
 			return;
 		}
