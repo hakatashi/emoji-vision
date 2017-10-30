@@ -18,11 +18,20 @@
   },
   "homepage": "https://github.com/InfovisHandsOn/A_D4#readme",
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "common-tags": "^1.4.0",
     "concat-stream": "^1.6.0",
     "emoji-data": "^0.2.0",
     "mkdirp": "^0.5.1",
     "split": "^1.0.1",
     "tar": "^4.0.2",
-    "unbzip2-stream": "^1.2.5"
+    "topojson": "^3.0.2",
+    "unbzip2-stream": "^1.2.5",
+    "util.promisify": "^1.0.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3"
   }
 }
