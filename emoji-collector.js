@@ -1,6 +1,7 @@
 const tar = require('tar');
 const unbzip2 = require('unbzip2-stream');
 const split = require('split');
+const EmojiData = require('emoji-data');
 const path = require('path');
 const fs = require('fs');
 
@@ -21,6 +22,10 @@ parser.on('entry', (entry) => {
 	const splitter = split();
 
 	splitter.on('data', (data) => {
+		if (data.length === 0) {
+			return;
+		}
+
 		const tweet = (() => {
 			try {
 				return JSON.parse(data);
@@ -34,7 +39,11 @@ parser.on('entry', (entry) => {
 			return;
 		}
 
-		tweets.push(tweet);
+		const emojis = EmojiData.scan(tweet.text);
+
+		if (emojis.length > 0) {
+			tweets.push(...emojis);
+		}
 	});
 
 	splitter.on('end', () => {
