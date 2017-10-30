@@ -1,6 +1,6 @@
 const tar = require('tar');
 const unbzip2 = require('unbzip2-stream');
-const concatStream = require('concat-stream');
+const split = require('split');
 const path = require('path');
 const fs = require('fs');
 
@@ -15,23 +15,33 @@ parser.on('entry', (entry) => {
 		return;
 	}
 
-	const extracter = unbzip2();
-	const concatter = concatStream((data) => {
-		const tweetBlobs = data.toString().split('\n');
+	const tweets = [];
 
-		const tweets = tweetBlobs.map((tweetBlob) => {
+	const extracter = unbzip2();
+	const splitter = split();
+
+	splitter.on('data', (data) => {
+		const tweet = (() => {
 			try {
-				return JSON.parse(tweetBlob);
+				return JSON.parse(data);
 			} catch (error) {
 				console.error(error);
 				return null;
 			}
-		}).filter(Boolean);
+		})();
 
+		if (tweet === null) {
+			return;
+		}
+
+		tweets.push(tweet);
+	});
+
+	splitter.on('end', () => {
 		console.log(entry.path, tweets.length);
 	});
 
-	entry.pipe(extracter).pipe(concatter);
+	entry.pipe(extracter).pipe(splitter);
 });
 
 reader.pipe(parser);
