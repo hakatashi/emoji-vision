@@ -4,53 +4,88 @@ const split = require('split');
 const EmojiData = require('emoji-data');
 const path = require('path');
 const fs = require('fs');
+const cluster = require('cluster');
+const assert = require('assert');
+const os = require('os');
 
 const TAR_PATH = path.join(process.env.HOME, 's3/EEICinfovis/archiveteam-twitter-stream-2017-06.tar');
 
-const reader = fs.createReadStream(TAR_PATH);
-const parser = new tar.Parse();
+if (cluster.isMaster) {
+	const CPUs = os.cpus().length;
 
-parser.on('entry', (entry) => {
-	if (entry.type !== 'File') {
-		entry.resume();
-		return;
+	for (let i = 0; i < CPUs; i++) {
+		cluster.fork();
 	}
 
-	const tweets = [];
+	cluster.on('exit', (worker) => {
+		console.log(`Worker ${worker.process.pid} died`);
+	});
+}
 
-	const extracter = unbzip2();
-	const splitter = split();
 
-	splitter.on('data', (data) => {
-		if (data.length === 0) {
+if (cluster.isWorker) {
+	console.log(`Worker ${cluster.worker.id} (pid = ${process.pid}) started`);
+
+	const CPUs = os.cpus().length;
+
+	const reader = fs.createReadStream(TAR_PATH);
+	const parser = new tar.Parse();
+
+	parser.on('entry', (entry) => {
+		if (entry.type !== 'File') {
+			entry.resume();
 			return;
 		}
 
-		const tweet = (() => {
-			try {
-				return JSON.parse(data);
-			} catch (error) {
-				console.error(error);
-				return null;
+		const filename = path.basename(entry.path, '.json.bz2');
+		const fileId = parseInt(filename);
+
+		if (Number.isNaN(fileId)) {
+			console.error('Filename invalid:', entry.path);
+			return;
+		}
+
+		if (fileId % CPUs !== cluster.worker.id) {
+			entry.resume();
+			return;
+		}
+
+		const tweets = [];
+
+		const extracter = unbzip2();
+		const splitter = split();
+
+		splitter.on('data', (data) => {
+			if (data.length === 0) {
+				return;
 			}
-		})();
 
-		if (tweet === null) {
-			return;
-		}
+			const tweet = (() => {
+				try {
+					return JSON.parse(data);
+				} catch (error) {
+					console.error(error);
+					return null;
+				}
+			})();
 
-		const emojis = EmojiData.scan(tweet.text);
+			if (tweet === null) {
+				return;
+			}
 
-		if (emojis.length > 0) {
-			tweets.push(...emojis);
-		}
+			const emojis = EmojiData.scan(tweet.text);
+
+			if (emojis.length > 0) {
+				tweets.push(...emojis);
+			}
+		});
+
+		splitter.on('end', () => {
+			console.log(entry.path, tweets.length);
+		});
+
+		entry.pipe(extracter).pipe(splitter);
 	});
 
-	splitter.on('end', () => {
-		console.log(entry.path, tweets.length);
-	});
-
-	entry.pipe(extracter).pipe(splitter);
-});
-
-reader.pipe(parser);
+	reader.pipe(parser);
+}
