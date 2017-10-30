@@ -27,7 +27,7 @@ window.addEventListener('unhandledrejection', (error) => {
 	const svg = D3.select('body').append('svg').attr('width', 2000).attr('height', 1000);
 
 	const worldMap = topojson.feature(data, data.objects.countries);
-	const worldPath = D3.geoPath().projection(D3.geoMercator().clipExtent([[-Infinity, 0], [Infinity, 450]]));
+	const worldPath = D3.geoPath().projection(D3.geoMercator().clipExtent([[-Infinity, -90], [Infinity, 450]]));
 	const map = svg.selectAll('path').data(worldMap.features).enter().append('path').attrs({
 		d: worldPath,
 		stroke: '#BBB',
