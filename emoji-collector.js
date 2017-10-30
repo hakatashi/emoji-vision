@@ -2,11 +2,13 @@ const tar = require('tar');
 const unbzip2 = require('unbzip2-stream');
 const split = require('split');
 const EmojiData = require('emoji-data');
+const mkdirp = require('mkdirp');
 const path = require('path');
 const fs = require('fs');
 const cluster = require('cluster');
 const assert = require('assert');
 const os = require('os');
+const {promisify} = require('util');
 
 const TAR_PATH = path.join(process.env.HOME, 's3/EEICinfovis/archiveteam-twitter-stream-2017-06.tar');
 
@@ -76,11 +78,53 @@ if (cluster.isWorker) {
 			const emojis = EmojiData.scan(tweet.text);
 
 			if (emojis.length > 0) {
-				tweets.push(...emojis);
+				tweets.push({
+					created_at: tweet.created_at,
+					id_str: tweet.id_str,
+					source: tweet.source,
+					user_id_str: tweet.user.id_str,
+					user_followers_count: tweet.user.followers_count,
+					user_friends_count: tweet.user.friends_count,
+					user_statuses_count: tweet.user.statuses_count,
+					user_lang: tweet.user.lang,
+					user_utc_offset: tweet.user.utc_offset,
+					user_screen_name: tweet.user.screen_name,
+					source: tweet.source,
+					text: tweet.text,
+					in_reply_to_status_id_str: tweet.in_reply_to_status_id_str,
+					geo: tweet.geo,
+					coordinates: tweet.coordinates,
+					place: tweet.place,
+					retweeted_status_id_str: tweet.retweeted_status ? tweet.retweeted_status.id_str : null,
+					quoted_status_id_str: tweet.quoted_status_id_str,
+					entities_hashtags: tweet.entities.hashtags,
+					entities_urls: tweet.entities.urls,
+					lang: tweet.lang,
+					timestamp_ms: tweet.timestamp_ms,
+					emojis: emojis.map((emoji) => ({
+						unified: emoji.unified,
+						short_name: emoji.short_name,
+					})),
+				});
 			}
 		});
 
-		splitter.on('end', () => {
+		splitter.on('end', async () => {
+			const outputDir = path.join('data', path.dirname(entry.path));
+			const outputPath = path.join(outputDir, `${fileId.toString().padStart(2, '0')}.json`);
+
+			await new Promise((resolve, reject) => {
+				mkdirp(outputDir, (error) => {
+					if (error) {
+						reject(error);
+					} else {
+						resolve();
+					}
+				});
+			});
+
+			await promisify(fs.writeFile)(outputPath, JSON.stringify(tweets));
+
 			console.log(entry.path, tweets.length);
 		});
 
