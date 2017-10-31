@@ -21,7 +21,7 @@ const pack = d3.pack()
 	.padding(1.5);
 
 d3.csv('flare.csv', (d) => {
-	d.count = parseInt(d.count);
+	d.count = d.count === 'None' ? 0 : parseInt(d.count);
 	return d;
 }, (error, classes) => {
 	if (error) {
