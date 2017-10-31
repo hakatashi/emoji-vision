@@ -48,7 +48,7 @@ d3.csv('flare.csv', (d) => {
 		.style('fill', (d) => color(d.data.category));
 
 	node.append('image')
-		.attr('href', (d) => `https://rawgit.com/twitter/twemoji/gh-pages/svg/${d.data.unified.toLowerCase()}.svg`)
+		.attr('href', (d) => `https://rawgit.com/twitter/twemoji/gh-pages/svg/${d.data.unified.toLowerCase().replace(/^00/, '')}.svg`)
 		.attr('transform', (d) => `scale(${d.r / 75 * 0.8}) translate(-75, -75)`);
 
 	node.append('clipPath')
