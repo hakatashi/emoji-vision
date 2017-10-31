@@ -1,4 +1,4 @@
-name,count,unified
-joy,5,1F602
-hamburger,3,1F354
-heart,2,2764
+name,count,unified,category
+joy,5,1F602,face-positive
+hamburger,3,1F354,food-prepared
+heart,2,2764,emoticon
