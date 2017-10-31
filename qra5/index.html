@@ -89,7 +89,7 @@ d3.csv('flare.csv', (d) => {
 		tooltip
 			.attr('transform', `translate(${d.x}, ${d.y - d.r + 30})`)
 			.attr('display', 'block');
-		tooltipTexts[0].text(`U+${d.data.unified.toUpperCase()} (${d.id})`);
+		tooltipTexts[0].text(`${d.data.unified.split('-').map((codepoint) => `U+${codepoint.toUpperCase()}`).join(' ')} (${d.id})`);
 		tooltipTexts[1].text(`count: ${d.value}`);
 		tooltipTexts[2].text(`category: ${d.data.category}`);
 	});
