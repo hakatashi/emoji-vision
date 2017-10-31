@@ -87,7 +87,7 @@ d3.csv('flare.csv', (d) => {
 
 	node.on('mouseover', (d) => {
 		tooltip
-			.attr('transform', `translate(${d.x}, ${d.y - d.r + 30})`)
+			.attr('transform', `translate(${d.x}, ${d.y - d.r + 10})`)
 			.attr('display', 'block');
 		tooltipTexts[0].text(`${d.data.unified.split('-').map((codepoint) => `U+${codepoint.toUpperCase()}`).join(' ')} (${d.id})`);
 		tooltipTexts[1].text(`count: ${d.value}`);
