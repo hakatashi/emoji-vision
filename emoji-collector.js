@@ -10,7 +10,7 @@ const assert = require('assert');
 const os = require('os');
 const {promisify} = require('util');
 
-const TAR_PATH = path.join(process.env.HOME, 's3/EEICinfovis/archiveteam-twitter-stream-2017-06.tar');
+const TAR_PATH = path.join(process.env.HOME, 'A_D4/archiveteam-twitter-stream-2017-05.tar');
 
 if (cluster.isMaster) {
 	const CPUs = os.cpus().length;
@@ -34,6 +34,7 @@ if (cluster.isWorker) {
 	const parser = new tar.Parse();
 
 	let running = process.env.FROM ? false : true;
+	let skippedEntries = 0;
 
 	parser.on('entry', (entry) => {
 		if (entry.type !== 'File') {
@@ -42,6 +43,10 @@ if (cluster.isWorker) {
 		}
 
 		if (!running && !entry.path.startsWith(process.env.FROM)) {
+			skippedEntries++;
+			if (skippedEntries % 1000 === 0) {
+				console.log(`(id = ${cluster.worker.id}) ${skippedEntries} entries skipped`);
+			}
 			entry.resume();
 			return;
 		}

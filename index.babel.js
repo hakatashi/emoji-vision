@@ -24,11 +24,17 @@ window.addEventListener('unhandledrejection', (error) => {
 		});
 	});
 
-	const svg = D3.select('body').append('svg').attr('width', 2000).attr('height', 1000);
+	const svg = D3.select('body').append('svg').attrs({
+		width: '100%',
+		height: '100%',
+		viewBox: '0 0 960 500',
+	});
+
+	const worldGroup = svg.append('g');
 
 	const worldMap = topojson.feature(data, data.objects.countries);
-	const worldPath = D3.geoPath().projection(D3.geoMercator().clipExtent([[-Infinity, -90], [Infinity, 450]]));
-	const map = svg.selectAll('path').data(worldMap.features).enter().append('path').attrs({
+	const worldPath = D3.geoPath().projection(D3.geoMercator().translate([480, 320]).clipExtent([[0, 0], [960, 500]]));
+	const map = worldGroup.selectAll('path').data(worldMap.features).enter().append('path').attrs({
 		d: worldPath,
 		stroke: '#BBB',
 		fill: '#666',
