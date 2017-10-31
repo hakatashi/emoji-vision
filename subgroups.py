@@ -12,8 +12,8 @@ def main():
                 latest_category = line.split(': ')[1][:-1]
                 categories[latest_category] = list()
             if line[0].isdigit():
-                unicodes = [x for x in line.split(';')[0].split(' ') if x is not '']
-                categories[latest_category].extend(unicodes)
+                unicodes = line.split(';')[0].rstrip()
+                categories[latest_category].append(unicodes)
 
     with open('./data/subgroups.txt', 'w') as f:
         f.write(json.dumps(categories))
