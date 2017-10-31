@@ -1,8 +1,8 @@
 import json
-
+import codecs
 
 def main():
-    with open('./data/emoji-test.txt', 'r') as f:
+    with codecs.open('./data/emoji-test.txt', 'r', 'utf-8') as f:
         lines = f.readlines()
 
         latest_category = ''
@@ -21,4 +21,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-        
