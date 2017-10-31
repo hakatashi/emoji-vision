@@ -2,7 +2,7 @@ import json
 import codecs
 
 def main():
-    with codecs.open('data/out.json', 'r', 'utf-8') as f:
+    with codecs.open('data/geo-tweets.json', 'r', 'utf-8') as f:
         tweets = json.load(f)
         counts = {}
         for tweet in tweets:
