@@ -15,7 +15,7 @@ def main():
                 unicode_point = '-'.join(line.split(';')[0].rstrip().split())
                 emojis.append(latest_group + ',' + latest_subgroup + ',' + unicode_point)
 
-    with open('./data/subgroups.csv', 'w') as f:
+    with open('./data/groups.csv', 'w') as f:
         f.write('# group, subgroup, unicode point\n')
         for emoji in emojis:
             f.write(emoji + '\n')
