@@ -27,7 +27,6 @@ d3.csv('flare.csv', (d) => {
 		.sum((d) => d.count)
 		.each((d) => {
 			d.id = d.data.name;
-			d.package = 'hoge';
 			d.class = 'hoge';
 		});
 
@@ -40,7 +39,11 @@ d3.csv('flare.csv', (d) => {
 	node.append('circle')
 		.attr('id', (d) => d.id)
 		.attr('r', (d) => d.r)
-		.style('fill', (d) => color(d.package));
+		.style('fill', (d) => color(d.id));
+
+	node.append('image')
+		.attr('href', (d) => `https://rawgit.com/twitter/twemoji/gh-pages/svg/${d.data.unified.toLowerCase()}.svg`)
+		.attr('transform', (d) => `scale(${d.r / 75 * 0.8}) translate(-75, -75)`);
 
 	node.append('clipPath')
 		.attr('id', (d) => `clip-${d.id}`)
@@ -50,7 +53,7 @@ d3.csv('flare.csv', (d) => {
 	node.append('text')
 		.attr('clip-path', (d) => `url(#clip-${d.id})`)
 		.selectAll('tspan')
-		.data((d) => d.class.split(/(?=[A-Z][^A-Z])/g))
+		.data((d) => [d.id])
 		.enter().append('tspan')
 		.attr('x', 0)
 		.attr('y', (d, i, nodes) => 13 + (i - nodes.length / 2 - 0.5) * 10)
