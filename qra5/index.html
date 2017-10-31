@@ -16,25 +16,19 @@ const pack = d3.pack()
 	.padding(1.5);
 
 d3.csv('flare.csv', (d) => {
-	d.value = Number(d.value);
-	if (d.value) {
-		return d;
-	}
+	d.count = parseInt(d.count);
+	return d;
 }, (error, classes) => {
 	if (error) {
 		throw error;
 	}
 
 	const root = d3.hierarchy({children: classes})
-		.sum((d) => d.value)
+		.sum((d) => d.count)
 		.each((d) => {
-			if (id = d.data.id) {
-				var id,
-					i = id.lastIndexOf('.');
-				d.id = id;
-				d.package = id.slice(0, i);
-				d.class = id.slice(i + 1);
-			}
+			d.id = d.data.name;
+			d.package = 'hoge';
+			d.class = 'hoge';
 		});
 
 	const node = svg.selectAll('.node')
