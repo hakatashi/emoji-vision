@@ -27,7 +27,7 @@ def main():
                 emojis.append(name + ',' + str(count) + ',' + unicode_point + ',' + latest_subgroup + ',' + latest_group)
 
     with open('./data/statistics.csv', 'w') as f:
-        f.write('name, count, unicode point, subgroup, group\n')
+        f.write('name,count,unified,subgroup,group\n')
         for emoji in emojis:
             f.write(emoji + '\n')
 

@@ -45,7 +45,7 @@ d3.csv('flare.csv', (d) => {
 	node.append('circle')
 		.attr('id', (d) => d.id)
 		.attr('r', (d) => d.r)
-		.style('fill', (d) => color(d.data.category));
+		.style('fill', (d) => color(d.data.subgroup));
 
 	node.append('image')
 		.attr('href', (d) => `https://rawgit.com/twitter/twemoji/gh-pages/svg/${d.data.unified.toLowerCase().replace(/^00/, '')}.svg`)
@@ -91,7 +91,7 @@ d3.csv('flare.csv', (d) => {
 			.attr('display', 'block');
 		tooltipTexts[0].text(`${d.data.unified.split('-').map((codepoint) => `U+${codepoint.toUpperCase()}`).join(' ')} (${d.id})`);
 		tooltipTexts[1].text(`count: ${d.value}`);
-		tooltipTexts[2].text(`category: ${d.data.category}`);
+		tooltipTexts[2].text(`subgroup: ${d.data.subgroup}`);
 	});
 
 	node.on('mouseout', () => {

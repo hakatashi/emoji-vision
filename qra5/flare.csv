@@ -1,6 +1,3378 @@
-name,count,unified,category
-joy,5,1F602,face-positive
-fr,4,1F1EB-1F1F7,country-flag
-hamburger,3,1F354,food-prepared
-heart,2,2764,emoticon
-hash,2,0023-20E3,keycap
+name,count,unified,subgroup,group
+face,48,1F600,face-positive,Smileys & People
+eyes,126,1F601,face-positive,Smileys & People
+joy,543,1F602,face-positive,Smileys & People
+laughing,None,1F923,face-positive,Smileys & People
+eyes,38,1F603,face-positive,Smileys & People
+eyes,70,1F604,face-positive,Smileys & People
+sweat,78,1F605,face-positive,Smileys & People
+face,34,1F606,face-positive,Smileys & People
+face,74,1F609,face-positive,Smileys & People
+eyes,189,1F60A,face-positive,Smileys & People
+food,108,1F60B,face-positive,Smileys & People
+sunglasses,179,1F60E,face-positive,Smileys & People
+heart-eyes,498,1F60D,face-positive,Smileys & People
+kiss,192,1F618,face-positive,Smileys & People
+face,9,1F617,face-positive,Smileys & People
+eyes,26,1F619,face-positive,Smileys & People
+eyes,18,1F61A,face-positive,Smileys & People
+face,None,263A-FE0F,face-positive,Smileys & People
+face,65,263A,face-positive,Smileys & People
+face,None,1F642,face-positive,Smileys & People
+face,None,1F917,face-positive,Smileys & People
+star-struck,None,1F929,face-positive,Smileys & People
+face,None,1F914,face-neutral,Smileys & People
+eyebrow,None,1F928,face-neutral,Smileys & People
+face,6,1F610,face-neutral,Smileys & People
+face,7,1F611,face-neutral,Smileys & People
+mouth,None,1F636,face-neutral,Smileys & People
+eyes,None,1F644,face-neutral,Smileys & People
+face,62,1F60F,face-neutral,Smileys & People
+face,5,1F623,face-neutral,Smileys & People
+face,12,1F625,face-neutral,Smileys & People
+mouth,6,1F62E,face-neutral,Smileys & People
+face,None,1F910,face-neutral,Smileys & People
+face,8,1F62F,face-neutral,Smileys & People
+face,23,1F62A,face-neutral,Smileys & People
+face,14,1F62B,face-neutral,Smileys & People
+face,48,1F634,face-neutral,Smileys & People
+face,24,1F60C,face-neutral,Smileys & People
+tongue,20,1F61B,face-neutral,Smileys & People
+tongue,64,1F61C,face-neutral,Smileys & People
+tongue,46,1F61D,face-neutral,Smileys & People
+face,None,1F924,face-neutral,Smileys & People
+face,26,1F612,face-neutral,Smileys & People
+sweat,4,1F613,face-neutral,Smileys & People
+face,14,1F614,face-neutral,Smileys & People
+face,6,1F615,face-neutral,Smileys & People
+face,None,1F643,face-neutral,Smileys & People
+face,None,1F911,face-neutral,Smileys & People
+face,2,1F632,face-neutral,Smileys & People
+face,None,2639-FE0F,face-negative,Smileys & People
+face,None,2639,face-negative,Smileys & People
+face,None,1F641,face-negative,Smileys & People
+face,1,1F616,face-negative,Smileys & People
+face,13,1F61E,face-negative,Smileys & People
+face,1,1F61F,face-negative,Smileys & People
+nose,10,1F624,face-negative,Smileys & People
+face,33,1F622,face-negative,Smileys & People
+face,87,1F62D,face-negative,Smileys & People
+mouth,1,1F626,face-negative,Smileys & People
+face,4,1F627,face-negative,Smileys & People
+face,7,1F628,face-negative,Smileys & People
+face,14,1F629,face-negative,Smileys & People
+head,None,1F92F,face-negative,Smileys & People
+face,12,1F62C,face-negative,Smileys & People
+sweat,15,1F630,face-negative,Smileys & People
+fear,40,1F631,face-negative,Smileys & People
+face,23,1F633,face-negative,Smileys & People
+face,None,1F92A,face-negative,Smileys & People
+face,10,1F635,face-negative,Smileys & People
+face,17,1F621,face-negative,Smileys & People
+face,9,1F620,face-negative,Smileys & People
+mouth,None,1F92C,face-negative,Smileys & People
+mask,7,1F637,face-sick,Smileys & People
+thermometer,None,1F912,face-sick,Smileys & People
+head-bandage,None,1F915,face-sick,Smileys & People
+face,None,1F922,face-sick,Smileys & People
+vomiting,None,1F92E,face-sick,Smileys & People
+face,None,1F927,face-sick,Smileys & People
+halo,55,1F607,face-role,Smileys & People
+face,None,1F920,face-role,Smileys & People
+face,None,1F921,face-role,Smileys & People
+face,None,1F925,face-role,Smileys & People
+face,None,1F92B,face-role,Smileys & People
+mouth,None,1F92D,face-role,Smileys & People
+monocle,None,1F9D0,face-role,Smileys & People
+face,None,1F913,face-role,Smileys & People
+horns,25,1F608,face-fantasy,Smileys & People
+horns,2,1F47F,face-fantasy,Smileys & People
+ogre,1,1F479,face-fantasy,Smileys & People
+goblin,2,1F47A,face-fantasy,Smileys & People
+skull,17,1F480,face-fantasy,Smileys & People
+crossbones,None,2620-FE0F,face-fantasy,Smileys & People
+crossbones,None,2620,face-fantasy,Smileys & People
+ghost,11,1F47B,face-fantasy,Smileys & People
+alien,14,1F47D,face-fantasy,Smileys & People
+monster,14,1F47E,face-fantasy,Smileys & People
+face,None,1F916,face-fantasy,Smileys & People
+poo,4,1F4A9,face-fantasy,Smileys & People
+face,3,1F63A,cat-face,Smileys & People
+eyes,5,1F638,cat-face,Smileys & People
+joy,10,1F639,cat-face,Smileys & People
+heart-eyes,18,1F63B,cat-face,Smileys & People
+smile,3,1F63C,cat-face,Smileys & People
+face,62,1F63D,cat-face,Smileys & People
+face,4,1F640,cat-face,Smileys & People
+face,None,1F63F,cat-face,Smileys & People
+face,None,1F63E,cat-face,Smileys & People
+monkey,54,1F648,monkey-face,Smileys & People
+monkey,4,1F649,monkey-face,Smileys & People
+monkey,9,1F64A,monkey-face,Smileys & People
+baby,12,1F476,person,Smileys & People
+tone,None,1F476-1F3FB,person,Smileys & People
+tone,None,1F476-1F3FC,person,Smileys & People
+tone,None,1F476-1F3FD,person,Smileys & People
+tone,None,1F476-1F3FE,person,Smileys & People
+tone,None,1F476-1F3FF,person,Smileys & People
+child,None,1F9D2,person,Smileys & People
+tone,None,1F9D2-1F3FB,person,Smileys & People
+tone,None,1F9D2-1F3FC,person,Smileys & People
+tone,None,1F9D2-1F3FD,person,Smileys & People
+tone,None,1F9D2-1F3FE,person,Smileys & People
+tone,None,1F9D2-1F3FF,person,Smileys & People
+boy,16,1F466,person,Smileys & People
+tone,None,1F466-1F3FB,person,Smileys & People
+tone,None,1F466-1F3FC,person,Smileys & People
+tone,None,1F466-1F3FD,person,Smileys & People
+tone,None,1F466-1F3FE,person,Smileys & People
+tone,None,1F466-1F3FF,person,Smileys & People
+girl,15,1F467,person,Smileys & People
+tone,None,1F467-1F3FB,person,Smileys & People
+tone,None,1F467-1F3FC,person,Smileys & People
+tone,None,1F467-1F3FD,person,Smileys & People
+tone,None,1F467-1F3FE,person,Smileys & People
+tone,None,1F467-1F3FF,person,Smileys & People
+adult,None,1F9D1,person,Smileys & People
+tone,None,1F9D1-1F3FB,person,Smileys & People
+tone,None,1F9D1-1F3FC,person,Smileys & People
+tone,None,1F9D1-1F3FD,person,Smileys & People
+tone,None,1F9D1-1F3FE,person,Smileys & People
+tone,None,1F9D1-1F3FF,person,Smileys & People
+man,35,1F468,person,Smileys & People
+tone,None,1F468-1F3FB,person,Smileys & People
+tone,None,1F468-1F3FC,person,Smileys & People
+tone,None,1F468-1F3FD,person,Smileys & People
+tone,None,1F468-1F3FE,person,Smileys & People
+tone,None,1F468-1F3FF,person,Smileys & People
+woman,30,1F469,person,Smileys & People
+tone,None,1F469-1F3FB,person,Smileys & People
+tone,None,1F469-1F3FC,person,Smileys & People
+tone,None,1F469-1F3FD,person,Smileys & People
+tone,None,1F469-1F3FE,person,Smileys & People
+tone,None,1F469-1F3FF,person,Smileys & People
+adult,None,1F9D3,person,Smileys & People
+tone,None,1F9D3-1F3FB,person,Smileys & People
+tone,None,1F9D3-1F3FC,person,Smileys & People
+tone,None,1F9D3-1F3FD,person,Smileys & People
+tone,None,1F9D3-1F3FE,person,Smileys & People
+tone,None,1F9D3-1F3FF,person,Smileys & People
+man,5,1F474,person,Smileys & People
+tone,None,1F474-1F3FB,person,Smileys & People
+tone,None,1F474-1F3FC,person,Smileys & People
+tone,None,1F474-1F3FD,person,Smileys & People
+tone,None,1F474-1F3FE,person,Smileys & People
+tone,None,1F474-1F3FF,person,Smileys & People
+woman,7,1F475,person,Smileys & People
+tone,None,1F475-1F3FB,person,Smileys & People
+tone,None,1F475-1F3FC,person,Smileys & People
+tone,None,1F475-1F3FD,person,Smileys & People
+tone,None,1F475-1F3FE,person,Smileys & People
+tone,None,1F475-1F3FF,person,Smileys & People
+worker,None,1F468-200D-2695-FE0F,person-role,Smileys & People
+worker,None,1F468-200D-2695,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-2695-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-2695,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-2695-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-2695,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-2695-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-2695,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-2695-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-2695,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-2695-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-2695,person-role,Smileys & People
+worker,None,1F469-200D-2695-FE0F,person-role,Smileys & People
+worker,None,1F469-200D-2695,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-2695-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-2695,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-2695-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-2695,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-2695-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-2695,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-2695-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-2695,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-2695-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-2695,person-role,Smileys & People
+student,None,1F468-200D-1F393,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-1F393,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-1F393,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-1F393,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-1F393,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-1F393,person-role,Smileys & People
+student,None,1F469-200D-1F393,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-1F393,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-1F393,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-1F393,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-1F393,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-1F393,person-role,Smileys & People
+teacher,None,1F468-200D-1F3EB,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-1F3EB,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-1F3EB,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-1F3EB,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-1F3EB,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-1F3EB,person-role,Smileys & People
+teacher,None,1F469-200D-1F3EB,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-1F3EB,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-1F3EB,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-1F3EB,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-1F3EB,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-1F3EB,person-role,Smileys & People
+judge,None,1F468-200D-2696-FE0F,person-role,Smileys & People
+judge,None,1F468-200D-2696,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-2696-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-2696,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-2696-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-2696,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-2696-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-2696,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-2696-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-2696,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-2696-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-2696,person-role,Smileys & People
+judge,None,1F469-200D-2696-FE0F,person-role,Smileys & People
+judge,None,1F469-200D-2696,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-2696-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-2696,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-2696-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-2696,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-2696-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-2696,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-2696-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-2696,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-2696-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-2696,person-role,Smileys & People
+farmer,None,1F468-200D-1F33E,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-1F33E,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-1F33E,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-1F33E,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-1F33E,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-1F33E,person-role,Smileys & People
+farmer,None,1F469-200D-1F33E,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-1F33E,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-1F33E,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-1F33E,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-1F33E,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-1F33E,person-role,Smileys & People
+cook,None,1F468-200D-1F373,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-1F373,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-1F373,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-1F373,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-1F373,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-1F373,person-role,Smileys & People
+cook,None,1F469-200D-1F373,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-1F373,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-1F373,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-1F373,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-1F373,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-1F373,person-role,Smileys & People
+mechanic,None,1F468-200D-1F527,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-1F527,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-1F527,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-1F527,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-1F527,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-1F527,person-role,Smileys & People
+mechanic,None,1F469-200D-1F527,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-1F527,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-1F527,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-1F527,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-1F527,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-1F527,person-role,Smileys & People
+worker,None,1F468-200D-1F3ED,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-1F3ED,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-1F3ED,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-1F3ED,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-1F3ED,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-1F3ED,person-role,Smileys & People
+worker,None,1F469-200D-1F3ED,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-1F3ED,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-1F3ED,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-1F3ED,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-1F3ED,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-1F3ED,person-role,Smileys & People
+worker,None,1F468-200D-1F4BC,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-1F4BC,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-1F4BC,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-1F4BC,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-1F4BC,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-1F4BC,person-role,Smileys & People
+worker,None,1F469-200D-1F4BC,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-1F4BC,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-1F4BC,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-1F4BC,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-1F4BC,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-1F4BC,person-role,Smileys & People
+scientist,None,1F468-200D-1F52C,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-1F52C,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-1F52C,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-1F52C,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-1F52C,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-1F52C,person-role,Smileys & People
+scientist,None,1F469-200D-1F52C,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-1F52C,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-1F52C,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-1F52C,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-1F52C,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-1F52C,person-role,Smileys & People
+technologist,None,1F468-200D-1F4BB,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-1F4BB,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-1F4BB,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-1F4BB,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-1F4BB,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-1F4BB,person-role,Smileys & People
+technologist,None,1F469-200D-1F4BB,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-1F4BB,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-1F4BB,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-1F4BB,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-1F4BB,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-1F4BB,person-role,Smileys & People
+singer,None,1F468-200D-1F3A4,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-1F3A4,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-1F3A4,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-1F3A4,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-1F3A4,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-1F3A4,person-role,Smileys & People
+singer,None,1F469-200D-1F3A4,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-1F3A4,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-1F3A4,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-1F3A4,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-1F3A4,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-1F3A4,person-role,Smileys & People
+artist,None,1F468-200D-1F3A8,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-1F3A8,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-1F3A8,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-1F3A8,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-1F3A8,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-1F3A8,person-role,Smileys & People
+artist,None,1F469-200D-1F3A8,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-1F3A8,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-1F3A8,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-1F3A8,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-1F3A8,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-1F3A8,person-role,Smileys & People
+pilot,None,1F468-200D-2708-FE0F,person-role,Smileys & People
+pilot,None,1F468-200D-2708,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-2708-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-2708,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-2708-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-2708,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-2708-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-2708,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-2708-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-2708,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-2708-FE0F,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-2708,person-role,Smileys & People
+pilot,None,1F469-200D-2708-FE0F,person-role,Smileys & People
+pilot,None,1F469-200D-2708,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-2708-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-2708,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-2708-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-2708,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-2708-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-2708,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-2708-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-2708,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-2708-FE0F,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-2708,person-role,Smileys & People
+astronaut,None,1F468-200D-1F680,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-1F680,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-1F680,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-1F680,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-1F680,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-1F680,person-role,Smileys & People
+astronaut,None,1F469-200D-1F680,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-1F680,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-1F680,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-1F680,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-1F680,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-1F680,person-role,Smileys & People
+firefighter,None,1F468-200D-1F692,person-role,Smileys & People
+tone,None,1F468-1F3FB-200D-1F692,person-role,Smileys & People
+tone,None,1F468-1F3FC-200D-1F692,person-role,Smileys & People
+tone,None,1F468-1F3FD-200D-1F692,person-role,Smileys & People
+tone,None,1F468-1F3FE-200D-1F692,person-role,Smileys & People
+tone,None,1F468-1F3FF-200D-1F692,person-role,Smileys & People
+firefighter,None,1F469-200D-1F692,person-role,Smileys & People
+tone,None,1F469-1F3FB-200D-1F692,person-role,Smileys & People
+tone,None,1F469-1F3FC-200D-1F692,person-role,Smileys & People
+tone,None,1F469-1F3FD-200D-1F692,person-role,Smileys & People
+tone,None,1F469-1F3FE-200D-1F692,person-role,Smileys & People
+tone,None,1F469-1F3FF-200D-1F692,person-role,Smileys & People
+officer,3,1F46E,person-role,Smileys & People
+tone,None,1F46E-1F3FB,person-role,Smileys & People
+tone,None,1F46E-1F3FC,person-role,Smileys & People
+tone,None,1F46E-1F3FD,person-role,Smileys & People
+tone,None,1F46E-1F3FE,person-role,Smileys & People
+tone,None,1F46E-1F3FF,person-role,Smileys & People
+officer,None,1F46E-200D-2642-FE0F,person-role,Smileys & People
+officer,None,1F46E-200D-2642,person-role,Smileys & People
+tone,None,1F46E-1F3FB-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F46E-1F3FB-200D-2642,person-role,Smileys & People
+tone,None,1F46E-1F3FC-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F46E-1F3FC-200D-2642,person-role,Smileys & People
+tone,None,1F46E-1F3FD-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F46E-1F3FD-200D-2642,person-role,Smileys & People
+tone,None,1F46E-1F3FE-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F46E-1F3FE-200D-2642,person-role,Smileys & People
+tone,None,1F46E-1F3FF-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F46E-1F3FF-200D-2642,person-role,Smileys & People
+officer,None,1F46E-200D-2640-FE0F,person-role,Smileys & People
+officer,None,1F46E-200D-2640,person-role,Smileys & People
+tone,None,1F46E-1F3FB-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F46E-1F3FB-200D-2640,person-role,Smileys & People
+tone,None,1F46E-1F3FC-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F46E-1F3FC-200D-2640,person-role,Smileys & People
+tone,None,1F46E-1F3FD-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F46E-1F3FD-200D-2640,person-role,Smileys & People
+tone,None,1F46E-1F3FE-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F46E-1F3FE-200D-2640,person-role,Smileys & People
+tone,None,1F46E-1F3FF-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F46E-1F3FF-200D-2640,person-role,Smileys & People
+detective,None,1F575-FE0F,person-role,Smileys & People
+detective,None,1F575,person-role,Smileys & People
+tone,None,1F575-1F3FB,person-role,Smileys & People
+tone,None,1F575-1F3FC,person-role,Smileys & People
+tone,None,1F575-1F3FD,person-role,Smileys & People
+tone,None,1F575-1F3FE,person-role,Smileys & People
+tone,None,1F575-1F3FF,person-role,Smileys & People
+detective,None,1F575-FE0F-200D-2642-FE0F,person-role,Smileys & People
+detective,None,1F575-200D-2642-FE0F,person-role,Smileys & People
+detective,None,1F575-FE0F-200D-2642,person-role,Smileys & People
+detective,None,1F575-200D-2642,person-role,Smileys & People
+tone,None,1F575-1F3FB-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F575-1F3FB-200D-2642,person-role,Smileys & People
+tone,None,1F575-1F3FC-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F575-1F3FC-200D-2642,person-role,Smileys & People
+tone,None,1F575-1F3FD-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F575-1F3FD-200D-2642,person-role,Smileys & People
+tone,None,1F575-1F3FE-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F575-1F3FE-200D-2642,person-role,Smileys & People
+tone,None,1F575-1F3FF-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F575-1F3FF-200D-2642,person-role,Smileys & People
+detective,None,1F575-FE0F-200D-2640-FE0F,person-role,Smileys & People
+detective,None,1F575-200D-2640-FE0F,person-role,Smileys & People
+detective,None,1F575-FE0F-200D-2640,person-role,Smileys & People
+detective,None,1F575-200D-2640,person-role,Smileys & People
+tone,None,1F575-1F3FB-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F575-1F3FB-200D-2640,person-role,Smileys & People
+tone,None,1F575-1F3FC-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F575-1F3FC-200D-2640,person-role,Smileys & People
+tone,None,1F575-1F3FD-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F575-1F3FD-200D-2640,person-role,Smileys & People
+tone,None,1F575-1F3FE-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F575-1F3FE-200D-2640,person-role,Smileys & People
+tone,None,1F575-1F3FF-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F575-1F3FF-200D-2640,person-role,Smileys & People
+guard,1,1F482,person-role,Smileys & People
+tone,None,1F482-1F3FB,person-role,Smileys & People
+tone,None,1F482-1F3FC,person-role,Smileys & People
+tone,None,1F482-1F3FD,person-role,Smileys & People
+tone,None,1F482-1F3FE,person-role,Smileys & People
+tone,None,1F482-1F3FF,person-role,Smileys & People
+guard,None,1F482-200D-2642-FE0F,person-role,Smileys & People
+guard,None,1F482-200D-2642,person-role,Smileys & People
+tone,None,1F482-1F3FB-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F482-1F3FB-200D-2642,person-role,Smileys & People
+tone,None,1F482-1F3FC-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F482-1F3FC-200D-2642,person-role,Smileys & People
+tone,None,1F482-1F3FD-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F482-1F3FD-200D-2642,person-role,Smileys & People
+tone,None,1F482-1F3FE-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F482-1F3FE-200D-2642,person-role,Smileys & People
+tone,None,1F482-1F3FF-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F482-1F3FF-200D-2642,person-role,Smileys & People
+guard,None,1F482-200D-2640-FE0F,person-role,Smileys & People
+guard,None,1F482-200D-2640,person-role,Smileys & People
+tone,None,1F482-1F3FB-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F482-1F3FB-200D-2640,person-role,Smileys & People
+tone,None,1F482-1F3FC-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F482-1F3FC-200D-2640,person-role,Smileys & People
+tone,None,1F482-1F3FD-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F482-1F3FD-200D-2640,person-role,Smileys & People
+tone,None,1F482-1F3FE-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F482-1F3FE-200D-2640,person-role,Smileys & People
+tone,None,1F482-1F3FF-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F482-1F3FF-200D-2640,person-role,Smileys & People
+worker,2,1F477,person-role,Smileys & People
+tone,None,1F477-1F3FB,person-role,Smileys & People
+tone,None,1F477-1F3FC,person-role,Smileys & People
+tone,None,1F477-1F3FD,person-role,Smileys & People
+tone,None,1F477-1F3FE,person-role,Smileys & People
+tone,None,1F477-1F3FF,person-role,Smileys & People
+worker,None,1F477-200D-2642-FE0F,person-role,Smileys & People
+worker,None,1F477-200D-2642,person-role,Smileys & People
+tone,None,1F477-1F3FB-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F477-1F3FB-200D-2642,person-role,Smileys & People
+tone,None,1F477-1F3FC-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F477-1F3FC-200D-2642,person-role,Smileys & People
+tone,None,1F477-1F3FD-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F477-1F3FD-200D-2642,person-role,Smileys & People
+tone,None,1F477-1F3FE-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F477-1F3FE-200D-2642,person-role,Smileys & People
+tone,None,1F477-1F3FF-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F477-1F3FF-200D-2642,person-role,Smileys & People
+worker,None,1F477-200D-2640-FE0F,person-role,Smileys & People
+worker,None,1F477-200D-2640,person-role,Smileys & People
+tone,None,1F477-1F3FB-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F477-1F3FB-200D-2640,person-role,Smileys & People
+tone,None,1F477-1F3FC-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F477-1F3FC-200D-2640,person-role,Smileys & People
+tone,None,1F477-1F3FD-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F477-1F3FD-200D-2640,person-role,Smileys & People
+tone,None,1F477-1F3FE-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F477-1F3FE-200D-2640,person-role,Smileys & People
+tone,None,1F477-1F3FF-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F477-1F3FF-200D-2640,person-role,Smileys & People
+prince,None,1F934,person-role,Smileys & People
+tone,None,1F934-1F3FB,person-role,Smileys & People
+tone,None,1F934-1F3FC,person-role,Smileys & People
+tone,None,1F934-1F3FD,person-role,Smileys & People
+tone,None,1F934-1F3FE,person-role,Smileys & People
+tone,None,1F934-1F3FF,person-role,Smileys & People
+princess,21,1F478,person-role,Smileys & People
+tone,None,1F478-1F3FB,person-role,Smileys & People
+tone,None,1F478-1F3FC,person-role,Smileys & People
+tone,None,1F478-1F3FD,person-role,Smileys & People
+tone,None,1F478-1F3FE,person-role,Smileys & People
+tone,None,1F478-1F3FF,person-role,Smileys & People
+turban,2,1F473,person-role,Smileys & People
+tone,None,1F473-1F3FB,person-role,Smileys & People
+tone,None,1F473-1F3FC,person-role,Smileys & People
+tone,None,1F473-1F3FD,person-role,Smileys & People
+tone,None,1F473-1F3FE,person-role,Smileys & People
+tone,None,1F473-1F3FF,person-role,Smileys & People
+turban,None,1F473-200D-2642-FE0F,person-role,Smileys & People
+turban,None,1F473-200D-2642,person-role,Smileys & People
+tone,None,1F473-1F3FB-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F473-1F3FB-200D-2642,person-role,Smileys & People
+tone,None,1F473-1F3FC-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F473-1F3FC-200D-2642,person-role,Smileys & People
+tone,None,1F473-1F3FD-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F473-1F3FD-200D-2642,person-role,Smileys & People
+tone,None,1F473-1F3FE-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F473-1F3FE-200D-2642,person-role,Smileys & People
+tone,None,1F473-1F3FF-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F473-1F3FF-200D-2642,person-role,Smileys & People
+turban,None,1F473-200D-2640-FE0F,person-role,Smileys & People
+turban,None,1F473-200D-2640,person-role,Smileys & People
+tone,None,1F473-1F3FB-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F473-1F3FB-200D-2640,person-role,Smileys & People
+tone,None,1F473-1F3FC-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F473-1F3FC-200D-2640,person-role,Smileys & People
+tone,None,1F473-1F3FD-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F473-1F3FD-200D-2640,person-role,Smileys & People
+tone,None,1F473-1F3FE-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F473-1F3FE-200D-2640,person-role,Smileys & People
+tone,None,1F473-1F3FF-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F473-1F3FF-200D-2640,person-role,Smileys & People
+cap,1,1F472,person-role,Smileys & People
+tone,None,1F472-1F3FB,person-role,Smileys & People
+tone,None,1F472-1F3FC,person-role,Smileys & People
+tone,None,1F472-1F3FD,person-role,Smileys & People
+tone,None,1F472-1F3FE,person-role,Smileys & People
+tone,None,1F472-1F3FF,person-role,Smileys & People
+headscarf,None,1F9D5,person-role,Smileys & People
+tone,None,1F9D5-1F3FB,person-role,Smileys & People
+tone,None,1F9D5-1F3FC,person-role,Smileys & People
+tone,None,1F9D5-1F3FD,person-role,Smileys & People
+tone,None,1F9D5-1F3FE,person-role,Smileys & People
+tone,None,1F9D5-1F3FF,person-role,Smileys & People
+person,None,1F9D4,person-role,Smileys & People
+tone,None,1F9D4-1F3FB,person-role,Smileys & People
+tone,None,1F9D4-1F3FC,person-role,Smileys & People
+tone,None,1F9D4-1F3FD,person-role,Smileys & People
+tone,None,1F9D4-1F3FE,person-role,Smileys & People
+tone,None,1F9D4-1F3FF,person-role,Smileys & People
+person,6,1F471,person-role,Smileys & People
+tone,None,1F471-1F3FB,person-role,Smileys & People
+tone,None,1F471-1F3FC,person-role,Smileys & People
+tone,None,1F471-1F3FD,person-role,Smileys & People
+tone,None,1F471-1F3FE,person-role,Smileys & People
+tone,None,1F471-1F3FF,person-role,Smileys & People
+man,None,1F471-200D-2642-FE0F,person-role,Smileys & People
+man,None,1F471-200D-2642,person-role,Smileys & People
+tone,None,1F471-1F3FB-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F471-1F3FB-200D-2642,person-role,Smileys & People
+tone,None,1F471-1F3FC-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F471-1F3FC-200D-2642,person-role,Smileys & People
+tone,None,1F471-1F3FD-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F471-1F3FD-200D-2642,person-role,Smileys & People
+tone,None,1F471-1F3FE-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F471-1F3FE-200D-2642,person-role,Smileys & People
+tone,None,1F471-1F3FF-200D-2642-FE0F,person-role,Smileys & People
+tone,None,1F471-1F3FF-200D-2642,person-role,Smileys & People
+woman,None,1F471-200D-2640-FE0F,person-role,Smileys & People
+woman,None,1F471-200D-2640,person-role,Smileys & People
+tone,None,1F471-1F3FB-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F471-1F3FB-200D-2640,person-role,Smileys & People
+tone,None,1F471-1F3FC-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F471-1F3FC-200D-2640,person-role,Smileys & People
+tone,None,1F471-1F3FD-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F471-1F3FD-200D-2640,person-role,Smileys & People
+tone,None,1F471-1F3FE-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F471-1F3FE-200D-2640,person-role,Smileys & People
+tone,None,1F471-1F3FF-200D-2640-FE0F,person-role,Smileys & People
+tone,None,1F471-1F3FF-200D-2640,person-role,Smileys & People
+tuxedo,None,1F935,person-role,Smileys & People
+tone,None,1F935-1F3FB,person-role,Smileys & People
+tone,None,1F935-1F3FC,person-role,Smileys & People
+tone,None,1F935-1F3FD,person-role,Smileys & People
+tone,None,1F935-1F3FE,person-role,Smileys & People
+tone,None,1F935-1F3FF,person-role,Smileys & People
+veil,9,1F470,person-role,Smileys & People
+tone,None,1F470-1F3FB,person-role,Smileys & People
+tone,None,1F470-1F3FC,person-role,Smileys & People
+tone,None,1F470-1F3FD,person-role,Smileys & People
+tone,None,1F470-1F3FE,person-role,Smileys & People
+tone,None,1F470-1F3FF,person-role,Smileys & People
+woman,None,1F930,person-role,Smileys & People
+tone,None,1F930-1F3FB,person-role,Smileys & People
+tone,None,1F930-1F3FC,person-role,Smileys & People
+tone,None,1F930-1F3FD,person-role,Smileys & People
+tone,None,1F930-1F3FE,person-role,Smileys & People
+tone,None,1F930-1F3FF,person-role,Smileys & People
+breast-feeding,None,1F931,person-role,Smileys & People
+tone,None,1F931-1F3FB,person-role,Smileys & People
+tone,None,1F931-1F3FC,person-role,Smileys & People
+tone,None,1F931-1F3FD,person-role,Smileys & People
+tone,None,1F931-1F3FE,person-role,Smileys & People
+tone,None,1F931-1F3FF,person-role,Smileys & People
+angel,10,1F47C,person-fantasy,Smileys & People
+tone,None,1F47C-1F3FB,person-fantasy,Smileys & People
+tone,None,1F47C-1F3FC,person-fantasy,Smileys & People
+tone,None,1F47C-1F3FD,person-fantasy,Smileys & People
+tone,None,1F47C-1F3FE,person-fantasy,Smileys & People
+tone,None,1F47C-1F3FF,person-fantasy,Smileys & People
+Claus,2,1F385,person-fantasy,Smileys & People
+tone,None,1F385-1F3FB,person-fantasy,Smileys & People
+tone,None,1F385-1F3FC,person-fantasy,Smileys & People
+tone,None,1F385-1F3FD,person-fantasy,Smileys & People
+tone,None,1F385-1F3FE,person-fantasy,Smileys & People
+tone,None,1F385-1F3FF,person-fantasy,Smileys & People
+Claus,None,1F936,person-fantasy,Smileys & People
+tone,None,1F936-1F3FB,person-fantasy,Smileys & People
+tone,None,1F936-1F3FC,person-fantasy,Smileys & People
+tone,None,1F936-1F3FD,person-fantasy,Smileys & People
+tone,None,1F936-1F3FE,person-fantasy,Smileys & People
+tone,None,1F936-1F3FF,person-fantasy,Smileys & People
+mage,None,1F9D9,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FB,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FC,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FD,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FE,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FF,person-fantasy,Smileys & People
+mage,None,1F9D9-200D-2640-FE0F,person-fantasy,Smileys & People
+mage,None,1F9D9-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FB-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FB-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FC-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FC-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FD-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FD-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FE-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FE-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FF-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FF-200D-2640,person-fantasy,Smileys & People
+mage,None,1F9D9-200D-2642-FE0F,person-fantasy,Smileys & People
+mage,None,1F9D9-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FB-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FB-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FC-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FC-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FD-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FD-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FE-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FE-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FF-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9D9-1F3FF-200D-2642,person-fantasy,Smileys & People
+fairy,None,1F9DA,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FB,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FC,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FD,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FE,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FF,person-fantasy,Smileys & People
+fairy,None,1F9DA-200D-2640-FE0F,person-fantasy,Smileys & People
+fairy,None,1F9DA-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FB-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FB-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FC-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FC-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FD-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FD-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FE-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FE-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FF-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FF-200D-2640,person-fantasy,Smileys & People
+fairy,None,1F9DA-200D-2642-FE0F,person-fantasy,Smileys & People
+fairy,None,1F9DA-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FB-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FB-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FC-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FC-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FD-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FD-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FE-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FE-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FF-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DA-1F3FF-200D-2642,person-fantasy,Smileys & People
+vampire,None,1F9DB,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FB,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FC,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FD,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FE,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FF,person-fantasy,Smileys & People
+vampire,None,1F9DB-200D-2640-FE0F,person-fantasy,Smileys & People
+vampire,None,1F9DB-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FB-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FB-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FC-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FC-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FD-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FD-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FE-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FE-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FF-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FF-200D-2640,person-fantasy,Smileys & People
+vampire,None,1F9DB-200D-2642-FE0F,person-fantasy,Smileys & People
+vampire,None,1F9DB-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FB-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FB-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FC-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FC-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FD-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FD-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FE-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FE-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FF-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DB-1F3FF-200D-2642,person-fantasy,Smileys & People
+merperson,None,1F9DC,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FB,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FC,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FD,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FE,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FF,person-fantasy,Smileys & People
+mermaid,None,1F9DC-200D-2640-FE0F,person-fantasy,Smileys & People
+mermaid,None,1F9DC-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FB-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FB-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FC-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FC-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FD-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FD-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FE-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FE-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FF-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FF-200D-2640,person-fantasy,Smileys & People
+merman,None,1F9DC-200D-2642-FE0F,person-fantasy,Smileys & People
+merman,None,1F9DC-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FB-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FB-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FC-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FC-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FD-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FD-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FE-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FE-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FF-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DC-1F3FF-200D-2642,person-fantasy,Smileys & People
+elf,None,1F9DD,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FB,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FC,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FD,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FE,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FF,person-fantasy,Smileys & People
+elf,None,1F9DD-200D-2640-FE0F,person-fantasy,Smileys & People
+elf,None,1F9DD-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FB-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FB-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FC-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FC-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FD-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FD-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FE-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FE-200D-2640,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FF-200D-2640-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FF-200D-2640,person-fantasy,Smileys & People
+elf,None,1F9DD-200D-2642-FE0F,person-fantasy,Smileys & People
+elf,None,1F9DD-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FB-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FB-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FC-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FC-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FD-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FD-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FE-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FE-200D-2642,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FF-200D-2642-FE0F,person-fantasy,Smileys & People
+tone,None,1F9DD-1F3FF-200D-2642,person-fantasy,Smileys & People
+genie,None,1F9DE,person-fantasy,Smileys & People
+genie,None,1F9DE-200D-2640-FE0F,person-fantasy,Smileys & People
+genie,None,1F9DE-200D-2640,person-fantasy,Smileys & People
+genie,None,1F9DE-200D-2642-FE0F,person-fantasy,Smileys & People
+genie,None,1F9DE-200D-2642,person-fantasy,Smileys & People
+zombie,None,1F9DF,person-fantasy,Smileys & People
+zombie,None,1F9DF-200D-2640-FE0F,person-fantasy,Smileys & People
+zombie,None,1F9DF-200D-2640,person-fantasy,Smileys & People
+zombie,None,1F9DF-200D-2642-FE0F,person-fantasy,Smileys & People
+zombie,None,1F9DF-200D-2642,person-fantasy,Smileys & People
+frowning,2,1F64D,person-gesture,Smileys & People
+tone,None,1F64D-1F3FB,person-gesture,Smileys & People
+tone,None,1F64D-1F3FC,person-gesture,Smileys & People
+tone,None,1F64D-1F3FD,person-gesture,Smileys & People
+tone,None,1F64D-1F3FE,person-gesture,Smileys & People
+tone,None,1F64D-1F3FF,person-gesture,Smileys & People
+frowning,None,1F64D-200D-2642-FE0F,person-gesture,Smileys & People
+frowning,None,1F64D-200D-2642,person-gesture,Smileys & People
+tone,None,1F64D-1F3FB-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64D-1F3FB-200D-2642,person-gesture,Smileys & People
+tone,None,1F64D-1F3FC-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64D-1F3FC-200D-2642,person-gesture,Smileys & People
+tone,None,1F64D-1F3FD-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64D-1F3FD-200D-2642,person-gesture,Smileys & People
+tone,None,1F64D-1F3FE-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64D-1F3FE-200D-2642,person-gesture,Smileys & People
+tone,None,1F64D-1F3FF-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64D-1F3FF-200D-2642,person-gesture,Smileys & People
+frowning,None,1F64D-200D-2640-FE0F,person-gesture,Smileys & People
+frowning,None,1F64D-200D-2640,person-gesture,Smileys & People
+tone,None,1F64D-1F3FB-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64D-1F3FB-200D-2640,person-gesture,Smileys & People
+tone,None,1F64D-1F3FC-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64D-1F3FC-200D-2640,person-gesture,Smileys & People
+tone,None,1F64D-1F3FD-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64D-1F3FD-200D-2640,person-gesture,Smileys & People
+tone,None,1F64D-1F3FE-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64D-1F3FE-200D-2640,person-gesture,Smileys & People
+tone,None,1F64D-1F3FF-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64D-1F3FF-200D-2640,person-gesture,Smileys & People
+pouting,4,1F64E,person-gesture,Smileys & People
+tone,None,1F64E-1F3FB,person-gesture,Smileys & People
+tone,None,1F64E-1F3FC,person-gesture,Smileys & People
+tone,None,1F64E-1F3FD,person-gesture,Smileys & People
+tone,None,1F64E-1F3FE,person-gesture,Smileys & People
+tone,None,1F64E-1F3FF,person-gesture,Smileys & People
+pouting,None,1F64E-200D-2642-FE0F,person-gesture,Smileys & People
+pouting,None,1F64E-200D-2642,person-gesture,Smileys & People
+tone,None,1F64E-1F3FB-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64E-1F3FB-200D-2642,person-gesture,Smileys & People
+tone,None,1F64E-1F3FC-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64E-1F3FC-200D-2642,person-gesture,Smileys & People
+tone,None,1F64E-1F3FD-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64E-1F3FD-200D-2642,person-gesture,Smileys & People
+tone,None,1F64E-1F3FE-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64E-1F3FE-200D-2642,person-gesture,Smileys & People
+tone,None,1F64E-1F3FF-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64E-1F3FF-200D-2642,person-gesture,Smileys & People
+pouting,None,1F64E-200D-2640-FE0F,person-gesture,Smileys & People
+pouting,None,1F64E-200D-2640,person-gesture,Smileys & People
+tone,None,1F64E-1F3FB-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64E-1F3FB-200D-2640,person-gesture,Smileys & People
+tone,None,1F64E-1F3FC-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64E-1F3FC-200D-2640,person-gesture,Smileys & People
+tone,None,1F64E-1F3FD-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64E-1F3FD-200D-2640,person-gesture,Smileys & People
+tone,None,1F64E-1F3FE-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64E-1F3FE-200D-2640,person-gesture,Smileys & People
+tone,None,1F64E-1F3FF-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64E-1F3FF-200D-2640,person-gesture,Smileys & People
+NO,8,1F645,person-gesture,Smileys & People
+tone,None,1F645-1F3FB,person-gesture,Smileys & People
+tone,None,1F645-1F3FC,person-gesture,Smileys & People
+tone,None,1F645-1F3FD,person-gesture,Smileys & People
+tone,None,1F645-1F3FE,person-gesture,Smileys & People
+tone,None,1F645-1F3FF,person-gesture,Smileys & People
+NO,None,1F645-200D-2642-FE0F,person-gesture,Smileys & People
+NO,None,1F645-200D-2642,person-gesture,Smileys & People
+tone,None,1F645-1F3FB-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F645-1F3FB-200D-2642,person-gesture,Smileys & People
+tone,None,1F645-1F3FC-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F645-1F3FC-200D-2642,person-gesture,Smileys & People
+tone,None,1F645-1F3FD-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F645-1F3FD-200D-2642,person-gesture,Smileys & People
+tone,None,1F645-1F3FE-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F645-1F3FE-200D-2642,person-gesture,Smileys & People
+tone,None,1F645-1F3FF-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F645-1F3FF-200D-2642,person-gesture,Smileys & People
+NO,None,1F645-200D-2640-FE0F,person-gesture,Smileys & People
+NO,None,1F645-200D-2640,person-gesture,Smileys & People
+tone,None,1F645-1F3FB-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F645-1F3FB-200D-2640,person-gesture,Smileys & People
+tone,None,1F645-1F3FC-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F645-1F3FC-200D-2640,person-gesture,Smileys & People
+tone,None,1F645-1F3FD-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F645-1F3FD-200D-2640,person-gesture,Smileys & People
+tone,None,1F645-1F3FE-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F645-1F3FE-200D-2640,person-gesture,Smileys & People
+tone,None,1F645-1F3FF-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F645-1F3FF-200D-2640,person-gesture,Smileys & People
+OK,19,1F646,person-gesture,Smileys & People
+tone,None,1F646-1F3FB,person-gesture,Smileys & People
+tone,None,1F646-1F3FC,person-gesture,Smileys & People
+tone,None,1F646-1F3FD,person-gesture,Smileys & People
+tone,None,1F646-1F3FE,person-gesture,Smileys & People
+tone,None,1F646-1F3FF,person-gesture,Smileys & People
+OK,None,1F646-200D-2642-FE0F,person-gesture,Smileys & People
+OK,None,1F646-200D-2642,person-gesture,Smileys & People
+tone,None,1F646-1F3FB-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F646-1F3FB-200D-2642,person-gesture,Smileys & People
+tone,None,1F646-1F3FC-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F646-1F3FC-200D-2642,person-gesture,Smileys & People
+tone,None,1F646-1F3FD-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F646-1F3FD-200D-2642,person-gesture,Smileys & People
+tone,None,1F646-1F3FE-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F646-1F3FE-200D-2642,person-gesture,Smileys & People
+tone,None,1F646-1F3FF-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F646-1F3FF-200D-2642,person-gesture,Smileys & People
+OK,None,1F646-200D-2640-FE0F,person-gesture,Smileys & People
+OK,None,1F646-200D-2640,person-gesture,Smileys & People
+tone,None,1F646-1F3FB-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F646-1F3FB-200D-2640,person-gesture,Smileys & People
+tone,None,1F646-1F3FC-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F646-1F3FC-200D-2640,person-gesture,Smileys & People
+tone,None,1F646-1F3FD-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F646-1F3FD-200D-2640,person-gesture,Smileys & People
+tone,None,1F646-1F3FE-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F646-1F3FE-200D-2640,person-gesture,Smileys & People
+tone,None,1F646-1F3FF-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F646-1F3FF-200D-2640,person-gesture,Smileys & People
+hand,23,1F481,person-gesture,Smileys & People
+tone,None,1F481-1F3FB,person-gesture,Smileys & People
+tone,None,1F481-1F3FC,person-gesture,Smileys & People
+tone,None,1F481-1F3FD,person-gesture,Smileys & People
+tone,None,1F481-1F3FE,person-gesture,Smileys & People
+tone,None,1F481-1F3FF,person-gesture,Smileys & People
+hand,None,1F481-200D-2642-FE0F,person-gesture,Smileys & People
+hand,None,1F481-200D-2642,person-gesture,Smileys & People
+tone,None,1F481-1F3FB-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F481-1F3FB-200D-2642,person-gesture,Smileys & People
+tone,None,1F481-1F3FC-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F481-1F3FC-200D-2642,person-gesture,Smileys & People
+tone,None,1F481-1F3FD-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F481-1F3FD-200D-2642,person-gesture,Smileys & People
+tone,None,1F481-1F3FE-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F481-1F3FE-200D-2642,person-gesture,Smileys & People
+tone,None,1F481-1F3FF-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F481-1F3FF-200D-2642,person-gesture,Smileys & People
+hand,None,1F481-200D-2640-FE0F,person-gesture,Smileys & People
+hand,None,1F481-200D-2640,person-gesture,Smileys & People
+tone,None,1F481-1F3FB-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F481-1F3FB-200D-2640,person-gesture,Smileys & People
+tone,None,1F481-1F3FC-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F481-1F3FC-200D-2640,person-gesture,Smileys & People
+tone,None,1F481-1F3FD-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F481-1F3FD-200D-2640,person-gesture,Smileys & People
+tone,None,1F481-1F3FE-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F481-1F3FE-200D-2640,person-gesture,Smileys & People
+tone,None,1F481-1F3FF-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F481-1F3FF-200D-2640,person-gesture,Smileys & People
+hand,17,1F64B,person-gesture,Smileys & People
+tone,None,1F64B-1F3FB,person-gesture,Smileys & People
+tone,None,1F64B-1F3FC,person-gesture,Smileys & People
+tone,None,1F64B-1F3FD,person-gesture,Smileys & People
+tone,None,1F64B-1F3FE,person-gesture,Smileys & People
+tone,None,1F64B-1F3FF,person-gesture,Smileys & People
+hand,None,1F64B-200D-2642-FE0F,person-gesture,Smileys & People
+hand,None,1F64B-200D-2642,person-gesture,Smileys & People
+tone,None,1F64B-1F3FB-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64B-1F3FB-200D-2642,person-gesture,Smileys & People
+tone,None,1F64B-1F3FC-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64B-1F3FC-200D-2642,person-gesture,Smileys & People
+tone,None,1F64B-1F3FD-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64B-1F3FD-200D-2642,person-gesture,Smileys & People
+tone,None,1F64B-1F3FE-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64B-1F3FE-200D-2642,person-gesture,Smileys & People
+tone,None,1F64B-1F3FF-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F64B-1F3FF-200D-2642,person-gesture,Smileys & People
+hand,None,1F64B-200D-2640-FE0F,person-gesture,Smileys & People
+hand,None,1F64B-200D-2640,person-gesture,Smileys & People
+tone,None,1F64B-1F3FB-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64B-1F3FB-200D-2640,person-gesture,Smileys & People
+tone,None,1F64B-1F3FC-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64B-1F3FC-200D-2640,person-gesture,Smileys & People
+tone,None,1F64B-1F3FD-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64B-1F3FD-200D-2640,person-gesture,Smileys & People
+tone,None,1F64B-1F3FE-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64B-1F3FE-200D-2640,person-gesture,Smileys & People
+tone,None,1F64B-1F3FF-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F64B-1F3FF-200D-2640,person-gesture,Smileys & People
+bowing,4,1F647,person-gesture,Smileys & People
+tone,None,1F647-1F3FB,person-gesture,Smileys & People
+tone,None,1F647-1F3FC,person-gesture,Smileys & People
+tone,None,1F647-1F3FD,person-gesture,Smileys & People
+tone,None,1F647-1F3FE,person-gesture,Smileys & People
+tone,None,1F647-1F3FF,person-gesture,Smileys & People
+bowing,None,1F647-200D-2642-FE0F,person-gesture,Smileys & People
+bowing,None,1F647-200D-2642,person-gesture,Smileys & People
+tone,None,1F647-1F3FB-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F647-1F3FB-200D-2642,person-gesture,Smileys & People
+tone,None,1F647-1F3FC-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F647-1F3FC-200D-2642,person-gesture,Smileys & People
+tone,None,1F647-1F3FD-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F647-1F3FD-200D-2642,person-gesture,Smileys & People
+tone,None,1F647-1F3FE-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F647-1F3FE-200D-2642,person-gesture,Smileys & People
+tone,None,1F647-1F3FF-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F647-1F3FF-200D-2642,person-gesture,Smileys & People
+bowing,None,1F647-200D-2640-FE0F,person-gesture,Smileys & People
+bowing,None,1F647-200D-2640,person-gesture,Smileys & People
+tone,None,1F647-1F3FB-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F647-1F3FB-200D-2640,person-gesture,Smileys & People
+tone,None,1F647-1F3FC-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F647-1F3FC-200D-2640,person-gesture,Smileys & People
+tone,None,1F647-1F3FD-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F647-1F3FD-200D-2640,person-gesture,Smileys & People
+tone,None,1F647-1F3FE-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F647-1F3FE-200D-2640,person-gesture,Smileys & People
+tone,None,1F647-1F3FF-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F647-1F3FF-200D-2640,person-gesture,Smileys & People
+facepalming,None,1F926,person-gesture,Smileys & People
+tone,None,1F926-1F3FB,person-gesture,Smileys & People
+tone,None,1F926-1F3FC,person-gesture,Smileys & People
+tone,None,1F926-1F3FD,person-gesture,Smileys & People
+tone,None,1F926-1F3FE,person-gesture,Smileys & People
+tone,None,1F926-1F3FF,person-gesture,Smileys & People
+facepalming,None,1F926-200D-2642-FE0F,person-gesture,Smileys & People
+facepalming,None,1F926-200D-2642,person-gesture,Smileys & People
+tone,None,1F926-1F3FB-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F926-1F3FB-200D-2642,person-gesture,Smileys & People
+tone,None,1F926-1F3FC-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F926-1F3FC-200D-2642,person-gesture,Smileys & People
+tone,None,1F926-1F3FD-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F926-1F3FD-200D-2642,person-gesture,Smileys & People
+tone,None,1F926-1F3FE-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F926-1F3FE-200D-2642,person-gesture,Smileys & People
+tone,None,1F926-1F3FF-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F926-1F3FF-200D-2642,person-gesture,Smileys & People
+facepalming,None,1F926-200D-2640-FE0F,person-gesture,Smileys & People
+facepalming,None,1F926-200D-2640,person-gesture,Smileys & People
+tone,None,1F926-1F3FB-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F926-1F3FB-200D-2640,person-gesture,Smileys & People
+tone,None,1F926-1F3FC-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F926-1F3FC-200D-2640,person-gesture,Smileys & People
+tone,None,1F926-1F3FD-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F926-1F3FD-200D-2640,person-gesture,Smileys & People
+tone,None,1F926-1F3FE-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F926-1F3FE-200D-2640,person-gesture,Smileys & People
+tone,None,1F926-1F3FF-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F926-1F3FF-200D-2640,person-gesture,Smileys & People
+shrugging,None,1F937,person-gesture,Smileys & People
+tone,None,1F937-1F3FB,person-gesture,Smileys & People
+tone,None,1F937-1F3FC,person-gesture,Smileys & People
+tone,None,1F937-1F3FD,person-gesture,Smileys & People
+tone,None,1F937-1F3FE,person-gesture,Smileys & People
+tone,None,1F937-1F3FF,person-gesture,Smileys & People
+shrugging,None,1F937-200D-2642-FE0F,person-gesture,Smileys & People
+shrugging,None,1F937-200D-2642,person-gesture,Smileys & People
+tone,None,1F937-1F3FB-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F937-1F3FB-200D-2642,person-gesture,Smileys & People
+tone,None,1F937-1F3FC-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F937-1F3FC-200D-2642,person-gesture,Smileys & People
+tone,None,1F937-1F3FD-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F937-1F3FD-200D-2642,person-gesture,Smileys & People
+tone,None,1F937-1F3FE-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F937-1F3FE-200D-2642,person-gesture,Smileys & People
+tone,None,1F937-1F3FF-200D-2642-FE0F,person-gesture,Smileys & People
+tone,None,1F937-1F3FF-200D-2642,person-gesture,Smileys & People
+shrugging,None,1F937-200D-2640-FE0F,person-gesture,Smileys & People
+shrugging,None,1F937-200D-2640,person-gesture,Smileys & People
+tone,None,1F937-1F3FB-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F937-1F3FB-200D-2640,person-gesture,Smileys & People
+tone,None,1F937-1F3FC-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F937-1F3FC-200D-2640,person-gesture,Smileys & People
+tone,None,1F937-1F3FD-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F937-1F3FD-200D-2640,person-gesture,Smileys & People
+tone,None,1F937-1F3FE-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F937-1F3FE-200D-2640,person-gesture,Smileys & People
+tone,None,1F937-1F3FF-200D-2640-FE0F,person-gesture,Smileys & People
+tone,None,1F937-1F3FF-200D-2640,person-gesture,Smileys & People
+massage,2,1F486,person-activity,Smileys & People
+tone,None,1F486-1F3FB,person-activity,Smileys & People
+tone,None,1F486-1F3FC,person-activity,Smileys & People
+tone,None,1F486-1F3FD,person-activity,Smileys & People
+tone,None,1F486-1F3FE,person-activity,Smileys & People
+tone,None,1F486-1F3FF,person-activity,Smileys & People
+massage,None,1F486-200D-2642-FE0F,person-activity,Smileys & People
+massage,None,1F486-200D-2642,person-activity,Smileys & People
+tone,None,1F486-1F3FB-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F486-1F3FB-200D-2642,person-activity,Smileys & People
+tone,None,1F486-1F3FC-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F486-1F3FC-200D-2642,person-activity,Smileys & People
+tone,None,1F486-1F3FD-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F486-1F3FD-200D-2642,person-activity,Smileys & People
+tone,None,1F486-1F3FE-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F486-1F3FE-200D-2642,person-activity,Smileys & People
+tone,None,1F486-1F3FF-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F486-1F3FF-200D-2642,person-activity,Smileys & People
+massage,None,1F486-200D-2640-FE0F,person-activity,Smileys & People
+massage,None,1F486-200D-2640,person-activity,Smileys & People
+tone,None,1F486-1F3FB-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F486-1F3FB-200D-2640,person-activity,Smileys & People
+tone,None,1F486-1F3FC-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F486-1F3FC-200D-2640,person-activity,Smileys & People
+tone,None,1F486-1F3FD-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F486-1F3FD-200D-2640,person-activity,Smileys & People
+tone,None,1F486-1F3FE-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F486-1F3FE-200D-2640,person-activity,Smileys & People
+tone,None,1F486-1F3FF-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F486-1F3FF-200D-2640,person-activity,Smileys & People
+haircut,22,1F487,person-activity,Smileys & People
+tone,None,1F487-1F3FB,person-activity,Smileys & People
+tone,None,1F487-1F3FC,person-activity,Smileys & People
+tone,None,1F487-1F3FD,person-activity,Smileys & People
+tone,None,1F487-1F3FE,person-activity,Smileys & People
+tone,None,1F487-1F3FF,person-activity,Smileys & People
+haircut,None,1F487-200D-2642-FE0F,person-activity,Smileys & People
+haircut,None,1F487-200D-2642,person-activity,Smileys & People
+tone,None,1F487-1F3FB-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F487-1F3FB-200D-2642,person-activity,Smileys & People
+tone,None,1F487-1F3FC-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F487-1F3FC-200D-2642,person-activity,Smileys & People
+tone,None,1F487-1F3FD-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F487-1F3FD-200D-2642,person-activity,Smileys & People
+tone,None,1F487-1F3FE-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F487-1F3FE-200D-2642,person-activity,Smileys & People
+tone,None,1F487-1F3FF-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F487-1F3FF-200D-2642,person-activity,Smileys & People
+haircut,None,1F487-200D-2640-FE0F,person-activity,Smileys & People
+haircut,None,1F487-200D-2640,person-activity,Smileys & People
+tone,None,1F487-1F3FB-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F487-1F3FB-200D-2640,person-activity,Smileys & People
+tone,None,1F487-1F3FC-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F487-1F3FC-200D-2640,person-activity,Smileys & People
+tone,None,1F487-1F3FD-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F487-1F3FD-200D-2640,person-activity,Smileys & People
+tone,None,1F487-1F3FE-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F487-1F3FE-200D-2640,person-activity,Smileys & People
+tone,None,1F487-1F3FF-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F487-1F3FF-200D-2640,person-activity,Smileys & People
+walking,13,1F6B6,person-activity,Smileys & People
+tone,None,1F6B6-1F3FB,person-activity,Smileys & People
+tone,None,1F6B6-1F3FC,person-activity,Smileys & People
+tone,None,1F6B6-1F3FD,person-activity,Smileys & People
+tone,None,1F6B6-1F3FE,person-activity,Smileys & People
+tone,None,1F6B6-1F3FF,person-activity,Smileys & People
+walking,None,1F6B6-200D-2642-FE0F,person-activity,Smileys & People
+walking,None,1F6B6-200D-2642,person-activity,Smileys & People
+tone,None,1F6B6-1F3FB-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F6B6-1F3FB-200D-2642,person-activity,Smileys & People
+tone,None,1F6B6-1F3FC-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F6B6-1F3FC-200D-2642,person-activity,Smileys & People
+tone,None,1F6B6-1F3FD-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F6B6-1F3FD-200D-2642,person-activity,Smileys & People
+tone,None,1F6B6-1F3FE-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F6B6-1F3FE-200D-2642,person-activity,Smileys & People
+tone,None,1F6B6-1F3FF-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F6B6-1F3FF-200D-2642,person-activity,Smileys & People
+walking,None,1F6B6-200D-2640-FE0F,person-activity,Smileys & People
+walking,None,1F6B6-200D-2640,person-activity,Smileys & People
+tone,None,1F6B6-1F3FB-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F6B6-1F3FB-200D-2640,person-activity,Smileys & People
+tone,None,1F6B6-1F3FC-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F6B6-1F3FC-200D-2640,person-activity,Smileys & People
+tone,None,1F6B6-1F3FD-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F6B6-1F3FD-200D-2640,person-activity,Smileys & People
+tone,None,1F6B6-1F3FE-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F6B6-1F3FE-200D-2640,person-activity,Smileys & People
+tone,None,1F6B6-1F3FF-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F6B6-1F3FF-200D-2640,person-activity,Smileys & People
+running,44,1F3C3,person-activity,Smileys & People
+tone,None,1F3C3-1F3FB,person-activity,Smileys & People
+tone,None,1F3C3-1F3FC,person-activity,Smileys & People
+tone,None,1F3C3-1F3FD,person-activity,Smileys & People
+tone,None,1F3C3-1F3FE,person-activity,Smileys & People
+tone,None,1F3C3-1F3FF,person-activity,Smileys & People
+running,None,1F3C3-200D-2642-FE0F,person-activity,Smileys & People
+running,None,1F3C3-200D-2642,person-activity,Smileys & People
+tone,None,1F3C3-1F3FB-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F3C3-1F3FB-200D-2642,person-activity,Smileys & People
+tone,None,1F3C3-1F3FC-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F3C3-1F3FC-200D-2642,person-activity,Smileys & People
+tone,None,1F3C3-1F3FD-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F3C3-1F3FD-200D-2642,person-activity,Smileys & People
+tone,None,1F3C3-1F3FE-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F3C3-1F3FE-200D-2642,person-activity,Smileys & People
+tone,None,1F3C3-1F3FF-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F3C3-1F3FF-200D-2642,person-activity,Smileys & People
+running,None,1F3C3-200D-2640-FE0F,person-activity,Smileys & People
+running,None,1F3C3-200D-2640,person-activity,Smileys & People
+tone,None,1F3C3-1F3FB-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F3C3-1F3FB-200D-2640,person-activity,Smileys & People
+tone,None,1F3C3-1F3FC-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F3C3-1F3FC-200D-2640,person-activity,Smileys & People
+tone,None,1F3C3-1F3FD-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F3C3-1F3FD-200D-2640,person-activity,Smileys & People
+tone,None,1F3C3-1F3FE-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F3C3-1F3FE-200D-2640,person-activity,Smileys & People
+tone,None,1F3C3-1F3FF-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F3C3-1F3FF-200D-2640,person-activity,Smileys & People
+dancing,61,1F483,person-activity,Smileys & People
+tone,None,1F483-1F3FB,person-activity,Smileys & People
+tone,None,1F483-1F3FC,person-activity,Smileys & People
+tone,None,1F483-1F3FD,person-activity,Smileys & People
+tone,None,1F483-1F3FE,person-activity,Smileys & People
+tone,None,1F483-1F3FF,person-activity,Smileys & People
+dancing,None,1F57A,person-activity,Smileys & People
+tone,None,1F57A-1F3FB,person-activity,Smileys & People
+tone,None,1F57A-1F3FC,person-activity,Smileys & People
+tone,None,1F57A-1F3FD,person-activity,Smileys & People
+tone,None,1F57A-1F3FE,person-activity,Smileys & People
+tone,None,1F57A-1F3FF,person-activity,Smileys & People
+ears,31,1F46F,person-activity,Smileys & People
+ears,None,1F46F-200D-2642-FE0F,person-activity,Smileys & People
+ears,None,1F46F-200D-2642,person-activity,Smileys & People
+ears,None,1F46F-200D-2640-FE0F,person-activity,Smileys & People
+ears,None,1F46F-200D-2640,person-activity,Smileys & People
+room,None,1F9D6,person-activity,Smileys & People
+tone,None,1F9D6-1F3FB,person-activity,Smileys & People
+tone,None,1F9D6-1F3FC,person-activity,Smileys & People
+tone,None,1F9D6-1F3FD,person-activity,Smileys & People
+tone,None,1F9D6-1F3FE,person-activity,Smileys & People
+tone,None,1F9D6-1F3FF,person-activity,Smileys & People
+room,None,1F9D6-200D-2640-FE0F,person-activity,Smileys & People
+room,None,1F9D6-200D-2640,person-activity,Smileys & People
+tone,None,1F9D6-1F3FB-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D6-1F3FB-200D-2640,person-activity,Smileys & People
+tone,None,1F9D6-1F3FC-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D6-1F3FC-200D-2640,person-activity,Smileys & People
+tone,None,1F9D6-1F3FD-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D6-1F3FD-200D-2640,person-activity,Smileys & People
+tone,None,1F9D6-1F3FE-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D6-1F3FE-200D-2640,person-activity,Smileys & People
+tone,None,1F9D6-1F3FF-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D6-1F3FF-200D-2640,person-activity,Smileys & People
+room,None,1F9D6-200D-2642-FE0F,person-activity,Smileys & People
+room,None,1F9D6-200D-2642,person-activity,Smileys & People
+tone,None,1F9D6-1F3FB-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D6-1F3FB-200D-2642,person-activity,Smileys & People
+tone,None,1F9D6-1F3FC-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D6-1F3FC-200D-2642,person-activity,Smileys & People
+tone,None,1F9D6-1F3FD-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D6-1F3FD-200D-2642,person-activity,Smileys & People
+tone,None,1F9D6-1F3FE-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D6-1F3FE-200D-2642,person-activity,Smileys & People
+tone,None,1F9D6-1F3FF-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D6-1F3FF-200D-2642,person-activity,Smileys & People
+climbing,None,1F9D7,person-activity,Smileys & People
+tone,None,1F9D7-1F3FB,person-activity,Smileys & People
+tone,None,1F9D7-1F3FC,person-activity,Smileys & People
+tone,None,1F9D7-1F3FD,person-activity,Smileys & People
+tone,None,1F9D7-1F3FE,person-activity,Smileys & People
+tone,None,1F9D7-1F3FF,person-activity,Smileys & People
+climbing,None,1F9D7-200D-2640-FE0F,person-activity,Smileys & People
+climbing,None,1F9D7-200D-2640,person-activity,Smileys & People
+tone,None,1F9D7-1F3FB-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D7-1F3FB-200D-2640,person-activity,Smileys & People
+tone,None,1F9D7-1F3FC-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D7-1F3FC-200D-2640,person-activity,Smileys & People
+tone,None,1F9D7-1F3FD-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D7-1F3FD-200D-2640,person-activity,Smileys & People
+tone,None,1F9D7-1F3FE-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D7-1F3FE-200D-2640,person-activity,Smileys & People
+tone,None,1F9D7-1F3FF-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D7-1F3FF-200D-2640,person-activity,Smileys & People
+climbing,None,1F9D7-200D-2642-FE0F,person-activity,Smileys & People
+climbing,None,1F9D7-200D-2642,person-activity,Smileys & People
+tone,None,1F9D7-1F3FB-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D7-1F3FB-200D-2642,person-activity,Smileys & People
+tone,None,1F9D7-1F3FC-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D7-1F3FC-200D-2642,person-activity,Smileys & People
+tone,None,1F9D7-1F3FD-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D7-1F3FD-200D-2642,person-activity,Smileys & People
+tone,None,1F9D7-1F3FE-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D7-1F3FE-200D-2642,person-activity,Smileys & People
+tone,None,1F9D7-1F3FF-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D7-1F3FF-200D-2642,person-activity,Smileys & People
+position,None,1F9D8,person-activity,Smileys & People
+tone,None,1F9D8-1F3FB,person-activity,Smileys & People
+tone,None,1F9D8-1F3FC,person-activity,Smileys & People
+tone,None,1F9D8-1F3FD,person-activity,Smileys & People
+tone,None,1F9D8-1F3FE,person-activity,Smileys & People
+tone,None,1F9D8-1F3FF,person-activity,Smileys & People
+position,None,1F9D8-200D-2640-FE0F,person-activity,Smileys & People
+position,None,1F9D8-200D-2640,person-activity,Smileys & People
+tone,None,1F9D8-1F3FB-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D8-1F3FB-200D-2640,person-activity,Smileys & People
+tone,None,1F9D8-1F3FC-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D8-1F3FC-200D-2640,person-activity,Smileys & People
+tone,None,1F9D8-1F3FD-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D8-1F3FD-200D-2640,person-activity,Smileys & People
+tone,None,1F9D8-1F3FE-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D8-1F3FE-200D-2640,person-activity,Smileys & People
+tone,None,1F9D8-1F3FF-200D-2640-FE0F,person-activity,Smileys & People
+tone,None,1F9D8-1F3FF-200D-2640,person-activity,Smileys & People
+position,None,1F9D8-200D-2642-FE0F,person-activity,Smileys & People
+position,None,1F9D8-200D-2642,person-activity,Smileys & People
+tone,None,1F9D8-1F3FB-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D8-1F3FB-200D-2642,person-activity,Smileys & People
+tone,None,1F9D8-1F3FC-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D8-1F3FC-200D-2642,person-activity,Smileys & People
+tone,None,1F9D8-1F3FD-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D8-1F3FD-200D-2642,person-activity,Smileys & People
+tone,None,1F9D8-1F3FE-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D8-1F3FE-200D-2642,person-activity,Smileys & People
+tone,None,1F9D8-1F3FF-200D-2642-FE0F,person-activity,Smileys & People
+tone,None,1F9D8-1F3FF-200D-2642,person-activity,Smileys & People
+bath,2,1F6C0,person-activity,Smileys & People
+tone,None,1F6C0-1F3FB,person-activity,Smileys & People
+tone,None,1F6C0-1F3FC,person-activity,Smileys & People
+tone,None,1F6C0-1F3FD,person-activity,Smileys & People
+tone,None,1F6C0-1F3FE,person-activity,Smileys & People
+tone,None,1F6C0-1F3FF,person-activity,Smileys & People
+bed,None,1F6CC,person-activity,Smileys & People
+tone,None,1F6CC-1F3FB,person-activity,Smileys & People
+tone,None,1F6CC-1F3FC,person-activity,Smileys & People
+tone,None,1F6CC-1F3FD,person-activity,Smileys & People
+tone,None,1F6CC-1F3FE,person-activity,Smileys & People
+tone,None,1F6CC-1F3FF,person-activity,Smileys & People
+levitating,None,1F574-FE0F,person-activity,Smileys & People
+levitating,None,1F574,person-activity,Smileys & People
+tone,None,1F574-1F3FB,person-activity,Smileys & People
+tone,None,1F574-1F3FC,person-activity,Smileys & People
+tone,None,1F574-1F3FD,person-activity,Smileys & People
+tone,None,1F574-1F3FE,person-activity,Smileys & People
+tone,None,1F574-1F3FF,person-activity,Smileys & People
+head,None,1F5E3-FE0F,person-activity,Smileys & People
+head,None,1F5E3,person-activity,Smileys & People
+silhouette,3,1F464,person-activity,Smileys & People
+silhouette,2,1F465,person-activity,Smileys & People
+fencing,None,1F93A,person-sport,Smileys & People
+racing,None,1F3C7,person-sport,Smileys & People
+tone,None,1F3C7-1F3FB,person-sport,Smileys & People
+tone,None,1F3C7-1F3FC,person-sport,Smileys & People
+tone,None,1F3C7-1F3FD,person-sport,Smileys & People
+tone,None,1F3C7-1F3FE,person-sport,Smileys & People
+tone,None,1F3C7-1F3FF,person-sport,Smileys & People
+skier,None,26F7-FE0F,person-sport,Smileys & People
+skier,None,26F7,person-sport,Smileys & People
+snowboarder,1,1F3C2,person-sport,Smileys & People
+tone,None,1F3C2-1F3FB,person-sport,Smileys & People
+tone,None,1F3C2-1F3FC,person-sport,Smileys & People
+tone,None,1F3C2-1F3FD,person-sport,Smileys & People
+tone,None,1F3C2-1F3FE,person-sport,Smileys & People
+tone,None,1F3C2-1F3FF,person-sport,Smileys & People
+golfing,None,1F3CC-FE0F,person-sport,Smileys & People
+golfing,None,1F3CC,person-sport,Smileys & People
+tone,None,1F3CC-1F3FB,person-sport,Smileys & People
+tone,None,1F3CC-1F3FC,person-sport,Smileys & People
+tone,None,1F3CC-1F3FD,person-sport,Smileys & People
+tone,None,1F3CC-1F3FE,person-sport,Smileys & People
+tone,None,1F3CC-1F3FF,person-sport,Smileys & People
+golfing,None,1F3CC-FE0F-200D-2642-FE0F,person-sport,Smileys & People
+golfing,None,1F3CC-200D-2642-FE0F,person-sport,Smileys & People
+golfing,None,1F3CC-FE0F-200D-2642,person-sport,Smileys & People
+golfing,None,1F3CC-200D-2642,person-sport,Smileys & People
+tone,None,1F3CC-1F3FB-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CC-1F3FB-200D-2642,person-sport,Smileys & People
+tone,None,1F3CC-1F3FC-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CC-1F3FC-200D-2642,person-sport,Smileys & People
+tone,None,1F3CC-1F3FD-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CC-1F3FD-200D-2642,person-sport,Smileys & People
+tone,None,1F3CC-1F3FE-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CC-1F3FE-200D-2642,person-sport,Smileys & People
+tone,None,1F3CC-1F3FF-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CC-1F3FF-200D-2642,person-sport,Smileys & People
+golfing,None,1F3CC-FE0F-200D-2640-FE0F,person-sport,Smileys & People
+golfing,None,1F3CC-200D-2640-FE0F,person-sport,Smileys & People
+golfing,None,1F3CC-FE0F-200D-2640,person-sport,Smileys & People
+golfing,None,1F3CC-200D-2640,person-sport,Smileys & People
+tone,None,1F3CC-1F3FB-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CC-1F3FB-200D-2640,person-sport,Smileys & People
+tone,None,1F3CC-1F3FC-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CC-1F3FC-200D-2640,person-sport,Smileys & People
+tone,None,1F3CC-1F3FD-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CC-1F3FD-200D-2640,person-sport,Smileys & People
+tone,None,1F3CC-1F3FE-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CC-1F3FE-200D-2640,person-sport,Smileys & People
+tone,None,1F3CC-1F3FF-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CC-1F3FF-200D-2640,person-sport,Smileys & People
+surfing,7,1F3C4,person-sport,Smileys & People
+tone,None,1F3C4-1F3FB,person-sport,Smileys & People
+tone,None,1F3C4-1F3FC,person-sport,Smileys & People
+tone,None,1F3C4-1F3FD,person-sport,Smileys & People
+tone,None,1F3C4-1F3FE,person-sport,Smileys & People
+tone,None,1F3C4-1F3FF,person-sport,Smileys & People
+surfing,None,1F3C4-200D-2642-FE0F,person-sport,Smileys & People
+surfing,None,1F3C4-200D-2642,person-sport,Smileys & People
+tone,None,1F3C4-1F3FB-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3C4-1F3FB-200D-2642,person-sport,Smileys & People
+tone,None,1F3C4-1F3FC-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3C4-1F3FC-200D-2642,person-sport,Smileys & People
+tone,None,1F3C4-1F3FD-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3C4-1F3FD-200D-2642,person-sport,Smileys & People
+tone,None,1F3C4-1F3FE-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3C4-1F3FE-200D-2642,person-sport,Smileys & People
+tone,None,1F3C4-1F3FF-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3C4-1F3FF-200D-2642,person-sport,Smileys & People
+surfing,None,1F3C4-200D-2640-FE0F,person-sport,Smileys & People
+surfing,None,1F3C4-200D-2640,person-sport,Smileys & People
+tone,None,1F3C4-1F3FB-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3C4-1F3FB-200D-2640,person-sport,Smileys & People
+tone,None,1F3C4-1F3FC-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3C4-1F3FC-200D-2640,person-sport,Smileys & People
+tone,None,1F3C4-1F3FD-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3C4-1F3FD-200D-2640,person-sport,Smileys & People
+tone,None,1F3C4-1F3FE-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3C4-1F3FE-200D-2640,person-sport,Smileys & People
+tone,None,1F3C4-1F3FF-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3C4-1F3FF-200D-2640,person-sport,Smileys & People
+boat,1,1F6A3,person-sport,Smileys & People
+tone,None,1F6A3-1F3FB,person-sport,Smileys & People
+tone,None,1F6A3-1F3FC,person-sport,Smileys & People
+tone,None,1F6A3-1F3FD,person-sport,Smileys & People
+tone,None,1F6A3-1F3FE,person-sport,Smileys & People
+tone,None,1F6A3-1F3FF,person-sport,Smileys & People
+boat,None,1F6A3-200D-2642-FE0F,person-sport,Smileys & People
+boat,None,1F6A3-200D-2642,person-sport,Smileys & People
+tone,None,1F6A3-1F3FB-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6A3-1F3FB-200D-2642,person-sport,Smileys & People
+tone,None,1F6A3-1F3FC-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6A3-1F3FC-200D-2642,person-sport,Smileys & People
+tone,None,1F6A3-1F3FD-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6A3-1F3FD-200D-2642,person-sport,Smileys & People
+tone,None,1F6A3-1F3FE-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6A3-1F3FE-200D-2642,person-sport,Smileys & People
+tone,None,1F6A3-1F3FF-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6A3-1F3FF-200D-2642,person-sport,Smileys & People
+boat,None,1F6A3-200D-2640-FE0F,person-sport,Smileys & People
+boat,None,1F6A3-200D-2640,person-sport,Smileys & People
+tone,None,1F6A3-1F3FB-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6A3-1F3FB-200D-2640,person-sport,Smileys & People
+tone,None,1F6A3-1F3FC-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6A3-1F3FC-200D-2640,person-sport,Smileys & People
+tone,None,1F6A3-1F3FD-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6A3-1F3FD-200D-2640,person-sport,Smileys & People
+tone,None,1F6A3-1F3FE-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6A3-1F3FE-200D-2640,person-sport,Smileys & People
+tone,None,1F6A3-1F3FF-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6A3-1F3FF-200D-2640,person-sport,Smileys & People
+swimming,18,1F3CA,person-sport,Smileys & People
+tone,None,1F3CA-1F3FB,person-sport,Smileys & People
+tone,None,1F3CA-1F3FC,person-sport,Smileys & People
+tone,None,1F3CA-1F3FD,person-sport,Smileys & People
+tone,None,1F3CA-1F3FE,person-sport,Smileys & People
+tone,None,1F3CA-1F3FF,person-sport,Smileys & People
+swimming,None,1F3CA-200D-2642-FE0F,person-sport,Smileys & People
+swimming,None,1F3CA-200D-2642,person-sport,Smileys & People
+tone,None,1F3CA-1F3FB-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CA-1F3FB-200D-2642,person-sport,Smileys & People
+tone,None,1F3CA-1F3FC-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CA-1F3FC-200D-2642,person-sport,Smileys & People
+tone,None,1F3CA-1F3FD-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CA-1F3FD-200D-2642,person-sport,Smileys & People
+tone,None,1F3CA-1F3FE-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CA-1F3FE-200D-2642,person-sport,Smileys & People
+tone,None,1F3CA-1F3FF-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CA-1F3FF-200D-2642,person-sport,Smileys & People
+swimming,None,1F3CA-200D-2640-FE0F,person-sport,Smileys & People
+swimming,None,1F3CA-200D-2640,person-sport,Smileys & People
+tone,None,1F3CA-1F3FB-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CA-1F3FB-200D-2640,person-sport,Smileys & People
+tone,None,1F3CA-1F3FC-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CA-1F3FC-200D-2640,person-sport,Smileys & People
+tone,None,1F3CA-1F3FD-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CA-1F3FD-200D-2640,person-sport,Smileys & People
+tone,None,1F3CA-1F3FE-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CA-1F3FE-200D-2640,person-sport,Smileys & People
+tone,None,1F3CA-1F3FF-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CA-1F3FF-200D-2640,person-sport,Smileys & People
+ball,None,26F9-FE0F,person-sport,Smileys & People
+ball,None,26F9,person-sport,Smileys & People
+tone,None,26F9-1F3FB,person-sport,Smileys & People
+tone,None,26F9-1F3FC,person-sport,Smileys & People
+tone,None,26F9-1F3FD,person-sport,Smileys & People
+tone,None,26F9-1F3FE,person-sport,Smileys & People
+tone,None,26F9-1F3FF,person-sport,Smileys & People
+ball,None,26F9-FE0F-200D-2642-FE0F,person-sport,Smileys & People
+ball,None,26F9-200D-2642-FE0F,person-sport,Smileys & People
+ball,None,26F9-FE0F-200D-2642,person-sport,Smileys & People
+ball,None,26F9-200D-2642,person-sport,Smileys & People
+tone,None,26F9-1F3FB-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,26F9-1F3FB-200D-2642,person-sport,Smileys & People
+tone,None,26F9-1F3FC-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,26F9-1F3FC-200D-2642,person-sport,Smileys & People
+tone,None,26F9-1F3FD-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,26F9-1F3FD-200D-2642,person-sport,Smileys & People
+tone,None,26F9-1F3FE-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,26F9-1F3FE-200D-2642,person-sport,Smileys & People
+tone,None,26F9-1F3FF-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,26F9-1F3FF-200D-2642,person-sport,Smileys & People
+ball,None,26F9-FE0F-200D-2640-FE0F,person-sport,Smileys & People
+ball,None,26F9-200D-2640-FE0F,person-sport,Smileys & People
+ball,None,26F9-FE0F-200D-2640,person-sport,Smileys & People
+ball,None,26F9-200D-2640,person-sport,Smileys & People
+tone,None,26F9-1F3FB-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,26F9-1F3FB-200D-2640,person-sport,Smileys & People
+tone,None,26F9-1F3FC-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,26F9-1F3FC-200D-2640,person-sport,Smileys & People
+tone,None,26F9-1F3FD-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,26F9-1F3FD-200D-2640,person-sport,Smileys & People
+tone,None,26F9-1F3FE-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,26F9-1F3FE-200D-2640,person-sport,Smileys & People
+tone,None,26F9-1F3FF-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,26F9-1F3FF-200D-2640,person-sport,Smileys & People
+weights,None,1F3CB-FE0F,person-sport,Smileys & People
+weights,None,1F3CB,person-sport,Smileys & People
+tone,None,1F3CB-1F3FB,person-sport,Smileys & People
+tone,None,1F3CB-1F3FC,person-sport,Smileys & People
+tone,None,1F3CB-1F3FD,person-sport,Smileys & People
+tone,None,1F3CB-1F3FE,person-sport,Smileys & People
+tone,None,1F3CB-1F3FF,person-sport,Smileys & People
+weights,None,1F3CB-FE0F-200D-2642-FE0F,person-sport,Smileys & People
+weights,None,1F3CB-200D-2642-FE0F,person-sport,Smileys & People
+weights,None,1F3CB-FE0F-200D-2642,person-sport,Smileys & People
+weights,None,1F3CB-200D-2642,person-sport,Smileys & People
+tone,None,1F3CB-1F3FB-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CB-1F3FB-200D-2642,person-sport,Smileys & People
+tone,None,1F3CB-1F3FC-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CB-1F3FC-200D-2642,person-sport,Smileys & People
+tone,None,1F3CB-1F3FD-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CB-1F3FD-200D-2642,person-sport,Smileys & People
+tone,None,1F3CB-1F3FE-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CB-1F3FE-200D-2642,person-sport,Smileys & People
+tone,None,1F3CB-1F3FF-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F3CB-1F3FF-200D-2642,person-sport,Smileys & People
+weights,None,1F3CB-FE0F-200D-2640-FE0F,person-sport,Smileys & People
+weights,None,1F3CB-200D-2640-FE0F,person-sport,Smileys & People
+weights,None,1F3CB-FE0F-200D-2640,person-sport,Smileys & People
+weights,None,1F3CB-200D-2640,person-sport,Smileys & People
+tone,None,1F3CB-1F3FB-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CB-1F3FB-200D-2640,person-sport,Smileys & People
+tone,None,1F3CB-1F3FC-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CB-1F3FC-200D-2640,person-sport,Smileys & People
+tone,None,1F3CB-1F3FD-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CB-1F3FD-200D-2640,person-sport,Smileys & People
+tone,None,1F3CB-1F3FE-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CB-1F3FE-200D-2640,person-sport,Smileys & People
+tone,None,1F3CB-1F3FF-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F3CB-1F3FF-200D-2640,person-sport,Smileys & People
+biking,4,1F6B4,person-sport,Smileys & People
+tone,None,1F6B4-1F3FB,person-sport,Smileys & People
+tone,None,1F6B4-1F3FC,person-sport,Smileys & People
+tone,None,1F6B4-1F3FD,person-sport,Smileys & People
+tone,None,1F6B4-1F3FE,person-sport,Smileys & People
+tone,None,1F6B4-1F3FF,person-sport,Smileys & People
+biking,None,1F6B4-200D-2642-FE0F,person-sport,Smileys & People
+biking,None,1F6B4-200D-2642,person-sport,Smileys & People
+tone,None,1F6B4-1F3FB-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6B4-1F3FB-200D-2642,person-sport,Smileys & People
+tone,None,1F6B4-1F3FC-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6B4-1F3FC-200D-2642,person-sport,Smileys & People
+tone,None,1F6B4-1F3FD-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6B4-1F3FD-200D-2642,person-sport,Smileys & People
+tone,None,1F6B4-1F3FE-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6B4-1F3FE-200D-2642,person-sport,Smileys & People
+tone,None,1F6B4-1F3FF-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6B4-1F3FF-200D-2642,person-sport,Smileys & People
+biking,None,1F6B4-200D-2640-FE0F,person-sport,Smileys & People
+biking,None,1F6B4-200D-2640,person-sport,Smileys & People
+tone,None,1F6B4-1F3FB-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6B4-1F3FB-200D-2640,person-sport,Smileys & People
+tone,None,1F6B4-1F3FC-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6B4-1F3FC-200D-2640,person-sport,Smileys & People
+tone,None,1F6B4-1F3FD-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6B4-1F3FD-200D-2640,person-sport,Smileys & People
+tone,None,1F6B4-1F3FE-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6B4-1F3FE-200D-2640,person-sport,Smileys & People
+tone,None,1F6B4-1F3FF-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6B4-1F3FF-200D-2640,person-sport,Smileys & People
+biking,1,1F6B5,person-sport,Smileys & People
+tone,None,1F6B5-1F3FB,person-sport,Smileys & People
+tone,None,1F6B5-1F3FC,person-sport,Smileys & People
+tone,None,1F6B5-1F3FD,person-sport,Smileys & People
+tone,None,1F6B5-1F3FE,person-sport,Smileys & People
+tone,None,1F6B5-1F3FF,person-sport,Smileys & People
+biking,None,1F6B5-200D-2642-FE0F,person-sport,Smileys & People
+biking,None,1F6B5-200D-2642,person-sport,Smileys & People
+tone,None,1F6B5-1F3FB-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6B5-1F3FB-200D-2642,person-sport,Smileys & People
+tone,None,1F6B5-1F3FC-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6B5-1F3FC-200D-2642,person-sport,Smileys & People
+tone,None,1F6B5-1F3FD-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6B5-1F3FD-200D-2642,person-sport,Smileys & People
+tone,None,1F6B5-1F3FE-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6B5-1F3FE-200D-2642,person-sport,Smileys & People
+tone,None,1F6B5-1F3FF-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F6B5-1F3FF-200D-2642,person-sport,Smileys & People
+biking,None,1F6B5-200D-2640-FE0F,person-sport,Smileys & People
+biking,None,1F6B5-200D-2640,person-sport,Smileys & People
+tone,None,1F6B5-1F3FB-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6B5-1F3FB-200D-2640,person-sport,Smileys & People
+tone,None,1F6B5-1F3FC-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6B5-1F3FC-200D-2640,person-sport,Smileys & People
+tone,None,1F6B5-1F3FD-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6B5-1F3FD-200D-2640,person-sport,Smileys & People
+tone,None,1F6B5-1F3FE-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6B5-1F3FE-200D-2640,person-sport,Smileys & People
+tone,None,1F6B5-1F3FF-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F6B5-1F3FF-200D-2640,person-sport,Smileys & People
+car,None,1F3CE-FE0F,person-sport,Smileys & People
+car,None,1F3CE,person-sport,Smileys & People
+motorcycle,None,1F3CD-FE0F,person-sport,Smileys & People
+motorcycle,None,1F3CD,person-sport,Smileys & People
+cartwheeling,None,1F938,person-sport,Smileys & People
+tone,None,1F938-1F3FB,person-sport,Smileys & People
+tone,None,1F938-1F3FC,person-sport,Smileys & People
+tone,None,1F938-1F3FD,person-sport,Smileys & People
+tone,None,1F938-1F3FE,person-sport,Smileys & People
+tone,None,1F938-1F3FF,person-sport,Smileys & People
+cartwheeling,None,1F938-200D-2642-FE0F,person-sport,Smileys & People
+cartwheeling,None,1F938-200D-2642,person-sport,Smileys & People
+tone,None,1F938-1F3FB-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F938-1F3FB-200D-2642,person-sport,Smileys & People
+tone,None,1F938-1F3FC-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F938-1F3FC-200D-2642,person-sport,Smileys & People
+tone,None,1F938-1F3FD-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F938-1F3FD-200D-2642,person-sport,Smileys & People
+tone,None,1F938-1F3FE-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F938-1F3FE-200D-2642,person-sport,Smileys & People
+tone,None,1F938-1F3FF-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F938-1F3FF-200D-2642,person-sport,Smileys & People
+cartwheeling,None,1F938-200D-2640-FE0F,person-sport,Smileys & People
+cartwheeling,None,1F938-200D-2640,person-sport,Smileys & People
+tone,None,1F938-1F3FB-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F938-1F3FB-200D-2640,person-sport,Smileys & People
+tone,None,1F938-1F3FC-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F938-1F3FC-200D-2640,person-sport,Smileys & People
+tone,None,1F938-1F3FD-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F938-1F3FD-200D-2640,person-sport,Smileys & People
+tone,None,1F938-1F3FE-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F938-1F3FE-200D-2640,person-sport,Smileys & People
+tone,None,1F938-1F3FF-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F938-1F3FF-200D-2640,person-sport,Smileys & People
+wrestling,None,1F93C,person-sport,Smileys & People
+wrestling,None,1F93C-200D-2642-FE0F,person-sport,Smileys & People
+wrestling,None,1F93C-200D-2642,person-sport,Smileys & People
+wrestling,None,1F93C-200D-2640-FE0F,person-sport,Smileys & People
+wrestling,None,1F93C-200D-2640,person-sport,Smileys & People
+polo,None,1F93D,person-sport,Smileys & People
+tone,None,1F93D-1F3FB,person-sport,Smileys & People
+tone,None,1F93D-1F3FC,person-sport,Smileys & People
+tone,None,1F93D-1F3FD,person-sport,Smileys & People
+tone,None,1F93D-1F3FE,person-sport,Smileys & People
+tone,None,1F93D-1F3FF,person-sport,Smileys & People
+polo,None,1F93D-200D-2642-FE0F,person-sport,Smileys & People
+polo,None,1F93D-200D-2642,person-sport,Smileys & People
+tone,None,1F93D-1F3FB-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F93D-1F3FB-200D-2642,person-sport,Smileys & People
+tone,None,1F93D-1F3FC-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F93D-1F3FC-200D-2642,person-sport,Smileys & People
+tone,None,1F93D-1F3FD-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F93D-1F3FD-200D-2642,person-sport,Smileys & People
+tone,None,1F93D-1F3FE-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F93D-1F3FE-200D-2642,person-sport,Smileys & People
+tone,None,1F93D-1F3FF-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F93D-1F3FF-200D-2642,person-sport,Smileys & People
+polo,None,1F93D-200D-2640-FE0F,person-sport,Smileys & People
+polo,None,1F93D-200D-2640,person-sport,Smileys & People
+tone,None,1F93D-1F3FB-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F93D-1F3FB-200D-2640,person-sport,Smileys & People
+tone,None,1F93D-1F3FC-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F93D-1F3FC-200D-2640,person-sport,Smileys & People
+tone,None,1F93D-1F3FD-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F93D-1F3FD-200D-2640,person-sport,Smileys & People
+tone,None,1F93D-1F3FE-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F93D-1F3FE-200D-2640,person-sport,Smileys & People
+tone,None,1F93D-1F3FF-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F93D-1F3FF-200D-2640,person-sport,Smileys & People
+handball,None,1F93E,person-sport,Smileys & People
+tone,None,1F93E-1F3FB,person-sport,Smileys & People
+tone,None,1F93E-1F3FC,person-sport,Smileys & People
+tone,None,1F93E-1F3FD,person-sport,Smileys & People
+tone,None,1F93E-1F3FE,person-sport,Smileys & People
+tone,None,1F93E-1F3FF,person-sport,Smileys & People
+handball,None,1F93E-200D-2642-FE0F,person-sport,Smileys & People
+handball,None,1F93E-200D-2642,person-sport,Smileys & People
+tone,None,1F93E-1F3FB-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F93E-1F3FB-200D-2642,person-sport,Smileys & People
+tone,None,1F93E-1F3FC-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F93E-1F3FC-200D-2642,person-sport,Smileys & People
+tone,None,1F93E-1F3FD-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F93E-1F3FD-200D-2642,person-sport,Smileys & People
+tone,None,1F93E-1F3FE-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F93E-1F3FE-200D-2642,person-sport,Smileys & People
+tone,None,1F93E-1F3FF-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F93E-1F3FF-200D-2642,person-sport,Smileys & People
+handball,None,1F93E-200D-2640-FE0F,person-sport,Smileys & People
+handball,None,1F93E-200D-2640,person-sport,Smileys & People
+tone,None,1F93E-1F3FB-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F93E-1F3FB-200D-2640,person-sport,Smileys & People
+tone,None,1F93E-1F3FC-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F93E-1F3FC-200D-2640,person-sport,Smileys & People
+tone,None,1F93E-1F3FD-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F93E-1F3FD-200D-2640,person-sport,Smileys & People
+tone,None,1F93E-1F3FE-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F93E-1F3FE-200D-2640,person-sport,Smileys & People
+tone,None,1F93E-1F3FF-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F93E-1F3FF-200D-2640,person-sport,Smileys & People
+juggling,None,1F939,person-sport,Smileys & People
+tone,None,1F939-1F3FB,person-sport,Smileys & People
+tone,None,1F939-1F3FC,person-sport,Smileys & People
+tone,None,1F939-1F3FD,person-sport,Smileys & People
+tone,None,1F939-1F3FE,person-sport,Smileys & People
+tone,None,1F939-1F3FF,person-sport,Smileys & People
+juggling,None,1F939-200D-2642-FE0F,person-sport,Smileys & People
+juggling,None,1F939-200D-2642,person-sport,Smileys & People
+tone,None,1F939-1F3FB-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F939-1F3FB-200D-2642,person-sport,Smileys & People
+tone,None,1F939-1F3FC-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F939-1F3FC-200D-2642,person-sport,Smileys & People
+tone,None,1F939-1F3FD-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F939-1F3FD-200D-2642,person-sport,Smileys & People
+tone,None,1F939-1F3FE-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F939-1F3FE-200D-2642,person-sport,Smileys & People
+tone,None,1F939-1F3FF-200D-2642-FE0F,person-sport,Smileys & People
+tone,None,1F939-1F3FF-200D-2642,person-sport,Smileys & People
+juggling,None,1F939-200D-2640-FE0F,person-sport,Smileys & People
+juggling,None,1F939-200D-2640,person-sport,Smileys & People
+tone,None,1F939-1F3FB-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F939-1F3FB-200D-2640,person-sport,Smileys & People
+tone,None,1F939-1F3FC-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F939-1F3FC-200D-2640,person-sport,Smileys & People
+tone,None,1F939-1F3FD-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F939-1F3FD-200D-2640,person-sport,Smileys & People
+tone,None,1F939-1F3FE-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F939-1F3FE-200D-2640,person-sport,Smileys & People
+tone,None,1F939-1F3FF-200D-2640-FE0F,person-sport,Smileys & People
+tone,None,1F939-1F3FF-200D-2640,person-sport,Smileys & People
+hands,9,1F46B,family,Smileys & People
+hands,5,1F46C,family,Smileys & People
+hands,32,1F46D,family,Smileys & People
+kiss,8,1F48F,family,Smileys & People
+man,None,1F469-200D-2764-FE0F-200D-1F48B-200D-1F468,family,Smileys & People
+man,None,1F469-200D-2764-200D-1F48B-200D-1F468,family,Smileys & People
+man,None,1F468-200D-2764-FE0F-200D-1F48B-200D-1F468,family,Smileys & People
+man,None,1F468-200D-2764-200D-1F48B-200D-1F468,family,Smileys & People
+woman,None,1F469-200D-2764-FE0F-200D-1F48B-200D-1F469,family,Smileys & People
+woman,None,1F469-200D-2764-200D-1F48B-200D-1F469,family,Smileys & People
+heart,12,1F491,family,Smileys & People
+man,None,1F469-200D-2764-FE0F-200D-1F468,family,Smileys & People
+man,None,1F469-200D-2764-200D-1F468,family,Smileys & People
+man,None,1F468-200D-2764-FE0F-200D-1F468,family,Smileys & People
+man,None,1F468-200D-2764-200D-1F468,family,Smileys & People
+woman,None,1F469-200D-2764-FE0F-200D-1F469,family,Smileys & People
+woman,None,1F469-200D-2764-200D-1F469,family,Smileys & People
+family,7,1F46A,family,Smileys & People
+boy,None,1F468-200D-1F469-200D-1F466,family,Smileys & People
+girl,None,1F468-200D-1F469-200D-1F467,family,Smileys & People
+boy,None,1F468-200D-1F469-200D-1F467-200D-1F466,family,Smileys & People
+boy,None,1F468-200D-1F469-200D-1F466-200D-1F466,family,Smileys & People
+girl,None,1F468-200D-1F469-200D-1F467-200D-1F467,family,Smileys & People
+boy,None,1F468-200D-1F468-200D-1F466,family,Smileys & People
+girl,None,1F468-200D-1F468-200D-1F467,family,Smileys & People
+boy,None,1F468-200D-1F468-200D-1F467-200D-1F466,family,Smileys & People
+boy,None,1F468-200D-1F468-200D-1F466-200D-1F466,family,Smileys & People
+girl,None,1F468-200D-1F468-200D-1F467-200D-1F467,family,Smileys & People
+boy,None,1F469-200D-1F469-200D-1F466,family,Smileys & People
+girl,None,1F469-200D-1F469-200D-1F467,family,Smileys & People
+boy,None,1F469-200D-1F469-200D-1F467-200D-1F466,family,Smileys & People
+boy,None,1F469-200D-1F469-200D-1F466-200D-1F466,family,Smileys & People
+girl,None,1F469-200D-1F469-200D-1F467-200D-1F467,family,Smileys & People
+boy,None,1F468-200D-1F466,family,Smileys & People
+boy,None,1F468-200D-1F466-200D-1F466,family,Smileys & People
+girl,None,1F468-200D-1F467,family,Smileys & People
+boy,None,1F468-200D-1F467-200D-1F466,family,Smileys & People
+girl,None,1F468-200D-1F467-200D-1F467,family,Smileys & People
+boy,None,1F469-200D-1F466,family,Smileys & People
+boy,None,1F469-200D-1F466-200D-1F466,family,Smileys & People
+girl,None,1F469-200D-1F467,family,Smileys & People
+boy,None,1F469-200D-1F467-200D-1F466,family,Smileys & People
+girl,None,1F469-200D-1F467-200D-1F467,family,Smileys & People
+selfie,None,1F933,body,Smileys & People
+tone,None,1F933-1F3FB,body,Smileys & People
+tone,None,1F933-1F3FC,body,Smileys & People
+tone,None,1F933-1F3FD,body,Smileys & People
+tone,None,1F933-1F3FE,body,Smileys & People
+tone,None,1F933-1F3FF,body,Smileys & People
+biceps,146,1F4AA,body,Smileys & People
+tone,None,1F4AA-1F3FB,body,Smileys & People
+tone,None,1F4AA-1F3FC,body,Smileys & People
+tone,None,1F4AA-1F3FD,body,Smileys & People
+tone,None,1F4AA-1F3FE,body,Smileys & People
+tone,None,1F4AA-1F3FF,body,Smileys & People
+left,16,1F448,body,Smileys & People
+tone,None,1F448-1F3FB,body,Smileys & People
+tone,None,1F448-1F3FC,body,Smileys & People
+tone,None,1F448-1F3FD,body,Smileys & People
+tone,None,1F448-1F3FE,body,Smileys & People
+tone,None,1F448-1F3FF,body,Smileys & People
+right,31,1F449,body,Smileys & People
+tone,None,1F449-1F3FB,body,Smileys & People
+tone,None,1F449-1F3FC,body,Smileys & People
+tone,None,1F449-1F3FD,body,Smileys & People
+tone,None,1F449-1F3FE,body,Smileys & People
+tone,None,1F449-1F3FF,body,Smileys & People
+up,None,261D-FE0F,body,Smileys & People
+up,28,261D,body,Smileys & People
+tone,None,261D-1F3FB,body,Smileys & People
+tone,None,261D-1F3FC,body,Smileys & People
+tone,None,261D-1F3FD,body,Smileys & People
+tone,None,261D-1F3FE,body,Smileys & People
+tone,None,261D-1F3FF,body,Smileys & People
+up,8,1F446,body,Smileys & People
+tone,None,1F446-1F3FB,body,Smileys & People
+tone,None,1F446-1F3FC,body,Smileys & People
+tone,None,1F446-1F3FD,body,Smileys & People
+tone,None,1F446-1F3FE,body,Smileys & People
+tone,None,1F446-1F3FF,body,Smileys & People
+finger,None,1F595,body,Smileys & People
+tone,None,1F595-1F3FB,body,Smileys & People
+tone,None,1F595-1F3FC,body,Smileys & People
+tone,None,1F595-1F3FD,body,Smileys & People
+tone,None,1F595-1F3FE,body,Smileys & People
+tone,None,1F595-1F3FF,body,Smileys & People
+down,16,1F447,body,Smileys & People
+tone,None,1F447-1F3FB,body,Smileys & People
+tone,None,1F447-1F3FC,body,Smileys & People
+tone,None,1F447-1F3FD,body,Smileys & People
+tone,None,1F447-1F3FE,body,Smileys & People
+tone,None,1F447-1F3FF,body,Smileys & People
+hand,None,270C-FE0F,body,Smileys & People
+hand,124,270C,body,Smileys & People
+tone,None,270C-1F3FB,body,Smileys & People
+tone,None,270C-1F3FC,body,Smileys & People
+tone,None,270C-1F3FD,body,Smileys & People
+tone,None,270C-1F3FE,body,Smileys & People
+tone,None,270C-1F3FF,body,Smileys & People
+fingers,None,1F91E,body,Smileys & People
+tone,None,1F91E-1F3FB,body,Smileys & People
+tone,None,1F91E-1F3FC,body,Smileys & People
+tone,None,1F91E-1F3FD,body,Smileys & People
+tone,None,1F91E-1F3FE,body,Smileys & People
+tone,None,1F91E-1F3FF,body,Smileys & People
+salute,None,1F596,body,Smileys & People
+tone,None,1F596-1F3FB,body,Smileys & People
+tone,None,1F596-1F3FC,body,Smileys & People
+tone,None,1F596-1F3FD,body,Smileys & People
+tone,None,1F596-1F3FE,body,Smileys & People
+tone,None,1F596-1F3FF,body,Smileys & People
+horns,None,1F918,body,Smileys & People
+tone,None,1F918-1F3FB,body,Smileys & People
+tone,None,1F918-1F3FC,body,Smileys & People
+tone,None,1F918-1F3FD,body,Smileys & People
+tone,None,1F918-1F3FE,body,Smileys & People
+tone,None,1F918-1F3FF,body,Smileys & People
+hand,None,1F919,body,Smileys & People
+tone,None,1F919-1F3FB,body,Smileys & People
+tone,None,1F919-1F3FC,body,Smileys & People
+tone,None,1F919-1F3FD,body,Smileys & People
+tone,None,1F919-1F3FE,body,Smileys & People
+tone,None,1F919-1F3FF,body,Smileys & People
+splayed,None,1F590-FE0F,body,Smileys & People
+splayed,None,1F590,body,Smileys & People
+tone,None,1F590-1F3FB,body,Smileys & People
+tone,None,1F590-1F3FC,body,Smileys & People
+tone,None,1F590-1F3FD,body,Smileys & People
+tone,None,1F590-1F3FE,body,Smileys & People
+tone,None,1F590-1F3FF,body,Smileys & People
+hand,11,270B,body,Smileys & People
+tone,None,270B-1F3FB,body,Smileys & People
+tone,None,270B-1F3FC,body,Smileys & People
+tone,None,270B-1F3FD,body,Smileys & People
+tone,None,270B-1F3FE,body,Smileys & People
+tone,None,270B-1F3FF,body,Smileys & People
+hand,115,1F44C,body,Smileys & People
+tone,None,1F44C-1F3FB,body,Smileys & People
+tone,None,1F44C-1F3FC,body,Smileys & People
+tone,None,1F44C-1F3FD,body,Smileys & People
+tone,None,1F44C-1F3FE,body,Smileys & People
+tone,None,1F44C-1F3FF,body,Smileys & People
+up,124,1F44D,body,Smileys & People
+tone,None,1F44D-1F3FB,body,Smileys & People
+tone,None,1F44D-1F3FC,body,Smileys & People
+tone,None,1F44D-1F3FD,body,Smileys & People
+tone,None,1F44D-1F3FE,body,Smileys & People
+tone,None,1F44D-1F3FF,body,Smileys & People
+down,None,1F44E,body,Smileys & People
+tone,None,1F44E-1F3FB,body,Smileys & People
+tone,None,1F44E-1F3FC,body,Smileys & People
+tone,None,1F44E-1F3FD,body,Smileys & People
+tone,None,1F44E-1F3FE,body,Smileys & People
+tone,None,1F44E-1F3FF,body,Smileys & People
+fist,13,270A,body,Smileys & People
+tone,None,270A-1F3FB,body,Smileys & People
+tone,None,270A-1F3FC,body,Smileys & People
+tone,None,270A-1F3FD,body,Smileys & People
+tone,None,270A-1F3FE,body,Smileys & People
+tone,None,270A-1F3FF,body,Smileys & People
+fist,67,1F44A,body,Smileys & People
+tone,None,1F44A-1F3FB,body,Smileys & People
+tone,None,1F44A-1F3FC,body,Smileys & People
+tone,None,1F44A-1F3FD,body,Smileys & People
+tone,None,1F44A-1F3FE,body,Smileys & People
+tone,None,1F44A-1F3FF,body,Smileys & People
+fist,None,1F91B,body,Smileys & People
+tone,None,1F91B-1F3FB,body,Smileys & People
+tone,None,1F91B-1F3FC,body,Smileys & People
+tone,None,1F91B-1F3FD,body,Smileys & People
+tone,None,1F91B-1F3FE,body,Smileys & People
+tone,None,1F91B-1F3FF,body,Smileys & People
+fist,None,1F91C,body,Smileys & People
+tone,None,1F91C-1F3FB,body,Smileys & People
+tone,None,1F91C-1F3FC,body,Smileys & People
+tone,None,1F91C-1F3FD,body,Smileys & People
+tone,None,1F91C-1F3FE,body,Smileys & People
+tone,None,1F91C-1F3FF,body,Smileys & People
+hand,None,1F91A,body,Smileys & People
+tone,None,1F91A-1F3FB,body,Smileys & People
+tone,None,1F91A-1F3FC,body,Smileys & People
+tone,None,1F91A-1F3FD,body,Smileys & People
+tone,None,1F91A-1F3FE,body,Smileys & People
+tone,None,1F91A-1F3FF,body,Smileys & People
+hand,15,1F44B,body,Smileys & People
+tone,None,1F44B-1F3FB,body,Smileys & People
+tone,None,1F44B-1F3FC,body,Smileys & People
+tone,None,1F44B-1F3FD,body,Smileys & People
+tone,None,1F44B-1F3FE,body,Smileys & People
+tone,None,1F44B-1F3FF,body,Smileys & People
+gesture,None,1F91F,body,Smileys & People
+tone,None,1F91F-1F3FB,body,Smileys & People
+tone,None,1F91F-1F3FC,body,Smileys & People
+tone,None,1F91F-1F3FD,body,Smileys & People
+tone,None,1F91F-1F3FE,body,Smileys & People
+tone,None,1F91F-1F3FF,body,Smileys & People
+hand,None,270D-FE0F,body,Smileys & People
+hand,None,270D,body,Smileys & People
+tone,None,270D-1F3FB,body,Smileys & People
+tone,None,270D-1F3FC,body,Smileys & People
+tone,None,270D-1F3FD,body,Smileys & People
+tone,None,270D-1F3FE,body,Smileys & People
+tone,None,270D-1F3FF,body,Smileys & People
+hands,71,1F44F,body,Smileys & People
+tone,None,1F44F-1F3FB,body,Smileys & People
+tone,None,1F44F-1F3FC,body,Smileys & People
+tone,None,1F44F-1F3FD,body,Smileys & People
+tone,None,1F44F-1F3FE,body,Smileys & People
+tone,None,1F44F-1F3FF,body,Smileys & People
+hands,13,1F450,body,Smileys & People
+tone,None,1F450-1F3FB,body,Smileys & People
+tone,None,1F450-1F3FC,body,Smileys & People
+tone,None,1F450-1F3FD,body,Smileys & People
+tone,None,1F450-1F3FE,body,Smileys & People
+tone,None,1F450-1F3FF,body,Smileys & People
+hands,162,1F64C,body,Smileys & People
+tone,None,1F64C-1F3FB,body,Smileys & People
+tone,None,1F64C-1F3FC,body,Smileys & People
+tone,None,1F64C-1F3FD,body,Smileys & People
+tone,None,1F64C-1F3FE,body,Smileys & People
+tone,None,1F64C-1F3FF,body,Smileys & People
+together,None,1F932,body,Smileys & People
+tone,None,1F932-1F3FB,body,Smileys & People
+tone,None,1F932-1F3FC,body,Smileys & People
+tone,None,1F932-1F3FD,body,Smileys & People
+tone,None,1F932-1F3FE,body,Smileys & People
+tone,None,1F932-1F3FF,body,Smileys & People
+hands,221,1F64F,body,Smileys & People
+tone,None,1F64F-1F3FB,body,Smileys & People
+tone,None,1F64F-1F3FC,body,Smileys & People
+tone,None,1F64F-1F3FD,body,Smileys & People
+tone,None,1F64F-1F3FE,body,Smileys & People
+tone,None,1F64F-1F3FF,body,Smileys & People
+handshake,None,1F91D,body,Smileys & People
+polish,15,1F485,body,Smileys & People
+tone,None,1F485-1F3FB,body,Smileys & People
+tone,None,1F485-1F3FC,body,Smileys & People
+tone,None,1F485-1F3FD,body,Smileys & People
+tone,None,1F485-1F3FE,body,Smileys & People
+tone,None,1F485-1F3FF,body,Smileys & People
+ear,3,1F442,body,Smileys & People
+tone,None,1F442-1F3FB,body,Smileys & People
+tone,None,1F442-1F3FC,body,Smileys & People
+tone,None,1F442-1F3FD,body,Smileys & People
+tone,None,1F442-1F3FE,body,Smileys & People
+tone,None,1F442-1F3FF,body,Smileys & People
+nose,1,1F443,body,Smileys & People
+tone,None,1F443-1F3FB,body,Smileys & People
+tone,None,1F443-1F3FC,body,Smileys & People
+tone,None,1F443-1F3FD,body,Smileys & People
+tone,None,1F443-1F3FE,body,Smileys & People
+tone,None,1F443-1F3FF,body,Smileys & People
+footprints,20,1F463,body,Smileys & People
+eyes,37,1F440,body,Smileys & People
+eye,None,1F441-FE0F,body,Smileys & People
+eye,None,1F441,body,Smileys & People
+bubble,None,1F441-FE0F-200D-1F5E8-FE0F,body,Smileys & People
+bubble,None,1F441-200D-1F5E8-FE0F,body,Smileys & People
+bubble,None,1F441-FE0F-200D-1F5E8,body,Smileys & People
+bubble,None,1F441-200D-1F5E8,body,Smileys & People
+brain,None,1F9E0,body,Smileys & People
+tongue,9,1F445,body,Smileys & People
+mouth,3,1F444,body,Smileys & People
+mark,62,1F48B,emotion,Smileys & People
+arrow,21,1F498,emotion,Smileys & People
+heart,None,2764-FE0F,emotion,Smileys & People
+heart,651,2764,emotion,Smileys & People
+heart,45,1F493,emotion,Smileys & People
+heart,14,1F494,emotion,Smileys & People
+hearts,197,1F495,emotion,Smileys & People
+heart,70,1F496,emotion,Smileys & People
+heart,62,1F497,emotion,Smileys & People
+heart,111,1F499,emotion,Smileys & People
+heart,58,1F49A,emotion,Smileys & People
+heart,51,1F49B,emotion,Smileys & People
+heart,None,1F9E1,emotion,Smileys & People
+heart,91,1F49C,emotion,Smileys & People
+heart,None,1F5A4,emotion,Smileys & People
+ribbon,13,1F49D,emotion,Smileys & People
+hearts,41,1F49E,emotion,Smileys & People
+decoration,2,1F49F,emotion,Smileys & People
+exclamation,None,2763-FE0F,emotion,Smileys & People
+exclamation,None,2763,emotion,Smileys & People
+letter,2,1F48C,emotion,Smileys & People
+zzz,18,1F4A4,emotion,Smileys & People
+symbol,1,1F4A2,emotion,Smileys & People
+bomb,15,1F4A3,emotion,Smileys & People
+collision,82,1F4A5,emotion,Smileys & People
+droplets,48,1F4A6,emotion,Smileys & People
+away,43,1F4A8,emotion,Smileys & People
+dizzy,24,1F4AB,emotion,Smileys & People
+balloon,1,1F4AC,emotion,Smileys & People
+bubble,None,1F5E8-FE0F,emotion,Smileys & People
+bubble,None,1F5E8,emotion,Smileys & People
+bubble,None,1F5EF-FE0F,emotion,Smileys & People
+bubble,None,1F5EF,emotion,Smileys & People
+balloon,9,1F4AD,emotion,Smileys & People
+hole,None,1F573-FE0F,emotion,Smileys & People
+hole,None,1F573,emotion,Smileys & People
+glasses,1,1F453,clothing,Smileys & People
+sunglasses,None,1F576-FE0F,clothing,Smileys & People
+sunglasses,None,1F576,clothing,Smileys & People
+necktie,5,1F454,clothing,Smileys & People
+t-shirt,4,1F455,clothing,Smileys & People
+jeans,1,1F456,clothing,Smileys & People
+scarf,None,1F9E3,clothing,Smileys & People
+gloves,None,1F9E4,clothing,Smileys & People
+coat,None,1F9E5,clothing,Smileys & People
+socks,None,1F9E6,clothing,Smileys & People
+dress,3,1F457,clothing,Smileys & People
+kimono,None,1F458,clothing,Smileys & People
+bikini,20,1F459,clothing,Smileys & People
+clothes,None,1F45A,clothing,Smileys & People
+purse,1,1F45B,clothing,Smileys & People
+handbag,1,1F45C,clothing,Smileys & People
+bag,None,1F45D,clothing,Smileys & People
+bags,None,1F6CD-FE0F,clothing,Smileys & People
+bags,None,1F6CD,clothing,Smileys & People
+backpack,1,1F392,clothing,Smileys & People
+shoe,2,1F45E,clothing,Smileys & People
+shoe,5,1F45F,clothing,Smileys & People
+shoe,8,1F460,clothing,Smileys & People
+sandal,None,1F461,clothing,Smileys & People
+boot,1,1F462,clothing,Smileys & People
+crown,53,1F451,clothing,Smileys & People
+hat,None,1F452,clothing,Smileys & People
+hat,5,1F3A9,clothing,Smileys & People
+cap,53,1F393,clothing,Smileys & People
+cap,None,1F9E2,clothing,Smileys & People
+helmet,None,26D1-FE0F,clothing,Smileys & People
+helmet,None,26D1,clothing,Smileys & People
+beads,None,1F4FF,clothing,Smileys & People
+lipstick,12,1F484,clothing,Smileys & People
+ring,10,1F48D,clothing,Smileys & People
+stone,14,1F48E,clothing,Smileys & People
+face,2,1F435,animal-mammal,Animals & Nature
+monkey,5,1F412,animal-mammal,Animals & Nature
+gorilla,None,1F98D,animal-mammal,Animals & Nature
+face,45,1F436,animal-mammal,Animals & Nature
+dog,5,1F415,animal-mammal,Animals & Nature
+poodle,1,1F429,animal-mammal,Animals & Nature
+face,4,1F43A,animal-mammal,Animals & Nature
+face,None,1F98A,animal-mammal,Animals & Nature
+face,9,1F431,animal-mammal,Animals & Nature
+cat,7,1F408,animal-mammal,Animals & Nature
+face,None,1F981,animal-mammal,Animals & Nature
+face,4,1F42F,animal-mammal,Animals & Nature
+tiger,1,1F405,animal-mammal,Animals & Nature
+leopard,2,1F406,animal-mammal,Animals & Nature
+face,8,1F434,animal-mammal,Animals & Nature
+horse,8,1F40E,animal-mammal,Animals & Nature
+face,None,1F984,animal-mammal,Animals & Nature
+zebra,None,1F993,animal-mammal,Animals & Nature
+deer,None,1F98C,animal-mammal,Animals & Nature
+face,1,1F42E,animal-mammal,Animals & Nature
+ox,1,1F402,animal-mammal,Animals & Nature
+buffalo,2,1F403,animal-mammal,Animals & Nature
+cow,4,1F404,animal-mammal,Animals & Nature
+face,18,1F437,animal-mammal,Animals & Nature
+pig,2,1F416,animal-mammal,Animals & Nature
+boar,1,1F417,animal-mammal,Animals & Nature
+nose,11,1F43D,animal-mammal,Animals & Nature
+ram,1,1F40F,animal-mammal,Animals & Nature
+ewe,1,1F411,animal-mammal,Animals & Nature
+goat,6,1F410,animal-mammal,Animals & Nature
+camel,3,1F42A,animal-mammal,Animals & Nature
+camel,3,1F42B,animal-mammal,Animals & Nature
+giraffe,None,1F992,animal-mammal,Animals & Nature
+elephant,2,1F418,animal-mammal,Animals & Nature
+rhinoceros,None,1F98F,animal-mammal,Animals & Nature
+face,5,1F42D,animal-mammal,Animals & Nature
+mouse,1,1F401,animal-mammal,Animals & Nature
+rat,1,1F400,animal-mammal,Animals & Nature
+face,None,1F439,animal-mammal,Animals & Nature
+face,5,1F430,animal-mammal,Animals & Nature
+rabbit,2,1F407,animal-mammal,Animals & Nature
+chipmunk,None,1F43F-FE0F,animal-mammal,Animals & Nature
+chipmunk,None,1F43F,animal-mammal,Animals & Nature
+hedgehog,None,1F994,animal-mammal,Animals & Nature
+bat,None,1F987,animal-mammal,Animals & Nature
+face,9,1F43B,animal-mammal,Animals & Nature
+koala,3,1F428,animal-mammal,Animals & Nature
+face,7,1F43C,animal-mammal,Animals & Nature
+prints,16,1F43E,animal-mammal,Animals & Nature
+turkey,None,1F983,animal-bird,Animals & Nature
+chicken,10,1F414,animal-bird,Animals & Nature
+rooster,5,1F413,animal-bird,Animals & Nature
+chick,4,1F423,animal-bird,Animals & Nature
+chick,4,1F424,animal-bird,Animals & Nature
+chick,9,1F425,animal-bird,Animals & Nature
+bird,6,1F426,animal-bird,Animals & Nature
+penguin,3,1F427,animal-bird,Animals & Nature
+dove,None,1F54A-FE0F,animal-bird,Animals & Nature
+dove,None,1F54A,animal-bird,Animals & Nature
+eagle,None,1F985,animal-bird,Animals & Nature
+duck,None,1F986,animal-bird,Animals & Nature
+owl,None,1F989,animal-bird,Animals & Nature
+face,1,1F438,animal-amphibian,Animals & Nature
+crocodile,2,1F40A,animal-reptile,Animals & Nature
+turtle,2,1F422,animal-reptile,Animals & Nature
+lizard,None,1F98E,animal-reptile,Animals & Nature
+snake,4,1F40D,animal-reptile,Animals & Nature
+face,None,1F432,animal-reptile,Animals & Nature
+dragon,1,1F409,animal-reptile,Animals & Nature
+sauropod,None,1F995,animal-reptile,Animals & Nature
+T-Rex,None,1F996,animal-reptile,Animals & Nature
+whale,4,1F433,animal-marine,Animals & Nature
+whale,2,1F40B,animal-marine,Animals & Nature
+dolphin,9,1F42C,animal-marine,Animals & Nature
+fish,16,1F41F,animal-marine,Animals & Nature
+fish,6,1F420,animal-marine,Animals & Nature
+blowfish,2,1F421,animal-marine,Animals & Nature
+shark,None,1F988,animal-marine,Animals & Nature
+octopus,5,1F419,animal-marine,Animals & Nature
+shell,7,1F41A,animal-marine,Animals & Nature
+crab,None,1F980,animal-marine,Animals & Nature
+shrimp,None,1F990,animal-marine,Animals & Nature
+squid,None,1F991,animal-marine,Animals & Nature
+snail,2,1F40C,animal-bug,Animals & Nature
+butterfly,None,1F98B,animal-bug,Animals & Nature
+bug,1,1F41B,animal-bug,Animals & Nature
+ant,None,1F41C,animal-bug,Animals & Nature
+honeybee,3,1F41D,animal-bug,Animals & Nature
+beetle,2,1F41E,animal-bug,Animals & Nature
+cricket,None,1F997,animal-bug,Animals & Nature
+spider,None,1F577-FE0F,animal-bug,Animals & Nature
+spider,None,1F577,animal-bug,Animals & Nature
+web,None,1F578-FE0F,animal-bug,Animals & Nature
+web,None,1F578,animal-bug,Animals & Nature
+scorpion,None,1F982,animal-bug,Animals & Nature
+bouquet,20,1F490,plant-flower,Animals & Nature
+blossom,60,1F338,plant-flower,Animals & Nature
+flower,2,1F4AE,plant-flower,Animals & Nature
+rosette,None,1F3F5-FE0F,plant-flower,Animals & Nature
+rosette,None,1F3F5,plant-flower,Animals & Nature
+rose,58,1F339,plant-flower,Animals & Nature
+flower,None,1F940,plant-flower,Animals & Nature
+hibiscus,28,1F33A,plant-flower,Animals & Nature
+sunflower,32,1F33B,plant-flower,Animals & Nature
+blossom,10,1F33C,plant-flower,Animals & Nature
+tulip,22,1F337,plant-flower,Animals & Nature
+seedling,7,1F331,plant-other,Animals & Nature
+tree,17,1F332,plant-other,Animals & Nature
+tree,9,1F333,plant-other,Animals & Nature
+tree,43,1F334,plant-other,Animals & Nature
+cactus,7,1F335,plant-other,Animals & Nature
+rice,16,1F33E,plant-other,Animals & Nature
+herb,22,1F33F,plant-other,Animals & Nature
+shamrock,None,2618-FE0F,plant-other,Animals & Nature
+shamrock,None,2618,plant-other,Animals & Nature
+clover,24,1F340,plant-other,Animals & Nature
+leaf,12,1F341,plant-other,Animals & Nature
+leaf,5,1F342,plant-other,Animals & Nature
+wind,32,1F343,plant-other,Animals & Nature
+grapes,3,1F347,food-fruit,Food & Drink
+melon,None,1F348,food-fruit,Food & Drink
+watermelon,6,1F349,food-fruit,Food & Drink
+tangerine,7,1F34A,food-fruit,Food & Drink
+lemon,10,1F34B,food-fruit,Food & Drink
+banana,9,1F34C,food-fruit,Food & Drink
+pineapple,5,1F34D,food-fruit,Food & Drink
+apple,8,1F34E,food-fruit,Food & Drink
+apple,2,1F34F,food-fruit,Food & Drink
+pear,1,1F350,food-fruit,Food & Drink
+peach,4,1F351,food-fruit,Food & Drink
+cherries,7,1F352,food-fruit,Food & Drink
+strawberry,19,1F353,food-fruit,Food & Drink
+fruit,None,1F95D,food-fruit,Food & Drink
+tomato,2,1F345,food-fruit,Food & Drink
+coconut,None,1F965,food-fruit,Food & Drink
+avocado,None,1F951,food-vegetable,Food & Drink
+eggplant,3,1F346,food-vegetable,Food & Drink
+potato,None,1F954,food-vegetable,Food & Drink
+carrot,None,1F955,food-vegetable,Food & Drink
+corn,4,1F33D,food-vegetable,Food & Drink
+pepper,None,1F336-FE0F,food-vegetable,Food & Drink
+pepper,None,1F336,food-vegetable,Food & Drink
+cucumber,None,1F952,food-vegetable,Food & Drink
+broccoli,None,1F966,food-vegetable,Food & Drink
+mushroom,3,1F344,food-vegetable,Food & Drink
+peanuts,None,1F95C,food-vegetable,Food & Drink
+chestnut,None,1F330,food-vegetable,Food & Drink
+bread,4,1F35E,food-prepared,Food & Drink
+croissant,None,1F950,food-prepared,Food & Drink
+bread,None,1F956,food-prepared,Food & Drink
+pretzel,None,1F968,food-prepared,Food & Drink
+pancakes,None,1F95E,food-prepared,Food & Drink
+wedge,None,1F9C0,food-prepared,Food & Drink
+bone,9,1F356,food-prepared,Food & Drink
+leg,6,1F357,food-prepared,Food & Drink
+meat,None,1F969,food-prepared,Food & Drink
+bacon,None,1F953,food-prepared,Food & Drink
+hamburger,14,1F354,food-prepared,Food & Drink
+fries,9,1F35F,food-prepared,Food & Drink
+pizza,17,1F355,food-prepared,Food & Drink
+dog,None,1F32D,food-prepared,Food & Drink
+sandwich,None,1F96A,food-prepared,Food & Drink
+taco,None,1F32E,food-prepared,Food & Drink
+burrito,None,1F32F,food-prepared,Food & Drink
+flatbread,None,1F959,food-prepared,Food & Drink
+egg,None,1F95A,food-prepared,Food & Drink
+cooking,6,1F373,food-prepared,Food & Drink
+food,None,1F958,food-prepared,Food & Drink
+food,2,1F372,food-prepared,Food & Drink
+spoon,None,1F963,food-prepared,Food & Drink
+salad,None,1F957,food-prepared,Food & Drink
+popcorn,None,1F37F,food-prepared,Food & Drink
+food,None,1F96B,food-prepared,Food & Drink
+box,7,1F371,food-asian,Food & Drink
+cracker,2,1F358,food-asian,Food & Drink
+ball,2,1F359,food-asian,Food & Drink
+rice,6,1F35A,food-asian,Food & Drink
+rice,8,1F35B,food-asian,Food & Drink
+bowl,9,1F35C,food-asian,Food & Drink
+spaghetti,7,1F35D,food-asian,Food & Drink
+potato,None,1F360,food-asian,Food & Drink
+oden,2,1F362,food-asian,Food & Drink
+sushi,11,1F363,food-asian,Food & Drink
+shrimp,13,1F364,food-asian,Food & Drink
+swirl,3,1F365,food-asian,Food & Drink
+dango,3,1F361,food-asian,Food & Drink
+dumpling,None,1F95F,food-asian,Food & Drink
+cookie,None,1F960,food-asian,Food & Drink
+box,None,1F961,food-asian,Food & Drink
+cream,13,1F366,food-sweet,Food & Drink
+ice,2,1F367,food-sweet,Food & Drink
+cream,8,1F368,food-sweet,Food & Drink
+doughnut,10,1F369,food-sweet,Food & Drink
+cookie,5,1F36A,food-sweet,Food & Drink
+cake,47,1F382,food-sweet,Food & Drink
+shortcake,15,1F370,food-sweet,Food & Drink
+pie,None,1F967,food-sweet,Food & Drink
+bar,6,1F36B,food-sweet,Food & Drink
+candy,3,1F36C,food-sweet,Food & Drink
+lollipop,9,1F36D,food-sweet,Food & Drink
+custard,2,1F36E,food-sweet,Food & Drink
+pot,3,1F36F,food-sweet,Food & Drink
+bottle,1,1F37C,drink,Food & Drink
+milk,None,1F95B,drink,Food & Drink
+beverage,50,2615,drink,Food & Drink
+handle,4,1F375,drink,Food & Drink
+sake,3,1F376,drink,Food & Drink
+cork,None,1F37E,drink,Food & Drink
+glass,10,1F377,drink,Food & Drink
+glass,32,1F378,drink,Food & Drink
+drink,24,1F379,drink,Food & Drink
+mug,33,1F37A,drink,Food & Drink
+mugs,53,1F37B,drink,Food & Drink
+glasses,None,1F942,drink,Food & Drink
+glass,None,1F943,drink,Food & Drink
+straw,None,1F964,drink,Food & Drink
+chopsticks,None,1F962,dishware,Food & Drink
+plate,None,1F37D-FE0F,dishware,Food & Drink
+plate,None,1F37D,dishware,Food & Drink
+knife,16,1F374,dishware,Food & Drink
+spoon,None,1F944,dishware,Food & Drink
+knife,4,1F52A,dishware,Food & Drink
+amphora,None,1F3FA,dishware,Food & Drink
+Europe-Africa,14,1F30D,place-map,Travel & Places
+Americas,22,1F30E,place-map,Travel & Places
+Asia-Australia,9,1F30F,place-map,Travel & Places
+meridians,3,1F310,place-map,Travel & Places
+map,None,1F5FA-FE0F,place-map,Travel & Places
+map,None,1F5FA,place-map,Travel & Places
+Japan,None,1F5FE,place-map,Travel & Places
+mountain,None,1F3D4-FE0F,place-geographic,Travel & Places
+mountain,None,1F3D4,place-geographic,Travel & Places
+mountain,None,26F0-FE0F,place-geographic,Travel & Places
+mountain,None,26F0,place-geographic,Travel & Places
+volcano,1,1F30B,place-geographic,Travel & Places
+fuji,5,1F5FB,place-geographic,Travel & Places
+camping,None,1F3D5-FE0F,place-geographic,Travel & Places
+camping,None,1F3D5,place-geographic,Travel & Places
+umbrella,None,1F3D6-FE0F,place-geographic,Travel & Places
+umbrella,None,1F3D6,place-geographic,Travel & Places
+desert,None,1F3DC-FE0F,place-geographic,Travel & Places
+desert,None,1F3DC,place-geographic,Travel & Places
+island,None,1F3DD-FE0F,place-geographic,Travel & Places
+island,None,1F3DD,place-geographic,Travel & Places
+park,None,1F3DE-FE0F,place-geographic,Travel & Places
+park,None,1F3DE,place-geographic,Travel & Places
+stadium,None,1F3DF-FE0F,place-building,Travel & Places
+stadium,None,1F3DF,place-building,Travel & Places
+building,None,1F3DB-FE0F,place-building,Travel & Places
+building,None,1F3DB,place-building,Travel & Places
+construction,None,1F3D7-FE0F,place-building,Travel & Places
+construction,None,1F3D7,place-building,Travel & Places
+houses,None,1F3D8-FE0F,place-building,Travel & Places
+houses,None,1F3D8,place-building,Travel & Places
+cityscape,None,1F3D9-FE0F,place-building,Travel & Places
+cityscape,None,1F3D9,place-building,Travel & Places
+house,None,1F3DA-FE0F,place-building,Travel & Places
+house,None,1F3DA,place-building,Travel & Places
+house,4,1F3E0,place-building,Travel & Places
+garden,20,1F3E1,place-building,Travel & Places
+building,4,1F3E2,place-building,Travel & Places
+office,None,1F3E3,place-building,Travel & Places
+office,None,1F3E4,place-building,Travel & Places
+hospital,1,1F3E5,place-building,Travel & Places
+bank,1,1F3E6,place-building,Travel & Places
+hotel,None,1F3E8,place-building,Travel & Places
+hotel,1,1F3E9,place-building,Travel & Places
+store,None,1F3EA,place-building,Travel & Places
+school,3,1F3EB,place-building,Travel & Places
+store,None,1F3EC,place-building,Travel & Places
+factory,None,1F3ED,place-building,Travel & Places
+castle,2,1F3EF,place-building,Travel & Places
+castle,8,1F3F0,place-building,Travel & Places
+wedding,4,1F492,place-building,Travel & Places
+tower,2,1F5FC,place-building,Travel & Places
+Liberty,8,1F5FD,place-building,Travel & Places
+church,3,26EA,place-religious,Travel & Places
+mosque,None,1F54C,place-religious,Travel & Places
+synagogue,None,1F54D,place-religious,Travel & Places
+shrine,None,26E9-FE0F,place-religious,Travel & Places
+shrine,None,26E9,place-religious,Travel & Places
+kaaba,None,1F54B,place-religious,Travel & Places
+fountain,1,26F2,place-other,Travel & Places
+tent,1,26FA,place-other,Travel & Places
+foggy,None,1F301,place-other,Travel & Places
+stars,3,1F303,place-other,Travel & Places
+mountains,9,1F304,place-other,Travel & Places
+sunrise,16,1F305,place-other,Travel & Places
+dusk,None,1F306,place-other,Travel & Places
+sunset,4,1F307,place-other,Travel & Places
+night,2,1F309,place-other,Travel & Places
+springs,None,2668-FE0F,place-other,Travel & Places
+springs,1,2668,place-other,Travel & Places
+way,None,1F30C,place-other,Travel & Places
+horse,3,1F3A0,place-other,Travel & Places
+wheel,9,1F3A1,place-other,Travel & Places
+coaster,2,1F3A2,place-other,Travel & Places
+pole,9,1F488,place-other,Travel & Places
+tent,2,1F3AA,place-other,Travel & Places
+arts,11,1F3AD,place-other,Travel & Places
+picture,None,1F5BC-FE0F,place-other,Travel & Places
+picture,None,1F5BC,place-other,Travel & Places
+palette,10,1F3A8,place-other,Travel & Places
+machine,None,1F3B0,place-other,Travel & Places
+locomotive,6,1F682,transport-ground,Travel & Places
+car,1,1F683,transport-ground,Travel & Places
+train,1,1F684,transport-ground,Travel & Places
+train,2,1F685,transport-ground,Travel & Places
+train,1,1F686,transport-ground,Travel & Places
+metro,None,1F687,transport-ground,Travel & Places
+rail,None,1F688,transport-ground,Travel & Places
+station,1,1F689,transport-ground,Travel & Places
+tram,1,1F68A,transport-ground,Travel & Places
+monorail,None,1F69D,transport-ground,Travel & Places
+railway,1,1F69E,transport-ground,Travel & Places
+car,4,1F68B,transport-ground,Travel & Places
+bus,6,1F68C,transport-ground,Travel & Places
+bus,None,1F68D,transport-ground,Travel & Places
+trolleybus,None,1F68E,transport-ground,Travel & Places
+minibus,None,1F690,transport-ground,Travel & Places
+ambulance,3,1F691,transport-ground,Travel & Places
+engine,None,1F692,transport-ground,Travel & Places
+car,None,1F693,transport-ground,Travel & Places
+car,None,1F694,transport-ground,Travel & Places
+taxi,1,1F695,transport-ground,Travel & Places
+taxi,2,1F696,transport-ground,Travel & Places
+automobile,9,1F697,transport-ground,Travel & Places
+automobile,9,1F698,transport-ground,Travel & Places
+vehicle,4,1F699,transport-ground,Travel & Places
+truck,1,1F69A,transport-ground,Travel & Places
+lorry,1,1F69B,transport-ground,Travel & Places
+tractor,None,1F69C,transport-ground,Travel & Places
+bicycle,5,1F6B2,transport-ground,Travel & Places
+scooter,None,1F6F4,transport-ground,Travel & Places
+scooter,None,1F6F5,transport-ground,Travel & Places
+stop,None,1F68F,transport-ground,Travel & Places
+motorway,None,1F6E3-FE0F,transport-ground,Travel & Places
+motorway,None,1F6E3,transport-ground,Travel & Places
+track,None,1F6E4-FE0F,transport-ground,Travel & Places
+track,None,1F6E4,transport-ground,Travel & Places
+pump,1,26FD,transport-ground,Travel & Places
+light,33,1F6A8,transport-ground,Travel & Places
+light,1,1F6A5,transport-ground,Travel & Places
+light,1,1F6A6,transport-ground,Travel & Places
+construction,2,1F6A7,transport-ground,Travel & Places
+sign,None,1F6D1,transport-ground,Travel & Places
+anchor,10,2693,transport-water,Travel & Places
+sailboat,8,26F5,transport-water,Travel & Places
+canoe,None,1F6F6,transport-water,Travel & Places
+speedboat,2,1F6A4,transport-water,Travel & Places
+ship,None,1F6F3-FE0F,transport-water,Travel & Places
+ship,None,1F6F3,transport-water,Travel & Places
+ferry,None,26F4-FE0F,transport-water,Travel & Places
+ferry,None,26F4,transport-water,Travel & Places
+boat,None,1F6E5-FE0F,transport-water,Travel & Places
+boat,None,1F6E5,transport-water,Travel & Places
+ship,4,1F6A2,transport-water,Travel & Places
+airplane,None,2708-FE0F,transport-air,Travel & Places
+airplane,30,2708,transport-air,Travel & Places
+airplane,None,1F6E9-FE0F,transport-air,Travel & Places
+airplane,None,1F6E9,transport-air,Travel & Places
+departure,None,1F6EB,transport-air,Travel & Places
+arrival,None,1F6EC,transport-air,Travel & Places
+seat,None,1F4BA,transport-air,Travel & Places
+helicopter,1,1F681,transport-air,Travel & Places
+railway,None,1F69F,transport-air,Travel & Places
+cableway,1,1F6A0,transport-air,Travel & Places
+tramway,2,1F6A1,transport-air,Travel & Places
+satellite,None,1F6F0-FE0F,transport-air,Travel & Places
+satellite,None,1F6F0,transport-air,Travel & Places
+rocket,7,1F680,transport-air,Travel & Places
+saucer,None,1F6F8,transport-air,Travel & Places
+bell,None,1F6CE-FE0F,hotel,Travel & Places
+bell,None,1F6CE,hotel,Travel & Places
+door,1,1F6AA,hotel,Travel & Places
+bed,None,1F6CF-FE0F,hotel,Travel & Places
+bed,None,1F6CF,hotel,Travel & Places
+lamp,None,1F6CB-FE0F,hotel,Travel & Places
+lamp,None,1F6CB,hotel,Travel & Places
+toilet,None,1F6BD,hotel,Travel & Places
+shower,1,1F6BF,hotel,Travel & Places
+bathtub,1,1F6C1,hotel,Travel & Places
+done,2,231B,time,Travel & Places
+done,6,23F3,time,Travel & Places
+watch,1,231A,time,Travel & Places
+clock,2,23F0,time,Travel & Places
+stopwatch,None,23F1-FE0F,time,Travel & Places
+stopwatch,None,23F1,time,Travel & Places
+clock,None,23F2-FE0F,time,Travel & Places
+clock,None,23F2,time,Travel & Places
+clock,None,1F570-FE0F,time,Travel & Places
+clock,None,1F570,time,Travel & Places
+o’clock,2,1F55B,time,Travel & Places
+twelve-thirty,None,1F567,time,Travel & Places
+o’clock,None,1F550,time,Travel & Places
+one-thirty,1,1F55C,time,Travel & Places
+o’clock,None,1F551,time,Travel & Places
+two-thirty,None,1F55D,time,Travel & Places
+o’clock,None,1F552,time,Travel & Places
+three-thirty,None,1F55E,time,Travel & Places
+o’clock,1,1F553,time,Travel & Places
+four-thirty,None,1F55F,time,Travel & Places
+o’clock,None,1F554,time,Travel & Places
+five-thirty,None,1F560,time,Travel & Places
+o’clock,1,1F555,time,Travel & Places
+six-thirty,None,1F561,time,Travel & Places
+o’clock,None,1F556,time,Travel & Places
+seven-thirty,None,1F562,time,Travel & Places
+o’clock,None,1F557,time,Travel & Places
+eight-thirty,None,1F563,time,Travel & Places
+o’clock,None,1F558,time,Travel & Places
+nine-thirty,None,1F564,time,Travel & Places
+o’clock,None,1F559,time,Travel & Places
+ten-thirty,None,1F565,time,Travel & Places
+o’clock,None,1F55A,time,Travel & Places
+eleven-thirty,1,1F566,time,Travel & Places
+moon,1,1F311,sky & weather,Travel & Places
+moon,None,1F312,sky & weather,Travel & Places
+moon,1,1F313,sky & weather,Travel & Places
+moon,None,1F314,sky & weather,Travel & Places
+moon,1,1F315,sky & weather,Travel & Places
+moon,None,1F316,sky & weather,Travel & Places
+moon,None,1F317,sky & weather,Travel & Places
+moon,None,1F318,sky & weather,Travel & Places
+moon,17,1F319,sky & weather,Travel & Places
+face,7,1F31A,sky & weather,Travel & Places
+face,1,1F31B,sky & weather,Travel & Places
+face,None,1F31C,sky & weather,Travel & Places
+thermometer,None,1F321-FE0F,sky & weather,Travel & Places
+thermometer,None,1F321,sky & weather,Travel & Places
+sun,None,2600-FE0F,sky & weather,Travel & Places
+sun,143,2600,sky & weather,Travel & Places
+face,3,1F31D,sky & weather,Travel & Places
+face,70,1F31E,sky & weather,Travel & Places
+star,21,2B50,sky & weather,Travel & Places
+star,26,1F31F,sky & weather,Travel & Places
+star,3,1F320,sky & weather,Travel & Places
+cloud,None,2601-FE0F,sky & weather,Travel & Places
+cloud,11,2601,sky & weather,Travel & Places
+cloud,26,26C5,sky & weather,Travel & Places
+rain,None,26C8-FE0F,sky & weather,Travel & Places
+rain,None,26C8,sky & weather,Travel & Places
+cloud,None,1F324-FE0F,sky & weather,Travel & Places
+cloud,None,1F324,sky & weather,Travel & Places
+cloud,None,1F325-FE0F,sky & weather,Travel & Places
+cloud,None,1F325,sky & weather,Travel & Places
+cloud,None,1F326-FE0F,sky & weather,Travel & Places
+cloud,None,1F326,sky & weather,Travel & Places
+rain,None,1F327-FE0F,sky & weather,Travel & Places
+rain,None,1F327,sky & weather,Travel & Places
+snow,None,1F328-FE0F,sky & weather,Travel & Places
+snow,None,1F328,sky & weather,Travel & Places
+lightning,None,1F329-FE0F,sky & weather,Travel & Places
+lightning,None,1F329,sky & weather,Travel & Places
+tornado,None,1F32A-FE0F,sky & weather,Travel & Places
+tornado,None,1F32A,sky & weather,Travel & Places
+fog,None,1F32B-FE0F,sky & weather,Travel & Places
+fog,None,1F32B,sky & weather,Travel & Places
+face,None,1F32C-FE0F,sky & weather,Travel & Places
+face,None,1F32C,sky & weather,Travel & Places
+cyclone,3,1F300,sky & weather,Travel & Places
+rainbow,46,1F308,sky & weather,Travel & Places
+umbrella,2,1F302,sky & weather,Travel & Places
+umbrella,None,2602-FE0F,sky & weather,Travel & Places
+umbrella,None,2602,sky & weather,Travel & Places
+drops,16,2614,sky & weather,Travel & Places
+ground,None,26F1-FE0F,sky & weather,Travel & Places
+ground,None,26F1,sky & weather,Travel & Places
+voltage,64,26A1,sky & weather,Travel & Places
+snowflake,None,2744-FE0F,sky & weather,Travel & Places
+snowflake,29,2744,sky & weather,Travel & Places
+snowman,None,2603-FE0F,sky & weather,Travel & Places
+snowman,None,2603,sky & weather,Travel & Places
+snow,5,26C4,sky & weather,Travel & Places
+comet,None,2604-FE0F,sky & weather,Travel & Places
+comet,None,2604,sky & weather,Travel & Places
+fire,234,1F525,sky & weather,Travel & Places
+droplet,6,1F4A7,sky & weather,Travel & Places
+wave,85,1F30A,sky & weather,Travel & Places
+jack-o-lantern,1,1F383,event,Activities
+tree,None,1F384,event,Activities
+fireworks,5,1F386,event,Activities
+sparkler,4,1F387,event,Activities
+sparkles,173,2728,event,Activities
+balloon,23,1F388,event,Activities
+popper,116,1F389,event,Activities
+ball,26,1F38A,event,Activities
+tree,3,1F38B,event,Activities
+decoration,None,1F38D,event,Activities
+dolls,None,1F38E,event,Activities
+streamer,None,1F38F,event,Activities
+chime,2,1F390,event,Activities
+ceremony,None,1F391,event,Activities
+ribbon,19,1F380,event,Activities
+gift,20,1F381,event,Activities
+ribbon,None,1F397-FE0F,event,Activities
+ribbon,None,1F397,event,Activities
+tickets,None,1F39F-FE0F,event,Activities
+tickets,None,1F39F,event,Activities
+ticket,None,1F3AB,event,Activities
+medal,None,1F396-FE0F,award-medal,Activities
+medal,None,1F396,award-medal,Activities
+trophy,22,1F3C6,award-medal,Activities
+medal,None,1F3C5,award-medal,Activities
+medal,None,1F947,award-medal,Activities
+medal,None,1F948,award-medal,Activities
+medal,None,1F949,award-medal,Activities
+ball,50,26BD,sport,Activities
+baseball,19,26BE,sport,Activities
+basketball,11,1F3C0,sport,Activities
+volleyball,None,1F3D0,sport,Activities
+football,6,1F3C8,sport,Activities
+football,4,1F3C9,sport,Activities
+tennis,1,1F3BE,sport,Activities
+ball,None,1F3B1,sport,Activities
+bowling,3,1F3B3,sport,Activities
+game,None,1F3CF,sport,Activities
+hockey,None,1F3D1,sport,Activities
+hockey,None,1F3D2,sport,Activities
+pong,None,1F3D3,sport,Activities
+badminton,None,1F3F8,sport,Activities
+glove,None,1F94A,sport,Activities
+uniform,None,1F94B,sport,Activities
+net,None,1F945,sport,Activities
+hit,6,1F3AF,sport,Activities
+hole,6,26F3,sport,Activities
+skate,None,26F8-FE0F,sport,Activities
+skate,None,26F8,sport,Activities
+pole,None,1F3A3,sport,Activities
+shirt,None,1F3BD,sport,Activities
+skis,None,1F3BF,sport,Activities
+sled,None,1F6F7,sport,Activities
+stone,None,1F94C,sport,Activities
+game,1,1F3AE,game,Activities
+joystick,None,1F579-FE0F,game,Activities
+joystick,None,1F579,game,Activities
+die,3,1F3B2,game,Activities
+suit,None,2660-FE0F,game,Activities
+suit,4,2660,game,Activities
+suit,None,2665-FE0F,game,Activities
+suit,55,2665,game,Activities
+suit,None,2666-FE0F,game,Activities
+suit,None,2666,game,Activities
+suit,None,2663-FE0F,game,Activities
+suit,None,2663,game,Activities
+joker,None,1F0CF,game,Activities
+dragon,1,1F004,game,Activities
+cards,None,1F3B4,game,Activities
+speaker,1,1F507,sound,Objects
+volume,None,1F508,sound,Objects
+volume,1,1F509,sound,Objects
+volume,12,1F50A,sound,Objects
+loudspeaker,1,1F4E2,sound,Objects
+megaphone,6,1F4E3,sound,Objects
+horn,None,1F4EF,sound,Objects
+bell,1,1F514,sound,Objects
+slash,None,1F515,sound,Objects
+score,10,1F3BC,music,Objects
+note,32,1F3B5,music,Objects
+notes,74,1F3B6,music,Objects
+microphone,None,1F399-FE0F,music,Objects
+microphone,None,1F399,music,Objects
+slider,None,1F39A-FE0F,music,Objects
+slider,None,1F39A,music,Objects
+knobs,None,1F39B-FE0F,music,Objects
+knobs,None,1F39B,music,Objects
+microphone,34,1F3A4,music,Objects
+headphone,24,1F3A7,music,Objects
+radio,3,1F4FB,music,Objects
+saxophone,5,1F3B7,musical-instrument,Objects
+guitar,12,1F3B8,musical-instrument,Objects
+keyboard,10,1F3B9,musical-instrument,Objects
+trumpet,2,1F3BA,musical-instrument,Objects
+violin,4,1F3BB,musical-instrument,Objects
+drum,None,1F941,musical-instrument,Objects
+phone,12,1F4F1,phone,Objects
+arrow,8,1F4F2,phone,Objects
+telephone,None,260E-FE0F,phone,Objects
+telephone,7,260E,phone,Objects
+receiver,6,1F4DE,phone,Objects
+pager,1,1F4DF,phone,Objects
+machine,None,1F4E0,phone,Objects
+battery,5,1F50B,computer,Objects
+plug,4,1F50C,computer,Objects
+computer,3,1F4BB,computer,Objects
+computer,None,1F5A5-FE0F,computer,Objects
+computer,None,1F5A5,computer,Objects
+printer,None,1F5A8-FE0F,computer,Objects
+printer,None,1F5A8,computer,Objects
+keyboard,None,2328-FE0F,computer,Objects
+keyboard,None,2328,computer,Objects
+mouse,None,1F5B1-FE0F,computer,Objects
+mouse,None,1F5B1,computer,Objects
+trackball,None,1F5B2-FE0F,computer,Objects
+trackball,None,1F5B2,computer,Objects
+disk,None,1F4BD,computer,Objects
+disk,None,1F4BE,computer,Objects
+disk,None,1F4BF,computer,Objects
+dvd,1,1F4C0,computer,Objects
+camera,22,1F3A5,light & video,Objects
+frames,None,1F39E-FE0F,light & video,Objects
+frames,None,1F39E,light & video,Objects
+projector,None,1F4FD-FE0F,light & video,Objects
+projector,None,1F4FD,light & video,Objects
+board,14,1F3AC,light & video,Objects
+television,17,1F4FA,light & video,Objects
+camera,62,1F4F7,light & video,Objects
+flash,None,1F4F8,light & video,Objects
+camera,8,1F4F9,light & video,Objects
+videocassette,1,1F4FC,light & video,Objects
+left,2,1F50D,light & video,Objects
+right,1,1F50E,light & video,Objects
+microscope,None,1F52C,light & video,Objects
+telescope,2,1F52D,light & video,Objects
+antenna,None,1F4E1,light & video,Objects
+candle,None,1F56F-FE0F,light & video,Objects
+candle,None,1F56F,light & video,Objects
+bulb,5,1F4A1,light & video,Objects
+flashlight,None,1F526,light & video,Objects
+lantern,1,1F3EE,light & video,Objects
+cover,1,1F4D4,book-paper,Objects
+book,1,1F4D5,book-paper,Objects
+book,10,1F4D6,book-paper,Objects
+book,None,1F4D7,book-paper,Objects
+book,None,1F4D8,book-paper,Objects
+book,None,1F4D9,book-paper,Objects
+books,13,1F4DA,book-paper,Objects
+notebook,1,1F4D3,book-paper,Objects
+ledger,None,1F4D2,book-paper,Objects
+curl,None,1F4C3,book-paper,Objects
+scroll,None,1F4DC,book-paper,Objects
+up,None,1F4C4,book-paper,Objects
+newspaper,2,1F4F0,book-paper,Objects
+newspaper,None,1F5DE-FE0F,book-paper,Objects
+newspaper,None,1F5DE,book-paper,Objects
+tabs,None,1F4D1,book-paper,Objects
+bookmark,None,1F516,book-paper,Objects
+label,None,1F3F7-FE0F,book-paper,Objects
+label,None,1F3F7,book-paper,Objects
+bag,15,1F4B0,money,Objects
+banknote,None,1F4B4,money,Objects
+banknote,4,1F4B5,money,Objects
+banknote,1,1F4B6,money,Objects
+banknote,1,1F4B7,money,Objects
+wings,21,1F4B8,money,Objects
+card,3,1F4B3,money,Objects
+yen,None,1F4B9,money,Objects
+exchange,None,1F4B1,money,Objects
+sign,None,1F4B2,money,Objects
+envelope,None,2709-FE0F,mail,Objects
+envelope,None,2709,mail,Objects
+e-mail,2,1F4E7,mail,Objects
+envelope,1,1F4E8,mail,Objects
+arrow,1,1F4E9,mail,Objects
+tray,None,1F4E4,mail,Objects
+tray,1,1F4E5,mail,Objects
+package,2,1F4E6,mail,Objects
+flag,None,1F4EB,mail,Objects
+flag,None,1F4EA,mail,Objects
+flag,None,1F4EC,mail,Objects
+flag,None,1F4ED,mail,Objects
+postbox,None,1F4EE,mail,Objects
+ballot,None,1F5F3-FE0F,mail,Objects
+ballot,None,1F5F3,mail,Objects
+pencil,None,270F-FE0F,writing,Objects
+pencil,6,270F,writing,Objects
+nib,None,2712-FE0F,writing,Objects
+nib,3,2712,writing,Objects
+pen,None,1F58B-FE0F,writing,Objects
+pen,None,1F58B,writing,Objects
+pen,None,1F58A-FE0F,writing,Objects
+pen,None,1F58A,writing,Objects
+paintbrush,None,1F58C-FE0F,writing,Objects
+paintbrush,None,1F58C,writing,Objects
+crayon,None,1F58D-FE0F,writing,Objects
+crayon,None,1F58D,writing,Objects
+memo,8,1F4DD,writing,Objects
+briefcase,3,1F4BC,office,Objects
+folder,None,1F4C1,office,Objects
+folder,None,1F4C2,office,Objects
+dividers,None,1F5C2-FE0F,office,Objects
+dividers,None,1F5C2,office,Objects
+calendar,None,1F4C5,office,Objects
+calendar,4,1F4C6,office,Objects
+notepad,None,1F5D2-FE0F,office,Objects
+notepad,None,1F5D2,office,Objects
+calendar,None,1F5D3-FE0F,office,Objects
+calendar,None,1F5D3,office,Objects
+index,None,1F4C7,office,Objects
+increasing,42,1F4C8,office,Objects
+decreasing,None,1F4C9,office,Objects
+chart,None,1F4CA,office,Objects
+clipboard,None,1F4CB,office,Objects
+pushpin,10,1F4CC,office,Objects
+pushpin,13,1F4CD,office,Objects
+paperclip,1,1F4CE,office,Objects
+paperclips,None,1F587-FE0F,office,Objects
+paperclips,None,1F587,office,Objects
+ruler,None,1F4CF,office,Objects
+ruler,4,1F4D0,office,Objects
+scissors,None,2702-FE0F,office,Objects
+scissors,9,2702,office,Objects
+box,None,1F5C3-FE0F,office,Objects
+box,None,1F5C3,office,Objects
+cabinet,None,1F5C4-FE0F,office,Objects
+cabinet,None,1F5C4,office,Objects
+wastebasket,None,1F5D1-FE0F,office,Objects
+wastebasket,None,1F5D1,office,Objects
+locked,1,1F512,lock,Objects
+unlocked,None,1F513,lock,Objects
+pen,None,1F50F,lock,Objects
+key,None,1F510,lock,Objects
+key,4,1F511,lock,Objects
+key,None,1F5DD-FE0F,lock,Objects
+key,None,1F5DD,lock,Objects
+hammer,None,1F528,tool,Objects
+pick,None,26CF-FE0F,tool,Objects
+pick,None,26CF,tool,Objects
+pick,None,2692-FE0F,tool,Objects
+pick,None,2692,tool,Objects
+wrench,None,1F6E0-FE0F,tool,Objects
+wrench,None,1F6E0,tool,Objects
+dagger,None,1F5E1-FE0F,tool,Objects
+dagger,None,1F5E1,tool,Objects
+swords,None,2694-FE0F,tool,Objects
+swords,None,2694,tool,Objects
+pistol,9,1F52B,tool,Objects
+arrow,None,1F3F9,tool,Objects
+shield,None,1F6E1-FE0F,tool,Objects
+shield,None,1F6E1,tool,Objects
+wrench,2,1F527,tool,Objects
+bolt,None,1F529,tool,Objects
+gear,None,2699-FE0F,tool,Objects
+gear,None,2699,tool,Objects
+clamp,None,1F5DC-FE0F,tool,Objects
+clamp,None,1F5DC,tool,Objects
+alembic,None,2697-FE0F,tool,Objects
+alembic,None,2697,tool,Objects
+scale,None,2696-FE0F,tool,Objects
+scale,None,2696,tool,Objects
+link,1,1F517,tool,Objects
+chains,None,26D3-FE0F,tool,Objects
+chains,None,26D3,tool,Objects
+syringe,11,1F489,medical,Objects
+pill,2,1F48A,medical,Objects
+cigarette,1,1F6AC,other-object,Objects
+coffin,None,26B0-FE0F,other-object,Objects
+coffin,None,26B0,other-object,Objects
+urn,None,26B1-FE0F,other-object,Objects
+urn,None,26B1,other-object,Objects
+moai,None,1F5FF,other-object,Objects
+drum,None,1F6E2-FE0F,other-object,Objects
+drum,None,1F6E2,other-object,Objects
+ball,6,1F52E,other-object,Objects
+cart,None,1F6D2,other-object,Objects
+sign,1,1F3E7,transport-sign,Symbols
+sign,None,1F6AE,transport-sign,Symbols
+water,1,1F6B0,transport-sign,Symbols
+symbol,None,267F,transport-sign,Symbols
+room,2,1F6B9,transport-sign,Symbols
+room,2,1F6BA,transport-sign,Symbols
+restroom,None,1F6BB,transport-sign,Symbols
+symbol,None,1F6BC,transport-sign,Symbols
+closet,None,1F6BE,transport-sign,Symbols
+control,None,1F6C2,transport-sign,Symbols
+customs,None,1F6C3,transport-sign,Symbols
+claim,None,1F6C4,transport-sign,Symbols
+luggage,None,1F6C5,transport-sign,Symbols
+warning,None,26A0-FE0F,warning,Symbols
+warning,10,26A0,warning,Symbols
+crossing,1,1F6B8,warning,Symbols
+entry,None,26D4,warning,Symbols
+prohibited,3,1F6AB,warning,Symbols
+bicycles,None,1F6B3,warning,Symbols
+smoking,None,1F6AD,warning,Symbols
+littering,None,1F6AF,warning,Symbols
+water,None,1F6B1,warning,Symbols
+pedestrians,None,1F6B7,warning,Symbols
+phones,1,1F4F5,warning,Symbols
+eighteen,1,1F51E,warning,Symbols
+radioactive,None,2622-FE0F,warning,Symbols
+radioactive,None,2622,warning,Symbols
+biohazard,None,2623-FE0F,warning,Symbols
+biohazard,None,2623,warning,Symbols
+arrow,None,2B06-FE0F,arrow,Symbols
+arrow,8,2B06,arrow,Symbols
+arrow,None,2197-FE0F,arrow,Symbols
+arrow,10,2197,arrow,Symbols
+arrow,None,27A1-FE0F,arrow,Symbols
+arrow,9,27A1,arrow,Symbols
+arrow,None,2198-FE0F,arrow,Symbols
+arrow,9,2198,arrow,Symbols
+arrow,None,2B07-FE0F,arrow,Symbols
+arrow,1,2B07,arrow,Symbols
+arrow,None,2199-FE0F,arrow,Symbols
+arrow,None,2199,arrow,Symbols
+arrow,None,2B05-FE0F,arrow,Symbols
+arrow,4,2B05,arrow,Symbols
+arrow,None,2196-FE0F,arrow,Symbols
+arrow,1,2196,arrow,Symbols
+arrow,None,2195-FE0F,arrow,Symbols
+arrow,1,2195,arrow,Symbols
+arrow,None,2194-FE0F,arrow,Symbols
+arrow,None,2194,arrow,Symbols
+left,None,21A9-FE0F,arrow,Symbols
+left,None,21A9,arrow,Symbols
+right,None,21AA-FE0F,arrow,Symbols
+right,2,21AA,arrow,Symbols
+up,None,2934-FE0F,arrow,Symbols
+up,3,2934,arrow,Symbols
+down,None,2935-FE0F,arrow,Symbols
+down,21,2935,arrow,Symbols
+arrows,None,1F503,arrow,Symbols
+button,None,1F504,arrow,Symbols
+arrow,17,1F519,arrow,Symbols
+arrow,1,1F51A,arrow,Symbols
+arrow,14,1F51B,arrow,Symbols
+arrow,6,1F51C,arrow,Symbols
+arrow,23,1F51D,arrow,Symbols
+worship,None,1F6D0,religion,Symbols
+symbol,None,269B-FE0F,religion,Symbols
+symbol,None,269B,religion,Symbols
+om,None,1F549-FE0F,religion,Symbols
+om,None,1F549,religion,Symbols
+David,None,2721-FE0F,religion,Symbols
+David,None,2721,religion,Symbols
+dharma,None,2638-FE0F,religion,Symbols
+dharma,None,2638,religion,Symbols
+yang,None,262F-FE0F,religion,Symbols
+yang,None,262F,religion,Symbols
+cross,None,271D-FE0F,religion,Symbols
+cross,None,271D,religion,Symbols
+cross,None,2626-FE0F,religion,Symbols
+cross,None,2626,religion,Symbols
+crescent,None,262A-FE0F,religion,Symbols
+crescent,None,262A,religion,Symbols
+symbol,None,262E-FE0F,religion,Symbols
+symbol,None,262E,religion,Symbols
+menorah,None,1F54E,religion,Symbols
+star,None,1F52F,religion,Symbols
+Aries,1,2648,zodiac,Symbols
+Taurus,None,2649,zodiac,Symbols
+Gemini,1,264A,zodiac,Symbols
+Cancer,1,264B,zodiac,Symbols
+Leo,None,264C,zodiac,Symbols
+Virgo,None,264D,zodiac,Symbols
+Libra,None,264E,zodiac,Symbols
+Scorpius,None,264F,zodiac,Symbols
+Sagittarius,None,2650,zodiac,Symbols
+Capricorn,None,2651,zodiac,Symbols
+Aquarius,None,2652,zodiac,Symbols
+Pisces,1,2653,zodiac,Symbols
+Ophiuchus,None,26CE,zodiac,Symbols
+button,None,1F500,av-symbol,Symbols
+button,None,1F501,av-symbol,Symbols
+button,None,1F502,av-symbol,Symbols
+button,None,25B6-FE0F,av-symbol,Symbols
+button,7,25B6,av-symbol,Symbols
+button,3,23E9,av-symbol,Symbols
+button,None,23ED-FE0F,av-symbol,Symbols
+button,None,23ED,av-symbol,Symbols
+button,None,23EF-FE0F,av-symbol,Symbols
+button,None,23EF,av-symbol,Symbols
+button,None,25C0-FE0F,av-symbol,Symbols
+button,None,25C0,av-symbol,Symbols
+button,1,23EA,av-symbol,Symbols
+button,None,23EE-FE0F,av-symbol,Symbols
+button,None,23EE,av-symbol,Symbols
+button,None,1F53C,av-symbol,Symbols
+button,None,23EB,av-symbol,Symbols
+button,None,1F53D,av-symbol,Symbols
+button,None,23EC,av-symbol,Symbols
+button,None,23F8-FE0F,av-symbol,Symbols
+button,None,23F8,av-symbol,Symbols
+button,None,23F9-FE0F,av-symbol,Symbols
+button,None,23F9,av-symbol,Symbols
+button,None,23FA-FE0F,av-symbol,Symbols
+button,None,23FA,av-symbol,Symbols
+button,None,23CF-FE0F,av-symbol,Symbols
+button,None,23CF,av-symbol,Symbols
+cinema,1,1F3A6,av-symbol,Symbols
+button,None,1F505,av-symbol,Symbols
+button,1,1F506,av-symbol,Symbols
+bars,None,1F4F6,av-symbol,Symbols
+mode,None,1F4F3,av-symbol,Symbols
+off,None,1F4F4,av-symbol,Symbols
+sign,None,2640-FE0F,other-symbol,Symbols
+sign,None,2640,other-symbol,Symbols
+sign,None,2642-FE0F,other-symbol,Symbols
+sign,None,2642,other-symbol,Symbols
+symbol,None,2695-FE0F,other-symbol,Symbols
+symbol,None,2695,other-symbol,Symbols
+symbol,None,267B-FE0F,other-symbol,Symbols
+symbol,2,267B,other-symbol,Symbols
+fleur-de-lis,None,269C-FE0F,other-symbol,Symbols
+fleur-de-lis,None,269C,other-symbol,Symbols
+emblem,None,1F531,other-symbol,Symbols
+badge,None,1F4DB,other-symbol,Symbols
+beginner,None,1F530,other-symbol,Symbols
+circle,None,2B55,other-symbol,Symbols
+mark,16,2705,other-symbol,Symbols
+check,None,2611-FE0F,other-symbol,Symbols
+check,5,2611,other-symbol,Symbols
+mark,None,2714-FE0F,other-symbol,Symbols
+mark,37,2714,other-symbol,Symbols
+x,None,2716-FE0F,other-symbol,Symbols
+x,8,2716,other-symbol,Symbols
+mark,13,274C,other-symbol,Symbols
+button,None,274E,other-symbol,Symbols
+sign,8,2795,other-symbol,Symbols
+sign,4,2796,other-symbol,Symbols
+sign,None,2797,other-symbol,Symbols
+loop,1,27B0,other-symbol,Symbols
+loop,1,27BF,other-symbol,Symbols
+mark,None,303D-FE0F,other-symbol,Symbols
+mark,1,303D,other-symbol,Symbols
+asterisk,None,2733-FE0F,other-symbol,Symbols
+asterisk,None,2733,other-symbol,Symbols
+star,None,2734-FE0F,other-symbol,Symbols
+star,3,2734,other-symbol,Symbols
+sparkle,None,2747-FE0F,other-symbol,Symbols
+sparkle,4,2747,other-symbol,Symbols
+mark,None,203C-FE0F,other-symbol,Symbols
+mark,67,203C,other-symbol,Symbols
+mark,None,2049-FE0F,other-symbol,Symbols
+mark,3,2049,other-symbol,Symbols
+mark,4,2753,other-symbol,Symbols
+mark,None,2754,other-symbol,Symbols
+mark,2,2755,other-symbol,Symbols
+mark,32,2757,other-symbol,Symbols
+dash,None,3030-FE0F,other-symbol,Symbols
+dash,3,3030,other-symbol,Symbols
+copyright,None,00A9-FE0F,other-symbol,Symbols
+copyright,7,00A9,other-symbol,Symbols
+registered,None,00AE-FE0F,other-symbol,Symbols
+registered,21,00AE,other-symbol,Symbols
+mark,None,2122-FE0F,other-symbol,Symbols
+mark,8,2122,other-symbol,Symbols
+#,None,0023-FE0F-20E3,keycap,Symbols
+#,1,0023-20E3,keycap,Symbols
+*,None,002A-FE0F-20E3,keycap,Symbols
+*,None,002A-20E3,keycap,Symbols
+0,None,0030-FE0F-20E3,keycap,Symbols
+0,None,0030-20E3,keycap,Symbols
+1,None,0031-FE0F-20E3,keycap,Symbols
+1,2,0031-20E3,keycap,Symbols
+2,None,0032-FE0F-20E3,keycap,Symbols
+2,2,0032-20E3,keycap,Symbols
+3,None,0033-FE0F-20E3,keycap,Symbols
+3,2,0033-20E3,keycap,Symbols
+4,None,0034-FE0F-20E3,keycap,Symbols
+4,2,0034-20E3,keycap,Symbols
+5,None,0035-FE0F-20E3,keycap,Symbols
+5,None,0035-20E3,keycap,Symbols
+6,None,0036-FE0F-20E3,keycap,Symbols
+6,None,0036-20E3,keycap,Symbols
+7,None,0037-FE0F-20E3,keycap,Symbols
+7,1,0037-20E3,keycap,Symbols
+8,None,0038-FE0F-20E3,keycap,Symbols
+8,None,0038-20E3,keycap,Symbols
+9,None,0039-FE0F-20E3,keycap,Symbols
+9,1,0039-20E3,keycap,Symbols
+10,None,1F51F,keycap,Symbols
+points,83,1F4AF,alphanum,Symbols
+uppercase,None,1F520,alphanum,Symbols
+lowercase,None,1F521,alphanum,Symbols
+numbers,None,1F522,alphanum,Symbols
+symbols,None,1F523,alphanum,Symbols
+letters,None,1F524,alphanum,Symbols
+type),None,1F170-FE0F,alphanum,Symbols
+type),None,1F170,alphanum,Symbols
+type),None,1F18E,alphanum,Symbols
+type),None,1F171-FE0F,alphanum,Symbols
+type),None,1F171,alphanum,Symbols
+button,None,1F191,alphanum,Symbols
+button,1,1F192,alphanum,Symbols
+button,None,1F193,alphanum,Symbols
+information,None,2139-FE0F,alphanum,Symbols
+information,1,2139,alphanum,Symbols
+button,None,1F194,alphanum,Symbols
+M,None,24C2-FE0F,alphanum,Symbols
+M,None,24C2,alphanum,Symbols
+button,6,1F195,alphanum,Symbols
+button,1,1F196,alphanum,Symbols
+type),None,1F17E-FE0F,alphanum,Symbols
+type),None,1F17E,alphanum,Symbols
+button,None,1F197,alphanum,Symbols
+button,None,1F17F-FE0F,alphanum,Symbols
+button,None,1F17F,alphanum,Symbols
+button,2,1F198,alphanum,Symbols
+button,4,1F199,alphanum,Symbols
+button,1,1F19A,alphanum,Symbols
+button,None,1F201,alphanum,Symbols
+button,None,1F202-FE0F,alphanum,Symbols
+button,None,1F202,alphanum,Symbols
+button,None,1F237-FE0F,alphanum,Symbols
+button,None,1F237,alphanum,Symbols
+button,None,1F236,alphanum,Symbols
+button,None,1F22F,alphanum,Symbols
+button,None,1F250,alphanum,Symbols
+button,None,1F239,alphanum,Symbols
+button,None,1F21A,alphanum,Symbols
+button,None,1F232,alphanum,Symbols
+button,None,1F251,alphanum,Symbols
+button,None,1F238,alphanum,Symbols
+button,None,1F234,alphanum,Symbols
+button,None,1F233,alphanum,Symbols
+button,None,3297-FE0F,alphanum,Symbols
+button,1,3297,alphanum,Symbols
+button,None,3299-FE0F,alphanum,Symbols
+button,None,3299,alphanum,Symbols
+button,None,1F23A,alphanum,Symbols
+button,None,1F235,alphanum,Symbols
+square,None,25AA-FE0F,geometric,Symbols
+square,6,25AA,geometric,Symbols
+square,None,25AB-FE0F,geometric,Symbols
+square,2,25AB,geometric,Symbols
+square,None,25FB-FE0F,geometric,Symbols
+square,None,25FB,geometric,Symbols
+square,None,25FC-FE0F,geometric,Symbols
+square,None,25FC,geometric,Symbols
+square,4,25FD,geometric,Symbols
+square,None,25FE,geometric,Symbols
+square,None,2B1B,geometric,Symbols
+square,None,2B1C,geometric,Symbols
+diamond,2,1F536,geometric,Symbols
+diamond,None,1F537,geometric,Symbols
+diamond,None,1F538,geometric,Symbols
+diamond,12,1F539,geometric,Symbols
+up,2,1F53A,geometric,Symbols
+down,4,1F53B,geometric,Symbols
+dot,1,1F4A0,geometric,Symbols
+button,None,1F518,geometric,Symbols
+button,1,1F532,geometric,Symbols
+button,1,1F533,geometric,Symbols
+circle,7,26AA,geometric,Symbols
+circle,10,26AB,geometric,Symbols
+circle,22,1F534,geometric,Symbols
+circle,12,1F535,geometric,Symbols
+flag,6,1F3C1,flag,Flags
+flag,12,1F6A9,flag,Flags
+flags,None,1F38C,flag,Flags
+flag,None,1F3F4,flag,Flags
+flag,None,1F3F3-FE0F,flag,Flags
+flag,None,1F3F3,flag,Flags
+flag,None,1F3F3-FE0F-200D-1F308,flag,Flags
+flag,None,1F3F3-200D-1F308,flag,Flags
+Island,None,1F1E6-1F1E8,country-flag,Flags
+Andorra,None,1F1E6-1F1E9,country-flag,Flags
+Emirates,None,1F1E6-1F1EA,country-flag,Flags
+Afghanistan,None,1F1E6-1F1EB,country-flag,Flags
+Barbuda,None,1F1E6-1F1EC,country-flag,Flags
+Anguilla,None,1F1E6-1F1EE,country-flag,Flags
+Albania,None,1F1E6-1F1F1,country-flag,Flags
+Armenia,None,1F1E6-1F1F2,country-flag,Flags
+Angola,None,1F1E6-1F1F4,country-flag,Flags
+Antarctica,None,1F1E6-1F1F6,country-flag,Flags
+Argentina,None,1F1E6-1F1F7,country-flag,Flags
+Samoa,None,1F1E6-1F1F8,country-flag,Flags
+Austria,None,1F1E6-1F1F9,country-flag,Flags
+Australia,None,1F1E6-1F1FA,country-flag,Flags
+Aruba,None,1F1E6-1F1FC,country-flag,Flags
+Islands,None,1F1E6-1F1FD,country-flag,Flags
+Azerbaijan,None,1F1E6-1F1FF,country-flag,Flags
+Herzegovina,None,1F1E7-1F1E6,country-flag,Flags
+Barbados,None,1F1E7-1F1E7,country-flag,Flags
+Bangladesh,None,1F1E7-1F1E9,country-flag,Flags
+Belgium,None,1F1E7-1F1EA,country-flag,Flags
+Faso,None,1F1E7-1F1EB,country-flag,Flags
+Bulgaria,None,1F1E7-1F1EC,country-flag,Flags
+Bahrain,None,1F1E7-1F1ED,country-flag,Flags
+Burundi,None,1F1E7-1F1EE,country-flag,Flags
+Benin,None,1F1E7-1F1EF,country-flag,Flags
+Barthélemy,None,1F1E7-1F1F1,country-flag,Flags
+Bermuda,None,1F1E7-1F1F2,country-flag,Flags
+Brunei,None,1F1E7-1F1F3,country-flag,Flags
+Bolivia,None,1F1E7-1F1F4,country-flag,Flags
+Netherlands,None,1F1E7-1F1F6,country-flag,Flags
+Brazil,None,1F1E7-1F1F7,country-flag,Flags
+Bahamas,None,1F1E7-1F1F8,country-flag,Flags
+Bhutan,None,1F1E7-1F1F9,country-flag,Flags
+Island,None,1F1E7-1F1FB,country-flag,Flags
+Botswana,None,1F1E7-1F1FC,country-flag,Flags
+Belarus,None,1F1E7-1F1FE,country-flag,Flags
+Belize,None,1F1E7-1F1FF,country-flag,Flags
+Canada,None,1F1E8-1F1E6,country-flag,Flags
+Islands,None,1F1E8-1F1E8,country-flag,Flags
+Kinshasa,None,1F1E8-1F1E9,country-flag,Flags
+Republic,None,1F1E8-1F1EB,country-flag,Flags
+Brazzaville,None,1F1E8-1F1EC,country-flag,Flags
+Switzerland,None,1F1E8-1F1ED,country-flag,Flags
+d’Ivoire,None,1F1E8-1F1EE,country-flag,Flags
+Islands,None,1F1E8-1F1F0,country-flag,Flags
+Chile,None,1F1E8-1F1F1,country-flag,Flags
+Cameroon,None,1F1E8-1F1F2,country-flag,Flags
+China,2,1F1E8-1F1F3,country-flag,Flags
+Colombia,None,1F1E8-1F1F4,country-flag,Flags
+Island,None,1F1E8-1F1F5,country-flag,Flags
+Rica,None,1F1E8-1F1F7,country-flag,Flags
+Cuba,None,1F1E8-1F1FA,country-flag,Flags
+Verde,None,1F1E8-1F1FB,country-flag,Flags
+Curaçao,None,1F1E8-1F1FC,country-flag,Flags
+Island,None,1F1E8-1F1FD,country-flag,Flags
+Cyprus,None,1F1E8-1F1FE,country-flag,Flags
+Czechia,None,1F1E8-1F1FF,country-flag,Flags
+Germany,8,1F1E9-1F1EA,country-flag,Flags
+Garcia,None,1F1E9-1F1EC,country-flag,Flags
+Djibouti,None,1F1E9-1F1EF,country-flag,Flags
+Denmark,None,1F1E9-1F1F0,country-flag,Flags
+Dominica,None,1F1E9-1F1F2,country-flag,Flags
+Republic,None,1F1E9-1F1F4,country-flag,Flags
+Algeria,None,1F1E9-1F1FF,country-flag,Flags
+Melilla,None,1F1EA-1F1E6,country-flag,Flags
+Ecuador,None,1F1EA-1F1E8,country-flag,Flags
+Estonia,None,1F1EA-1F1EA,country-flag,Flags
+Egypt,None,1F1EA-1F1EC,country-flag,Flags
+Sahara,None,1F1EA-1F1ED,country-flag,Flags
+Eritrea,None,1F1EA-1F1F7,country-flag,Flags
+Spain,15,1F1EA-1F1F8,country-flag,Flags
+Ethiopia,None,1F1EA-1F1F9,country-flag,Flags
+Union,None,1F1EA-1F1FA,country-flag,Flags
+Finland,None,1F1EB-1F1EE,country-flag,Flags
+Fiji,None,1F1EB-1F1EF,country-flag,Flags
+Islands,None,1F1EB-1F1F0,country-flag,Flags
+Micronesia,None,1F1EB-1F1F2,country-flag,Flags
+Islands,None,1F1EB-1F1F4,country-flag,Flags
+France,22,1F1EB-1F1F7,country-flag,Flags
+Gabon,None,1F1EC-1F1E6,country-flag,Flags
+Kingdom,18,1F1EC-1F1E7,country-flag,Flags
+Grenada,None,1F1EC-1F1E9,country-flag,Flags
+Georgia,None,1F1EC-1F1EA,country-flag,Flags
+Guiana,None,1F1EC-1F1EB,country-flag,Flags
+Guernsey,None,1F1EC-1F1EC,country-flag,Flags
+Ghana,None,1F1EC-1F1ED,country-flag,Flags
+Gibraltar,None,1F1EC-1F1EE,country-flag,Flags
+Greenland,None,1F1EC-1F1F1,country-flag,Flags
+Gambia,None,1F1EC-1F1F2,country-flag,Flags
+Guinea,None,1F1EC-1F1F3,country-flag,Flags
+Guadeloupe,None,1F1EC-1F1F5,country-flag,Flags
+Guinea,None,1F1EC-1F1F6,country-flag,Flags
+Greece,None,1F1EC-1F1F7,country-flag,Flags
+Islands,None,1F1EC-1F1F8,country-flag,Flags
+Guatemala,None,1F1EC-1F1F9,country-flag,Flags
+Guam,None,1F1EC-1F1FA,country-flag,Flags
+Guinea-Bissau,None,1F1EC-1F1FC,country-flag,Flags
+Guyana,None,1F1EC-1F1FE,country-flag,Flags
+China,None,1F1ED-1F1F0,country-flag,Flags
+Islands,None,1F1ED-1F1F2,country-flag,Flags
+Honduras,None,1F1ED-1F1F3,country-flag,Flags
+Croatia,None,1F1ED-1F1F7,country-flag,Flags
+Haiti,None,1F1ED-1F1F9,country-flag,Flags
+Hungary,None,1F1ED-1F1FA,country-flag,Flags
+Islands,None,1F1EE-1F1E8,country-flag,Flags
+Indonesia,None,1F1EE-1F1E9,country-flag,Flags
+Ireland,None,1F1EE-1F1EA,country-flag,Flags
+Israel,None,1F1EE-1F1F1,country-flag,Flags
+Man,None,1F1EE-1F1F2,country-flag,Flags
+India,None,1F1EE-1F1F3,country-flag,Flags
+Territory,None,1F1EE-1F1F4,country-flag,Flags
+Iraq,None,1F1EE-1F1F6,country-flag,Flags
+Iran,None,1F1EE-1F1F7,country-flag,Flags
+Iceland,None,1F1EE-1F1F8,country-flag,Flags
+Italy,16,1F1EE-1F1F9,country-flag,Flags
+Jersey,None,1F1EF-1F1EA,country-flag,Flags
+Jamaica,None,1F1EF-1F1F2,country-flag,Flags
+Jordan,None,1F1EF-1F1F4,country-flag,Flags
+Japan,8,1F1EF-1F1F5,country-flag,Flags
+Kenya,None,1F1F0-1F1EA,country-flag,Flags
+Kyrgyzstan,None,1F1F0-1F1EC,country-flag,Flags
+Cambodia,None,1F1F0-1F1ED,country-flag,Flags
+Kiribati,None,1F1F0-1F1EE,country-flag,Flags
+Comoros,None,1F1F0-1F1F2,country-flag,Flags
+Nevis,None,1F1F0-1F1F3,country-flag,Flags
+Korea,None,1F1F0-1F1F5,country-flag,Flags
+Korea,3,1F1F0-1F1F7,country-flag,Flags
+Kuwait,None,1F1F0-1F1FC,country-flag,Flags
+Islands,None,1F1F0-1F1FE,country-flag,Flags
+Kazakhstan,None,1F1F0-1F1FF,country-flag,Flags
+Laos,None,1F1F1-1F1E6,country-flag,Flags
+Lebanon,None,1F1F1-1F1E7,country-flag,Flags
+Lucia,None,1F1F1-1F1E8,country-flag,Flags
+Liechtenstein,None,1F1F1-1F1EE,country-flag,Flags
+Lanka,None,1F1F1-1F1F0,country-flag,Flags
+Liberia,None,1F1F1-1F1F7,country-flag,Flags
+Lesotho,None,1F1F1-1F1F8,country-flag,Flags
+Lithuania,None,1F1F1-1F1F9,country-flag,Flags
+Luxembourg,None,1F1F1-1F1FA,country-flag,Flags
+Latvia,None,1F1F1-1F1FB,country-flag,Flags
+Libya,None,1F1F1-1F1FE,country-flag,Flags
+Morocco,None,1F1F2-1F1E6,country-flag,Flags
+Monaco,None,1F1F2-1F1E8,country-flag,Flags
+Moldova,None,1F1F2-1F1E9,country-flag,Flags
+Montenegro,None,1F1F2-1F1EA,country-flag,Flags
+Martin,None,1F1F2-1F1EB,country-flag,Flags
+Madagascar,None,1F1F2-1F1EC,country-flag,Flags
+Islands,None,1F1F2-1F1ED,country-flag,Flags
+Macedonia,None,1F1F2-1F1F0,country-flag,Flags
+Mali,None,1F1F2-1F1F1,country-flag,Flags
+(Burma),None,1F1F2-1F1F2,country-flag,Flags
+Mongolia,None,1F1F2-1F1F3,country-flag,Flags
+China,None,1F1F2-1F1F4,country-flag,Flags
+Islands,None,1F1F2-1F1F5,country-flag,Flags
+Martinique,None,1F1F2-1F1F6,country-flag,Flags
+Mauritania,None,1F1F2-1F1F7,country-flag,Flags
+Montserrat,None,1F1F2-1F1F8,country-flag,Flags
+Malta,None,1F1F2-1F1F9,country-flag,Flags
+Mauritius,None,1F1F2-1F1FA,country-flag,Flags
+Maldives,None,1F1F2-1F1FB,country-flag,Flags
+Malawi,None,1F1F2-1F1FC,country-flag,Flags
+Mexico,None,1F1F2-1F1FD,country-flag,Flags
+Malaysia,None,1F1F2-1F1FE,country-flag,Flags
+Mozambique,None,1F1F2-1F1FF,country-flag,Flags
+Namibia,None,1F1F3-1F1E6,country-flag,Flags
+Caledonia,None,1F1F3-1F1E8,country-flag,Flags
+Niger,None,1F1F3-1F1EA,country-flag,Flags
+Island,None,1F1F3-1F1EB,country-flag,Flags
+Nigeria,None,1F1F3-1F1EC,country-flag,Flags
+Nicaragua,None,1F1F3-1F1EE,country-flag,Flags
+Netherlands,None,1F1F3-1F1F1,country-flag,Flags
+Norway,None,1F1F3-1F1F4,country-flag,Flags
+Nepal,None,1F1F3-1F1F5,country-flag,Flags
+Nauru,None,1F1F3-1F1F7,country-flag,Flags
+Niue,None,1F1F3-1F1FA,country-flag,Flags
+Zealand,None,1F1F3-1F1FF,country-flag,Flags
+Oman,None,1F1F4-1F1F2,country-flag,Flags
+Panama,None,1F1F5-1F1E6,country-flag,Flags
+Peru,None,1F1F5-1F1EA,country-flag,Flags
+Polynesia,None,1F1F5-1F1EB,country-flag,Flags
+Guinea,None,1F1F5-1F1EC,country-flag,Flags
+Philippines,None,1F1F5-1F1ED,country-flag,Flags
+Pakistan,None,1F1F5-1F1F0,country-flag,Flags
+Poland,None,1F1F5-1F1F1,country-flag,Flags
+Miquelon,None,1F1F5-1F1F2,country-flag,Flags
+Islands,None,1F1F5-1F1F3,country-flag,Flags
+Rico,None,1F1F5-1F1F7,country-flag,Flags
+Territories,None,1F1F5-1F1F8,country-flag,Flags
+Portugal,None,1F1F5-1F1F9,country-flag,Flags
+Palau,None,1F1F5-1F1FC,country-flag,Flags
+Paraguay,None,1F1F5-1F1FE,country-flag,Flags
+Qatar,None,1F1F6-1F1E6,country-flag,Flags
+Réunion,None,1F1F7-1F1EA,country-flag,Flags
+Romania,None,1F1F7-1F1F4,country-flag,Flags
+Serbia,None,1F1F7-1F1F8,country-flag,Flags
+Russia,5,1F1F7-1F1FA,country-flag,Flags
+Rwanda,None,1F1F7-1F1FC,country-flag,Flags
+Arabia,None,1F1F8-1F1E6,country-flag,Flags
+Islands,None,1F1F8-1F1E7,country-flag,Flags
+Seychelles,None,1F1F8-1F1E8,country-flag,Flags
+Sudan,None,1F1F8-1F1E9,country-flag,Flags
+Sweden,None,1F1F8-1F1EA,country-flag,Flags
+Singapore,None,1F1F8-1F1EC,country-flag,Flags
+Helena,None,1F1F8-1F1ED,country-flag,Flags
+Slovenia,None,1F1F8-1F1EE,country-flag,Flags
+Mayen,None,1F1F8-1F1EF,country-flag,Flags
+Slovakia,None,1F1F8-1F1F0,country-flag,Flags
+Leone,None,1F1F8-1F1F1,country-flag,Flags
+Marino,None,1F1F8-1F1F2,country-flag,Flags
+Senegal,None,1F1F8-1F1F3,country-flag,Flags
+Somalia,None,1F1F8-1F1F4,country-flag,Flags
+Suriname,None,1F1F8-1F1F7,country-flag,Flags
+Sudan,None,1F1F8-1F1F8,country-flag,Flags
+Príncipe,None,1F1F8-1F1F9,country-flag,Flags
+Salvador,None,1F1F8-1F1FB,country-flag,Flags
+Maarten,None,1F1F8-1F1FD,country-flag,Flags
+Syria,None,1F1F8-1F1FE,country-flag,Flags
+Swaziland,None,1F1F8-1F1FF,country-flag,Flags
+Cunha,None,1F1F9-1F1E6,country-flag,Flags
+Islands,None,1F1F9-1F1E8,country-flag,Flags
+Chad,None,1F1F9-1F1E9,country-flag,Flags
+Territories,None,1F1F9-1F1EB,country-flag,Flags
+Togo,None,1F1F9-1F1EC,country-flag,Flags
+Thailand,None,1F1F9-1F1ED,country-flag,Flags
+Tajikistan,None,1F1F9-1F1EF,country-flag,Flags
+Tokelau,None,1F1F9-1F1F0,country-flag,Flags
+Timor-Leste,None,1F1F9-1F1F1,country-flag,Flags
+Turkmenistan,None,1F1F9-1F1F2,country-flag,Flags
+Tunisia,None,1F1F9-1F1F3,country-flag,Flags
+Tonga,None,1F1F9-1F1F4,country-flag,Flags
+Turkey,None,1F1F9-1F1F7,country-flag,Flags
+Tobago,None,1F1F9-1F1F9,country-flag,Flags
+Tuvalu,None,1F1F9-1F1FB,country-flag,Flags
+Taiwan,None,1F1F9-1F1FC,country-flag,Flags
+Tanzania,None,1F1F9-1F1FF,country-flag,Flags
+Ukraine,None,1F1FA-1F1E6,country-flag,Flags
+Uganda,None,1F1FA-1F1EC,country-flag,Flags
+Islands,None,1F1FA-1F1F2,country-flag,Flags
+Nations,None,1F1FA-1F1F3,country-flag,Flags
+States,31,1F1FA-1F1F8,country-flag,Flags
+Uruguay,None,1F1FA-1F1FE,country-flag,Flags
+Uzbekistan,None,1F1FA-1F1FF,country-flag,Flags
+City,None,1F1FB-1F1E6,country-flag,Flags
+Grenadines,None,1F1FB-1F1E8,country-flag,Flags
+Venezuela,None,1F1FB-1F1EA,country-flag,Flags
+Islands,None,1F1FB-1F1EC,country-flag,Flags
+Islands,None,1F1FB-1F1EE,country-flag,Flags
+Vietnam,None,1F1FB-1F1F3,country-flag,Flags
+Vanuatu,None,1F1FB-1F1FA,country-flag,Flags
+Futuna,None,1F1FC-1F1EB,country-flag,Flags
+Samoa,None,1F1FC-1F1F8,country-flag,Flags
+Kosovo,None,1F1FD-1F1F0,country-flag,Flags
+Yemen,None,1F1FE-1F1EA,country-flag,Flags
+Mayotte,None,1F1FE-1F1F9,country-flag,Flags
+Africa,None,1F1FF-1F1E6,country-flag,Flags
+Zambia,None,1F1FF-1F1F2,country-flag,Flags
+Zimbabwe,None,1F1FF-1F1FC,country-flag,Flags
+England,None,1F3F4-E0067-E0062-E0065-E006E-E0067-E007F,subdivision-flag,Flags
+Scotland,None,1F3F4-E0067-E0062-E0073-E0063-E0074-E007F,subdivision-flag,Flags
+Wales,None,1F3F4-E0067-E0062-E0077-E006C-E0073-E007F,subdivision-flag,Flags

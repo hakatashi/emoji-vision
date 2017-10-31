@@ -9,5 +9,5 @@ data/emoji-test.txt:
 data/emoji_counts.json: data/geo-tweets.json
 	$(PYTHON) emoji_count.py
 
-data/statistics.csv: data/geo-tweets.json data/emoji-test.json
+data/statistics.csv: data/geo-tweets.json data/emoji-test.txt
 	$(PYTHON) statistics.py
