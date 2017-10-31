@@ -1,4 +1,13 @@
 PYTHON = python3
 
-data/geo-tweets.json: data/2017
-	bash compose-geo-tweets.sh > $@
+data/geo-tweets.json: data/tweets
+	find $< -type f -name "*.json" | xargs jq '[.[] | select(.geo != null) | {geo, created_at, emojis, text}]' |  jq -s -c add > $@
+
+data/emoji-test.txt:
+	wget http://unicode.org/Public/emoji/5.0/emoji-test.txt -O $@
+
+data/emoji_counts.json: data/geo-tweets.json
+	$(PYTHON) emoji_count.py
+
+data/groups.csv: data/emoji-test.json
+	$(PYTHON) grouping.py
