@@ -50,15 +50,6 @@ d3.csv('flare.csv', (d) => {
 		.append('use')
 		.attr('xlink:href', (d) => `#${d.id}`);
 
-	node.append('text')
-		.attr('clip-path', (d) => `url(#clip-${d.id})`)
-		.selectAll('tspan')
-		.data((d) => [d.id])
-		.enter().append('tspan')
-		.attr('x', 0)
-		.attr('y', (d, i, nodes) => 13 + (i - nodes.length / 2 - 0.5) * 10)
-		.text((d) => d);
-
 	node.append('title')
 		.text((d) => `${d.id}\n${format(d.value)}`);
 });
