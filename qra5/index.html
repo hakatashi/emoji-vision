@@ -57,7 +57,32 @@ d3.csv('flare.csv', (d) => {
 		.attr('xlink:href', (d) => `#${d.id}`);
 
 	node.append('title')
-		.text((d) => `${d.id}\n${format(d.value)}`);
+		.text((d) => `${d.id}: ${format(d.value)}`);
+
+	const tooltip = svg.append('g')
+		.attr('transform', 'translate(500, 500)')
+		.attr('display', 'none');
+	tooltip.append('rect')
+		.attr('width', 200)
+		.attr('height', 100)
+		.attr('rx', 10)
+		.attr('ry', 10)
+		.attr('x', -100)
+		.attr('y', -110)
+		.attr('fill', '#333');
+	tooltip.append('polygon')
+		.attr('points', '0,0 -10,-10 10,-10')
+		.attr('fill', '#333');
+
+	node.on('mouseover', (d) => {
+		tooltip
+			.attr('transform', `translate(${d.x}, ${d.y - d.r + 30})`)
+			.attr('display', 'block');
+	});
+
+	node.on('mouseout', () => {
+		tooltip.attr('display', 'none');
+	});
 });
 
 </script>
