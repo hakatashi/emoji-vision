@@ -64,24 +64,24 @@ d3.csv('flare.csv', (d) => {
 		.attr('display', 'none');
 	tooltip.append('rect')
 		.attr('width', 200)
-		.attr('height', 80)
+		.attr('height', 60)
 		.attr('rx', 10)
 		.attr('ry', 10)
 		.attr('x', -100)
-		.attr('y', -90)
+		.attr('y', -70)
 		.attr('fill', '#333');
 	tooltip.append('polygon')
 		.attr('points', '0,0 -10,-10 10,-10')
 		.attr('fill', '#333');
 	const tooltipText = tooltip.append('text')
 		.attr('x', 0)
-		.attr('y', -90)
+		.attr('y', -72)
 		.attr('fill', 'white')
-		.attr('font-size', 16);
+		.attr('font-size', 12);
 	const tooltipTexts = Array(3).fill().map(() => (
 		tooltipText.append('tspan')
 			.attr('x', 0)
-			.attr('dy', 24)
+			.attr('dy', 18)
 			.text('hoge')
 	));
 
@@ -89,7 +89,7 @@ d3.csv('flare.csv', (d) => {
 		tooltip
 			.attr('transform', `translate(${d.x}, ${d.y - d.r + 30})`)
 			.attr('display', 'block');
-		tooltipTexts[0].text(`:${d.id}:`);
+		tooltipTexts[0].text(`U+${d.data.unified.toUpperCase()} (${d.id})`);
 		tooltipTexts[1].text(`count: ${d.value}`);
 		tooltipTexts[2].text(`category: ${d.data.category}`);
 	});
