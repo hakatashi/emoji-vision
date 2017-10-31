@@ -23,8 +23,9 @@ def main():
             if line[0].isdigit():
                 unicode_point = '-'.join(line.split(';')[0].rstrip().split())
                 name = line.split()[-1]
-                count = counts.get(unicode_point)
-                emojis.append(name + ',' + str(count) + ',' + unicode_point + ',' + latest_subgroup + ',' + latest_group)
+                if unicode_point in counts.keys():
+                    count = counts[unicode_point]
+                    emojis.append(name + ',' + str(count) + ',' + unicode_point + ',' + latest_subgroup + ',' + latest_group)
 
     with open('./data/statistics.csv', 'w') as f:
         f.write('name,count,unified,subgroup,group\n')
