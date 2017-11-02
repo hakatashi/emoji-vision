@@ -69,6 +69,13 @@ const geoToPoint = ([latitude, longitude]) => ([
 		return dateA - dateB;
 	});
 
+	const currentTime = svg.append('text').attrs({
+		class: 'current-time',
+		x: 20,
+		y: 480,
+		fill: 'white',
+	});
+
 	for (const tweet of sortedTweets) {
 		const emoji = tweet.emojis[0];
 
@@ -87,6 +94,10 @@ const geoToPoint = ([latitude, longitude]) => ([
 			width: 150,
 			height: 150,
 		});
+
+		const time = new Date(tweet.created_at);
+
+		currentTime.text(`${time.toLocaleDateString()} ${time.toLocaleTimeString()}`)
 
 		setTimeout(() => {
 			group.remove();

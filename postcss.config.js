@@ -1,4 +1,7 @@
 module.exports = {
 	parser: 'postcss-scss',
-	plugins: {precss: {}},
+	plugins: {
+		precss: {},
+		'postcss-font-magician': {},
+	},
 };
