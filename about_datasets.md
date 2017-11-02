@@ -102,11 +102,11 @@ In [12]: for x in js:
 
 
 
-## データセットの作り方
+## 各モード（GEO, LANG, DEVICE, HASH）用のデータセットの作り方
 
 ツイートデータは`data/tweets`ディレクトリ下に置く．
 
-特定のフィールドだけ抽出したJSONは`data/selected`ディレクトリ下に，絵文字のカウントなどの統計データは`data/statistics`ディレクトリ下に置く．
+特定のフィールドだけ抽出したJSONは`data/selected`ディレクトリ下に置く．
 
 まとめると次のような階層構成になる．
 
@@ -133,7 +133,16 @@ find data/tweets -type f -name "*.json" | xargs jq '[.[] | select(.geo != null) 
 find data/tweets -type f -name "*.json" | xargs jq '[.[] | {created_at, emojis, text, lang}]' | jq -s -c add > data/selected/lang-tweets.json
 ```
 
-# 統計データの作り方
+-	device-tweets.json
+
+```shell
+find data/tweets -type f -name "*.json" | xargs jq '[.[] | {created_at, emojis, text, lang}]' | jq -s -c add > data/selected/device-tweets.json
+```
+
+## 統計データセットの作り方
+
+絵文字のカウントなどの統計データは`data/statistics`ディレクトリ下に置く．
+
 `data`ディレクトリ下に[emoji-text.txt](http://unicode.org/Public/emoji/5.0/emoji-test.txt)を置いておく．
 
 ```shell
