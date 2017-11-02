@@ -62,7 +62,14 @@ const geoToPoint = ([latitude, longitude]) => ([
 
 	const emojiGroup = svg.append('g');
 
-	for (const tweet of tweets.slice(0, 200)) {
+	const sortedTweets = tweets.sort((a, b) => {
+		const dateA = new Date(a.created_at);
+		const dateB = new Date(b.created_at);
+
+		return dateA - dateB;
+	});
+
+	for (const tweet of sortedTweets) {
 		const emoji = tweet.emojis[0];
 
 		const [x, y] = geoToPoint(tweet.geo.coordinates);
@@ -74,12 +81,16 @@ const geoToPoint = ([latitude, longitude]) => ([
 		});
 
 		group.append('image').attrs({
-			class: 'emoji animated zoomInUp',
+			class: 'emoji animated bounceIn',
 			'transform-origin': 'center',
 			'xlink:href': `node_modules/twemoji/2/svg/${emoji.unified.toLowerCase()}.svg`,
 			width: 150,
 			height: 150,
 		});
+
+		setTimeout(() => {
+			group.remove();
+		}, 3000)
 
 		await new Promise((resolve) => {
 			setTimeout(resolve, 50);
