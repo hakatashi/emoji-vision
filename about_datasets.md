@@ -130,7 +130,7 @@ find data/tweets -type f -name "*.json" | xargs jq '[.[] | select(.geo != null) 
 -	lang-tweets.json
 
 ```shell
-find data/tweets/ -type f -name "*.json" | xargs jq '[.[] | {created_at, emojis, text, lang}]' | jq -s -c add > data/selected/lang-tweets.json
+find data/tweets -type f -name "*.json" | xargs jq '[.[] | {created_at, emojis, text, lang}]' | jq -s -c add > data/selected/lang-tweets.json
 ```
 
 # 統計データの作り方
