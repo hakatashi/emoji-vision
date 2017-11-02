@@ -24,21 +24,25 @@ const timezoneCities = [
 		name: 'Tokyo',
 		coordinates: [35.653, 139.839],
 		timezone: 540,
+		delta: [20, -5],
 	},
 	{
 		name: 'London',
 		coordinates: [51.510, -0.118],
 		timezone: 0,
+		delta: [-30, 0],
 	},
 	{
 		name: 'New York',
 		coordinates: [40.731, -73.935],
 		timezone: -300,
+		delta: [20, 10],
 	},
 	{
 		name: 'Singapore',
 		coordinates: [1.290, 103.852],
 		timezone: 480,
+		delta: [-25, 15],
 	},
 ];
 
@@ -83,15 +87,36 @@ const timezoneCities = [
 	});
 
 	const citiesGroup = svg.append('g');
+	const citiesMap = new Map();
 
 	for (const city of timezoneCities) {
-		const [cx, cy] = geoToPoint(city.coordinates);
+		const [x, y] = geoToPoint(city.coordinates);
 		citiesGroup.append('circle').attrs({
-			cx,
-			cy,
+			cx: x,
+			cy: y,
 			r: 2,
 			fill: 'white',
 		});
+
+		const cityLabel = citiesGroup.append('text').attrs({
+			class: 'exo-2',
+			x: x + city.delta[0],
+			y: y + city.delta[1] + 15,
+			'font-size': 10,
+			'text-anchor': 'middle',
+			fill: 'white',
+		}).text(city.name);
+
+		const cityTime = citiesGroup.append('text').attrs({
+			class: 'exo-2',
+			x: x + city.delta[0],
+			y: y + city.delta[1] + 25,
+			'font-size': 10,
+			'text-anchor': 'middle',
+			fill: 'white',
+		});
+
+		citiesMap.set(city.name, cityTime);
 	}
 
 	const emojiGroup = svg.append('g');
@@ -104,7 +129,7 @@ const timezoneCities = [
 	});
 
 	const currentTime = svg.append('text').attrs({
-		class: 'current-time',
+		class: 'exo-2',
 		x: 20,
 		y: 480,
 		fill: 'white',
@@ -132,6 +157,15 @@ const timezoneCities = [
 		const time = new Date(tweet.created_at);
 
 		currentTime.text(`${time.toLocaleDateString()} ${time.toLocaleTimeString()}`)
+
+		const untimezonedTime = new Date(time.getTime() + time.getTimezoneOffset() * 60 * 1000);
+		for (const city of timezoneCities) {
+			const cityTime = new Date(untimezonedTime.getTime() + city.timezone * 60 * 1000);
+			citiesMap.get(city.name).text([
+				cityTime.getHours().toString().padStart(2, '0'),
+				cityTime.getMinutes().toString().padStart(2, '0'),
+			].join(':'));
+		}
 
 		setTimeout(() => {
 			const image = group.selectAll('image');
