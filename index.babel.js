@@ -5,6 +5,8 @@ const topojson = require('topojson');
 
 require('d3-selection-multi');
 
+require('./index.pcss');
+
 process.on('unhandledRejection', (error) => {
 	throw error;
 });

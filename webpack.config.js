@@ -25,6 +25,13 @@ module.exports = {
 				},
 			},
 			exclude: /node_modules/,
+		}, {
+			test: /\.pcss$/,
+			use: [
+				'style-loader',
+				{loader: 'css-loader', options: {importLoaders: 1}},
+				'postcss-loader',
+			],
 		}],
 	},
 };
