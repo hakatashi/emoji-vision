@@ -62,19 +62,27 @@ const geoToPoint = ([latitude, longitude]) => ([
 
 	const emojiGroup = svg.append('g');
 
-	for (const tweet of tweets.slice(0, 100)) {
-		for (const emoji of tweet.emojis) {
-			const [x, y] = geoToPoint(tweet.geo.coordinates);
-			emojiGroup.append('image').attrs({
-				class: 'emoji',
-				'xlink:href': `node_modules/twemoji/2/svg/${emoji.unified.toLowerCase()}.svg`,
-				x,
-				y,
-				width: 150,
-				height: 150,
-				transform: 'translate(-75, -75) scale(0.1)',
-				'transform-origin': 'center',
-			});
-		}
+	for (const tweet of tweets.slice(0, 200)) {
+		const emoji = tweet.emojis[0];
+
+		const [x, y] = geoToPoint(tweet.geo.coordinates);
+
+		const group = emojiGroup.append('g').attrs({
+			class: '',
+			transform: `translate(${x}, ${y}) scale(0.1) translate(-75, -75)`,
+			'transform-origin': 'center',
+		});
+
+		group.append('image').attrs({
+			class: 'emoji animated zoomInUp',
+			'transform-origin': 'center',
+			'xlink:href': `node_modules/twemoji/2/svg/${emoji.unified.toLowerCase()}.svg`,
+			width: 150,
+			height: 150,
+		});
+
+		await new Promise((resolve) => {
+			setTimeout(resolve, 50);
+		});
 	}
 })();
