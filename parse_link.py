@@ -1,6 +1,9 @@
 import codecs
 import json
+import os
 from html.parser import HTMLParser
+
+DEVICE_TWEETS_DIR = './data/selected/device-tweets'
 
 
 class LinkParser(HTMLParser):
@@ -27,15 +30,27 @@ class LinkParser(HTMLParser):
 def main():
     parser = LinkParser()
 
-    with codecs.open('data/selected/device-tweets.json', 'r') as f:
-        tweets = json.load(f)
-        for i in range(len(tweets)):
-            parser.feed(tweets[i]['source'])
-            tweets[i]['source'] = parser.links.copy()
-            parser.links.clear()
+    for year in os.listdir(DEVICE_TWEETS_DIR):
 
-    with codecs.open('data/selected/device-tweets.json', 'w') as f:
-        json.dump(tweets, f, ensure_ascii=False)
+        lang_year_path = os.path.join(DEVICE_TWEETS_DIR, year)
+
+        for month in os.listdir(lang_year_path):
+
+            lang_month_path = os.path.join(lang_year_path, month)
+
+            for file in os.listdir(lang_month_path):
+
+                file_path = os.path.join(lang_month_path, file)
+                with codecs.open(file_path, 'r+') as f:
+                    tweets = json.load(f)
+                    for i in range(len(tweets)):
+                        parser.feed(tweets[i]['source'])
+                        tweets[i]['source'] = parser.links.copy()
+                        parser.links.clear()
+
+                    f.seek(0)
+                    json.dump(tweets, f, ensure_ascii=False)
+                    f.truncate()
 
 
 if __name__ == '__main__':
