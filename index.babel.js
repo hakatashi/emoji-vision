@@ -15,10 +15,32 @@ window.addEventListener('unhandledrejection', (error) => {
 	throw error;
 });
 
-const geoToPoint = ([latitude, longitude]) => ([
-	(longitude + 180) / 360 * 960,
-	(90 - latitude) / 180 * 500 + 70,
-]);
+const mercatorProjection = D3.geoMercator().translate([480, 320]).clipExtent([[0, 0], [960, 500]]);
+
+const geoToPoint = ([latitude, longitude]) => (mercatorProjection([longitude, latitude]));
+
+const timezoneCities = [
+	{
+		name: 'Tokyo',
+		coordinates: [35.653, 139.839],
+		timezone: 540,
+	},
+	{
+		name: 'London',
+		coordinates: [51.510, -0.118],
+		timezone: 0,
+	},
+	{
+		name: 'New York',
+		coordinates: [40.731, -73.935],
+		timezone: -300,
+	},
+	{
+		name: 'Singapore',
+		coordinates: [1.290, 103.852],
+		timezone: 480,
+	},
+];
 
 (async () => {
 	const data = await new Promise((resolve, reject) => {
@@ -52,13 +74,25 @@ const geoToPoint = ([latitude, longitude]) => ([
 	const worldGroup = svg.append('g');
 
 	const worldMap = topojson.feature(data, data.objects.countries);
-	const worldPath = D3.geoPath().projection(D3.geoMercator().translate([480, 320]).clipExtent([[0, 0], [960, 500]]));
+	const worldPath = D3.geoPath().projection(mercatorProjection);
 	const map = worldGroup.selectAll('path').data(worldMap.features).enter().append('path').attrs({
 		d: worldPath,
 		stroke: '#BBB',
 		fill: '#666',
 		'stroke-width': 0.5,
 	});
+
+	const citiesGroup = svg.append('g');
+
+	for (const city of timezoneCities) {
+		const [cx, cy] = geoToPoint(city.coordinates);
+		citiesGroup.append('circle').attrs({
+			cx,
+			cy,
+			r: 2,
+			fill: 'white',
+		});
+	}
 
 	const emojiGroup = svg.append('g');
 
@@ -104,7 +138,7 @@ const geoToPoint = ([latitude, longitude]) => ([
 			image.attr('class', 'emoji animated bounceOut');
 			image.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
 				group.remove();
-			})
+			});
 		}, 3000)
 
 		await new Promise((resolve) => {
