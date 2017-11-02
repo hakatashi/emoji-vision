@@ -124,19 +124,20 @@ data
 -	geo-tweets.json
 
 ```shell
-find data/tweets -type f -name "*.json" | xargs jq '[.[] | select(.geo != null) | {geo, created_at, emojis, text}]' |  jq -s -c add > data/selected/geo-tweets.json
+$ python geo-tweets.py
 ```
 
 -	lang-tweets.json
 
 ```shell
-find data/tweets -type f -name "*.json" | xargs jq '[.[] | {created_at, emojis, text, lang}]' | jq -s -c add > data/selected/lang-tweets.json
+$ find data/tweets -type f -name "*.json" | xargs jq '[.[] | {created_at, emojis, text, lang}]' | jq -s -c add > data/selected/lang-tweets.json
 ```
 
 -	device-tweets.json
 
 ```shell
-find data/tweets -type f -name "*.json" | xargs jq '[.[] | {created_at, emojis, text, lang}]' | jq -s -c add > data/selected/device-tweets.json
+$ find data/tweets -type f -name "*.json" | xargs jq '[.[] | {created_at, emojis, text, lang}]' | jq -s -c add > data/selected/device-tweets.json
+$ python parse_link.py
 ```
 
 ## 統計データセットの作り方
