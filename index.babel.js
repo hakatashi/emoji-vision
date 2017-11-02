@@ -100,7 +100,11 @@ const geoToPoint = ([latitude, longitude]) => ([
 		currentTime.text(`${time.toLocaleDateString()} ${time.toLocaleTimeString()}`)
 
 		setTimeout(() => {
-			group.remove();
+			const image = group.selectAll('image');
+			image.attr('class', 'emoji animated bounceOut');
+			image.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
+				group.remove();
+			})
 		}, 3000)
 
 		await new Promise((resolve) => {
