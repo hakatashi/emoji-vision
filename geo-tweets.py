@@ -38,6 +38,7 @@ def main():
                 # with codecs.open(geo_output_path, 'w') as f:
                 cmd = """find {} -type f -name "*.json" | xargs jq '[.[] | select(.geo != null) | {{geo, created_at, emojis, text}}]' | jq -s -c add > {}""".format(
                     day_path, geo_output_path)
+                print("$ {}".format(cmd))
                 subprocess.call(cmd, shell=True)
 
 
