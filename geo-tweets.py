@@ -8,7 +8,7 @@ GEO_TWEETS_DIR = './data/selected/geo-tweets'
 
 def main():
     try:
-        os.mkdirs(GEO_TWEETS_DIR)
+        os.makedirs(GEO_TWEETS_DIR)
     except:
         pass
 
@@ -18,7 +18,7 @@ def main():
         geo_year_path = os.path.join(GEO_TWEETS_DIR, year)
 
         try:
-            os.mkdirs(geo_year_path)
+            os.makedirs(geo_year_path)
         except:
             pass
 
@@ -28,7 +28,7 @@ def main():
             geo_month_path = os.path.join(geo_year_path, month)
 
             try:
-                os.mkdirs(geo_month_path)
+                os.makedirs(geo_month_path)
             except:
                 pass
 
