@@ -1,6 +1,7 @@
 import codecs
 import subprocess
 import os
+from joblib import Parallel, delayed
 
 TWEETS_DIR = './data/tweets'
 GEO_TWEETS_DIR = './data/selected/geo-tweets'
@@ -32,7 +33,7 @@ def main():
             except:
                 pass
 
-            for day in os.listdir(month_path):
+            def process(day):
                 day_path = os.path.join(month_path, day)
                 geo_output_path = os.path.join(geo_month_path, day + '.json')
                 # with codecs.open(geo_output_path, 'w') as f:
@@ -41,6 +42,7 @@ def main():
                 print("$ {}".format(cmd))
                 subprocess.call(cmd, shell=True)
 
+            Parallel(n_jobs=-1)([delayed(process)(day) for day in os.listdir(month_path)])
 
 if __name__ == '__main__':
     main()
