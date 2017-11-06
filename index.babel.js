@@ -15,8 +15,6 @@ const ReactDOM = require('react-dom');
 
 const App = require('./src/App.jsx');
 
-const reactRoot = document.querySelector('.app');
+const reactRoot = document.querySelector('.root');
 
 ReactDOM.render(React.createElement(App), reactRoot);
-
-require('./src/world-map.js');

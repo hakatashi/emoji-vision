@@ -34,7 +34,7 @@ const timezoneCities = [
 	},
 ];
 
-(async () => {
+module.exports = async (node) => {
 	const data = await new Promise((resolve, reject) => {
 		D3.json('https://unpkg.com/world-atlas@1/world/110m.json', (error, data) => {
 			if (error) {
@@ -57,7 +57,7 @@ const timezoneCities = [
 
 	console.log(tweets[0]);
 
-	const svg = D3.select('body').append('svg').attrs({
+	const svg = D3.select(node).append('svg').attrs({
 		width: '100%',
 		height: '100%',
 		viewBox: '0 0 960 500',
@@ -167,4 +167,4 @@ const timezoneCities = [
 			setTimeout(resolve, 50);
 		});
 	}
-})();
+};
