@@ -59,6 +59,8 @@ typings/
 
 *.7z
 *.json
+!package.json
+!package-lock.json
 data
 .ipynb_checkpoints/
 .idea/
