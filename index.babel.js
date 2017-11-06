@@ -1,7 +1,5 @@
 require('babel-polyfill');
 
-require('./index.pcss');
-
 process.on('unhandledRejection', (error) => {
 	throw error;
 });
@@ -13,6 +11,7 @@ window.addEventListener('unhandledrejection', (error) => {
 const React = require('react');
 const ReactDOM = require('react-dom');
 
+require('./index.pcss');
 const App = require('./src/App.jsx');
 
 const reactRoot = document.querySelector('.root');

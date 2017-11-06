@@ -60,8 +60,6 @@ module.exports = async (node) => {
 
 	const tweets = await client('geo-tweets.json');
 
-	console.log(tweets[0]);
-
 	const svg = D3.select(node).append('svg').attrs({
 		width: '100%',
 		height: '100%',
