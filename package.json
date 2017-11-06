@@ -45,6 +45,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-hammerjs": "^1.0.1",
+    "react-measure": "^2.0.2",
     "split": "^1.0.1",
     "style-loader": "^0.19.0",
     "tar": "^4.0.2",
