@@ -33,6 +33,18 @@ const timezoneCities = [
 		timezone: 480,
 		delta: [-25, 15],
 	},
+	{
+		name: 'Sao Paulo',
+		coordinates: [-23.534, -46.625],
+		timezone: -180,
+		delta: [25, 5],
+	},
+	{
+		name: 'California',
+		coordinates: [36.778, -119.418],
+		timezone: -480,
+		delta: [-25, 0],
+	},
 ];
 
 module.exports = async (node) => {
@@ -127,10 +139,12 @@ module.exports = async (node) => {
 			'transform-origin': 'center',
 		});
 
+		const fileName = emoji.unified.startsWith('00') ? emoji.unified.slice(2).toLowerCase() : emoji.unified.toLowerCase();
+
 		group.append('image').attrs({
 			class: 'emoji animated bounceIn',
 			'transform-origin': 'center',
-			'xlink:href': `node_modules/twemoji/2/svg/${emoji.unified.toLowerCase()}.svg`,
+			'xlink:href': `node_modules/twemoji/2/svg/${fileName}.svg`,
 			width: 150,
 			height: 150,
 		});
