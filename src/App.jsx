@@ -79,8 +79,23 @@ module.exports = class App extends React.Component {
 								>
 									2017
 								</text>
+								{(() => {
+									const x = scaleWidth / 2;
+
+									return (
+										<rect
+											x={x - 4}
+											y={scaleHeight / 2 - 10}
+											width="8"
+											height="20"
+											fill="#222"
+											strokeWidth="1.5"
+											stroke="white"
+											cursor="pointer"
+										/>
+									);
+								})()}
 							</svg>
-							<div className="knob"/>
 						</div>
 					</div>
 				</div>
