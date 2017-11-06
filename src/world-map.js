@@ -1,5 +1,6 @@
 const D3 = require('d3');
 const topojson = require('topojson');
+const client = require('./data-client.js');
 
 require('d3-selection-multi');
 
@@ -45,15 +46,7 @@ module.exports = async (node) => {
 		});
 	});
 
-	const tweets = await new Promise((resolve, reject) => {
-		D3.json('data/geo-tweets.json', (error, data) => {
-			if (error) {
-				reject(error);
-			} else {
-				resolve(data);
-			}
-		});
-	});
+	const tweets = await client('geo-tweets.json');
 
 	console.log(tweets[0]);
 

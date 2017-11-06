@@ -21,6 +21,7 @@
   "dependencies": {
     "@hakatashi/eslint-config": "^1.1.2",
     "animate.css": "^3.5.2",
+    "azure-storage": "^2.6.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
