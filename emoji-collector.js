@@ -33,7 +33,7 @@ if (cluster.isWorker) {
 	const reader = fs.createReadStream(TAR_PATH);
 	const parser = new tar.Parse();
 
-	let running = process.env.FROM ? false : true;
+	let running = !process.env.FROM;
 	let skippedEntries = 0;
 
 	parser.on('entry', (entry) => {
