@@ -3,6 +3,7 @@ const {default: Hammer} = require('react-hammerjs');
 const {default: Measure} = require('react-measure');
 
 const WorldMap = require('./world-map.js');
+const client = require('./data-client.js');
 
 module.exports = class App extends React.Component {
 	constructor(state, props) {
@@ -15,8 +16,20 @@ module.exports = class App extends React.Component {
 		};
 	}
 
-	componentDidMount() {
-		this.worldMap = WorldMap.create(this.map);
+	async componentDidMount() {
+		this.worldMap = await WorldMap.create(this.map);
+		const tweets = await client('selected/geo-tweets/2016/12/31.json');
+		const sortedTweets = tweets.sort((a, b) => {
+			const dateA = new Date(a.created_at);
+			const dateB = new Date(b.created_at);
+
+			return dateA - dateB;
+		});
+		console.log(this.worldMap);
+		this.worldMap.showTweets({
+			tweets: sortedTweets.slice(0, 10),
+			time: new Date(),
+		});
 	}
 
 	handlePanKnob = (event) => {

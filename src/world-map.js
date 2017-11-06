@@ -1,6 +1,5 @@
 const D3 = require('d3');
 const topojson = require('topojson');
-const client = require('./data-client.js');
 
 require('d3-selection-multi');
 
@@ -50,15 +49,8 @@ const timezoneCities = [
 module.exports = class WorldMap {
 	constructor(props) {
 		this.emojiGroup = props.emojiGroup;
-		this.sortedTweets = props.sortedTweets;
 		this.currentTime = props.currentTime;
 		this.citiesMap = props.citiesMap;
-		setTimeout(() => {
-			this.showTweets({
-				tweets: this.sortedTweets.slice(0, 10),
-				time: new Date(),
-			});
-		}, 0);
 	}
 
 	static async create(node) {
@@ -71,8 +63,6 @@ module.exports = class WorldMap {
 				}
 			});
 		});
-
-		const tweets = await client('selected/geo-tweets/2016/12/31.json');
 
 		const svg = D3.select(node).append('svg').attrs({
 			width: '100%',
@@ -126,13 +116,6 @@ module.exports = class WorldMap {
 
 		const emojiGroup = svg.append('g');
 
-		const sortedTweets = tweets.sort((a, b) => {
-			const dateA = new Date(a.created_at);
-			const dateB = new Date(b.created_at);
-
-			return dateA - dateB;
-		});
-
 		const currentTime = svg.append('text').attrs({
 			class: 'exo-2',
 			x: 20,
@@ -142,7 +125,6 @@ module.exports = class WorldMap {
 
 		return new WorldMap({
 			emojiGroup,
-			sortedTweets,
 			currentTime,
 			citiesMap,
 		});
