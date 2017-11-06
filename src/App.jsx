@@ -1,6 +1,7 @@
 const React = require('react');
 const {default: Hammer} = require('react-hammerjs');
 const {default: Measure} = require('react-measure');
+const classNames = require('classnames');
 
 const WorldMap = require('./world-map.js');
 const client = require('./data-client.js');
@@ -13,6 +14,7 @@ module.exports = class App extends React.Component {
 			time: Date.UTC(2017, 5, 2, 6),
 			temporalTime: Date.UTC(2017, 5, 2, 6),
 			realScaleWidth: Infinity,
+			isLoading: true,
 		};
 
 		this.tweetsQueue = [];
@@ -30,8 +32,9 @@ module.exports = class App extends React.Component {
 
 			return dateA - dateB;
 		});
-		console.log(sortedTweets.slice(-1));
-		this.tweetsQueue = this.tweetsQueue.concat(sortedTweets);
+		this.tweetsQueue = sortedTweets;
+		// eslint-disable-next-line react/no-did-mount-set-state
+		this.setState({isLoading: false});
 		this.initTime();
 	}
 
@@ -40,6 +43,10 @@ module.exports = class App extends React.Component {
 	}
 
 	handleTimeStep = () => {
+		if (this.state.isLoading) {
+			return;
+		}
+
 		const nextTime = this.state.time + 1 * 60 * 1000; // +1min
 		const showingTweetsIndex = this.tweetsQueue.findIndex((tweet) => tweet.time > nextTime);
 		const showingTweets = this.tweetsQueue.slice(0, showingTweetsIndex);
@@ -164,7 +171,7 @@ module.exports = class App extends React.Component {
 					</div>
 				</div>
 				<div
-					className="map"
+					className={classNames('map', {loading: this.state.isLoading})}
 					ref={(node) => {
 						this.map = node;
 					}}

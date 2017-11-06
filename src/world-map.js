@@ -134,7 +134,7 @@ module.exports = class WorldMap {
 		this.currentTime.text(`${time.toLocaleDateString()} ${[
 			time.getHours().toString().padStart(2, '0'),
 			time.getMinutes().toString().padStart(2, '0'),
-		], join(':')}`);
+		].join(':')}`);
 
 		const untimezonedTime = new Date(time.getTime() + time.getTimezoneOffset() * 60 * 1000);
 		for (const city of timezoneCities) {
