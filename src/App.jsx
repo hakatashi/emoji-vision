@@ -2,9 +2,20 @@ const React = require('react');
 const {default: Hammer} = require('react-hammerjs');
 const {default: Measure} = require('react-measure');
 const classNames = require('classnames');
+const last = require('lodash/last');
 
 const WorldMap = require('./world-map.js');
 const client = require('./data-client.js');
+
+const SECOND = 1000;
+const MINUTE = 60 * SECOND;
+const HOUR = 60 * MINUTE;
+const DAY = 24 * HOUR;
+
+const getNextFile = ([year, month, day]) => {
+	const date = new Date(Date.UTC(year, month - 1, day) + DAY);
+	return [date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate()];
+};
 
 module.exports = class App extends React.Component {
 	constructor(state, props) {
@@ -19,11 +30,15 @@ module.exports = class App extends React.Component {
 		};
 
 		this.tweetsQueue = [];
+		this.isPreloading = false;
+		this.loadedFile = null;
+		this.preloadSession = null;
 	}
 
 	async componentDidMount() {
 		this.worldMap = await WorldMap.create(this.map);
 		const tweets = await client('selected/geo-tweets/2017/06/02.json');
+		this.loadedFile = [2017, 6, 2];
 		tweets.forEach((tweet) => {
 			tweet.time = Date.parse(tweet.created_at);
 		});
@@ -40,10 +55,10 @@ module.exports = class App extends React.Component {
 	}
 
 	initTime() {
-		setInterval(this.handleTimeStep, 50);
+		setInterval(this.handleTick, 50);
 	}
 
-	handleTimeStep = () => {
+	handleTick = () => {
 		if (this.state.isLoading) {
 			return;
 		}
@@ -57,6 +72,50 @@ module.exports = class App extends React.Component {
 			time: new Date(nextTime),
 		});
 		this.setState({time: nextTime});
+
+		// Preload
+		if (!this.isPreloading) {
+			if (this.tweetsQueue.length === 0 || last(this.tweetsQueue).time - nextTime < DAY) {
+				const session = Symbol('preload session');
+				this.preload(session);
+				this.preloadSession = session;
+			}
+		}
+	}
+
+	preload = async (session) => {
+		this.isPreloading = true;
+		const [nextYear, nextMonth, nextDay] = getNextFile(this.loadedFile);
+		console.info('Preloading', {nextYear, nextMonth, nextDay});
+
+		const tweets = await client([
+			'selected',
+			'geo-tweets',
+			nextYear,
+			nextMonth.toString().padStart(2, '0'),
+			`${nextDay.toString().padStart(2, '0')}.json`,
+		].join('/')).catch((error) => {
+			console.error(error);
+			return [];
+		});
+		this.isPreloading = false;
+
+		if (session !== this.preloadSession) {
+			return;
+		}
+
+		this.loadedFile = [nextYear, nextMonth, nextDay];
+
+		tweets.forEach((tweet) => {
+			tweet.time = Date.parse(tweet.created_at);
+		});
+		const sortedTweets = this.tweetsQueue.concat(tweets).sort((a, b) => {
+			const dateA = a.time;
+			const dateB = b.time;
+
+			return dateA - dateB;
+		});
+		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > this.state.time));
 	}
 
 	handlePanKnob = (event) => {
@@ -81,6 +140,7 @@ module.exports = class App extends React.Component {
 
 	handleTimeleap = async (time) => {
 		this.setState({time, isLoading: true, isSliding: false});
+		this.preloadSession = null;
 		const date = new Date(time);
 		const tweets = await client([
 			'selected',
@@ -88,7 +148,11 @@ module.exports = class App extends React.Component {
 			date.getFullYear(),
 			(date.getMonth() + 1).toString().padStart(2, '0'),
 			`${(date.getDate() - 1).toString().padStart(2, '0')}.json`,
-		].join('/'));
+		].join('/')).catch((error) => {
+			console.error(error);
+			return [];
+		});
+		this.loadedFile = [date.getFullYear(), date.getMonth() + 1, date.getDate() - 1];
 		tweets.forEach((tweet) => {
 			tweet.time = Date.parse(tweet.created_at);
 		});
@@ -99,6 +163,13 @@ module.exports = class App extends React.Component {
 			return dateA - dateB;
 		});
 		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > time));
+		[sortedTweets[0], this.tweetsQueue[0], this.tweetsQueue[this.tweetsQueue.length - 1]].forEach((tweet) => {
+			const time = new Date(tweet.time);
+			console.log(`${time.toLocaleDateString()} ${[
+				time.getHours().toString().padStart(2, '0'),
+				time.getMinutes().toString().padStart(2, '0'),
+			].join(':')}`);
+		});
 		// eslint-disable-next-line react/no-did-mount-set-state
 		this.setState({isLoading: false});
 	}
