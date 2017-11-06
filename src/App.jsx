@@ -1,16 +1,33 @@
 const React = require('react');
+const {default: Hammer} = require('react-hammerjs');
 
 const worldMap = require('./world-map.js');
 
 module.exports = class App extends React.Component {
+	constructor(state, props) {
+		super(state, props);
+
+		this.state = {
+			time: Date.UTC(2017, 5, 1),
+		};
+	}
+
 	componentDidMount() {
 		worldMap(this.map);
+	}
+
+	handlePanKnob = (event) => {
+		console.log(event);
 	}
 
 	render() {
 		const scaleWidth = 800;
 		const scaleHeight = 60;
 		const subScaleNumbers = 6;
+
+		const timeStart = Date.UTC(2016, 6, 1);
+		const timeEnd = Date.UTC(2017, 6, 1);
+		const scaleTimeRatio = (this.state.time - timeStart) / (timeEnd - timeStart);
 
 		return (
 			<div className="app">
@@ -79,22 +96,18 @@ module.exports = class App extends React.Component {
 								>
 									2017
 								</text>
-								{(() => {
-									const x = scaleWidth / 2;
-
-									return (
-										<rect
-											x={x - 4}
-											y={scaleHeight / 2 - 10}
-											width="8"
-											height="20"
-											fill="#222"
-											strokeWidth="1.5"
-											stroke="white"
-											style={{cursor: 'pointer'}}
-										/>
-									);
-								})()}
+								<Hammer onPan={this.handlePanKnob} >
+									<rect
+										x={scaleWidth * scaleTimeRatio - 4}
+										y={scaleHeight / 2 - 10}
+										width="8"
+										height="20"
+										fill="#222"
+										strokeWidth="1.5"
+										stroke="white"
+										style={{cursor: 'pointer'}}
+									/>
+								</Hammer>
 							</svg>
 						</div>
 					</div>
