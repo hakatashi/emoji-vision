@@ -91,7 +91,7 @@ module.exports = class App extends React.Component {
 											fill="#222"
 											strokeWidth="1.5"
 											stroke="white"
-											cursor="pointer"
+											style={{cursor: 'pointer'}}
 										/>
 									);
 								})()}
