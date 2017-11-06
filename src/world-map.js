@@ -47,129 +47,151 @@ const timezoneCities = [
 	},
 ];
 
-module.exports = async (node) => {
-	const data = await new Promise((resolve, reject) => {
-		D3.json('https://unpkg.com/world-atlas@1/world/110m.json', (error, data) => {
-			if (error) {
-				reject(error);
-			} else {
-				resolve(data);
-			}
+module.exports = class WorldMap {
+	constructor(props) {
+		this.emojiGroup = props.emojiGroup;
+		this.sortedTweets = props.sortedTweets;
+		this.currentTime = props.currentTime;
+		this.citiesMap = props.citiesMap;
+
+		this.showTweets().then(() => {
+			console.log('done.');
 		});
-	});
-
-	const tweets = await client('geo-tweets.json');
-
-	const svg = D3.select(node).append('svg').attrs({
-		width: '100%',
-		height: '100%',
-		viewBox: '0 0 960 500',
-	});
-
-	const worldGroup = svg.append('g');
-
-	const worldMap = topojson.feature(data, data.objects.countries);
-	const worldPath = D3.geoPath().projection(mercatorProjection);
-	const map = worldGroup.selectAll('path').data(worldMap.features).enter().append('path').attrs({
-		d: worldPath,
-		stroke: '#BBB',
-		fill: '#666',
-		'stroke-width': 0.5,
-	});
-
-	const citiesGroup = svg.append('g');
-	const citiesMap = new Map();
-
-	for (const city of timezoneCities) {
-		const [x, y] = geoToPoint(city.coordinates);
-		citiesGroup.append('circle').attrs({
-			cx: x,
-			cy: y,
-			r: 2,
-			fill: 'white',
-		});
-
-		const cityLabel = citiesGroup.append('text').attrs({
-			class: 'exo-2',
-			x: x + city.delta[0],
-			y: y + city.delta[1] + 15,
-			'font-size': 10,
-			'text-anchor': 'middle',
-			fill: 'white',
-		}).text(city.name);
-
-		const cityTime = citiesGroup.append('text').attrs({
-			class: 'exo-2',
-			x: x + city.delta[0],
-			y: y + city.delta[1] + 25,
-			'font-size': 10,
-			'text-anchor': 'middle',
-			fill: 'white',
-		});
-
-		citiesMap.set(city.name, cityTime);
 	}
 
-	const emojiGroup = svg.append('g');
-
-	const sortedTweets = tweets.sort((a, b) => {
-		const dateA = new Date(a.created_at);
-		const dateB = new Date(b.created_at);
-
-		return dateA - dateB;
-	});
-
-	const currentTime = svg.append('text').attrs({
-		class: 'exo-2',
-		x: 20,
-		y: 480,
-		fill: 'white',
-	});
-
-	for (const tweet of sortedTweets) {
-		const emoji = tweet.emojis[0];
-
-		const [x, y] = geoToPoint(tweet.geo.coordinates);
-
-		const group = emojiGroup.append('g').attrs({
-			class: '',
-			transform: `translate(${x}, ${y}) scale(0.1) translate(-75, -75)`,
-			'transform-origin': 'center',
+	static async create(node) {
+		const data = await new Promise((resolve, reject) => {
+			D3.json('https://unpkg.com/world-atlas@1/world/110m.json', (error, data) => {
+				if (error) {
+					reject(error);
+				} else {
+					resolve(data);
+				}
+			});
 		});
 
-		const fileName = emoji.unified.startsWith('00') ? emoji.unified.slice(2).toLowerCase() : emoji.unified.toLowerCase();
+		const tweets = await client('selected/geo-tweets/2016/12/31.json');
 
-		group.append('image').attrs({
-			class: 'emoji animated bounceIn',
-			'transform-origin': 'center',
-			'xlink:href': `node_modules/twemoji/2/svg/${fileName}.svg`,
-			width: 150,
-			height: 150,
+		const svg = D3.select(node).append('svg').attrs({
+			width: '100%',
+			height: '100%',
+			viewBox: '0 0 960 500',
 		});
 
-		const time = new Date(tweet.created_at);
+		const worldGroup = svg.append('g');
 
-		currentTime.text(`${time.toLocaleDateString()} ${time.toLocaleTimeString()}`);
+		const worldMap = topojson.feature(data, data.objects.countries);
+		const worldPath = D3.geoPath().projection(mercatorProjection);
+		worldGroup.selectAll('path').data(worldMap.features).enter().append('path').attrs({
+			d: worldPath,
+			stroke: '#BBB',
+			fill: '#666',
+			'stroke-width': 0.5,
+		});
 
-		const untimezonedTime = new Date(time.getTime() + time.getTimezoneOffset() * 60 * 1000);
+		const citiesGroup = svg.append('g');
+		const citiesMap = new Map();
+
 		for (const city of timezoneCities) {
-			const cityTime = new Date(untimezonedTime.getTime() + city.timezone * 60 * 1000);
-			citiesMap.get(city.name).text([
-				cityTime.getHours().toString().padStart(2, '0'),
-				cityTime.getMinutes().toString().padStart(2, '0'),
-			].join(':'));
+			const [x, y] = geoToPoint(city.coordinates);
+			citiesGroup.append('circle').attrs({
+				cx: x,
+				cy: y,
+				r: 2,
+				fill: 'white',
+			});
+
+			citiesGroup.append('text').attrs({
+				class: 'exo-2',
+				x: x + city.delta[0],
+				y: y + city.delta[1] + 15,
+				'font-size': 10,
+				'text-anchor': 'middle',
+				fill: 'white',
+			}).text(city.name);
+
+			const cityTime = citiesGroup.append('text').attrs({
+				class: 'exo-2',
+				x: x + city.delta[0],
+				y: y + city.delta[1] + 25,
+				'font-size': 10,
+				'text-anchor': 'middle',
+				fill: 'white',
+			});
+
+			citiesMap.set(city.name, cityTime);
 		}
 
-		setTimeout(() => {
-			const image = group.selectAll('image');
-			image.attr('class', 'emoji animated bounceOut');
-			image.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
-				group.remove();
-			});
-		}, 3000);
+		const emojiGroup = svg.append('g');
 
-		await new Promise((resolve) => {
-			setTimeout(resolve, 50);
+		const sortedTweets = tweets.sort((a, b) => {
+			const dateA = new Date(a.created_at);
+			const dateB = new Date(b.created_at);
+
+			return dateA - dateB;
 		});
+
+		const currentTime = svg.append('text').attrs({
+			class: 'exo-2',
+			x: 20,
+			y: 480,
+			fill: 'white',
+		});
+
+		return new WorldMap({
+			emojiGroup,
+			sortedTweets,
+			currentTime,
+			citiesMap,
+		});
+	}
+
+	showTweets = async () => {
+		for (const tweet of this.sortedTweets) {
+			const emoji = tweet.emojis[0];
+
+			const [x, y] = geoToPoint(tweet.geo.coordinates);
+
+			const group = this.emojiGroup.append('g').attrs({
+				class: '',
+				transform: `translate(${x}, ${y}) scale(0.1) translate(-75, -75)`,
+				'transform-origin': 'center',
+			});
+
+			const fileName = emoji.unified.startsWith('00') ? emoji.unified.slice(2).toLowerCase() : emoji.unified.toLowerCase();
+
+			group.append('image').attrs({
+				class: 'emoji animated bounceIn',
+				'transform-origin': 'center',
+				'xlink:href': `node_modules/twemoji/2/svg/${fileName}.svg`,
+				width: 150,
+				height: 150,
+			});
+
+			const time = new Date(tweet.created_at);
+
+			this.currentTime.text(`${time.toLocaleDateString()} ${time.toLocaleTimeString()}`);
+
+			const untimezonedTime = new Date(time.getTime() + time.getTimezoneOffset() * 60 * 1000);
+			for (const city of timezoneCities) {
+				const cityTime = new Date(untimezonedTime.getTime() + city.timezone * 60 * 1000);
+				this.citiesMap.get(city.name).text([
+					cityTime.getHours().toString().padStart(2, '0'),
+					cityTime.getMinutes().toString().padStart(2, '0'),
+				].join(':'));
+			}
+
+			setTimeout(() => {
+				const image = group.selectAll('image');
+				image.attr('class', 'emoji animated bounceOut');
+				image.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
+					group.remove();
+				});
+			}, 3000);
+
+			await new Promise((resolve) => {
+				setTimeout(resolve, 50);
+			});
+		}
 	}
 };

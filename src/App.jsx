@@ -2,7 +2,7 @@ const React = require('react');
 const {default: Hammer} = require('react-hammerjs');
 const {default: Measure} = require('react-measure');
 
-const worldMap = require('./world-map.js');
+const WorldMap = require('./world-map.js');
 
 module.exports = class App extends React.Component {
 	constructor(state, props) {
@@ -16,7 +16,7 @@ module.exports = class App extends React.Component {
 	}
 
 	componentDidMount() {
-		worldMap(this.map);
+		this.worldMap = WorldMap.create(this.map);
 	}
 
 	handlePanKnob = (event) => {
