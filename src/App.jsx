@@ -74,8 +74,30 @@ module.exports = class App extends React.Component {
 		this.setState({realScaleWidth: bounds.width});
 	}
 
-	handleTimeleap = (time) => {
-		this.setState({time});
+	handleTimeleap = async (time) => {
+		this.setState({time, isLoading: true});
+		const date = new Date(time);
+		const tweets = await client([
+			'selected',
+			'geo-tweets',
+			date.getFullYear(),
+			(date.getMonth() + 1).toString().padStart(2, '0'),
+			`${(date.getDate() - 1).toString().padStart(2, '0')}.json`,
+		].join('/'));
+		tweets.forEach((tweet) => {
+			tweet.time = Date.parse(tweet.created_at);
+		});
+		const sortedTweets = tweets.sort((a, b) => {
+			const dateA = a.time;
+			const dateB = b.time;
+
+			return dateA - dateB;
+		});
+		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > time));
+		console.log(sortedTweets[0]);
+		console.log(sortedTweets.slice(-1)[0]);
+		// eslint-disable-next-line react/no-did-mount-set-state
+		this.setState({isLoading: false});
 	}
 
 	render() {
