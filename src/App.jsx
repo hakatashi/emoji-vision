@@ -1,7 +1,9 @@
 const React = require('react');
 const {default: Hammer} = require('react-hammerjs');
+const {default: Measure} = require('react-measure');
 
-const worldMap = require('./world-map.js');
+const WorldMap = require('./world-map.js');
+const client = require('./data-client.js');
 
 module.exports = class App extends React.Component {
 	constructor(state, props) {
@@ -9,25 +11,50 @@ module.exports = class App extends React.Component {
 
 		this.state = {
 			time: Date.UTC(2017, 5, 1),
+			temporalTime: Date.UTC(2017, 5, 1),
+			realScaleWidth: Infinity,
 		};
 	}
 
-	componentDidMount() {
-		worldMap(this.map);
+	async componentDidMount() {
+		this.worldMap = await WorldMap.create(this.map);
+		const tweets = await client('selected/geo-tweets/2016/12/31.json');
+		const sortedTweets = tweets.sort((a, b) => {
+			const dateA = new Date(a.created_at);
+			const dateB = new Date(b.created_at);
+
+			return dateA - dateB;
+		});
+		console.log(this.worldMap);
+		this.worldMap.showTweets({
+			tweets: sortedTweets.slice(0, 10),
+			time: new Date(),
+		});
 	}
 
 	handlePanKnob = (event) => {
-		console.log(event);
+		const timeStart = Date.UTC(2016, 6, 1);
+		const timeEnd = Date.UTC(2017, 6, 1);
+		const deltaTime = (timeEnd - timeStart) * event.deltaX / this.state.realScaleWidth;
+		const targetTime = Math.max(timeStart, Math.min(this.state.time + deltaTime, timeEnd));
+		this.setState({temporalTime: targetTime});
+
+		if (event.eventType === 4 /* INPUT_END */) {
+			this.setState({time: targetTime});
+		}
+	}
+
+	handleScaleResize = ({bounds}) => {
+		this.setState({realScaleWidth: bounds.width});
 	}
 
 	render() {
 		const scaleWidth = 800;
 		const scaleHeight = 60;
-		const subScaleNumbers = 6;
 
 		const timeStart = Date.UTC(2016, 6, 1);
 		const timeEnd = Date.UTC(2017, 6, 1);
-		const scaleTimeRatio = (this.state.time - timeStart) / (timeEnd - timeStart);
+		const scaleTimeRatio = (this.state.temporalTime - timeStart) / (timeEnd - timeStart);
 
 		return (
 			<div className="app">
@@ -35,6 +62,18 @@ module.exports = class App extends React.Component {
 					<div className="slider">
 						<div className="scale-wrap">
 							<svg className="scale" viewBox={`0 0 ${scaleWidth} ${scaleHeight}`}>
+								<Measure bounds onResize={this.handleScaleResize}>
+									{({measureRef}) => (
+										<rect
+											ref={measureRef}
+											x="0"
+											y="0"
+											width={scaleWidth}
+											height={scaleHeight}
+											fill="transparent"
+										/>
+									)}
+								</Measure>
 								<line
 									x1="0"
 									y1={scaleHeight / 2}
