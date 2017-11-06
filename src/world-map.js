@@ -144,7 +144,7 @@ const timezoneCities = [
 
 		const time = new Date(tweet.created_at);
 
-		currentTime.text(`${time.toLocaleDateString()} ${time.toLocaleTimeString()}`)
+		currentTime.text(`${time.toLocaleDateString()} ${time.toLocaleTimeString()}`);
 
 		const untimezonedTime = new Date(time.getTime() + time.getTimezoneOffset() * 60 * 1000);
 		for (const city of timezoneCities) {
@@ -161,7 +161,7 @@ const timezoneCities = [
 			image.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
 				group.remove();
 			});
-		}, 3000)
+		}, 3000);
 
 		await new Promise((resolve) => {
 			setTimeout(resolve, 50);
