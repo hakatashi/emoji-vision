@@ -1,12 +1,17 @@
-const D3 = require('d3');
+const azure = require('azure-storage');
 
 module.exports = async (path) => {
+	const fileService = azure.createFileService(
+		process.env.AZURE_STORAGE_ACCOUNT,
+		process.env.AZURE_STORAGE_ACCESS_KEY
+	);
+
 	const data = await new Promise((resolve, reject) => {
-		D3.json(`data/${path}`, (error, data) => {
+		fileService.getFileToText('data', '', path, (error, text) => {
 			if (error) {
 				reject(error);
 			} else {
-				resolve(data);
+				resolve(JSON.parse(text));
 			}
 		});
 	});
