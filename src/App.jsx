@@ -63,7 +63,13 @@ module.exports = class App extends React.Component {
 			return;
 		}
 
-		const nextTime = this.state.time + 1 * 60 * 1000; // +1min
+		const nextTime = (() => {
+			// Skip brank intervals longer than 10min
+			if (this.tweetsQueue.length !== 0 && this.tweetsQueue[0].time - this.state.time > 10 * MINUTE) {
+				return Math.floor(this.tweetsQueue[0].time / MINUTE) * MINUTE;
+			}
+			return this.state.time + MINUTE;
+		})();
 		const showingTweetsIndex = this.tweetsQueue.findIndex((tweet) => tweet.time > nextTime);
 		const showingTweets = this.tweetsQueue.slice(0, showingTweetsIndex);
 		this.tweetsQueue = this.tweetsQueue.slice(showingTweetsIndex);
@@ -163,7 +169,7 @@ module.exports = class App extends React.Component {
 			return dateA - dateB;
 		});
 		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > time));
-		[sortedTweets[0], this.tweetsQueue[0], this.tweetsQueue[this.tweetsQueue.length - 1]].forEach((tweet) => {
+		[sortedTweets[0], this.tweetsQueue[0], last(this.tweetsQueue)].forEach((tweet) => {
 			const time = new Date(tweet.time);
 			console.log(`${time.toLocaleDateString()} ${[
 				time.getHours().toString().padStart(2, '0'),
