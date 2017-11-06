@@ -53,10 +53,12 @@ module.exports = class WorldMap {
 		this.sortedTweets = props.sortedTweets;
 		this.currentTime = props.currentTime;
 		this.citiesMap = props.citiesMap;
-
-		this.showTweets().then(() => {
-			console.log('done.');
-		});
+		setTimeout(() => {
+			this.showTweets({
+				tweets: this.sortedTweets.slice(0, 10),
+				time: new Date(),
+			});
+		}, 0);
 	}
 
 	static async create(node) {
@@ -146,8 +148,8 @@ module.exports = class WorldMap {
 		});
 	}
 
-	showTweets = async () => {
-		for (const tweet of this.sortedTweets) {
+	showTweets({tweets, time}) {
+		for (const tweet of tweets) {
 			const emoji = tweet.emojis[0];
 
 			const [x, y] = geoToPoint(tweet.geo.coordinates);
@@ -168,8 +170,6 @@ module.exports = class WorldMap {
 				height: 150,
 			});
 
-			const time = new Date(tweet.created_at);
-
 			this.currentTime.text(`${time.toLocaleDateString()} ${time.toLocaleTimeString()}`);
 
 			const untimezonedTime = new Date(time.getTime() + time.getTimezoneOffset() * 60 * 1000);
@@ -188,10 +188,6 @@ module.exports = class WorldMap {
 					group.remove();
 				});
 			}, 3000);
-
-			await new Promise((resolve) => {
-				setTimeout(resolve, 50);
-			});
 		}
 	}
 };
