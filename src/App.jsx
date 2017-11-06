@@ -10,26 +10,45 @@ module.exports = class App extends React.Component {
 		super(state, props);
 
 		this.state = {
-			time: Date.UTC(2017, 5, 1),
-			temporalTime: Date.UTC(2017, 5, 1),
+			time: Date.UTC(2017, 5, 2, 6),
+			temporalTime: Date.UTC(2017, 5, 2, 6),
 			realScaleWidth: Infinity,
 		};
+
+		this.tweetsQueue = [];
 	}
 
 	async componentDidMount() {
 		this.worldMap = await WorldMap.create(this.map);
-		const tweets = await client('selected/geo-tweets/2016/12/31.json');
+		const tweets = await client('selected/geo-tweets/2017/06/02.json');
+		tweets.forEach((tweet) => {
+			tweet.time = Date.parse(tweet.created_at);
+		});
 		const sortedTweets = tweets.sort((a, b) => {
-			const dateA = new Date(a.created_at);
-			const dateB = new Date(b.created_at);
+			const dateA = a.time;
+			const dateB = b.time;
 
 			return dateA - dateB;
 		});
-		console.log(this.worldMap);
+		console.log(sortedTweets.slice(-1));
+		this.tweetsQueue = this.tweetsQueue.concat(sortedTweets);
+		this.initTime();
+	}
+
+	initTime() {
+		setInterval(this.handleTimeStep, 50);
+	}
+
+	handleTimeStep = () => {
+		const nextTime = this.state.time + 1 * 60 * 1000; // +1min
+		const showingTweetsIndex = this.tweetsQueue.findIndex((tweet) => tweet.time > nextTime);
+		const showingTweets = this.tweetsQueue.slice(0, showingTweetsIndex);
+		this.tweetsQueue = this.tweetsQueue.slice(showingTweetsIndex);
 		this.worldMap.showTweets({
-			tweets: sortedTweets.slice(0, 10),
-			time: new Date(),
+			tweets: showingTweets,
+			time: new Date(nextTime),
 		});
+		this.setState({time: nextTime});
 	}
 
 	handlePanKnob = (event) => {
@@ -40,12 +59,16 @@ module.exports = class App extends React.Component {
 		this.setState({temporalTime: targetTime});
 
 		if (event.eventType === 4 /* INPUT_END */) {
-			this.setState({time: targetTime});
+			this.handleTimeleap(targetTime);
 		}
 	}
 
 	handleScaleResize = ({bounds}) => {
 		this.setState({realScaleWidth: bounds.width});
+	}
+
+	handleTimeleap = (time) => {
+		this.setState({time});
 	}
 
 	render() {

@@ -131,6 +131,20 @@ module.exports = class WorldMap {
 	}
 
 	showTweets({tweets, time}) {
+		this.currentTime.text(`${time.toLocaleDateString()} ${[
+			time.getHours().toString().padStart(2, '0'),
+			time.getMinutes().toString().padStart(2, '0'),
+		], join(':')}`);
+
+		const untimezonedTime = new Date(time.getTime() + time.getTimezoneOffset() * 60 * 1000);
+		for (const city of timezoneCities) {
+			const cityTime = new Date(untimezonedTime.getTime() + city.timezone * 60 * 1000);
+			this.citiesMap.get(city.name).text([
+				cityTime.getHours().toString().padStart(2, '0'),
+				cityTime.getMinutes().toString().padStart(2, '0'),
+			].join(':'));
+		}
+
 		for (const tweet of tweets) {
 			const emoji = tweet.emojis[0];
 
@@ -151,17 +165,6 @@ module.exports = class WorldMap {
 				width: 150,
 				height: 150,
 			});
-
-			this.currentTime.text(`${time.toLocaleDateString()} ${time.toLocaleTimeString()}`);
-
-			const untimezonedTime = new Date(time.getTime() + time.getTimezoneOffset() * 60 * 1000);
-			for (const city of timezoneCities) {
-				const cityTime = new Date(untimezonedTime.getTime() + city.timezone * 60 * 1000);
-				this.citiesMap.get(city.name).text([
-					cityTime.getHours().toString().padStart(2, '0'),
-					cityTime.getMinutes().toString().padStart(2, '0'),
-				].join(':'));
-			}
 
 			setTimeout(() => {
 				const image = group.selectAll('image');
