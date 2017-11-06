@@ -1,12 +1,12 @@
 require('dotenv').config();
 const webpack = require('webpack');
-module.exports = {
+module.exports = (env = {}) => ({
 	entry: './index.babel.js',
 	output: {
 		path: __dirname,
 		filename: 'index.js',
 	},
-	devtool: 'cheap-module-eval-source-map',
+	devtool: env.production ? 'source-map' : 'cheap-module-eval-source-map',
 	module: {
 		rules: [{
 			test: /\.jsx?$/,
@@ -51,5 +51,4 @@ module.exports = {
 			'process.env.AZURE_STORAGE_ACCESS_KEY': JSON.stringify(process.env.AZURE_STORAGE_ACCESS_KEY),
 		}),
 	],
-};
-
+});
