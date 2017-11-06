@@ -43,28 +43,24 @@ module.exports = class App extends React.Component {
 									width="0.5"
 									stroke="white"
 								/>
-								{Array(12 * subScaleNumbers + 1).fill().map((_, index) => {
-									const height = index % subScaleNumbers === 0 ? 15 : 5;
-									const x = scaleWidth / (12 * subScaleNumbers) * index;
+								{/* Major Scales */}
+								{Array(12 + 1).fill().map((_, index) => {
+									const height = 15;
+									const time = Date.UTC(2016, 6 + index, 1);
+									const x = scaleWidth * (time - timeStart) / (timeEnd - timeStart);
 
-									return (
+									return [
 										<line
-											key={index}
+											key={`scale-${index}`}
 											x1={x}
 											y1={scaleHeight / 2 - height / 2}
 											x2={x}
 											y2={scaleHeight / 2 + height / 2}
 											width="0.5"
 											stroke="white"
-										/>
-									);
-								})}
-								{Array(12 + 1).fill().map((_, index) => {
-									const x = scaleWidth / 12 * index;
-
-									return (
+										/>,
 										<text
-											key={index}
+											key={`month-${index}`}
 											x={x}
 											y={scaleHeight / 2 + 25}
 											textAnchor="middle"
@@ -73,29 +69,22 @@ module.exports = class App extends React.Component {
 											className="exo-2"
 										>
 											{((index + 6) % 12 + 1).toString().padStart(2, '0')}
-										</text>
-									);
+										</text>,
+										...((index % 6 === 0 && index !== 12) ? [
+											<text
+												key={`year-${index}`}
+												x={x}
+												y={scaleHeight / 2 - 15}
+												textAnchor="middle"
+												fill="white"
+												fontSize="14"
+												className="exo-2"
+											>
+												{index === 0 ? 2016 : 2017}
+											</text>,
+										] : []),
+									];
 								})}
-								<text
-									x="0"
-									y={scaleHeight / 2 - 15}
-									textAnchor="middle"
-									fill="white"
-									fontSize="14"
-									className="exo-2"
-								>
-									2016
-								</text>
-								<text
-									x={scaleWidth / 2}
-									y={scaleHeight / 2 - 15}
-									textAnchor="middle"
-									fill="white"
-									fontSize="14"
-									className="exo-2"
-								>
-									2017
-								</text>
 								<Hammer onPan={this.handlePanKnob} >
 									<rect
 										x={scaleWidth * scaleTimeRatio - 4}
