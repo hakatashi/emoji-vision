@@ -13,6 +13,9 @@ data/selected/device-tweets: data/tweets
     $(PYTHON) device-tweets.py
     $(PYTHON) parse-link.py
 
+data/selected/hash-tweets: data/tweets
+    $(PYTHON) hash-tweets.py
+
 data/emoji-test.txt:
 	wget http://unicode.org/Public/emoji/5.0/emoji-test.txt -O $@
 
