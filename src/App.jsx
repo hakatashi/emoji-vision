@@ -17,6 +17,16 @@ const getNextFile = ([year, month, day]) => {
 	return [date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate()];
 };
 
+const timeToFile = (time) => {
+	// Consider tweets included in YYYY-MM-DD.json is from MM-DD 5:00 to MM-(DD + 1) 5:00
+	const date = new Date(time - 5 * HOUR);
+	return [date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate()];
+};
+
+const fileToFileName = ([year, month, day]) => (
+	`${year}/${month.toString().padStart(2, '0')}/${day.toString().padStart(2, '0')}.json`
+);
+
 module.exports = class App extends React.Component {
 	constructor(state, props) {
 		super(state, props);
@@ -91,8 +101,9 @@ module.exports = class App extends React.Component {
 
 	preload = async (session) => {
 		this.isPreloading = true;
-		const [nextYear, nextMonth, nextDay] = getNextFile(this.loadedFile);
-		console.info('Preloading', {nextYear, nextMonth, nextDay});
+		const file = getNextFile(this.loadedFile);
+		const [nextYear, nextMonth, nextDay] = file;
+		console.info(`Preloading ${fileToFileName(file)}...`);
 
 		const tweets = await client([
 			'selected',
@@ -110,7 +121,7 @@ module.exports = class App extends React.Component {
 			return;
 		}
 
-		this.loadedFile = [nextYear, nextMonth, nextDay];
+		this.loadedFile = file;
 
 		tweets.forEach((tweet) => {
 			tweet.time = Date.parse(tweet.created_at);
@@ -147,18 +158,20 @@ module.exports = class App extends React.Component {
 	handleTimeleap = async (time) => {
 		this.setState({time, isLoading: true, isSliding: false});
 		this.preloadSession = null;
-		const date = new Date(time);
+		const file = timeToFile(time);
+		const [nextYear, nextMonth, nextDay] = file;
+		console.info(`Loading ${fileToFileName(file)}...`);
 		const tweets = await client([
 			'selected',
 			'geo-tweets',
-			date.getFullYear(),
-			(date.getMonth() + 1).toString().padStart(2, '0'),
-			`${(date.getDate() - 1).toString().padStart(2, '0')}.json`,
+			nextYear,
+			nextMonth.toString().padStart(2, '0'),
+			`${nextDay.toString().padStart(2, '0')}.json`,
 		].join('/')).catch((error) => {
 			console.error(error);
 			return [];
 		});
-		this.loadedFile = [date.getFullYear(), date.getMonth() + 1, date.getDate() - 1];
+		this.loadedFile = file;
 		tweets.forEach((tweet) => {
 			tweet.time = Date.parse(tweet.created_at);
 		});
@@ -169,13 +182,6 @@ module.exports = class App extends React.Component {
 			return dateA - dateB;
 		});
 		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > time));
-		[sortedTweets[0], this.tweetsQueue[0], last(this.tweetsQueue)].forEach((tweet) => {
-			const time = new Date(tweet.time);
-			console.log(`${time.toLocaleDateString()} ${[
-				time.getHours().toString().padStart(2, '0'),
-				time.getMinutes().toString().padStart(2, '0'),
-			].join(':')}`);
-		});
 		// eslint-disable-next-line react/no-did-mount-set-state
 		this.setState({isLoading: false});
 	}
