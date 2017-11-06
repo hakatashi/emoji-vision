@@ -15,6 +15,7 @@ module.exports = class App extends React.Component {
 			temporalTime: Date.UTC(2017, 5, 2, 6),
 			realScaleWidth: Infinity,
 			isLoading: true,
+			isSliding: false,
 		};
 
 		this.tweetsQueue = [];
@@ -59,11 +60,15 @@ module.exports = class App extends React.Component {
 	}
 
 	handlePanKnob = (event) => {
+		if (this.state.isLoading) {
+			return;
+		}
+
 		const timeStart = Date.UTC(2016, 6, 1);
 		const timeEnd = Date.UTC(2017, 6, 1);
 		const deltaTime = (timeEnd - timeStart) * event.deltaX / this.state.realScaleWidth;
 		const targetTime = Math.max(timeStart, Math.min(this.state.time + deltaTime, timeEnd));
-		this.setState({temporalTime: targetTime});
+		this.setState({temporalTime: targetTime, isSliding: true});
 
 		if (event.eventType === 4 /* INPUT_END */) {
 			this.handleTimeleap(targetTime);
@@ -75,7 +80,7 @@ module.exports = class App extends React.Component {
 	}
 
 	handleTimeleap = async (time) => {
-		this.setState({time, isLoading: true});
+		this.setState({time, isLoading: true, isSliding: false});
 		const date = new Date(time);
 		const tweets = await client([
 			'selected',
@@ -94,8 +99,6 @@ module.exports = class App extends React.Component {
 			return dateA - dateB;
 		});
 		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > time));
-		console.log(sortedTweets[0]);
-		console.log(sortedTweets.slice(-1)[0]);
 		// eslint-disable-next-line react/no-did-mount-set-state
 		this.setState({isLoading: false});
 	}
@@ -106,7 +109,7 @@ module.exports = class App extends React.Component {
 
 		const timeStart = Date.UTC(2016, 6, 1);
 		const timeEnd = Date.UTC(2017, 6, 1);
-		const scaleTimeRatio = (this.state.temporalTime - timeStart) / (timeEnd - timeStart);
+		const scaleTimeRatio = ((this.state.isSliding ? this.state.temporalTime : this.state.time) - timeStart) / (timeEnd - timeStart);
 
 		return (
 			<div className="app">
