@@ -44,8 +44,6 @@ module.exports = class App extends React.Component {
 								})}
 								{Array(12 + 1).fill().map((_, index) => {
 									const x = scaleWidth / 12 * index;
-									const year = index < 6 ? '2016' : '2017';
-									const month = ((index + 6) % 12 + 1).toString().padStart(2, '0');
 
 									return (
 										<text
@@ -54,13 +52,33 @@ module.exports = class App extends React.Component {
 											y={scaleHeight / 2 + 25}
 											textAnchor="middle"
 											fill="white"
-											fontSize="10"
+											fontSize="12"
 											className="exo-2"
 										>
-											{`${year}-${month}`}
+											{((index + 6) % 12 + 1).toString().padStart(2, '0')}
 										</text>
 									);
 								})}
+								<text
+									x="0"
+									y={scaleHeight / 2 - 15}
+									textAnchor="middle"
+									fill="white"
+									fontSize="14"
+									className="exo-2"
+								>
+									2016
+								</text>
+								<text
+									x={scaleWidth / 2}
+									y={scaleHeight / 2 - 15}
+									textAnchor="middle"
+									fill="white"
+									fontSize="14"
+									className="exo-2"
+								>
+									2017
+								</text>
 							</svg>
 							<div className="knob"/>
 						</div>
