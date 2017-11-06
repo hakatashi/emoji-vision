@@ -1,3 +1,5 @@
+require('dotenv').config();
+const webpack = require('webpack');
 module.exports = {
 	entry: './index.babel.js',
 	output: {
@@ -38,4 +40,16 @@ module.exports = {
 			],
 		}],
 	},
+	node: {
+		fs: 'empty',
+		net: 'empty',
+		tls: 'empty',
+	},
+	plugins: [
+		new webpack.DefinePlugin({
+			'process.env.AZURE_STORAGE_ACCOUNT': JSON.stringify(process.env.AZURE_STORAGE_ACCOUNT),
+			'process.env.AZURE_STORAGE_ACCESS_KEY': JSON.stringify(process.env.AZURE_STORAGE_ACCESS_KEY),
+		}),
+	],
 };
+
