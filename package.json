@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/InfovisHandsOn/A_D4#readme",
   "dependencies": {
+    "@hakatashi/eslint-config": "^1.1.2",
     "animate.css": "^3.5.2",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -30,6 +31,8 @@
     "d3": "^4.11.0",
     "d3-selection-multi": "^1.0.1",
     "emoji-data": "^0.2.0",
+    "eslint": "^4.10.0",
+    "eslint-plugin-react": "^7.4.0",
     "mkdirp": "^0.5.1",
     "postcss-font-magician": "^2.1.0",
     "postcss-loader": "^2.0.8",
