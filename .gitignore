@@ -61,6 +61,7 @@ typings/
 *.json
 !package.json
 !package-lock.json
+!.eslintrc.json
 data
 .ipynb_checkpoints/
 .idea/

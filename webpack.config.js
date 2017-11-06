@@ -21,6 +21,7 @@ module.exports = {
 							useBuiltIns: 'entry',
 							debug: true,
 						}],
+						'react',
 					],
 				},
 			},
