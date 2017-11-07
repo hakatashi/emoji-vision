@@ -192,7 +192,9 @@ module.exports = class App extends React.Component {
 
 		const timeStart = Date.UTC(2016, 6, 1);
 		const timeEnd = Date.UTC(2017, 6, 1);
-		const scaleTimeRatio = ((this.state.isSliding ? this.state.temporalTime : this.state.time) - timeStart) / (timeEnd - timeStart);
+		const time = this.state.isSliding ? this.state.temporalTime : this.state.time;
+		const date = new Date(time);
+		const scaleTimeRatio = (time - timeStart) / (timeEnd - timeStart);
 
 		return (
 			<div className="app">
@@ -275,6 +277,37 @@ module.exports = class App extends React.Component {
 									/>
 								</Hammer>
 							</svg>
+						</div>
+					</div>
+					<div className="clock exo-2">
+						<div className="clock-slot year">
+							<div className="increment"/>
+							{date.getFullYear()}
+							<div className="decrement"/>
+						</div>
+						<div className="clock-seperator">/</div>
+						<div className="clock-slot month">
+							<div className="increment"/>
+							{(date.getMonth() + 1).toString().padStart(2, '0')}
+							<div className="decrement"/>
+						</div>
+						<div className="clock-seperator">/</div>
+						<div className="clock-slot day">
+							<div className="increment"/>
+							{date.getDate().toString().padStart(2, '0')}
+							<div className="decrement"/>
+						</div>
+						<div className="clock-seperator narrow"/>
+						<div className="clock-slot hour">
+							<div className="increment"/>
+							{date.getHours().toString().padStart(2, '0')}
+							<div className="decrement"/>
+						</div>
+						<div className="clock-seperator narrow">:</div>
+						<div className="clock-slot minute">
+							<div className="increment"/>
+							{date.getMinutes().toString().padStart(2, '0')}
+							<div className="decrement"/>
 						</div>
 					</div>
 				</div>

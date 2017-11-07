@@ -52,12 +52,11 @@ module.exports = class WorldMap {
 		this.svg = props.svg;
 		this.emojiGroup = props.emojiGroup;
 		this.tooltipGroup = props.tooltipGroup;
-		this.currentTime = props.currentTime;
 		this.citiesMap = props.citiesMap;
 	}
 
 	static async create(node) {
-		const data = await new Promise((resolve, reject) => {
+		const mapData = await new Promise((resolve, reject) => {
 			D3.json('https://unpkg.com/world-atlas@1/world/110m.json', (error, data) => {
 				if (error) {
 					reject(error);
@@ -75,7 +74,7 @@ module.exports = class WorldMap {
 
 		const worldGroup = svg.append('g');
 
-		const worldMap = topojson.feature(data, data.objects.countries);
+		const worldMap = topojson.feature(mapData, mapData.objects.countries);
 		const worldPath = D3.geoPath().projection(mercatorProjection);
 		worldGroup.selectAll('path').data(worldMap.features).enter().append('path').attrs({
 			d: worldPath,
@@ -120,28 +119,15 @@ module.exports = class WorldMap {
 		const emojiGroup = svg.append('g');
 		const tooltipGroup = svg.append('g');
 
-		const currentTime = svg.append('text').attrs({
-			class: 'exo-2',
-			x: 20,
-			y: 480,
-			fill: 'white',
-		});
-
 		return new WorldMap({
 			svg,
 			emojiGroup,
 			tooltipGroup,
-			currentTime,
 			citiesMap,
 		});
 	}
 
 	showTweets({tweets, time}) {
-		this.currentTime.text(`${time.toLocaleDateString()} ${[
-			time.getHours().toString().padStart(2, '0'),
-			time.getMinutes().toString().padStart(2, '0'),
-		].join(':')}`);
-
 		const untimezonedTime = new Date(time.getTime() + time.getTimezoneOffset() * 60 * 1000);
 		for (const city of timezoneCities) {
 			const cityTime = new Date(untimezonedTime.getTime() + city.timezone * 60 * 1000);
@@ -198,7 +184,7 @@ module.exports = class WorldMap {
 				});
 
 				const tooltip = tooltipWrap.append('g').attrs({
-					transform: `translate(${x}, ${y}) scale(0.75)`,
+					transform: `translate(${x}, ${y}) scale(0.6)`,
 					'transform-origin': 'center',
 				});
 
