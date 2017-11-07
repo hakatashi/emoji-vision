@@ -24,7 +24,7 @@
     "animate.css": "^3.5.2",
     "azure-storage": "^2.6.0",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.1",
+    "babel-eslint": "^8.0.2",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.26.0",
@@ -58,6 +58,6 @@
     "unbzip2-stream": "^1.2.5",
     "util.promisify": "^1.0.0",
     "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.3"
+    "webpack-dev-server": "^2.9.4"
   }
 }
