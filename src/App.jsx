@@ -2,31 +2,8 @@ const React = require('react');
 const {default: Hammer} = require('react-hammerjs');
 const {default: Measure} = require('react-measure');
 const classNames = require('classnames');
-const last = require('lodash/last');
 
-const WorldMap = require('./world-map.js');
-const TreeMap = require('./tree-map.js');
-const client = require('./data-client.js');
-
-const SECOND = 1000;
-const MINUTE = 60 * SECOND;
-const HOUR = 60 * MINUTE;
-const DAY = 24 * HOUR;
-
-const getNextFile = ([year, month, day]) => {
-	const date = new Date(Date.UTC(year, month - 1, day) + DAY);
-	return [date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate()];
-};
-
-const timeToFile = (time) => {
-	// Consider tweets included in YYYY-MM-DD.json is from MM-DD 5:00 to MM-(DD + 1) 5:00
-	const date = new Date(time - 5 * HOUR);
-	return [date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate()];
-};
-
-const fileToFileName = ([year, month, day]) => (
-	`${year}/${month.toString().padStart(2, '0')}/${day.toString().padStart(2, '0')}.json`
-);
+const WorldMap = require('./WorldMap.jsx');
 
 module.exports = class App extends React.Component {
 	constructor(state, props) {
@@ -35,152 +12,11 @@ module.exports = class App extends React.Component {
 		this.state = {
 			time: Date.UTC(2017, 5, 2, 6),
 			temporalTime: Date.UTC(2017, 5, 2, 6),
+			startTime: Date.UTC(2017, 5, 2, 6),
 			realScaleWidth: Infinity,
-			isLoading: true,
 			isSliding: false,
 			mode: 'geo',
 		};
-
-		this.tweetsQueue = [];
-		this.isPreloading = false;
-		this.loadedFile = null;
-		this.preloadSession = null;
-	}
-
-	async componentDidMount() {
-		await this.initWorldMap();
-	}
-
-	async componentDidUpdate(prevProps, prevState) {
-		if (prevState.mode !== this.state.mode) {
-			if (this.state.mode === 'geo') {
-				await this.initWorldMap();
-			}
-			if (this.state.mode === 'tree') {
-				this.destroyWorldMap();
-				await this.initTreeMap();
-			}
-		}
-	}
-
-	initWorldMap = async () => {
-		this.worldMap = await WorldMap.create(this.geoMapNode);
-		this.setState({
-			isLoading: true,
-		});
-		const file = timeToFile(this.state.time);
-		const [nextYear, nextMonth, nextDay] = file;
-		console.info(`Loading ${fileToFileName(file)}...`);
-		const tweets = await client([
-			'selected',
-			'geo-tweets',
-			nextYear,
-			nextMonth.toString().padStart(2, '0'),
-			`${nextDay.toString().padStart(2, '0')}.json`,
-		].join('/')).catch((error) => {
-			console.error(error);
-			return [];
-		});
-		this.loadedFile = file;
-		tweets.forEach((tweet) => {
-			tweet.time = Date.parse(tweet.created_at);
-		});
-		const sortedTweets = tweets.sort((a, b) => {
-			const dateA = a.time;
-			const dateB = b.time;
-
-			return dateA - dateB;
-		});
-		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > this.state.time));
-		this.initTime();
-		this.setState({isLoading: false});
-	}
-
-	destroyWorldMap = () => {
-		this.destroyTime();
-		this.tweetsQueue = [];
-		this.isPreloading = false;
-		this.loadedFile = null;
-		this.preloadSession = null;
-	}
-
-	initTreeMap = async () => {
-		this.treeMap = await TreeMap.create(this.treeMapNode);
-	}
-
-	initTime() {
-		this.timeInterval = setInterval(this.handleTick, 50);
-	}
-
-	destroyTime() {
-		clearInterval(this.timeInterval);
-	}
-
-	handleTick = () => {
-		if (this.state.isLoading) {
-			return;
-		}
-
-		const nextTime = (() => {
-			// Skip brank intervals longer than 10min
-			if (this.tweetsQueue.length !== 0 && this.tweetsQueue[0].time - this.state.time > 10 * MINUTE) {
-				return Math.floor(this.tweetsQueue[0].time / MINUTE) * MINUTE;
-			}
-			return this.state.time + MINUTE;
-		})();
-		const showingTweetsIndex = this.tweetsQueue.findIndex((tweet) => tweet.time > nextTime);
-		const showingTweets = this.tweetsQueue.slice(0, showingTweetsIndex);
-		this.tweetsQueue = this.tweetsQueue.slice(showingTweetsIndex);
-		this.worldMap.showTweets({
-			tweets: showingTweets,
-			time: new Date(nextTime),
-		});
-		this.setState({time: nextTime});
-
-		// Preload
-		if (!this.isPreloading) {
-			if (this.tweetsQueue.length === 0 || last(this.tweetsQueue).time - nextTime < DAY) {
-				const session = Symbol('preload session');
-				this.preload(session);
-				this.preloadSession = session;
-			}
-		}
-	}
-
-	preload = async (session) => {
-		this.isPreloading = true;
-		const file = getNextFile(this.loadedFile);
-		const [nextYear, nextMonth, nextDay] = file;
-		console.info(`Preloading ${fileToFileName(file)}...`);
-
-		const tweets = await client([
-			'selected',
-			'geo-tweets',
-			nextYear,
-			nextMonth.toString().padStart(2, '0'),
-			`${nextDay.toString().padStart(2, '0')}.json`,
-		].join('/')).catch((error) => {
-			console.error(error);
-			return [];
-		});
-		this.isPreloading = false;
-
-		if (session !== this.preloadSession) {
-			return;
-		}
-
-		this.loadedFile = file;
-
-		tweets.forEach((tweet) => {
-			tweet.time = Date.parse(tweet.created_at);
-		});
-		const sortedTweets = this.tweetsQueue.concat(tweets).sort((a, b) => {
-			const dateA = a.time;
-			const dateB = b.time;
-
-			return dateA - dateB;
-		});
-		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > this.state.time));
 	}
 
 	handlePanKnob = (event) => {
@@ -195,7 +31,7 @@ module.exports = class App extends React.Component {
 		this.setState({temporalTime: targetTime, isSliding: true});
 
 		if (event.eventType === 4 /* INPUT_END */) {
-			this.handleTimeleap(targetTime);
+			this.setState({startTime: targetTime});
 		}
 	}
 
@@ -203,34 +39,8 @@ module.exports = class App extends React.Component {
 		this.setState({realScaleWidth: bounds.width});
 	}
 
-	handleTimeleap = async (time) => {
-		this.setState({time, isLoading: true, isSliding: false});
-		this.preloadSession = null;
-		const file = timeToFile(time);
-		const [nextYear, nextMonth, nextDay] = file;
-		console.info(`Loading ${fileToFileName(file)}...`);
-		const tweets = await client([
-			'selected',
-			'geo-tweets',
-			nextYear,
-			nextMonth.toString().padStart(2, '0'),
-			`${nextDay.toString().padStart(2, '0')}.json`,
-		].join('/')).catch((error) => {
-			console.error(error);
-			return [];
-		});
-		this.loadedFile = file;
-		tweets.forEach((tweet) => {
-			tweet.time = Date.parse(tweet.created_at);
-		});
-		const sortedTweets = tweets.sort((a, b) => {
-			const dateA = a.time;
-			const dateB = b.time;
-
-			return dateA - dateB;
-		});
-		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > time));
-		this.setState({isLoading: false});
+	handleUpdateTime = (nextTime) => {
+		this.setState({time: nextTime, isSliding: false});
 	}
 
 	render() {
@@ -359,11 +169,9 @@ module.exports = class App extends React.Component {
 					</div>
 				</div>
 				{this.state.mode === 'geo' && (
-					<div
-						className={classNames('map', {loading: this.state.isLoading})}
-						ref={(node) => {
-							this.geoMapNode = node;
-						}}
+					<WorldMap
+						startTime={this.state.startTime}
+						onUpdateTime={this.handleUpdateTime}
 					/>
 				)}
 				{this.state.mode === 'tree' && (
