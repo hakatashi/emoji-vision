@@ -49,9 +49,6 @@ module.exports = class App extends React.Component {
 
 	async componentDidMount() {
 		await this.initWorldMap();
-		// eslint-disable-next-line react/no-did-mount-set-state
-		this.setState({isLoading: false});
-		this.initTime();
 	}
 
 	async componentDidUpdate(prevProps, prevState) {
@@ -60,6 +57,7 @@ module.exports = class App extends React.Component {
 				await this.initWorldMap();
 			}
 			if (this.state.mode === 'tree') {
+				this.destroyWorldMap();
 				await this.initTreeMap();
 			}
 		}
@@ -67,8 +65,23 @@ module.exports = class App extends React.Component {
 
 	initWorldMap = async () => {
 		this.worldMap = await WorldMap.create(this.geoMapNode);
-		const tweets = await client('selected/geo-tweets/2017/06/02.json');
-		this.loadedFile = [2017, 6, 2];
+		this.setState({
+			isLoading: true,
+		});
+		const file = timeToFile(this.state.time);
+		const [nextYear, nextMonth, nextDay] = file;
+		console.info(`Loading ${fileToFileName(file)}...`);
+		const tweets = await client([
+			'selected',
+			'geo-tweets',
+			nextYear,
+			nextMonth.toString().padStart(2, '0'),
+			`${nextDay.toString().padStart(2, '0')}.json`,
+		].join('/')).catch((error) => {
+			console.error(error);
+			return [];
+		});
+		this.loadedFile = file;
 		tweets.forEach((tweet) => {
 			tweet.time = Date.parse(tweet.created_at);
 		});
@@ -78,7 +91,17 @@ module.exports = class App extends React.Component {
 
 			return dateA - dateB;
 		});
-		this.tweetsQueue = sortedTweets;
+		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > this.state.time));
+		this.initTime();
+		this.setState({isLoading: false});
+	}
+
+	destroyWorldMap = () => {
+		this.destroyTime();
+		this.tweetsQueue = [];
+		this.isPreloading = false;
+		this.loadedFile = null;
+		this.preloadSession = null;
 	}
 
 	initTreeMap = async () => {
@@ -86,7 +109,11 @@ module.exports = class App extends React.Component {
 	}
 
 	initTime() {
-		setInterval(this.handleTick, 50);
+		this.timeInterval = setInterval(this.handleTick, 50);
+	}
+
+	destroyTime() {
+		clearInterval(this.timeInterval);
 	}
 
 	handleTick = () => {
@@ -203,7 +230,6 @@ module.exports = class App extends React.Component {
 			return dateA - dateB;
 		});
 		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > time));
-		// eslint-disable-next-line react/no-did-mount-set-state
 		this.setState({isLoading: false});
 	}
 
@@ -325,7 +351,7 @@ module.exports = class App extends React.Component {
 							<div className="decrement"/>
 						</div>
 						<div className="clock-seperator narrow">:</div>
-						<div className="clock-slot minute">
+						<div className="clock-slot minute" onClick={() => this.setState({mode: this.state.mode === 'geo' ? 'tree' : 'geo'})}>
 							<div className="increment"/>
 							{date.getMinutes().toString().padStart(2, '0')}
 							<div className="decrement"/>
