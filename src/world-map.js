@@ -209,12 +209,12 @@ module.exports = class WorldMap {
 					ry: 3,
 					width: tooltipWidth,
 					height: tooltipHeight,
-					fill: 'white',
+					fill: 'rgba(255, 255, 255, 0.7)',
 				});
 
 				tooltip.append('polygon').attrs({
 					points: '-5,-20 5,-20 0,-15',
-					fill: 'white',
+					fill: 'rgba(255, 255, 255, 0.7)',
 				});
 
 				const textGroup = tooltip.append('g').attrs({
@@ -222,14 +222,17 @@ module.exports = class WorldMap {
 					'font-size': 8,
 					transform: `translate(${-tooltipWidth / 2 + padding}, ${-tooltipHeight - 20 + padding})`,
 				});
-				const text = textGroup.append('text').text(tweet.text).call(textwrap().bounds({
+
+				textGroup.append('text').text(tweet.text).call(textwrap().bounds({
 					width: tooltipWidth - padding * 2,
 					height: tooltipHeight - padding * 2,
-					padding: 10,
 				}));
 
 				image.on('mouseleave', () => {
-					tooltipWrap.remove();
+					tooltipWrap.attr('class', 'animated fadeOutUp');
+					tooltipWrap.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
+						tooltipWrap.remove();
+					});
 					isTooltipShown = false;
 
 					if (isEraceCancelled) {
