@@ -2,6 +2,7 @@ const D3 = require('d3');
 const topojson = require('topojson');
 
 require('d3-selection-multi');
+const {textwrap} = require('d3-textwrap');
 
 const mercatorProjection = D3.geoMercator().translate([480, 320]).clipExtent([[0, 0], [960, 500]]);
 
@@ -48,7 +49,9 @@ const timezoneCities = [
 
 module.exports = class WorldMap {
 	constructor(props) {
+		this.svg = props.svg;
 		this.emojiGroup = props.emojiGroup;
+		this.tooltipGroup = props.tooltipGroup;
 		this.currentTime = props.currentTime;
 		this.citiesMap = props.citiesMap;
 	}
@@ -115,6 +118,7 @@ module.exports = class WorldMap {
 		}
 
 		const emojiGroup = svg.append('g');
+		const tooltipGroup = svg.append('g');
 
 		const currentTime = svg.append('text').attrs({
 			class: 'exo-2',
@@ -124,7 +128,9 @@ module.exports = class WorldMap {
 		});
 
 		return new WorldMap({
+			svg,
 			emojiGroup,
+			tooltipGroup,
 			currentTime,
 			citiesMap,
 		});
@@ -158,7 +164,7 @@ module.exports = class WorldMap {
 
 			const fileName = emoji.unified.startsWith('00') ? emoji.unified.slice(2).toLowerCase() : emoji.unified.toLowerCase();
 
-			group.append('image').attrs({
+			const image = group.append('image').attrs({
 				class: 'emoji animated bounceIn',
 				'transform-origin': 'center',
 				'xlink:href': `node_modules/twemoji/2/svg/${fileName}.svg`,
@@ -166,12 +172,79 @@ module.exports = class WorldMap {
 				height: 150,
 			});
 
-			setTimeout(() => {
-				const image = group.selectAll('image');
+			let isTooltipShown = false;
+			let isEraceCancelled = false;
+
+			const erase = () => {
 				image.attr('class', 'emoji animated bounceOut');
+				image.on('mouseover', null);
 				image.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
 					group.remove();
 				});
+			};
+
+			image.on('mouseover', () => {
+				isTooltipShown = true;
+
+				const tooltipWidth = 200;
+				const tooltipHeight = 80;
+				const padding = 5;
+
+				const tooltipWrap = this.tooltipGroup.append('g').attrs({
+					class: 'animated fadeInDown',
+				}).styles({
+					'animation-duration': '0.2s',
+					'pointer-events': 'none',
+				});
+
+				const tooltip = tooltipWrap.append('g').attrs({
+					transform: `translate(${x}, ${y}) scale(0.75)`,
+					'transform-origin': 'center',
+				});
+
+				tooltip.append('rect').attrs({
+					x: -tooltipWidth / 2,
+					y: -tooltipHeight - 20,
+					rx: 3,
+					ry: 3,
+					width: tooltipWidth,
+					height: tooltipHeight,
+					fill: 'white',
+				});
+
+				tooltip.append('polygon').attrs({
+					points: '-5,-20 5,-20 0,-15',
+					fill: 'white',
+				});
+
+				const textGroup = tooltip.append('g').attrs({
+					fill: '#333',
+					'font-size': 8,
+					transform: `translate(${-tooltipWidth / 2 + padding}, ${-tooltipHeight - 20 + padding})`,
+				});
+				const text = textGroup.append('text').text(tweet.text).call(textwrap().bounds({
+					width: tooltipWidth - padding * 2,
+					height: tooltipHeight - padding * 2,
+					padding: 10,
+				}));
+
+				image.on('mouseleave', () => {
+					tooltipWrap.remove();
+					isTooltipShown = false;
+
+					if (isEraceCancelled) {
+						erase();
+					}
+				});
+			});
+
+			setTimeout(() => {
+				if (isTooltipShown) {
+					isEraceCancelled = true;
+					return;
+				}
+
+				erase();
 			}, 3000);
 		}
 	}
