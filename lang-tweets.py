@@ -1,19 +1,29 @@
-import codecs
-import subprocess
+import json
 import os
+import subprocess
+
+import pandas as pd
+from pandas.io.json import json_normalize
 from joblib import Parallel, delayed
 
 TWEETS_DIR = './data/tweets'
 LANG_TWEETS_DIR = './data/selected/lang-tweets'
 
+
 def process(month_path, lang_month_path, day):
     day_path = os.path.join(month_path, day)
     lang_output_path = os.path.join(lang_month_path, day + '.json')
-    # with codecs.open(lang_output_path, 'w') as f:
-    cmd = """find {} -type f -name "*.json" | xargs jq '[.[] | {{created_at, emojis, text, lang}}]' | jq -s -c add > {}""".format(
-        day_path, lang_output_path)
+    cmd = """find {} -type f -name "*.json" | xargs jq '[.[] | {{created_at, emojis, text, lang}}]' | jq -s -c add""".format(day_path)
     print("$ {}".format(cmd))
-    subprocess.call(cmd, shell=True)
+
+    lang_tweets = subprocess.check_output(cmd, shell=True)
+    lang_tweets = json.loads(lang_tweets)
+    lang_stats = json_normalize(lang_tweets).groupby('lang')['emojis'].apply(list).apply(len)
+    lang_stats = json.loads(lang_stats.to_json())
+
+    with open(lang_output_path, 'w') as f:
+        json.dump({'tweets': lang_tweets[::1000], 'stats': lang_stats}, f)
+
 
 def main():
     for year in os.listdir(TWEETS_DIR):
@@ -30,7 +40,10 @@ def main():
             except:
                 pass
 
-            Parallel(n_jobs=-1)([delayed(process)(month_path, lang_month_path, day) for day in os.listdir(month_path)])
+            Parallel(n_jobs=-1)(
+                [delayed(process)(month_path, lang_month_path, day) for day in
+                 os.listdir(month_path)])
+
 
 if __name__ == '__main__':
     main()
