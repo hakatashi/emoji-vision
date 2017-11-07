@@ -62,33 +62,8 @@ module.exports = class WorldMapComponent extends React.Component {
 
 	initialize = async () => {
 		this.worldMap = await WorldMap.create(this.map);
-		this.setState({isLoading: true});
-		const file = timeToFile(this.time);
-		const [nextYear, nextMonth, nextDay] = file;
-		console.info(`Loading ${fileToFileName(file)}...`);
-		const tweets = await client([
-			'selected',
-			'geo-tweets',
-			nextYear,
-			nextMonth.toString().padStart(2, '0'),
-			`${nextDay.toString().padStart(2, '0')}.json`,
-		].join('/')).catch((error) => {
-			console.error(error);
-			return [];
-		});
-		this.loadedFile = file;
-		tweets.forEach((tweet) => {
-			tweet.time = Date.parse(tweet.created_at);
-		});
-		const sortedTweets = tweets.sort((a, b) => {
-			const dateA = a.time;
-			const dateB = b.time;
-
-			return dateA - dateB;
-		});
-		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > this.time));
+		this.handleTimeleap(this.time);
 		this.initTime();
-		this.setState({isLoading: false});
 	}
 
 	destroy = () => {
