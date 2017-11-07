@@ -5,6 +5,7 @@ const classNames = require('classnames');
 const last = require('lodash/last');
 
 const WorldMap = require('./world-map.js');
+const TreeMap = require('./tree-map.js');
 const client = require('./data-client.js');
 
 const SECOND = 1000;
@@ -37,6 +38,7 @@ module.exports = class App extends React.Component {
 			realScaleWidth: Infinity,
 			isLoading: true,
 			isSliding: false,
+			mode: 'geo',
 		};
 
 		this.tweetsQueue = [];
@@ -46,9 +48,40 @@ module.exports = class App extends React.Component {
 	}
 
 	async componentDidMount() {
-		this.worldMap = await WorldMap.create(this.map);
-		const tweets = await client('selected/geo-tweets/2017/06/02.json');
-		this.loadedFile = [2017, 6, 2];
+		await this.initWorldMap();
+	}
+
+	async componentDidUpdate(prevProps, prevState) {
+		if (prevState.mode !== this.state.mode) {
+			if (this.state.mode === 'geo') {
+				await this.initWorldMap();
+			}
+			if (this.state.mode === 'tree') {
+				this.destroyWorldMap();
+				await this.initTreeMap();
+			}
+		}
+	}
+
+	initWorldMap = async () => {
+		this.worldMap = await WorldMap.create(this.geoMapNode);
+		this.setState({
+			isLoading: true,
+		});
+		const file = timeToFile(this.state.time);
+		const [nextYear, nextMonth, nextDay] = file;
+		console.info(`Loading ${fileToFileName(file)}...`);
+		const tweets = await client([
+			'selected',
+			'geo-tweets',
+			nextYear,
+			nextMonth.toString().padStart(2, '0'),
+			`${nextDay.toString().padStart(2, '0')}.json`,
+		].join('/')).catch((error) => {
+			console.error(error);
+			return [];
+		});
+		this.loadedFile = file;
 		tweets.forEach((tweet) => {
 			tweet.time = Date.parse(tweet.created_at);
 		});
@@ -58,14 +91,29 @@ module.exports = class App extends React.Component {
 
 			return dateA - dateB;
 		});
-		this.tweetsQueue = sortedTweets;
-		// eslint-disable-next-line react/no-did-mount-set-state
-		this.setState({isLoading: false});
+		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > this.state.time));
 		this.initTime();
+		this.setState({isLoading: false});
+	}
+
+	destroyWorldMap = () => {
+		this.destroyTime();
+		this.tweetsQueue = [];
+		this.isPreloading = false;
+		this.loadedFile = null;
+		this.preloadSession = null;
+	}
+
+	initTreeMap = async () => {
+		this.treeMap = await TreeMap.create(this.treeMapNode);
 	}
 
 	initTime() {
-		setInterval(this.handleTick, 50);
+		this.timeInterval = setInterval(this.handleTick, 50);
+	}
+
+	destroyTime() {
+		clearInterval(this.timeInterval);
 	}
 
 	handleTick = () => {
@@ -182,7 +230,6 @@ module.exports = class App extends React.Component {
 			return dateA - dateB;
 		});
 		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > time));
-		// eslint-disable-next-line react/no-did-mount-set-state
 		this.setState({isLoading: false});
 	}
 
@@ -192,7 +239,9 @@ module.exports = class App extends React.Component {
 
 		const timeStart = Date.UTC(2016, 6, 1);
 		const timeEnd = Date.UTC(2017, 6, 1);
-		const scaleTimeRatio = ((this.state.isSliding ? this.state.temporalTime : this.state.time) - timeStart) / (timeEnd - timeStart);
+		const time = this.state.isSliding ? this.state.temporalTime : this.state.time;
+		const date = new Date(time);
+		const scaleTimeRatio = (time - timeStart) / (timeEnd - timeStart);
 
 		return (
 			<div className="app">
@@ -277,13 +326,54 @@ module.exports = class App extends React.Component {
 							</svg>
 						</div>
 					</div>
+					<div className="clock exo-2">
+						<div className="clock-slot year">
+							<div className="increment"/>
+							{date.getFullYear()}
+							<div className="decrement"/>
+						</div>
+						<div className="clock-seperator">/</div>
+						<div className="clock-slot month">
+							<div className="increment"/>
+							{(date.getMonth() + 1).toString().padStart(2, '0')}
+							<div className="decrement"/>
+						</div>
+						<div className="clock-seperator">/</div>
+						<div className="clock-slot day">
+							<div className="increment"/>
+							{date.getDate().toString().padStart(2, '0')}
+							<div className="decrement"/>
+						</div>
+						<div className="clock-seperator narrow"/>
+						<div className="clock-slot hour">
+							<div className="increment"/>
+							{date.getHours().toString().padStart(2, '0')}
+							<div className="decrement"/>
+						</div>
+						<div className="clock-seperator narrow">:</div>
+						<div className="clock-slot minute" onClick={() => this.setState({mode: this.state.mode === 'geo' ? 'tree' : 'geo'})}>
+							<div className="increment"/>
+							{date.getMinutes().toString().padStart(2, '0')}
+							<div className="decrement"/>
+						</div>
+					</div>
 				</div>
-				<div
-					className={classNames('map', {loading: this.state.isLoading})}
-					ref={(node) => {
-						this.map = node;
-					}}
-				/>
+				{this.state.mode === 'geo' && (
+					<div
+						className={classNames('map', {loading: this.state.isLoading})}
+						ref={(node) => {
+							this.geoMapNode = node;
+						}}
+					/>
+				)}
+				{this.state.mode === 'tree' && (
+					<div
+						className={classNames('tree', {loading: this.state.isLoading})}
+						ref={(node) => {
+							this.treeMapNode = node;
+						}}
+					/>
+				)}
 			</div>
 		);
 	}
