@@ -1,7 +1,7 @@
-const azure = require('azure-storage');
+const FileService = require('azure-storage/lib/services/file/fileservice.browser.js');
 
 module.exports = async (path) => {
-	const fileService = azure.createFileService(
+	const fileService = new FileService(
 		process.env.AZURE_STORAGE_ACCOUNT,
 		process.env.AZURE_STORAGE_ACCESS_KEY
 	);

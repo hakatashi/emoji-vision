@@ -1,51 +1,189 @@
 const React = require('react');
 const {default: Hammer} = require('react-hammerjs');
 const {default: Measure} = require('react-measure');
+const classNames = require('classnames');
+const last = require('lodash/last');
 
 const WorldMap = require('./world-map.js');
 const client = require('./data-client.js');
+
+const SECOND = 1000;
+const MINUTE = 60 * SECOND;
+const HOUR = 60 * MINUTE;
+const DAY = 24 * HOUR;
+
+const getNextFile = ([year, month, day]) => {
+	const date = new Date(Date.UTC(year, month - 1, day) + DAY);
+	return [date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate()];
+};
+
+const timeToFile = (time) => {
+	// Consider tweets included in YYYY-MM-DD.json is from MM-DD 5:00 to MM-(DD + 1) 5:00
+	const date = new Date(time - 5 * HOUR);
+	return [date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate()];
+};
+
+const fileToFileName = ([year, month, day]) => (
+	`${year}/${month.toString().padStart(2, '0')}/${day.toString().padStart(2, '0')}.json`
+);
 
 module.exports = class App extends React.Component {
 	constructor(state, props) {
 		super(state, props);
 
 		this.state = {
-			time: Date.UTC(2017, 5, 1),
-			temporalTime: Date.UTC(2017, 5, 1),
+			time: Date.UTC(2017, 5, 2, 6),
+			temporalTime: Date.UTC(2017, 5, 2, 6),
 			realScaleWidth: Infinity,
+			isLoading: true,
+			isSliding: false,
 		};
+
+		this.tweetsQueue = [];
+		this.isPreloading = false;
+		this.loadedFile = null;
+		this.preloadSession = null;
 	}
 
 	async componentDidMount() {
 		this.worldMap = await WorldMap.create(this.map);
-		const tweets = await client('selected/geo-tweets/2016/12/31.json');
+		const tweets = await client('selected/geo-tweets/2017/06/02.json');
+		this.loadedFile = [2017, 6, 2];
+		tweets.forEach((tweet) => {
+			tweet.time = Date.parse(tweet.created_at);
+		});
 		const sortedTweets = tweets.sort((a, b) => {
-			const dateA = new Date(a.created_at);
-			const dateB = new Date(b.created_at);
+			const dateA = a.time;
+			const dateB = b.time;
 
 			return dateA - dateB;
 		});
-		console.log(this.worldMap);
+		this.tweetsQueue = sortedTweets;
+		// eslint-disable-next-line react/no-did-mount-set-state
+		this.setState({isLoading: false});
+		this.initTime();
+	}
+
+	initTime() {
+		setInterval(this.handleTick, 50);
+	}
+
+	handleTick = () => {
+		if (this.state.isLoading) {
+			return;
+		}
+
+		const nextTime = (() => {
+			// Skip brank intervals longer than 10min
+			if (this.tweetsQueue.length !== 0 && this.tweetsQueue[0].time - this.state.time > 10 * MINUTE) {
+				return Math.floor(this.tweetsQueue[0].time / MINUTE) * MINUTE;
+			}
+			return this.state.time + MINUTE;
+		})();
+		const showingTweetsIndex = this.tweetsQueue.findIndex((tweet) => tweet.time > nextTime);
+		const showingTweets = this.tweetsQueue.slice(0, showingTweetsIndex);
+		this.tweetsQueue = this.tweetsQueue.slice(showingTweetsIndex);
 		this.worldMap.showTweets({
-			tweets: sortedTweets.slice(0, 10),
-			time: new Date(),
+			tweets: showingTweets,
+			time: new Date(nextTime),
 		});
+		this.setState({time: nextTime});
+
+		// Preload
+		if (!this.isPreloading) {
+			if (this.tweetsQueue.length === 0 || last(this.tweetsQueue).time - nextTime < DAY) {
+				const session = Symbol('preload session');
+				this.preload(session);
+				this.preloadSession = session;
+			}
+		}
+	}
+
+	preload = async (session) => {
+		this.isPreloading = true;
+		const file = getNextFile(this.loadedFile);
+		const [nextYear, nextMonth, nextDay] = file;
+		console.info(`Preloading ${fileToFileName(file)}...`);
+
+		const tweets = await client([
+			'selected',
+			'geo-tweets',
+			nextYear,
+			nextMonth.toString().padStart(2, '0'),
+			`${nextDay.toString().padStart(2, '0')}.json`,
+		].join('/')).catch((error) => {
+			console.error(error);
+			return [];
+		});
+		this.isPreloading = false;
+
+		if (session !== this.preloadSession) {
+			return;
+		}
+
+		this.loadedFile = file;
+
+		tweets.forEach((tweet) => {
+			tweet.time = Date.parse(tweet.created_at);
+		});
+		const sortedTweets = this.tweetsQueue.concat(tweets).sort((a, b) => {
+			const dateA = a.time;
+			const dateB = b.time;
+
+			return dateA - dateB;
+		});
+		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > this.state.time));
 	}
 
 	handlePanKnob = (event) => {
+		if (this.state.isLoading) {
+			return;
+		}
+
 		const timeStart = Date.UTC(2016, 6, 1);
 		const timeEnd = Date.UTC(2017, 6, 1);
 		const deltaTime = (timeEnd - timeStart) * event.deltaX / this.state.realScaleWidth;
 		const targetTime = Math.max(timeStart, Math.min(this.state.time + deltaTime, timeEnd));
-		this.setState({temporalTime: targetTime});
+		this.setState({temporalTime: targetTime, isSliding: true});
 
 		if (event.eventType === 4 /* INPUT_END */) {
-			this.setState({time: targetTime});
+			this.handleTimeleap(targetTime);
 		}
 	}
 
 	handleScaleResize = ({bounds}) => {
 		this.setState({realScaleWidth: bounds.width});
+	}
+
+	handleTimeleap = async (time) => {
+		this.setState({time, isLoading: true, isSliding: false});
+		this.preloadSession = null;
+		const file = timeToFile(time);
+		const [nextYear, nextMonth, nextDay] = file;
+		console.info(`Loading ${fileToFileName(file)}...`);
+		const tweets = await client([
+			'selected',
+			'geo-tweets',
+			nextYear,
+			nextMonth.toString().padStart(2, '0'),
+			`${nextDay.toString().padStart(2, '0')}.json`,
+		].join('/')).catch((error) => {
+			console.error(error);
+			return [];
+		});
+		this.loadedFile = file;
+		tweets.forEach((tweet) => {
+			tweet.time = Date.parse(tweet.created_at);
+		});
+		const sortedTweets = tweets.sort((a, b) => {
+			const dateA = a.time;
+			const dateB = b.time;
+
+			return dateA - dateB;
+		});
+		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > time));
+		// eslint-disable-next-line react/no-did-mount-set-state
+		this.setState({isLoading: false});
 	}
 
 	render() {
@@ -54,7 +192,7 @@ module.exports = class App extends React.Component {
 
 		const timeStart = Date.UTC(2016, 6, 1);
 		const timeEnd = Date.UTC(2017, 6, 1);
-		const scaleTimeRatio = (this.state.temporalTime - timeStart) / (timeEnd - timeStart);
+		const scaleTimeRatio = ((this.state.isSliding ? this.state.temporalTime : this.state.time) - timeStart) / (timeEnd - timeStart);
 
 		return (
 			<div className="app">
@@ -141,7 +279,7 @@ module.exports = class App extends React.Component {
 					</div>
 				</div>
 				<div
-					className="map"
+					className={classNames('map', {loading: this.state.isLoading})}
 					ref={(node) => {
 						this.map = node;
 					}}

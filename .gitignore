@@ -65,3 +65,5 @@ typings/
 data
 .ipynb_checkpoints/
 .idea/
+index.js
+index.js.map
