@@ -24,3 +24,6 @@ data/emoji_counts.json: data/geo-tweets.json
 
 data/statistics.csv: data/geo-tweets.json data/emoji-test.txt
 	$(PYTHON) statistics.py
+
+data/emoji-groups.json: data/emoji-test.txt
+	$(PYTHON) emoji-data-parser.py
