@@ -21,11 +21,14 @@ def calc_stat(filename):
         timestamp = datetime.utcfromtimestamp(int(tweet['timestamp_ms']) / 1000)
         date = timestamp.date().isoformat()
 
-        match = re.match(r"\A<.+?>(.+?)<.+?>\Z", tweet['source'])
-        if match is None:
+        if 'source' not in tweet:
             device = None
         else:
-            device = match.group(1)
+            match = re.match(r"\A<.+?>(.+?)<.+?>\Z", tweet['source'])
+            if match is None:
+                device = None
+            else:
+                device = match.group(1)
 
         for emoji in emojis:
             if emoji not in stat:
@@ -37,13 +40,15 @@ def calc_stat(filename):
                     'count': 0,
                 }
 
-            stat[emoji]['lang'][tweet['lang']] += 1
+            if 'lang' in tweet:
+                stat[emoji]['lang'][tweet['lang']] += 1
 
             if device is not None:
                 stat[emoji]['device'][device] += 1
 
             for hashtag in tweet['entities_hashtags']:
-                stat[emoji]['hashtag'][hashtag['text']] += 1
+                if 'text' in hashtag:
+                    stat[emoji]['hashtag'][hashtag['text']] += 1
 
             stat[emoji]['date'][date] += 1
             stat[emoji]['count'] += 1
