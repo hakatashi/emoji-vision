@@ -3,7 +3,7 @@ const PropTypes = require('prop-types');
 const classNames = require('classnames');
 const last = require('lodash/last');
 
-const WorldMap = require('./world-map.js');
+const WorldMapChart = require('./WorldMapChart.js');
 const client = require('./data-client.js');
 
 const SECOND = 1000;
@@ -26,7 +26,7 @@ const fileToFileName = ([year, month, day]) => (
 	`${year}/${month.toString().padStart(2, '0')}/${day.toString().padStart(2, '0')}.json`
 );
 
-module.exports = class WorldMapComponent extends React.Component {
+module.exports = class WorldMap extends React.Component {
 	static propTypes = {
 		startTime: PropTypes.number.isRequired,
 		onUpdateTime: PropTypes.func.isRequired,
@@ -61,7 +61,7 @@ module.exports = class WorldMapComponent extends React.Component {
 	}
 
 	initialize = async () => {
-		this.worldMap = await WorldMap.create(this.map);
+		this.worldMap = await WorldMapChart.create(this.map);
 		this.handleTimeleap(this.time);
 		this.initTime();
 	}

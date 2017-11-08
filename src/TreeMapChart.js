@@ -2,7 +2,7 @@ const D3 = require('d3');
 
 require('d3-selection-multi');
 
-module.exports = class TreeMap {
+module.exports = class TreeMapChart {
 	constructor(props) {
 		this.svg = props.svg;
 	}
@@ -14,7 +14,7 @@ module.exports = class TreeMap {
 			viewBox: '0 0 960 500',
 		});
 
-		return new TreeMap({
+		return new TreeMapChart({
 			svg,
 		});
 	}

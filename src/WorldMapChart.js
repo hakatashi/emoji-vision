@@ -47,7 +47,7 @@ const timezoneCities = [
 	},
 ];
 
-module.exports = class WorldMap {
+module.exports = class WorldMapChart {
 	constructor(props) {
 		this.svg = props.svg;
 		this.emojiGroup = props.emojiGroup;
@@ -119,7 +119,7 @@ module.exports = class WorldMap {
 		const emojiGroup = svg.append('g');
 		const tooltipGroup = svg.append('g');
 
-		return new WorldMap({
+		return new WorldMapChart({
 			svg,
 			emojiGroup,
 			tooltipGroup,
