@@ -56,14 +56,6 @@ def calc_stat(filename):
     return stat
 
 if __name__ == '__main__':
-    with codecs.open('./data/emoji-groups.json', 'r', 'utf-8') as f:
-        emoji_groups = json.load(f)
-
-    emoji_dict = {}
-
-    for emoji in emoji_groups:
-        emoji_dict[emoji['codepoint']] = emoji
-
     days = glob('data/tweets/*/*/*')
 
     for day in days:
