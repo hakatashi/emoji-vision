@@ -1,6 +1,7 @@
 from glob import glob
-from datetime import datetime
 from joblib import Parallel, delayed
+from datetime import datetime
+from collections import Counter
 import os
 import re
 import json
@@ -20,37 +21,32 @@ def calc_stat(filename):
         timestamp = datetime.utcfromtimestamp(int(tweet['timestamp_ms']) / 1000)
         date = timestamp.date().isoformat()
 
-        device = re.match(r"\A<.+?>(.+?)<.+?>\Z", tweet['source']).group(1)
+        match = re.match(r"\A<.+?>(.+?)<.+?>\Z", tweet['source'])
+        if match is None:
+            device = None
+        else:
+            device = match.group(1)
 
         for emoji in emojis:
             if emoji not in stat:
                 stat[emoji] = {
-                    'lang': {},
-                    'device': {},
-                    'hashtag': {},
-                    'date': {},
+                    'lang': Counter(),
+                    'device': Counter(),
+                    'hashtag': Counter(),
+                    'date': Counter(),
+                    'count': 0,
                 }
-
-            if tweet['lang'] not in stat[emoji]['lang']:
-                stat[emoji]['lang'][tweet['lang']] = 0
 
             stat[emoji]['lang'][tweet['lang']] += 1
 
-            if device not in stat[emoji]['device']:
-                stat[emoji]['device'][device] = 0
-
-            stat[emoji]['device'][device] += 1
+            if device is not None:
+                stat[emoji]['device'][device] += 1
 
             for hashtag in tweet['entities_hashtags']:
-                if hashtag['text'] not in stat[emoji]['hashtag']:
-                    stat[emoji]['hashtag'][hashtag['text']] = 0
-
                 stat[emoji]['hashtag'][hashtag['text']] += 1
 
-            if date not in stat[emoji]['date']:
-                stat[emoji]['date'][date] = 0
-
             stat[emoji]['date'][date] += 1
+            stat[emoji]['count'] += 1
 
     return stat
 
@@ -63,15 +59,38 @@ if __name__ == '__main__':
     for emoji in emoji_groups:
         emoji_dict[emoji['codepoint']] = emoji
 
-    months = glob('data/tweets/*/*')
+    days = glob('data/tweets/*/*/*')
 
-    for month in months:
-        print("Processing {} directory...".format(month))
+    for day in days:
+        print("Processing {} directory...".format(day))
 
         tweet_files = []
-        for dirpath, dirnames, filenames in os.walk(month):
+        for dirpath, dirnames, filenames in os.walk(day):
             tweet_files += [os.path.join(dirpath, f) for f in filenames if f.endswith('.json')]
 
         print("Found {} files".format(len(tweet_files)))
 
-        stats = Parallel(n_jobs=-1, verbose=5)([delayed(calc_stat)(filename) for filename in tweet_files[0:2]])
+        stats = Parallel(n_jobs=-1, verbose=5)([delayed(calc_stat)(filename) for filename in tweet_files])
+
+        print('Concatenating stats...')
+        unistat = {}
+
+        for stat in stats:
+            for emoji, emoji_stat in stat.items():
+                if emoji not in unistat:
+                    unistat[emoji] = emoji_stat
+                    continue
+                for key in ['lang', 'device', 'hashtag', 'date']:
+                    unistat[emoji][key] += emoji_stat[key]
+                unistat[emoji]['count'] += emoji_stat['count']
+
+        out_dir = os.sep.join(['data', 'temp', 'statistics', *os.path.normpath(day).split(os.sep)[-3:]])
+        try:
+            os.makedirs(out_dir)
+        except:
+            pass
+
+        for emoji, emoji_stat in unistat.items():
+            out_file = os.path.join(out_dir, "{}.json".format(emoji))
+            with open(out_file, 'w') as f:
+                f.write(json.dumps(emoji_stat, separators=(',', ':')))
