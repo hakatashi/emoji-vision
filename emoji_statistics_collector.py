@@ -17,7 +17,12 @@ if __name__ == '__main__':
     stat_file_dict = {}
 
     try:
-        os.makedirs('data/statistics')
+        os.makedirs('data/statistics/full')
+    except:
+        pass
+
+    try:
+        os.makedirs('data/statistics/slim')
     except:
         pass
 
@@ -30,8 +35,6 @@ if __name__ == '__main__':
     for emoji, files in stat_file_dict.items():
         print("Processing {}.json...".format(emoji))
 
-        out_stat = {}
-
         stats = []
         for file in files:
             with codecs.open(file, 'r', 'utf-8') as f:
@@ -39,15 +42,37 @@ if __name__ == '__main__':
 
         print("Loaded {} stats".format(len(stats)))
 
-        out_stat['lang'] = sum([Counter(stat['lang']) for stat in stats], Counter())
-        out_stat['device'] = sum([Counter(stat['device']) for stat in stats], Counter())
-        out_stat['hashtag'] = sum([Counter(stat['hashtag']) for stat in stats], Counter())
-        out_stat['date'] = sum([Counter(stat['date']) for stat in stats], Counter())
-        out_stat['count'] = sum([stat['count'] for stat in stats])
-        out_stat['group'] = emoji_dict[emoji]['group']
-        out_stat['subgroup'] = emoji_dict[emoji]['subgroup']
-        out_stat['name'] = emoji_dict[emoji]['name']
+        full_stat = {}
+        for key in ['lang', 'device', 'hashtag', 'date']:
+            full_stat[key] = sum([Counter(stat[key]) for stat in stats], Counter())
+        full_stat['count'] = sum([stat['count'] for stat in stats])
+        full_stat['group'] = emoji_dict[emoji]['group']
+        full_stat['subgroup'] = emoji_dict[emoji]['subgroup']
+        full_stat['name'] = emoji_dict[emoji]['name']
 
-        out_file = os.sep.join(['data', 'statistics', "{}.json".format(emoji)])
+        out_file = os.path.join('data', 'statistics', 'full', "{}.json".format(emoji))
         with open(out_file, 'w') as f:
-            f.write(json.dumps(out_stat, separators=(',', ':')))
+            f.write(json.dumps(full_stat, separators=(',', ':')))
+
+        slim_stat = {}
+        slim_stat['lang'] = {
+            'total': sum(full_stat['lang'].values()),
+            'entries': full_stat['lang'].most_common(),
+        }
+        slim_stat['date'] = {
+            'total': sum(full_stat['date'].values()),
+            'entries': list(full_stat['date'].items()),
+        }
+        for key in ['device', 'hashtag']:
+            slim_stat[key] = {
+                'total': sum(full_stat[key].values()),
+                'entries': full_stat[key].most_common(100),
+            }
+        slim_stat['count'] = full_stat['count']
+        slim_stat['group'] = emoji_dict[emoji]['group']
+        slim_stat['subgroup'] = emoji_dict[emoji]['subgroup']
+        slim_stat['name'] = emoji_dict[emoji]['name']
+
+        out_file = os.sep.join(['data', 'statistics', 'slim', "{}.json".format(emoji)])
+        with open(out_file, 'w') as f:
+            f.write(json.dumps(slim_stat, separators=(',', ':')))
