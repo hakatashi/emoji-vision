@@ -51,6 +51,7 @@
     "react-hammerjs": "^1.0.1",
     "react-measure": "^2.0.2",
     "react-spinner": "^0.2.7",
+    "react-transition-group": "^2.2.1",
     "split": "^1.0.1",
     "style-loader": "^0.19.0",
     "tar": "^4.0.2",
