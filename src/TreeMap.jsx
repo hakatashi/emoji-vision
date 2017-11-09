@@ -3,7 +3,7 @@ const PropTypes = require('prop-types');
 const classNames = require('classnames');
 const last = require('lodash/last');
 
-const WorldMapChart = require('./WorldMapChart.js');
+const TreeMapChart = require('./TreeMapChart.js');
 const client = require('./data-client.js');
 
 const SECOND = 1000;
@@ -26,7 +26,7 @@ const fileToFileName = ([year, month, day]) => (
 	`${year}/${month.toString().padStart(2, '0')}/${day.toString().padStart(2, '0')}.json`
 );
 
-module.exports = class WorldMap extends React.Component {
+module.exports = class TreeMap extends React.Component {
 	static propTypes = {
 		startTime: PropTypes.number.isRequired,
 		onUpdateTime: PropTypes.func.isRequired,
@@ -63,7 +63,7 @@ module.exports = class WorldMap extends React.Component {
 	}
 
 	initialize = async () => {
-		this.chart = await WorldMapChart.create(this.map, {
+		this.chart = await TreeMapChart.create(this.map, {
 			onClickEmoji: this.handleClickEmoji,
 		});
 		if (this.isDestroyed) {
@@ -134,7 +134,7 @@ module.exports = class WorldMap extends React.Component {
 
 		const tweets = await client([
 			'selected',
-			'geo-tweets',
+			'hash-tweets',
 			nextYear,
 			nextMonth.toString().padStart(2, '0'),
 			`${nextDay.toString().padStart(2, '0')}.json`,
@@ -172,7 +172,7 @@ module.exports = class WorldMap extends React.Component {
 		console.info(`Loading ${fileToFileName(file)}...`);
 		const tweets = await client([
 			'selected',
-			'geo-tweets',
+			'device-tweets',
 			nextYear,
 			nextMonth.toString().padStart(2, '0'),
 			`${nextDay.toString().padStart(2, '0')}.json`,

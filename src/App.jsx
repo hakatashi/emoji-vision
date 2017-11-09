@@ -5,6 +5,7 @@ const classNames = require('classnames');
 const CSSTransition = require('react-transition-group/CSSTransition');
 
 const WorldMap = require('./WorldMap.jsx');
+const TreeMap = require('./TreeMap.jsx');
 const EmojiStat = require('./EmojiStat.jsx');
 
 module.exports = class App extends React.Component {
@@ -57,6 +58,13 @@ module.exports = class App extends React.Component {
 	handleCloseStat = () => {
 		this.setState({
 			isModalShowing: false,
+		});
+	}
+
+	handleToggleMode = () => {
+		this.setState({
+			mode: this.state.mode === 'geo' ? 'tree' : 'geo',
+			startTime: this.state.time,
 		});
 	}
 
@@ -179,7 +187,7 @@ module.exports = class App extends React.Component {
 								<div className="decrement"/>
 							</div>
 							<div className="clock-seperator narrow">:</div>
-							<div className="clock-slot minute" onClick={() => this.setState({mode: this.state.mode === 'geo' ? 'tree' : 'geo'})}>
+							<div className="clock-slot minute" onClick={this.handleToggleMode}>
 								<div className="increment"/>
 								{date.getMinutes().toString().padStart(2, '0')}
 								<div className="decrement"/>
@@ -194,11 +202,10 @@ module.exports = class App extends React.Component {
 						/>
 					)}
 					{this.state.mode === 'tree' && (
-						<div
-							className={classNames('tree', {loading: this.state.isLoading})}
-							ref={(node) => {
-								this.treeMapNode = node;
-							}}
+						<TreeMap
+							startTime={this.state.startTime}
+							onUpdateTime={this.handleUpdateTime}
+							onClickEmoji={this.handleClickEmoji}
 						/>
 					)}
 				</div>
