@@ -219,6 +219,8 @@ module.exports = class WorldMapChart {
 					height: tooltipHeight - padding * 2,
 				}));
 
+				textGroup.selectAll('div').styles({color: '#333'});
+
 				image.on('mouseleave', () => {
 					tooltipWrap.attr('class', 'animated fadeOutUp');
 					tooltipWrap.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
