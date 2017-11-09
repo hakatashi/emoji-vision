@@ -2,6 +2,7 @@ const D3 = require('d3');
 
 require('d3-selection-multi');
 const {schemePastel1} = require('d3-scale-chromatic');
+const {textwrap} = require('d3-textwrap');
 const sample = require('lodash/sample');
 
 const TreeMapArea = require('./TreeMapArea.js');
@@ -12,7 +13,9 @@ module.exports = class TreeMapChart {
 		this.treemap = props.treemap;
 		this.colorScale = props.colorScale;
 		this.cells = props.cells;
+		this.tooltipGroup = props.tooltipGroup;
 		this.areaMap = new Map();
+		this.tooltipMap = new WeakMap();
 	}
 
 	static create(node) {
@@ -26,17 +29,77 @@ module.exports = class TreeMapChart {
 		const colorScale = D3.scaleOrdinal(schemePastel1);
 
 		const cells = svg.append('g').attrs({class: 'cells'});
+		const tooltipGroup = svg.append('g');
 
 		return new TreeMapChart({
 			svg,
 			treemap,
 			colorScale,
 			cells,
+			tooltipGroup,
+		});
+	}
+
+	handleEmojiMouseOver = ({x, y, group, text, node}) => {
+		const areaData = D3.select(node.parentNode).data()[0];
+
+		const tooltipWidth = 200;
+		const tooltipHeight = 80;
+		const padding = 5;
+
+		const tooltipWrap = this.tooltipGroup.append('g').attrs({
+			class: 'animated fadeInDown',
+		}).styles({
+			'animation-duration': '0.2s',
+			'pointer-events': 'none',
+		});
+
+		const tooltip = tooltipWrap.append('g').attrs({
+			transform: `translate(${x + areaData.x0}, ${y + areaData.y0}) scale(0.6)`,
+			'transform-origin': 'center',
+		});
+
+		tooltip.append('rect').attrs({
+			x: -tooltipWidth / 2,
+			y: -tooltipHeight - 20,
+			rx: 3,
+			ry: 3,
+			width: tooltipWidth,
+			height: tooltipHeight,
+			fill: 'rgba(255, 255, 255, 0.7)',
+		});
+
+		tooltip.append('polygon').attrs({
+			points: '-5,-20 5,-20 0,-15',
+			fill: 'rgba(255, 255, 255, 0.7)',
+		});
+
+		const textGroup = tooltip.append('g').attrs({
+			fill: '#333',
+			'font-size': 8,
+			transform: `translate(${-tooltipWidth / 2 + padding}, ${-tooltipHeight - 20 + padding})`,
+		});
+
+		textGroup.append('text').text(text).call(textwrap().bounds({
+			width: tooltipWidth - padding * 2,
+			height: tooltipHeight - padding * 2,
+		}));
+
+		textGroup.selectAll('div').styles({color: '#333'});
+
+		this.tooltipMap.set(group, tooltipWrap);
+	}
+
+	handleEmojiMouseLeave = ({group}) => {
+		const tooltipWrap = this.tooltipMap.get(group);
+		tooltipWrap.attr('class', 'animated fadeOutUp');
+		tooltipWrap.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
+			tooltipWrap.remove();
 		});
 	}
 
 	updateLayout(categories) {
-		const {areaMap} = this;
+		const {areaMap, handleEmojiMouseOver, handleEmojiMouseLeave} = this;
 
 		const root = D3.hierarchy({
 			name: '',
@@ -117,6 +180,8 @@ module.exports = class TreeMapChart {
 				node: this,
 				width: d.x1 - d.x0,
 				height: d.y1 - d.y0,
+				onEmojiMouseOver: handleEmojiMouseOver,
+				onEmojiMouseLeave: handleEmojiMouseLeave,
 			}));
 		});
 

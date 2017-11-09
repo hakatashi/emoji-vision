@@ -1,17 +1,18 @@
 const ndarray = require('ndarray');
 const D3 = require('d3');
 
-const {textwrap} = require('d3-textwrap');
-
 const WIDTH = 960;
 const HEIGHT = 500;
 const UNIT = 40;
 
 module.exports = class TreeMapArea {
-	constructor({node, width, height}) {
+	constructor({node, width, height, offset, onEmojiMouseOver, onEmojiMouseLeave}) {
 		this.node = node;
 		this.width = width;
 		this.height = height;
+		this.offset = offset;
+		this.onEmojiMouseOver = onEmojiMouseOver;
+		this.onEmojiMouseLeave = onEmojiMouseLeave;
 
 		const areaWidth = Math.floor(WIDTH / UNIT);
 		const areaHeight = Math.floor(HEIGHT / UNIT);
@@ -19,6 +20,7 @@ module.exports = class TreeMapArea {
 
 		this.currentView = this.area.hi(Math.floor(width / UNIT), Math.floor(height / UNIT));
 		this.reverseMap = new WeakMap();
+		this.hoveredGroups = new Set();
 	}
 
 	resize({width, height}) {
@@ -82,57 +84,13 @@ module.exports = class TreeMapArea {
 
 		image.on('mouseover', () => {
 			isTooltipShown = true;
-
-			const tooltipWidth = 200;
-			const tooltipHeight = 80;
-			const padding = 5;
-
-			const tooltipWrap = this.tooltipGroup.append('g').attrs({
-				class: 'animated fadeInDown',
-			}).styles({
-				'animation-duration': '0.2s',
-				'pointer-events': 'none',
-			});
-
-			const tooltip = tooltipWrap.append('g').attrs({
-				transform: `translate(${x}, ${y}) scale(0.6)`,
-				'transform-origin': 'center',
-			});
-
-			tooltip.append('rect').attrs({
-				x: -tooltipWidth / 2,
-				y: -tooltipHeight - 20,
-				rx: 3,
-				ry: 3,
-				width: tooltipWidth,
-				height: tooltipHeight,
-				fill: 'rgba(255, 255, 255, 0.7)',
-			});
-
-			tooltip.append('polygon').attrs({
-				points: '-5,-20 5,-20 0,-15',
-				fill: 'rgba(255, 255, 255, 0.7)',
-			});
-
-			const textGroup = tooltip.append('g').attrs({
-				fill: '#333',
-				'font-size': 8,
-				transform: `translate(${-tooltipWidth / 2 + padding}, ${-tooltipHeight - 20 + padding})`,
-			});
-
-			textGroup.append('text').text(tweet.text).call(textwrap().bounds({
-				width: tooltipWidth - padding * 2,
-				height: tooltipHeight - padding * 2,
-			}));
-
-			textGroup.selectAll('div').styles({color: '#333'});
+			this.onEmojiMouseOver({x: (x + 0.5) * UNIT, y: (y + 0.5) * UNIT, group, text: tweet.text, node: this.node});
+			this.hoveredGroups.add(group);
 
 			image.on('mouseleave', () => {
-				tooltipWrap.attr('class', 'animated fadeOutUp');
-				tooltipWrap.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
-					tooltipWrap.remove();
-				});
 				isTooltipShown = false;
+				this.onEmojiMouseLeave({group});
+				this.hoveredGroups.delete(group);
 
 				if (isEraceCancelled) {
 					erase();
@@ -182,6 +140,10 @@ module.exports = class TreeMapArea {
 	}
 
 	clear() {
+		for (const group of this.hoveredGroups) {
+			this.onEmojiMouseLeave({group});
+		}
+
 		for (let y = 0; y < this.currentView.shape[1]; y++) {
 			for (let x = 0; x < this.currentView.shape[0]; x++) {
 				if (this.currentView.get(x, y) !== null) {
