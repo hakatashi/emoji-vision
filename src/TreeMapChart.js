@@ -2,6 +2,9 @@ const D3 = require('d3');
 
 require('d3-selection-multi');
 const {schemePastel1} = require('d3-scale-chromatic');
+const sample = require('lodash/sample');
+
+const TreeMapArea = require('./TreeMapArea.js');
 
 module.exports = class TreeMapChart {
 	constructor(props) {
@@ -9,6 +12,7 @@ module.exports = class TreeMapChart {
 		this.treemap = props.treemap;
 		this.colorScale = props.colorScale;
 		this.cells = props.cells;
+		this.areaMap = new Map();
 	}
 
 	static create(node) {
@@ -21,7 +25,7 @@ module.exports = class TreeMapChart {
 		const treemap = D3.treemap().tile(D3.treemapResquarify).size([960, 500]).round(true).paddingInner(1);
 		const colorScale = D3.scaleOrdinal(schemePastel1);
 
-		const cells = svg.append('g');
+		const cells = svg.append('g').attrs({class: 'cells'});
 
 		return new TreeMapChart({
 			svg,
@@ -32,6 +36,8 @@ module.exports = class TreeMapChart {
 	}
 
 	updateLayout(categories) {
+		const {areaMap} = this;
+
 		const root = D3.hierarchy({
 			name: '',
 			children: categories,
@@ -41,7 +47,7 @@ module.exports = class TreeMapChart {
 
 		this.treemap(root);
 
-		const leaves = this.cells.selectAll('g').data(root.leaves(), ({data}) => data.name);
+		const leaves = this.cells.selectAll('.cells > g').data(root.leaves(), ({data}) => data.name);
 
 		leaves.attrs({
 			transform: (d) => `translate(${d.x0}, ${d.y0})`,
@@ -56,6 +62,17 @@ module.exports = class TreeMapChart {
 		leaves.select('text').text(({data}) => data.name).attrs({
 			x: (d) => d.x1 - d.x0 - 3,
 			y: (d) => d.y1 - d.y0 - 3,
+		});
+
+		leaves.each((d) => {
+			const area = areaMap.get(d.data.name);
+
+			if (area) {
+				area.resize({
+					width: d.x1 - d.x0,
+					height: d.y1 - d.y0,
+				});
+			}
 		});
 
 		const newLeaves = leaves.enter().append('g').attrs({
@@ -93,8 +110,18 @@ module.exports = class TreeMapChart {
 			'text-transform': 'uppercase',
 		});
 
+		newLeaves.append('g').attrs({
+			'clip-path': ({data}) => `url(#clip-${data.id})`,
+		}).each(function (d) {
+			areaMap.set(d.data.name, new TreeMapArea({
+				node: this,
+				width: d.x1 - d.x0,
+				height: d.y1 - d.y0,
+			}));
+		});
+
 		const exitLeaves = leaves.exit();
-		exitLeaves.each(function () {
+		exitLeaves.each(function (d) {
 			const exitLeaf = D3.select(this);
 
 			exitLeaf.select('rect').attrs({
@@ -106,10 +133,17 @@ module.exports = class TreeMapChart {
 			});
 
 			exitLeaf.select('text').remove();
+
+			areaMap.delete(d.data.name);
 		});
 	}
 
 	showTweets({tweets}) {
-		// console.log(tweets.length);
+		const categories = Array.from(this.areaMap.keys());
+
+		for (const tweet of tweets) {
+			const category = sample(categories);
+			this.areaMap.get(category).showTweet(tweet);
+		}
 	}
 };
