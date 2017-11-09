@@ -31,7 +31,7 @@ def process(month_path, hash_month_path, day):
          for h in tup.entities_hashtags),
         columns=['created_at', 'emojis', 'hashtag', 'text'])
     hash_tweets = hash_tweets.groupby(
-        pd.Grouper(key='created_at', freq='H'))
+        pd.Grouper(key='created_at', freq='4H'))
 
     top_hashes = []
     top_hash_tweets = pd.DataFrame(
