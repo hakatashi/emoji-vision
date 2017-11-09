@@ -41,7 +41,7 @@ module.exports = class TreeMapChart {
 
 		this.treemap(root);
 
-		const leaves = this.cells.selectAll('g').data(root.leaves());
+		const leaves = this.cells.selectAll('g').data(root.leaves(), ({data}) => data.name);
 
 		leaves.attrs({
 			transform: (d) => `translate(${d.x0}, ${d.y0})`,
@@ -82,7 +82,7 @@ module.exports = class TreeMapChart {
 		newLeaves.append('text').text(({data}) => data.name).attrs({
 			'clip-path': ({data}) => `url(#clip-${data.id})`,
 			'text-anchor': 'end',
-			'font-size': 30,
+			'font-size': 24,
 			fill: '#333',
 			class: 'exo-2',
 			x: (d) => d.x1 - d.x0,
@@ -90,8 +90,11 @@ module.exports = class TreeMapChart {
 		}).styles({
 			'text-transform': 'uppercase',
 		});
+
+		leaves.exit().remove();
 	}
 
-	showTweets(tweets) {
+	showTweets({tweets}) {
+		// console.log(tweets.length);
 	}
 };

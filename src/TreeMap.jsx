@@ -85,7 +85,7 @@ module.exports = class TreeMap extends React.Component {
 	}
 
 	initTime() {
-		// this.timeInterval = setInterval(this.handleTick, 50);
+		this.timeInterval = setInterval(this.handleTick, 50);
 	}
 
 	destroyTime() {
@@ -117,6 +117,14 @@ module.exports = class TreeMap extends React.Component {
 		});
 		this.props.onUpdateTime(nextTime);
 		this.time = nextTime;
+
+		const showingLayoutsIndex = this.layoutQueue.findIndex((layout) => layout.time > nextTime);
+		const showingLayouts = this.layoutQueue.slice(0, showingLayoutsIndex);
+
+		if (showingLayouts.length > 0) {
+			this.layoutQueue = this.layoutQueue.slice(showingLayoutsIndex);
+			this.updateLayout(last(showingLayouts));
+		}
 
 		// Preload
 		if (!this.isPreloading) {
@@ -188,7 +196,7 @@ module.exports = class TreeMap extends React.Component {
 			tweet.time = Date.parse(tweet.created_at);
 		});
 		data.stats.forEach((stat) => {
-			stat.time = stat.created_at;
+			stat.time = stat.created_at * 1000;
 		});
 
 		const sortedTweets = data.tweets.sort((a, b) => {
@@ -200,14 +208,15 @@ module.exports = class TreeMap extends React.Component {
 		const sortedStats = data.stats.sort((a, b) => a.time - b.time);
 
 		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > time));
-		this.layoutQueue = sortedStats.slice(sortedStats.findIndex((stat) => stat.time > time));
+		const layoutQueueIndex = sortedStats.findIndex((stat) => stat.time > time);
+		this.layoutQueue = sortedStats.slice(layoutQueueIndex);
 
-		this.updateLayout(sortedStats.reverse().find((stat) => stat.time < time));
+		this.updateLayout(sortedStats[layoutQueueIndex - 1] || sortedStats[0]);
 		this.setState({isLoading: false});
 	}
 
 	updateLayout(layout) {
-		this.chart.updateLayout(Object.entries(layout.hash_stat).map(([name, count]) => ({name, count})));
+		this.chart.updateLayout(Object.entries(layout.hash_stat).map(([name, count]) => ({name: `#${name}`, count})));
 	}
 
 	render() {
