@@ -13,16 +13,32 @@ LANG_TWEETS_DIR = './data/selected/lang-tweets'
 def process(month_path, lang_month_path, day):
     day_path = os.path.join(month_path, day)
     lang_output_path = os.path.join(lang_month_path, day + '.json')
-    cmd = """find {} -type f -name "*.json" | xargs jq '[.[] | {{created_at, emojis, text, lang}}]' | jq -s -c add""".format(day_path)
+    cmd = """find {} -type f -name "*.json" | xargs jq '[.[] | {{created_at, emojis, text, lang}}]' | jq -s -c add""".format(
+        day_path)
     print("$ {}".format(cmd))
 
     lang_tweets = subprocess.check_output(cmd, shell=True)
     lang_tweets = json.loads(lang_tweets)
-    lang_stats = json_normalize(lang_tweets).groupby('lang')['emojis'].apply(list).apply(len)
-    lang_stats = json.loads(lang_stats.to_json())
+    lang_tweets_df = json_normalize(lang_tweets)
+    lang_tweets_df = pd.DataFrame(
+        ({'created_at': tup.created_at, 'lang': tup.lang} for tup in
+         lang_tweets_df.itertuples())
+    )
+    lang_tweets_df['created_at'] = lang_tweets_df['created_at'].apply(
+        pd.to_datetime)
+    hour_grouper = pd.Grouper(key='created_at', freq='H')
+    lang_tweets_hours = lang_tweets_df.groupby(hour_grouper)
+
+    lang_stats = []
+    for t, df in lang_tweets_hours:
+        lang_stat = df.groupby('lang').size()
+        lang_stat = lang_stat.sort_values(ascending=False)
+        lang_stat = lang_stat[:20]
+        lang_stat = json.loads(lang_stat.to_json())
+        lang_stats.append({'created_at': t.timestamp(), 'lang_stat': lang_stat})
 
     with open(lang_output_path, 'w') as f:
-        json.dump({'tweets': lang_tweets[::1000], 'stats': lang_stats}, f)
+        json.dump({'tweets': lang_tweets[::100], 'stats': lang_stats}, f)
 
 
 def main():

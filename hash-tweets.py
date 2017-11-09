@@ -30,7 +30,8 @@ def process(month_path, hash_month_path, day):
 
     hash_stats = []
     for t, df in hash_tweets_hours:
-        hash_stat = df.groupby('hash_tag').apply(list).apply(len)
+        hash_stat = df.groupby('hash_tag').size()
+        hash_stat = hash_stat.sort_values(ascending=False)
         hash_stat = hash_stat[:20]
         hash_stat = json.loads(hash_stat.to_json())
         hash_stats.append({'created_at': t.timestamp(), 'hash_stat': hash_stat})
