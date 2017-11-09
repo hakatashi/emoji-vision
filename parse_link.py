@@ -43,10 +43,22 @@ def main():
                 file_path = os.path.join(lang_month_path, file)
                 with codecs.open(file_path, 'r+') as f:
                     tweets = json.load(f)
-                    for i in range(len(tweets)):
-                        parser.feed(tweets[i]['source'])
-                        tweets[i]['source'] = parser.links.copy()
+                    for i in range(len(tweets['tweets'])):
+                        parser.feed(tweets['tweets'][i]['source'])
+                        tweets['tweets'][i]['source'] = \
+                            list(parser.links.copy().values())[0]
                         parser.links.clear()
+
+                    for i in range(len(tweets['stats'])):
+                        stat = []
+                        for k, v in tweets['stats'][i]['device_stat'].items():
+                            parser.feed(k)
+                            stat.append(
+                                {'source': list(parser.links.copy().values())[
+                                    0], 'count': v})
+                            parser.links.clear()
+
+                        tweets['stats'][i]['device_stat'] = stat
 
                     f.seek(0)
                     json.dump(tweets, f, ensure_ascii=False)
