@@ -54,8 +54,8 @@ module.exports = class TreeMapChart {
 		});
 
 		leaves.select('text').text(({data}) => data.name).attrs({
-			x: (d) => d.x1 - d.x0,
-			y: (d) => d.y1 - d.y0,
+			x: (d) => d.x1 - d.x0 - 3,
+			y: (d) => d.y1 - d.y0 - 3,
 		});
 
 		const newLeaves = leaves.enter().append('g').attrs({
