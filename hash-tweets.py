@@ -13,31 +13,42 @@ HASH_TWEETS_DIR = os.getenv('HASH_TWEETS_DIR', './data/selected/hash-tweets')
 def process(month_path, hash_month_path, day):
     day_path = os.path.join(month_path, day)
     hash_output_path = os.path.join(hash_month_path, day + '.json')
-    cmd = """find {} -type f -name "*.json" | xargs jq '[.[] | select(.entities_hashtags != []) | {{entities_hashtags, created_at, emojis, text}}]' | jq -s -c add""".format(
-        day_path)
+    cmd = ("find {} -type f -name '*.json'"
+           " | xargs jq '[.[]"
+           " | select(.entities_hashtags != [])"
+           " | {{entities_hashtags, created_at, emojis, text}}]'"
+           " | jq -s -c add").format(day_path)
     print("$ {}".format(cmd))
 
     hash_tweets = subprocess.check_output(cmd, shell=True)
     hash_tweets = json.loads(hash_tweets)
-    hash_tweets_df = json_normalize(hash_tweets)
-    hash_tweets_df = pd.DataFrame(
-        ({'created_at': tup.created_at, 'hash_tag': h['text']} for tup in
-         hash_tweets_df.itertuples() for h in tup.entities_hashtags))
-    hash_tweets_df['created_at'] = hash_tweets_df['created_at'].apply(
-        pd.to_datetime)
-    hour_grouper = pd.Grouper(key='created_at', freq='H')
-    hash_tweets_hours = hash_tweets_df.groupby(hour_grouper)
+    hash_tweets = json_normalize(hash_tweets)
+    hash_tweets['created_at'] = hash_tweets['created_at'].apply(pd.to_datetime)
+    hash_tweets = pd.DataFrame(
+        ((tup.created_at, tup.emojis, h['text'], tup.text)
+         for tup in hash_tweets.itertuples()
+         for h in tup.entities_hashtags),
+        columns=['created_at', 'emojis', 'hashtag', 'text'])
+    hash_tweets = hash_tweets.groupby(
+        pd.Grouper(key='created_at', freq='H'))
 
-    hash_stats = []
-    for t, df in hash_tweets_hours:
-        hash_stat = df.groupby('hash_tag').size()
-        hash_stat = hash_stat.sort_values(ascending=False)
-        hash_stat = hash_stat[:20]
-        hash_stat = json.loads(hash_stat.to_json())
-        hash_stats.append({'created_at': t.timestamp(), 'hash_stat': hash_stat})
+    top_hashes = []
+    top_hash_tweets = pd.DataFrame(
+        columns=['created_at', 'emojis', 'hashtag', 'text'])
+    for t, df in hash_tweets:
+        stat = df.groupby('hashtag').size()
+        stat = stat.sort_values(ascending=False)[:20]
+        top_hashes.append({'created_at': t.timestamp(),
+                           'hashtag': stat.to_dict()})
 
+        top_hash_tweets = top_hash_tweets.append(
+            df[df['hashtag'].apply(lambda x: x in stat)], ignore_index=True)
+
+    top_hash_tweets = json.loads(
+        top_hash_tweets.to_json(orient='records', force_ascii=False))
     with open(hash_output_path, 'w') as f:
-        json.dump({'tweets': hash_tweets[::100], 'stats': hash_stats}, f)
+        json.dump({'tweets': top_hash_tweets, 'stats': top_hashes},
+                  f, ensure_ascii=False)
 
 
 def main():
