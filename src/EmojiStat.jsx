@@ -21,6 +21,14 @@ module.exports = class EmojiStat extends React.Component {
 				<div className="close" onClick={this.props.onClickClose}>
 					<Close/>
 				</div>
+				<div className="content">
+					<div className="basic-info">
+						<img src={`node_modules/twemoji/2/svg/${this.props.emoji.toLowerCase()}.svg`}/>
+						<div className="basic-stat exo-2">
+							Tree
+						</div>
+					</div>
+				</div>
 			</div>
 		);
 	}
