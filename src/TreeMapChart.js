@@ -35,11 +35,11 @@ module.exports = class TreeMapChart {
 		const root = D3.hierarchy({
 			name: '',
 			children: categories,
+		}).eachBefore((d) => {
+			d.data.id = Buffer.from(d.data.name).toString('hex');
 		}).sum((category) => category.count).sort((a, b) => b.height - a.height || b.value - a.value);
 
 		this.treemap(root);
-		console.log(root.leaves());
-		console.log(root.leaves()[0]);
 
 		const leaves = this.cells.selectAll('g').data(root.leaves());
 
@@ -53,16 +53,42 @@ module.exports = class TreeMapChart {
 			fill: (d, index) => this.colorScale(index),
 		});
 
-		leaves.enter().append('g').attrs({
+		leaves.select('text').text(({data}) => data.name).attrs({
+			x: (d) => d.x1 - d.x0,
+			y: (d) => d.y1 - d.y0,
+		});
+
+		const newLeaves = leaves.enter().append('g').attrs({
 			transform: (d) => `translate(${d.x0}, ${d.y0})`,
 		}).styles({
 			transition: 'all 0.5s',
-		}).append('rect').attrs({
+		});
+
+		newLeaves.append('rect').attrs({
 			width: (d) => d.x1 - d.x0,
 			height: (d) => d.y1 - d.y0,
 			fill: (d, index) => this.colorScale(index),
+			id: ({data}) => `rect-${data.id}`,
 		}).styles({
 			transition: 'all 0.5s',
+		});
+
+		newLeaves.append('clipPath').attrs({
+			id: ({data}) => `clip-${data.id}`,
+		}).append('use').attrs({
+			'xlink:href': ({data}) => `#rect-${data.id}`,
+		});
+
+		newLeaves.append('text').text(({data}) => data.name).attrs({
+			'clip-path': ({data}) => `url(#clip-${data.id})`,
+			'text-anchor': 'end',
+			'font-size': 30,
+			fill: '#333',
+			class: 'exo-2',
+			x: (d) => d.x1 - d.x0,
+			y: (d) => d.y1 - d.y0,
+		}).styles({
+			'text-transform': 'uppercase',
 		});
 	}
 
