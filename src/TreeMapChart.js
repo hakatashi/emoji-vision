@@ -94,15 +94,19 @@ module.exports = class TreeMapChart {
 		});
 
 		const exitLeaves = leaves.exit();
-		exitLeaves.select('rect').attrs({
-			class: 'animated zoomOut',
-		}).styles({
-			'animation-duration': '0.5s',
+		exitLeaves.each(function () {
+			const exitLeaf = D3.select(this);
+
+			exitLeaf.select('rect').attrs({
+				class: 'animated zoomOut',
+			}).styles({
+				'animation-duration': '0.5s',
+			}).on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
+				exitLeaf.remove();
+			});
+
+			exitLeaf.select('text').remove();
 		});
-		exitLeaves.select('text').remove();
-		setTimeout(() => {
-			exitLeaves.remove();
-		}, 500);
 	}
 
 	showTweets({tweets}) {

@@ -2,6 +2,7 @@ const React = require('react');
 const {default: Hammer} = require('react-hammerjs');
 const {default: Measure} = require('react-measure');
 const CSSTransition = require('react-transition-group/CSSTransition');
+const noop = require('lodash/noop');
 
 const WorldMap = require('./WorldMap.jsx');
 const TreeMap = require('./TreeMap.jsx');
@@ -21,6 +22,12 @@ module.exports = class App extends React.Component {
 			isModalShowing: false,
 			detailedEmoji: null,
 		};
+
+		this.measureScale = noop;
+
+		window.addEventListener('resize', () => {
+			this.measureScale();
+		});
 	}
 
 	handlePanKnob = (event) => {
@@ -35,7 +42,7 @@ module.exports = class App extends React.Component {
 		this.setState({temporalTime: targetTime, isSliding: true});
 
 		if (event.eventType === 4 /* INPUT_END */) {
-			this.setState({startTime: targetTime});
+			this.setState({startTime: targetTime, isSliding: false});
 		}
 	}
 
@@ -44,7 +51,7 @@ module.exports = class App extends React.Component {
 	}
 
 	handleUpdateTime = (nextTime) => {
-		this.setState({time: nextTime, isSliding: false});
+		this.setState({time: nextTime});
 	}
 
 	handleClickEmoji = (emoji) => {
@@ -85,16 +92,19 @@ module.exports = class App extends React.Component {
 							<div className="scale-wrap">
 								<svg className="scale" viewBox={`0 0 ${scaleWidth} ${scaleHeight}`}>
 									<Measure bounds onResize={this.handleScaleResize}>
-										{({measureRef}) => (
-											<rect
-												ref={measureRef}
-												x="0"
-												y="0"
-												width={scaleWidth}
-												height={scaleHeight}
-												fill="transparent"
-											/>
-										)}
+										{({measureRef, measure}) => {
+											this.measureScale = measure;
+											return (
+												<rect
+													ref={measureRef}
+													x="0"
+													y="0"
+													width={scaleWidth}
+													height={scaleHeight}
+													fill="transparent"
+												/>
+											);
+										}}
 									</Measure>
 									<line
 										x1="0"
