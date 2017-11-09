@@ -69,8 +69,10 @@ module.exports = class TreeMapChart {
 			height: (d) => d.y1 - d.y0,
 			fill: (d, index) => this.colorScale(index),
 			id: ({data}) => `rect-${data.id}`,
+			class: 'animated zoomIn',
 		}).styles({
 			transition: 'all 0.5s',
+			'animation-duration': '0.5s',
 		});
 
 		newLeaves.append('clipPath').attrs({
@@ -91,7 +93,15 @@ module.exports = class TreeMapChart {
 			'text-transform': 'uppercase',
 		});
 
-		leaves.exit().remove();
+		const exitLeaves = leaves.exit();
+		exitLeaves.select('rect').attrs({
+			class: 'animated zoomOut',
+		}).styles({
+			'animation-duration': '0.5s',
+		});
+		setTimeout(() => {
+			exitLeaves.remove();
+		}, 500);
 	}
 
 	showTweets({tweets}) {

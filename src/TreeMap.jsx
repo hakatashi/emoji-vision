@@ -142,7 +142,7 @@ module.exports = class TreeMap extends React.Component {
 		const [nextYear, nextMonth, nextDay] = file;
 		console.info(`Preloading ${fileToFileName(file)}...`);
 
-		const tweets = await client([
+		const data = await client([
 			'selected',
 			'hash-tweets',
 			nextYear,
@@ -150,7 +150,7 @@ module.exports = class TreeMap extends React.Component {
 			`${nextDay.toString().padStart(2, '0')}.json`,
 		].join('/')).catch((error) => {
 			console.error(error);
-			return [];
+			return {tweets: [], stats: []};
 		});
 		this.isPreloading = false;
 
@@ -160,16 +160,23 @@ module.exports = class TreeMap extends React.Component {
 
 		this.loadedFile = file;
 
-		tweets.forEach((tweet) => {
+		data.tweets.forEach((tweet) => {
 			tweet.time = Date.parse(tweet.created_at);
 		});
-		const sortedTweets = this.tweetsQueue.concat(tweets).sort((a, b) => {
+		data.stats.forEach((stat) => {
+			stat.time = stat.created_at * 1000;
+		});
+
+		const sortedTweets = this.tweetsQueue.concat(data.tweets).sort((a, b) => {
 			const dateA = a.time;
 			const dateB = b.time;
 
 			return dateA - dateB;
 		});
+		const sortedStats = this.layoutQueue.concat(data.stats).sort((a, b) => a.time - b.time);
+
 		this.tweetsQueue = sortedTweets.slice(sortedTweets.findIndex((tweet) => tweet.time > this.time));
+		this.layoutQueue = sortedStats.slice(sortedStats.findIndex((stat) => stat.time > this.time));
 	}
 
 	handleTimeleap = async (time) => {
@@ -188,7 +195,7 @@ module.exports = class TreeMap extends React.Component {
 			`${nextDay.toString().padStart(2, '0')}.json`,
 		].join('/')).catch((error) => {
 			console.error(error);
-			return [];
+			return {tweets: [], stats: []};
 		});
 		this.loadedFile = file;
 
