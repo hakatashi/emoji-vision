@@ -1,6 +1,7 @@
 import json
 import subprocess
 import os
+import random
 
 import pandas as pd
 from pandas.io.json import json_normalize
@@ -46,9 +47,10 @@ def process(month_path, hash_month_path, day):
 
     top_hash_tweets = json.loads(
         top_hash_tweets.to_json(orient='records', force_ascii=False))
+    sampled_top_hash_tweets = [top_hash_tweets[i] for i in sorted(random.sample(xrange(len(top_hash_tweets)), 1500))]
     with open(hash_output_path, 'w') as f:
-        json.dump({'tweets': top_hash_tweets, 'stats': top_hashes},
-                  f, ensure_ascii=False)
+        json.dump({'tweets': sampled_top_hash_tweets, 'stats': top_hashes},
+                  f, ensure_ascii=False, separators=(',', ':'))
 
 
 def main():
