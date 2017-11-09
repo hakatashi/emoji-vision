@@ -1,5 +1,6 @@
 const D3 = require('d3');
 const topojson = require('topojson');
+const noop = require('lodash/noop');
 
 require('d3-selection-multi');
 const {textwrap} = require('d3-textwrap');
@@ -47,15 +48,16 @@ const timezoneCities = [
 	},
 ];
 
-module.exports = class WorldMap {
+module.exports = class WorldMapChart {
 	constructor(props) {
 		this.svg = props.svg;
 		this.emojiGroup = props.emojiGroup;
 		this.tooltipGroup = props.tooltipGroup;
 		this.citiesMap = props.citiesMap;
+		this.onClickEmoji = props.onClickEmoji;
 	}
 
-	static async create(node) {
+	static async create(node, {onClickEmoji = noop}) {
 		const mapData = await new Promise((resolve, reject) => {
 			D3.json('https://unpkg.com/world-atlas@1/world/110m.json', (error, data) => {
 				if (error) {
@@ -119,11 +121,12 @@ module.exports = class WorldMap {
 		const emojiGroup = svg.append('g');
 		const tooltipGroup = svg.append('g');
 
-		return new WorldMap({
+		return new WorldMapChart({
 			svg,
 			emojiGroup,
 			tooltipGroup,
 			citiesMap,
+			onClickEmoji,
 		});
 	}
 
@@ -156,6 +159,8 @@ module.exports = class WorldMap {
 				'xlink:href': `node_modules/twemoji/2/svg/${fileName}.svg`,
 				width: 150,
 				height: 150,
+			}).styles({
+				cursor: 'pointer',
 			});
 
 			let isTooltipShown = false;
@@ -225,6 +230,10 @@ module.exports = class WorldMap {
 						erase();
 					}
 				});
+			});
+
+			image.on('click', () => {
+				this.onClickEmoji(emoji);
 			});
 
 			setTimeout(() => {
