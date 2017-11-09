@@ -54,8 +54,8 @@ module.exports = class TreeMapChart {
 		});
 
 		leaves.select('text').text(({data}) => data.name).attrs({
-			x: (d) => d.x1 - d.x0,
-			y: (d) => d.y1 - d.y0,
+			x: (d) => d.x1 - d.x0 - 3,
+			y: (d) => d.y1 - d.y0 - 3,
 		});
 
 		const newLeaves = leaves.enter().append('g').attrs({
@@ -69,8 +69,10 @@ module.exports = class TreeMapChart {
 			height: (d) => d.y1 - d.y0,
 			fill: (d, index) => this.colorScale(index),
 			id: ({data}) => `rect-${data.id}`,
+			class: 'animated zoomIn',
 		}).styles({
 			transition: 'all 0.5s',
+			'animation-duration': '0.5s',
 		});
 
 		newLeaves.append('clipPath').attrs({
@@ -82,16 +84,25 @@ module.exports = class TreeMapChart {
 		newLeaves.append('text').text(({data}) => data.name).attrs({
 			'clip-path': ({data}) => `url(#clip-${data.id})`,
 			'text-anchor': 'end',
-			'font-size': 24,
+			'font-size': 16,
 			fill: '#333',
 			class: 'exo-2',
-			x: (d) => d.x1 - d.x0,
-			y: (d) => d.y1 - d.y0,
+			x: (d) => d.x1 - d.x0 - 3,
+			y: (d) => d.y1 - d.y0 - 3,
 		}).styles({
 			'text-transform': 'uppercase',
 		});
 
-		leaves.exit().remove();
+		const exitLeaves = leaves.exit();
+		exitLeaves.select('rect').attrs({
+			class: 'animated zoomOut',
+		}).styles({
+			'animation-duration': '0.5s',
+		});
+		exitLeaves.select('text').remove();
+		setTimeout(() => {
+			exitLeaves.remove();
+		}, 500);
 	}
 
 	showTweets({tweets}) {
