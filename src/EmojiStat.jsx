@@ -4,8 +4,12 @@ const Close = require('react-icons/lib/io/close');
 
 module.exports = class EmojiStat extends React.Component {
 	static propTypes = {
-		emoji: PropTypes.string.isRequired,
+		emoji: PropTypes.string,
 		onClickClose: PropTypes.func.isRequired,
+	}
+
+	static defaultProps = {
+		emoji: null,
 	}
 
 	constructor(state, props) {

@@ -123,7 +123,9 @@ module.exports = class TreeMap extends React.Component {
 
 		if (showingLayouts.length > 0) {
 			this.layoutQueue = this.layoutQueue.slice(showingLayoutsIndex);
-			this.updateLayout(last(showingLayouts));
+			if (new Date(last(showingLayouts).time).getHours() % 4 === 0) {
+				this.updateLayout(last(showingLayouts));
+			}
 		}
 
 		// Preload
@@ -218,15 +220,13 @@ module.exports = class TreeMap extends React.Component {
 		const layoutQueueIndex = sortedStats.findIndex((stat) => stat.time > time);
 		this.layoutQueue = sortedStats.slice(layoutQueueIndex);
 
-		this.updateLayout(sortedStats[layoutQueueIndex - 1] || sortedStats[0]);
+		if (sortedStats.length > 0) {
+			this.updateLayout(sortedStats[layoutQueueIndex - 1] || sortedStats[0]);
+		}
 		this.setState({isLoading: false});
 	}
 
 	updateLayout(layout) {
-		if (new Date(layout.time).getHours() % 4 !== 0) {
-			return;
-		}
-
 		this.chart.updateLayout(Object.entries(layout.hash_stat).map(([name, count]) => ({name: `#${name}`, count})));
 	}
 

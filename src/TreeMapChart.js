@@ -2,6 +2,9 @@ const D3 = require('d3');
 
 require('d3-selection-multi');
 const {schemePastel1} = require('d3-scale-chromatic');
+const {textwrap} = require('d3-textwrap');
+
+const TreeMapArea = require('./TreeMapArea.js');
 
 module.exports = class TreeMapChart {
 	constructor(props) {
@@ -9,6 +12,9 @@ module.exports = class TreeMapChart {
 		this.treemap = props.treemap;
 		this.colorScale = props.colorScale;
 		this.cells = props.cells;
+		this.tooltipGroup = props.tooltipGroup;
+		this.areaMap = new Map();
+		this.tooltipMap = new WeakMap();
 	}
 
 	static create(node) {
@@ -21,17 +27,79 @@ module.exports = class TreeMapChart {
 		const treemap = D3.treemap().tile(D3.treemapResquarify).size([960, 500]).round(true).paddingInner(1);
 		const colorScale = D3.scaleOrdinal(schemePastel1);
 
-		const cells = svg.append('g');
+		const cells = svg.append('g').attrs({class: 'cells'});
+		const tooltipGroup = svg.append('g');
 
 		return new TreeMapChart({
 			svg,
 			treemap,
 			colorScale,
 			cells,
+			tooltipGroup,
+		});
+	}
+
+	handleEmojiMouseOver = ({x, y, group, text, node}) => {
+		const areaData = D3.select(node.parentNode).data()[0];
+
+		const tooltipWidth = 200;
+		const tooltipHeight = 80;
+		const padding = 5;
+
+		const tooltipWrap = this.tooltipGroup.append('g').attrs({
+			class: 'animated fadeInDown',
+		}).styles({
+			'animation-duration': '0.2s',
+			'pointer-events': 'none',
+		});
+
+		const tooltip = tooltipWrap.append('g').attrs({
+			transform: `translate(${x + areaData.x0}, ${y + areaData.y0}) scale(0.6)`,
+			'transform-origin': 'center',
+		});
+
+		tooltip.append('rect').attrs({
+			x: -tooltipWidth / 2,
+			y: -tooltipHeight - 20,
+			rx: 3,
+			ry: 3,
+			width: tooltipWidth,
+			height: tooltipHeight,
+			fill: 'rgba(255, 255, 255, 0.7)',
+		});
+
+		tooltip.append('polygon').attrs({
+			points: '-5,-20 5,-20 0,-15',
+			fill: 'rgba(255, 255, 255, 0.7)',
+		});
+
+		const textGroup = tooltip.append('g').attrs({
+			fill: '#333',
+			'font-size': 8,
+			transform: `translate(${-tooltipWidth / 2 + padding}, ${-tooltipHeight - 20 + padding})`,
+		});
+
+		textGroup.append('text').text(text).call(textwrap().bounds({
+			width: tooltipWidth - padding * 2,
+			height: tooltipHeight - padding * 2,
+		}));
+
+		textGroup.selectAll('div').styles({color: '#333'});
+
+		this.tooltipMap.set(group, tooltipWrap);
+	}
+
+	handleEmojiMouseLeave = ({group}) => {
+		const tooltipWrap = this.tooltipMap.get(group);
+		tooltipWrap.attr('class', 'animated fadeOutUp');
+		tooltipWrap.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
+			tooltipWrap.remove();
 		});
 	}
 
 	updateLayout(categories) {
+		const {areaMap, handleEmojiMouseOver, handleEmojiMouseLeave} = this;
+
 		const root = D3.hierarchy({
 			name: '',
 			children: categories,
@@ -41,7 +109,7 @@ module.exports = class TreeMapChart {
 
 		this.treemap(root);
 
-		const leaves = this.cells.selectAll('g').data(root.leaves(), ({data}) => data.name);
+		const leaves = this.cells.selectAll('.cells > g').data(root.leaves(), ({data}) => data.name);
 
 		leaves.attrs({
 			transform: (d) => `translate(${d.x0}, ${d.y0})`,
@@ -56,6 +124,17 @@ module.exports = class TreeMapChart {
 		leaves.select('text').text(({data}) => data.name).attrs({
 			x: (d) => d.x1 - d.x0 - 3,
 			y: (d) => d.y1 - d.y0 - 3,
+		});
+
+		leaves.each((d) => {
+			const area = areaMap.get(d.data.name);
+
+			if (area) {
+				area.resize({
+					width: d.x1 - d.x0,
+					height: d.y1 - d.y0,
+				});
+			}
 		});
 
 		const newLeaves = leaves.enter().append('g').attrs({
@@ -93,19 +172,45 @@ module.exports = class TreeMapChart {
 			'text-transform': 'uppercase',
 		});
 
-		const exitLeaves = leaves.exit();
-		exitLeaves.select('rect').attrs({
-			class: 'animated zoomOut',
-		}).styles({
-			'animation-duration': '0.5s',
+		newLeaves.append('g').attrs({
+			'clip-path': ({data}) => `url(#clip-${data.id})`,
+		}).each(function (d) {
+			areaMap.set(d.data.name, new TreeMapArea({
+				node: this,
+				width: d.x1 - d.x0,
+				height: d.y1 - d.y0,
+				onEmojiMouseOver: handleEmojiMouseOver,
+				onEmojiMouseLeave: handleEmojiMouseLeave,
+			}));
 		});
-		exitLeaves.select('text').remove();
-		setTimeout(() => {
-			exitLeaves.remove();
-		}, 500);
+
+		const exitLeaves = leaves.exit();
+		exitLeaves.each(function (d) {
+			const exitLeaf = D3.select(this);
+
+			exitLeaf.select('rect').attrs({
+				class: 'animated zoomOut',
+			}).styles({
+				'animation-duration': '0.5s',
+			}).on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
+				exitLeaf.remove();
+			});
+
+			exitLeaf.select('text').remove();
+
+			areaMap.get(d.data.name).clear();
+			areaMap.delete(d.data.name);
+		});
 	}
 
 	showTweets({tweets}) {
-		// console.log(tweets.length);
+		for (const tweet of tweets) {
+			for (const hashtag of tweet.entities_hashtags) {
+				const hashtagText = `#${hashtag.text}`;
+				if (this.areaMap.has(hashtagText)) {
+					this.areaMap.get(hashtagText).showTweet(tweet);
+				}
+			}
+		}
 	}
 };
