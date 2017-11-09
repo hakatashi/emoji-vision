@@ -3,7 +3,6 @@ const D3 = require('d3');
 require('d3-selection-multi');
 const {schemePastel1} = require('d3-scale-chromatic');
 const {textwrap} = require('d3-textwrap');
-const sample = require('lodash/sample');
 
 const TreeMapArea = require('./TreeMapArea.js');
 
@@ -205,11 +204,13 @@ module.exports = class TreeMapChart {
 	}
 
 	showTweets({tweets}) {
-		const categories = Array.from(this.areaMap.keys());
-
 		for (const tweet of tweets) {
-			const category = sample(categories);
-			this.areaMap.get(category).showTweet(tweet);
+			for (const hashtag of tweet.entities_hashtags) {
+				const hashtagText = `#${hashtag.text}`;
+				if (this.areaMap.has(hashtagText)) {
+					this.areaMap.get(hashtagText).showTweet(tweet);
+				}
+			}
 		}
 	}
 };
