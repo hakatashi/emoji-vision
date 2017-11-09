@@ -134,6 +134,7 @@ module.exports = class TreeMapChart {
 
 			exitLeaf.select('text').remove();
 
+			areaMap.get(d.data.name).clear();
 			areaMap.delete(d.data.name);
 		});
 	}

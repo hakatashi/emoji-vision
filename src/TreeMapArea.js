@@ -3,7 +3,7 @@ const D3 = require('d3');
 
 const WIDTH = 960;
 const HEIGHT = 500;
-const UNIT = 20;
+const UNIT = 40;
 
 module.exports = class TreeMapArea {
 	constructor({node, width, height}) {
@@ -16,9 +16,24 @@ module.exports = class TreeMapArea {
 		this.area = ndarray(Array(areaWidth * areaHeight).fill(null), [areaWidth, areaHeight]);
 
 		this.currentView = this.area.hi(Math.floor(width / UNIT), Math.floor(height / UNIT));
+		this.reverseMap = new WeakMap();
 	}
 
 	resize({width, height}) {
+		const newWidthUnits = Math.floor(width / UNIT);
+		const newHeightUnits = Math.floor(height / UNIT);
+
+		for (let y = 0; y < this.currentView.shape[1]; y++) {
+			for (let x = 0; x < this.currentView.shape[0]; x++) {
+				if ((x >= newWidthUnits || y >= newHeightUnits) && this.currentView.get(x, y) !== null) {
+					this.remove(this.currentView.get(x, y));
+				}
+			}
+		}
+
+		this.width = width;
+		this.height = height;
+		this.currentView = this.area.hi(newWidthUnits, newHeightUnits);
 	}
 
 	showTweet(tweet) {
@@ -38,19 +53,30 @@ module.exports = class TreeMapArea {
 			'transform-origin': 'center',
 		});
 
-		group.append('rect').attrs({
-			x: 5,
-			y: 5,
-			width: 5,
-			height: 5,
+		group.append('circle').attrs({
+			cx: UNIT / 2,
+			cy: UNIT / 2,
+			r: 15,
 		});
 
-		this.currentView.set(x, y, true);
+		this.currentView.set(x, y, group);
+		this.reverseMap.set(group, {x, y});
 
 		setTimeout(() => {
-			this.currentView.set(x, y, null);
-			group.remove();
+			this.remove(group);
 		}, 3000);
+	}
+
+	remove(group) {
+		const {x, y} = this.reverseMap.get(group);
+		const locatedGroup = this.currentView.get(x, y);
+
+		if (locatedGroup !== group) {
+			return;
+		}
+
+		this.currentView.set(x, y, null);
+		group.remove();
 	}
 
 	allocate() {
@@ -63,5 +89,15 @@ module.exports = class TreeMapArea {
 		}
 
 		return null;
+	}
+
+	clear() {
+		for (let y = 0; y < this.currentView.shape[1]; y++) {
+			for (let x = 0; x < this.currentView.shape[0]; x++) {
+				if (this.currentView.get(x, y) !== null) {
+					this.remove(this.currentView.get(x, y));
+				}
+			}
+		}
 	}
 };
