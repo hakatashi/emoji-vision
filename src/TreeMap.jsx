@@ -223,6 +223,10 @@ module.exports = class TreeMap extends React.Component {
 	}
 
 	updateLayout(layout) {
+		if (new Date(layout.time).getHours() % 4 !== 0) {
+			return;
+		}
+
 		this.chart.updateLayout(Object.entries(layout.hash_stat).map(([name, count]) => ({name: `#${name}`, count})));
 	}
 

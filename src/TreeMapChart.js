@@ -84,11 +84,11 @@ module.exports = class TreeMapChart {
 		newLeaves.append('text').text(({data}) => data.name).attrs({
 			'clip-path': ({data}) => `url(#clip-${data.id})`,
 			'text-anchor': 'end',
-			'font-size': 24,
+			'font-size': 16,
 			fill: '#333',
 			class: 'exo-2',
-			x: (d) => d.x1 - d.x0,
-			y: (d) => d.y1 - d.y0,
+			x: (d) => d.x1 - d.x0 - 3,
+			y: (d) => d.y1 - d.y0 - 3,
 		}).styles({
 			'text-transform': 'uppercase',
 		});
@@ -99,6 +99,7 @@ module.exports = class TreeMapChart {
 		}).styles({
 			'animation-duration': '0.5s',
 		});
+		exitLeaves.select('text').remove();
 		setTimeout(() => {
 			exitLeaves.remove();
 		}, 500);
