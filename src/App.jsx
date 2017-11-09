@@ -1,7 +1,6 @@
 const React = require('react');
 const {default: Hammer} = require('react-hammerjs');
 const {default: Measure} = require('react-measure');
-const classNames = require('classnames');
 const CSSTransition = require('react-transition-group/CSSTransition');
 
 const WorldMap = require('./WorldMap.jsx');
@@ -18,7 +17,7 @@ module.exports = class App extends React.Component {
 			startTime: Date.UTC(2017, 5, 2, 6),
 			realScaleWidth: Infinity,
 			isSliding: false,
-			mode: 'geo',
+			mode: 'tree',
 			isModalShowing: false,
 			detailedEmoji: null,
 		};

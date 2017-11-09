@@ -66,6 +66,45 @@ module.exports = class TreeMap extends React.Component {
 		this.chart = await TreeMapChart.create(this.map, {
 			onClickEmoji: this.handleClickEmoji,
 		});
+		this.chart.updateLayout([
+			{name: '#hoge', count: 100},
+			{name: '#fuga', count: 80},
+			{name: '#piyo', count: 50},
+			{name: '#foo', count: 20},
+			{name: '#bar', count: 10},
+			{name: '#hoge2', count: 100},
+			{name: '#fuga2', count: 80},
+			{name: '#piyo2', count: 50},
+			{name: '#foo2', count: 20},
+			{name: '#bar2', count: 10},
+			{name: '#hoge3', count: 100},
+			{name: '#fuga3', count: 80},
+			{name: '#piyo3', count: 50},
+			{name: '#foo3', count: 20},
+			{name: '#bar3', count: 10},
+		]);
+		setTimeout(() => {
+			console.log('update');
+			this.chart.updateLayout([
+				{name: '#hoge', count: 80},
+				{name: '#fuga', count: 20},
+				{name: '#piyo', count: 70},
+				{name: '#foo', count: 90},
+				{name: '#bar', count: 100},
+				{name: '#hoge4', count: 60},
+				{name: '#fuga4', count: 100},
+				{name: '#piyo4', count: 10},
+				{name: '#foo4', count: 90},
+				{name: '#bar4', count: 40},
+				{name: '#hoge3', count: 70},
+				{name: '#fuga3', count: 100},
+				{name: '#piyo3', count: 80},
+				{name: '#foo3', count: 70},
+				{name: '#bar3', count: 30},
+				{name: '#bar2', count: 30},
+				{name: '#hoge2', count: 30},
+			]);
+		}, 3000);
 		if (this.isDestroyed) {
 			return;
 		}
@@ -83,7 +122,7 @@ module.exports = class TreeMap extends React.Component {
 	}
 
 	initTime() {
-		this.timeInterval = setInterval(this.handleTick, 50);
+		// this.timeInterval = setInterval(this.handleTick, 50);
 	}
 
 	destroyTime() {
