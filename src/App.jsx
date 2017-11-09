@@ -19,6 +19,7 @@ module.exports = class App extends React.Component {
 			isSliding: false,
 			mode: 'geo',
 			isModalShowing: false,
+			detailedEmoji: null,
 		};
 	}
 
@@ -44,6 +45,19 @@ module.exports = class App extends React.Component {
 
 	handleUpdateTime = (nextTime) => {
 		this.setState({time: nextTime, isSliding: false});
+	}
+
+	handleClickEmoji = (emoji) => {
+		this.setState({
+			isModalShowing: true,
+			detailedEmoji: emoji,
+		});
+	}
+
+	handleCloseStat = () => {
+		this.setState({
+			isModalShowing: false,
+		});
 	}
 
 	render() {
@@ -159,7 +173,7 @@ module.exports = class App extends React.Component {
 								<div className="decrement"/>
 							</div>
 							<div className="clock-seperator narrow"/>
-							<div className="clock-slot hour" onClick={() => this.setState({isModalShowing: !this.state.isModalShowing})}>
+							<div className="clock-slot hour">
 								<div className="increment"/>
 								{date.getHours().toString().padStart(2, '0')}
 								<div className="decrement"/>
@@ -176,6 +190,7 @@ module.exports = class App extends React.Component {
 						<WorldMap
 							startTime={this.state.startTime}
 							onUpdateTime={this.handleUpdateTime}
+							onClickEmoji={this.handleClickEmoji}
 						/>
 					)}
 					{this.state.mode === 'tree' && (
@@ -189,7 +204,7 @@ module.exports = class App extends React.Component {
 				</div>
 				<div className="modal-layer">
 					<CSSTransition
-						timeout={1000}
+						timeout={500}
 						classNames={{
 							enter: 'animated fadeInUp',
 							exit: 'animated fadeOutDown',
@@ -198,7 +213,10 @@ module.exports = class App extends React.Component {
 						mountOnEnter
 						unmountOnExit
 					>
-						<EmojiStat/>
+						<EmojiStat
+							emoji={this.state.detailedEmoji && this.state.detailedEmoji.unified}
+							onClickClose={this.handleCloseStat}
+						/>
 					</CSSTransition>
 				</div>
 			</div>

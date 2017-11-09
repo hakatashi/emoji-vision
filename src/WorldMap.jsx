@@ -30,6 +30,7 @@ module.exports = class WorldMap extends React.Component {
 	static propTypes = {
 		startTime: PropTypes.number.isRequired,
 		onUpdateTime: PropTypes.func.isRequired,
+		onClickEmoji: PropTypes.func.isRequired,
 	}
 
 	constructor(state, props) {
@@ -61,7 +62,9 @@ module.exports = class WorldMap extends React.Component {
 	}
 
 	initialize = async () => {
-		this.worldMap = await WorldMapChart.create(this.map);
+		this.worldMap = await WorldMapChart.create(this.map, {
+			onClickEmoji: this.handleClickEmoji,
+		});
 		this.handleTimeleap(this.time);
 		this.initTime();
 	}
@@ -80,6 +83,10 @@ module.exports = class WorldMap extends React.Component {
 
 	destroyTime() {
 		clearInterval(this.timeInterval);
+	}
+
+	handleClickEmoji = (emoji) => {
+		this.props.onClickEmoji(emoji);
 	}
 
 	handleTick = () => {

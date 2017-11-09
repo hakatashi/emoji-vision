@@ -111,9 +111,31 @@ html, body {
 		left: 10%;
 		right: 10%;
 		bottom: 10%;
-		background: #222;
+		background: rgba(34, 34, 34, 0.9);
 		border: solid 5px white;
 
 		animation-duration: 0.3s;
+
+		.close {
+			$size: 80px;
+
+			position: absolute;
+			top: calc(-$size * 0.3);
+			right: calc(-$size * 0.3);
+			width: $size;
+			height: $size;
+			box-sizing: border-box;
+			border: 5px solid white;
+
+			background: #222;
+
+			line-height: $size;
+			text-align: center;
+			cursor: pointer;
+
+			color: white;
+			font-size: 50px;
+			line-height: calc($size * 0.75);
+		}
 	}
 }

@@ -1,5 +1,6 @@
 const D3 = require('d3');
 const topojson = require('topojson');
+const noop = require('lodash/noop');
 
 require('d3-selection-multi');
 const {textwrap} = require('d3-textwrap');
@@ -53,9 +54,10 @@ module.exports = class WorldMapChart {
 		this.emojiGroup = props.emojiGroup;
 		this.tooltipGroup = props.tooltipGroup;
 		this.citiesMap = props.citiesMap;
+		this.onClickEmoji = props.onClickEmoji;
 	}
 
-	static async create(node) {
+	static async create(node, {onClickEmoji = noop}) {
 		const mapData = await new Promise((resolve, reject) => {
 			D3.json('https://unpkg.com/world-atlas@1/world/110m.json', (error, data) => {
 				if (error) {
@@ -124,6 +126,7 @@ module.exports = class WorldMapChart {
 			emojiGroup,
 			tooltipGroup,
 			citiesMap,
+			onClickEmoji,
 		});
 	}
 
@@ -156,6 +159,8 @@ module.exports = class WorldMapChart {
 				'xlink:href': `node_modules/twemoji/2/svg/${fileName}.svg`,
 				width: 150,
 				height: 150,
+			}).styles({
+				cursor: 'pointer',
 			});
 
 			let isTooltipShown = false;
@@ -225,6 +230,10 @@ module.exports = class WorldMapChart {
 						erase();
 					}
 				});
+			});
+
+			image.on('click', () => {
+				this.onClickEmoji(emoji);
 			});
 
 			setTimeout(() => {
