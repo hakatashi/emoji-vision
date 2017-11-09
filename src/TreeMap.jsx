@@ -84,7 +84,6 @@ module.exports = class TreeMap extends React.Component {
 			{name: '#bar3', count: 10},
 		]);
 		setTimeout(() => {
-			console.log('update');
 			this.chart.updateLayout([
 				{name: '#hoge', count: 80},
 				{name: '#fuga', count: 20},
