@@ -1,18 +1,21 @@
 const ndarray = require('ndarray');
 const D3 = require('d3');
 
+const {selectEmoji} = require('./util.js');
+
 const WIDTH = 960;
 const HEIGHT = 500;
 const UNIT = 40;
 
 module.exports = class TreeMapArea {
-	constructor({node, width, height, offset, onEmojiMouseOver, onEmojiMouseLeave}) {
+	constructor({node, width, height, offset, onEmojiMouseOver, onEmojiMouseLeave, onClickEmoji}) {
 		this.node = node;
 		this.width = width;
 		this.height = height;
 		this.offset = offset;
 		this.onEmojiMouseOver = onEmojiMouseOver;
 		this.onEmojiMouseLeave = onEmojiMouseLeave;
+		this.onClickEmoji = onClickEmoji;
 
 		const areaWidth = Math.floor(WIDTH / UNIT);
 		const areaHeight = Math.floor(HEIGHT / UNIT);
@@ -41,7 +44,7 @@ module.exports = class TreeMapArea {
 	}
 
 	showTweet(tweet) {
-		const emoji = tweet.emojis[0];
+		const emoji = selectEmoji(tweet.emojis);
 
 		const coordinates = this.allocate();
 		if (coordinates === null) {
@@ -57,7 +60,7 @@ module.exports = class TreeMapArea {
 			'transform-origin': 'center',
 		});
 
-		const fileName = emoji.unified.startsWith('00') ? emoji.unified.slice(2).toLowerCase() : emoji.unified.toLowerCase();
+		const fileName = emoji.startsWith('00') ? emoji.slice(2).toLowerCase() : emoji.toLowerCase();
 
 		const image = group.append('image').attrs({
 			class: 'emoji animated bounceIn',

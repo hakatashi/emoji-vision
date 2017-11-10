@@ -5,6 +5,8 @@ const noop = require('lodash/noop');
 require('d3-selection-multi');
 const {textwrap} = require('d3-textwrap');
 
+const {selectEmoji} = require('./util.js');
+
 const mercatorProjection = D3.geoMercator().translate([480, 320]).clipExtent([[0, 0], [960, 500]]);
 
 const geoToPoint = ([latitude, longitude]) => (mercatorProjection([longitude, latitude]));
@@ -141,7 +143,7 @@ module.exports = class WorldMapChart {
 		}
 
 		for (const tweet of tweets) {
-			const emoji = tweet.emojis[0];
+			const emoji = selectEmoji(tweet.emojis);
 
 			const [x, y] = geoToPoint(tweet.geo.coordinates);
 
@@ -151,7 +153,7 @@ module.exports = class WorldMapChart {
 				'transform-origin': 'center',
 			});
 
-			const fileName = emoji.unified.startsWith('00') ? emoji.unified.slice(2).toLowerCase() : emoji.unified.toLowerCase();
+			const fileName = emoji.startsWith('00') ? emoji.slice(2).toLowerCase() : emoji.toLowerCase();
 
 			const image = group.append('image').attrs({
 				class: 'emoji animated bounceIn',

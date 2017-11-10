@@ -25,5 +25,3 @@ if __name__ == '__main__':
 
     with open('data/ranking.json', 'w') as f:
         f.write(json.dumps(ranking, indent=4))
-
-    print(json.dumps(ranking, indent=4))
