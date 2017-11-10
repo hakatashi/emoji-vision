@@ -123,9 +123,7 @@ module.exports = class TreeMap extends React.Component {
 
 		if (showingLayouts.length > 0) {
 			this.layoutQueue = this.layoutQueue.slice(showingLayoutsIndex);
-			if (new Date(last(showingLayouts).time).getHours() % 4 === 0) {
-				this.updateLayout(last(showingLayouts));
-			}
+			this.updateLayout(last(showingLayouts));
 		}
 
 		// Preload
@@ -163,7 +161,7 @@ module.exports = class TreeMap extends React.Component {
 		this.loadedFile = file;
 
 		data.tweets.forEach((tweet) => {
-			tweet.time = Date.parse(tweet.created_at);
+			tweet.time = new Date(tweet.created_at);
 		});
 		data.stats.forEach((stat) => {
 			stat.time = stat.created_at * 1000;
@@ -202,7 +200,7 @@ module.exports = class TreeMap extends React.Component {
 		this.loadedFile = file;
 
 		data.tweets.forEach((tweet) => {
-			tweet.time = Date.parse(tweet.created_at);
+			tweet.time = new Date(tweet.created_at);
 		});
 		data.stats.forEach((stat) => {
 			stat.time = stat.created_at * 1000;
@@ -227,7 +225,7 @@ module.exports = class TreeMap extends React.Component {
 	}
 
 	updateLayout(layout) {
-		this.chart.updateLayout(Object.entries(layout.hash_stat).map(([name, count]) => ({name: `#${name}`, count})));
+		this.chart.updateLayout(Object.entries(layout.hashtag || layout.hash_stat).map(([name, count]) => ({name: `#${name}`, count})));
 	}
 
 	render() {

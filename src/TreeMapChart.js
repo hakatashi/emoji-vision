@@ -205,11 +205,9 @@ module.exports = class TreeMapChart {
 
 	showTweets({tweets}) {
 		for (const tweet of tweets) {
-			for (const hashtag of tweet.entities_hashtags) {
-				const hashtagText = `#${hashtag.text}`;
-				if (this.areaMap.has(hashtagText)) {
-					this.areaMap.get(hashtagText).showTweet(tweet);
-				}
+			const hashtag = `#${tweet.hashtag || tweet.entities_hashtags[0].text}`;
+			if (this.areaMap.has(hashtag)) {
+				this.areaMap.get(hashtag).showTweet(tweet);
 			}
 		}
 	}
