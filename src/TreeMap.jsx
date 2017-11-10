@@ -1,3 +1,4 @@
+const assert = require('assert');
 const React = require('react');
 const PropTypes = require('prop-types');
 const classNames = require('classnames');
@@ -31,6 +32,7 @@ module.exports = class TreeMap extends React.Component {
 		startTime: PropTypes.number.isRequired,
 		onUpdateTime: PropTypes.func.isRequired,
 		onClickEmoji: PropTypes.func.isRequired,
+		mode: PropTypes.oneOf(['hash', 'lang', 'device']).isRequired,
 	}
 
 	constructor(state, props) {
@@ -144,7 +146,7 @@ module.exports = class TreeMap extends React.Component {
 
 		const data = await client([
 			'selected',
-			'hash-tweets',
+			`${this.props.mode}-tweets`,
 			nextYear,
 			nextMonth.toString().padStart(2, '0'),
 			`${nextDay.toString().padStart(2, '0')}.json`,
@@ -161,10 +163,10 @@ module.exports = class TreeMap extends React.Component {
 		this.loadedFile = file;
 
 		data.tweets.forEach((tweet) => {
-			tweet.time = new Date(tweet.created_at);
+			this.normalizeTweet(tweet);
 		});
-		data.stats.forEach((stat) => {
-			stat.time = stat.created_at * 1000;
+		data.stats.forEach((layout) => {
+			this.normalizeLayout(layout);
 		});
 
 		const sortedTweets = this.tweetsQueue.concat(data.tweets).sort((a, b) => {
@@ -189,7 +191,7 @@ module.exports = class TreeMap extends React.Component {
 		console.info(`Loading ${fileToFileName(file)}...`);
 		const data = await client([
 			'selected',
-			'hash-tweets',
+			`${this.props.mode}-tweets`,
 			nextYear,
 			nextMonth.toString().padStart(2, '0'),
 			`${nextDay.toString().padStart(2, '0')}.json`,
@@ -200,10 +202,10 @@ module.exports = class TreeMap extends React.Component {
 		this.loadedFile = file;
 
 		data.tweets.forEach((tweet) => {
-			tweet.time = new Date(tweet.created_at);
+			this.normalizeTweet(tweet);
 		});
-		data.stats.forEach((stat) => {
-			stat.time = stat.created_at * 1000;
+		data.stats.forEach((layout) => {
+			this.normalizeLayout(layout);
 		});
 
 		const sortedTweets = data.tweets.sort((a, b) => {
@@ -224,8 +226,45 @@ module.exports = class TreeMap extends React.Component {
 		this.setState({isLoading: false});
 	}
 
+	normalizeTweet(tweet) {
+		tweet.time = new Date(tweet.created_at);
+
+		if (this.props.mode === 'hash') {
+			tweet.entry = `#${tweet.hashtag}`;
+			return;
+		}
+
+		if (this.props.mode === 'lang') {
+			tweet.entry = tweet.lang;
+			return;
+		}
+
+		assert(this.props.mode === 'device');
+		tweet.entry = tweet.source.replace(/(^<.+?>|<.+?$)/g, '');
+	}
+
+	normalizeLayout(layout) {
+		layout.time = layout.created_at * 1000;
+
+		if (this.props.mode === 'hash') {
+			layout.entries = Object.entries(layout.hashtag).map(([name, count]) => ({name: `#${name}`, count}));
+			return;
+		}
+
+		if (this.props.mode === 'lang') {
+			layout.entries = Object.entries(layout.lang).map(([name, count]) => ({name, count}));
+			return;
+		}
+
+		assert(this.props.mode === 'device');
+		layout.entries = Object.entries(layout.source).map(([name, count]) => ({
+			name: name.replace(/(^<.+?>|<.+?$)/g, ''),
+			count,
+		}));
+	}
+
 	updateLayout(layout) {
-		this.chart.updateLayout(Object.entries(layout.hashtag).map(([name, count]) => ({name: `#${name}`, count})));
+		this.chart.updateLayout(layout.entries);
 	}
 
 	render() {
