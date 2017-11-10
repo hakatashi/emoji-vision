@@ -8,13 +8,14 @@ const HEIGHT = 500;
 const UNIT = 40;
 
 module.exports = class TreeMapArea {
-	constructor({node, width, height, offset, onEmojiMouseOver, onEmojiMouseLeave}) {
+	constructor({node, width, height, offset, onEmojiMouseOver, onEmojiMouseLeave, onClickEmoji}) {
 		this.node = node;
 		this.width = width;
 		this.height = height;
 		this.offset = offset;
 		this.onEmojiMouseOver = onEmojiMouseOver;
 		this.onEmojiMouseLeave = onEmojiMouseLeave;
+		this.onClickEmoji = onClickEmoji;
 
 		const areaWidth = Math.floor(WIDTH / UNIT);
 		const areaHeight = Math.floor(HEIGHT / UNIT);

@@ -3,6 +3,7 @@ const D3 = require('d3');
 require('d3-selection-multi');
 const {schemePastel1} = require('d3-scale-chromatic');
 const {textwrap} = require('d3-textwrap');
+const noop = require('lodash/noop');
 
 const TreeMapArea = require('./TreeMapArea.js');
 
@@ -13,11 +14,12 @@ module.exports = class TreeMapChart {
 		this.colorScale = props.colorScale;
 		this.cells = props.cells;
 		this.tooltipGroup = props.tooltipGroup;
+		this.onClickEmoji = props.onClickEmoji;
 		this.areaMap = new Map();
 		this.tooltipMap = new WeakMap();
 	}
 
-	static create(node) {
+	static create(node, {onClickEmoji = noop}) {
 		const svg = D3.select(node).append('svg').attrs({
 			width: '100%',
 			height: '100%',
@@ -36,6 +38,7 @@ module.exports = class TreeMapChart {
 			colorScale,
 			cells,
 			tooltipGroup,
+			onClickEmoji,
 		});
 	}
 
@@ -98,7 +101,7 @@ module.exports = class TreeMapChart {
 	}
 
 	updateLayout(categories) {
-		const {areaMap, handleEmojiMouseOver, handleEmojiMouseLeave} = this;
+		const {areaMap, handleEmojiMouseOver, handleEmojiMouseLeave, onClickEmoji} = this;
 
 		const root = D3.hierarchy({
 			name: '',
@@ -181,6 +184,7 @@ module.exports = class TreeMapChart {
 				height: d.y1 - d.y0,
 				onEmojiMouseOver: handleEmojiMouseOver,
 				onEmojiMouseLeave: handleEmojiMouseLeave,
+				onClickEmoji: onClickEmoji,
 			}));
 		});
 
