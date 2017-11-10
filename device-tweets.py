@@ -1,6 +1,7 @@
 import json
 import subprocess
 import os
+import random
 
 import pandas as pd
 from joblib import Parallel, delayed
@@ -12,34 +13,42 @@ DEVICE_TWEETS_DIR = './data/selected/device-tweets'
 
 def process(month_path, device_month_path, day):
     day_path = os.path.join(month_path, day)
-    device_output_path = os.path.join(device_month_path, day + '.json')
-    cmd = """find {} -type f -name "*.json" | xargs jq '[.[] | {{created_at, emojis, text, source}}]' | jq -s -c add""".format(
-        day_path)
+    cmd = ("find {} -type f -name '*.json'"
+           " | xargs jq '[.[]"
+           " | {{created_at, emojis, text, source}}]'"
+           " | jq -s -c add").format(day_path)
     print("$ {}".format(cmd))
 
     device_tweets = subprocess.check_output(cmd, shell=True)
     device_tweets = json.loads(device_tweets)
-    device_tweets_df = json_normalize(device_tweets)
-    device_tweets_df = pd.DataFrame(
-        ({'created_at': tup.created_at, 'source': tup.source} for tup in
-         device_tweets_df.itertuples())
-    )
-    device_tweets_df['created_at'] = device_tweets_df['created_at'].apply(
-        pd.to_datetime)
-    hour_grouper = pd.Grouper(key='created_at', freq='H')
-    device_tweets_hours = device_tweets_df.groupby(hour_grouper)
+    device_tweets = json_normalize(device_tweets)
+    device_tweets['created_at'] \
+        = device_tweets['created_at'].apply(pd.to_datetime)
 
-    device_stats = []
-    for t, df in device_tweets_hours:
-        device_stat = df.groupby('source').size()
-        device_stat = device_stat.sort_values(ascending=False)
-        device_stat = device_stat[:20]
-        device_stat = json.loads(device_stat.to_json())
-        device_stats.append(
-            {'created_at': t.timestamp(), 'source': device_stat})
+    device_tweets = device_tweets.groupby(
+        pd.Grouper(key='created_at', freq='4H'))
 
+    top_sources = []
+    top_source_tweets = pd.DataFrame(
+        columns=['created_at', 'emojis', 'source', 'text'])
+    for t, df in device_tweets:
+        stat = df.groupby('source').size()
+        stat = stat.sort_values(ascending=False)[:20]
+        top_sources.append({'created_at': t.timestamp(),
+                            'source': stat.to_dict()})
+
+        top_source_tweets = top_source_tweets.append(
+            df[df['source'].apply(lambda x: x in stat)], ignore_index=True)
+
+    top_source_tweets = json.loads(
+        top_source_tweets.to_json(orient='records', force_ascii=False))
+    sampled_top_source_tweets = [top_source_tweets[i] for i in sorted(
+        random.sample(range(len(top_source_tweets)), 1500))]
+
+    device_output_path = os.path.join(device_month_path, day + '.json')
     with open(device_output_path, 'w') as f:
-        json.dump({'tweets': device_tweets[::100], 'stats': device_stats}, f)
+        json.dump({'tweets': sampled_top_source_tweets, 'stats': top_sources},
+                  f, ensure_ascii=False, separators=(',', ':'))
 
 
 def main():
