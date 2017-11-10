@@ -26,7 +26,7 @@ module.exports = class TreeMapChart {
 			viewBox: '0 0 960 500',
 		});
 
-		const treemap = D3.treemap().tile(D3.treemapResquarify).size([960, 500]).round(true).paddingInner(1);
+		const treemap = D3.treemap().tile(D3.treemapResquarify.ratio(2)).size([960, 500]).round(true).paddingInner(1);
 		const colorScale = D3.scaleOrdinal(schemePastel1);
 
 		const cells = svg.append('g').attrs({class: 'cells'});
@@ -184,7 +184,7 @@ module.exports = class TreeMapChart {
 				height: d.y1 - d.y0,
 				onEmojiMouseOver: handleEmojiMouseOver,
 				onEmojiMouseLeave: handleEmojiMouseLeave,
-				onClickEmoji: onClickEmoji,
+				onClickEmoji,
 			}));
 		});
 
@@ -209,7 +209,7 @@ module.exports = class TreeMapChart {
 
 	showTweets({tweets}) {
 		for (const tweet of tweets) {
-			const hashtag = `#${tweet.hashtag || tweet.entities_hashtags[0].text}`;
+			const hashtag = `#${tweet.hashtag}`;
 			if (this.areaMap.has(hashtag)) {
 				this.areaMap.get(hashtag).showTweet(tweet);
 			}

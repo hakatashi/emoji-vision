@@ -225,7 +225,7 @@ module.exports = class TreeMap extends React.Component {
 	}
 
 	updateLayout(layout) {
-		this.chart.updateLayout(Object.entries(layout.hashtag || layout.hash_stat).map(([name, count]) => ({name: `#${name}`, count})));
+		this.chart.updateLayout(Object.entries(layout.hashtag).map(([name, count]) => ({name: `#${name}`, count})));
 	}
 
 	render() {
