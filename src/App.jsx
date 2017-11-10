@@ -230,7 +230,7 @@ module.exports = class App extends React.Component {
 						unmountOnExit
 					>
 						<EmojiStat
-							emoji={this.state.detailedEmoji && this.state.detailedEmoji.unified}
+							emoji={this.state.detailedEmoji}
 							onClickClose={this.handleCloseStat}
 						/>
 					</CSSTransition>
