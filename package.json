@@ -42,6 +42,7 @@
     "emoji-data": "^0.2.0",
     "eslint": "^4.10.0",
     "eslint-plugin-react": "^7.4.0",
+    "json-loader": "^0.5.7",
     "mkdirp": "^0.5.1",
     "ndarray": "^1.0.18",
     "postcss-font-magician": "^2.1.0",
