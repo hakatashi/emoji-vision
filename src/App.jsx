@@ -215,7 +215,7 @@ module.exports = class App extends React.Component {
 							startTime={this.state.startTime}
 							onUpdateTime={this.handleUpdateTime}
 							onClickEmoji={this.handleClickEmoji}
-							mode="lang"
+							mode="hash"
 						/>
 					)}
 				</div>
