@@ -3,9 +3,9 @@ const PropTypes = require('prop-types');
 const Close = require('react-icons/lib/io/close');
 import emojiCodepoints from '../data/emoji_codepoints.json';
 
-const EmojiStat = require('./EmojiStat');
+const EmojiDetailStat = require('./EmojiDetailStat.js');
 
-module.exports = class EmojiStat extends React.Component {
+module.exports = class EmojiDetail extends React.Component {
 	static propTypes = {
 		emoji: PropTypes.string,
 		onClickClose: PropTypes.func.isRequired,
@@ -18,9 +18,34 @@ module.exports = class EmojiStat extends React.Component {
 	constructor(state, props) {
 		super(state, props);
 
-		this.state = {
-		};
+		this.state = {};
+
+		this.isDestroyed = false;
 	}
+
+	componentDidMount() {
+		this.initialize();
+	}
+
+	componentWillUnmount() {
+		this.destroy();
+	}
+
+	initialize = () => {
+		this.stat = EmojiDetailStat.create(this.stat, {emoji: this.props.emoji});
+		// if (this.isDestroyed) {
+		// 	return;
+		// }
+		// this.initTime();
+	};
+
+	destroy = () => {
+		this.isDestroyed = true;
+	};
+
+	// initTime() {
+	// 	this.timeInterval = setInterval(this.handleTick, 50);
+	// }
 
 	render() {
 		return (
@@ -31,13 +56,17 @@ module.exports = class EmojiStat extends React.Component {
 				<div className="content">
 					<div className="basic-info">
 						<img src={`node_modules/twemoji/2/svg/${this.props.emoji.toLowerCase()}.svg`}/>
-						{emojiCodepoints[this.props.emoji].name} (/{emojiCodepoints[this.props.emoji].group}/{emojiCodepoints[this.props.emoji].subgroup})
-						<div className="basic-stat exo-2">
-							Tree
-						</div>
+						<div
+							className="basic-stat exo-2"
+							ref={(node) => {
+								this.stat = node;
+							}}
+						/>
 					</div>
 				</div>
 			</div>
 		);
 	}
 };
+
+// {/*{emojiCodepoints[this.props.emoji].name} (/{emojiCodepoints[this.props.emoji].group}/{emojiCodepoints[this.props.emoji].subgroup})*/}
