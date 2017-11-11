@@ -43,7 +43,7 @@ def process(month_path, device_month_path, day):
     top_source_tweets = json.loads(
         top_source_tweets.to_json(orient='records', force_ascii=False))
     sampled_top_source_tweets = [top_source_tweets[i] for i in sorted(
-        random.sample(range(len(top_source_tweets)), 1500))]
+        random.sample(range(len(top_source_tweets)), 2500))]
 
     device_output_path = os.path.join(device_month_path, day + '.json')
     with open(device_output_path, 'w') as f:

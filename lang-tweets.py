@@ -42,7 +42,7 @@ def process(month_path, lang_month_path, day):
     top_lang_tweets = json.loads(
         top_lang_tweets.to_json(orient='records', force_ascii=False))
     sampled_top_lang_tweets = [top_lang_tweets[i] for i in sorted(
-        random.sample(range(len(top_lang_tweets)), 1500))]
+        random.sample(range(len(top_lang_tweets)), 2500))]
 
     lang_output_path = os.path.join(lang_month_path, day + '.json')
     with open(lang_output_path, 'w') as f:
