@@ -80,7 +80,8 @@ module.exports = class EmojiDetailTimeChart {
 
 		g.append('path')
 			.attr('fill', 'steelblue')
-			.attr('d', area(statData.date.entries));
+			.attr('d', area(statData.date.entries))
+			.attr('class', 'time-area');
 
 		g.append('g')
 			.attr('transform', `translate(0,${svgHeight})`)

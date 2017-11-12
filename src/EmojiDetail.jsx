@@ -1,6 +1,7 @@
 const React = require('react');
 const PropTypes = require('prop-types');
 const Close = require('react-icons/lib/io/close');
+const classNames = require('classnames');
 import emojiCodepoints from '../data/emoji_codepoints.json';
 
 const EmojiDetailTimeChart = require('./EmojiDetailTimeChart.js');
@@ -19,7 +20,9 @@ module.exports = class EmojiDetail extends React.Component {
 	constructor(state, props) {
 		super(state, props);
 
-		this.state = {};
+		this.state = {
+			isInitialized: false,
+		};
 
 		this.isDestroyed = false;
 		this.minuteness = 'slim';
@@ -34,12 +37,27 @@ module.exports = class EmojiDetail extends React.Component {
 	}
 
 	initialize = () => {
-		this.timeChart = EmojiDetailTimeChart.create(this.timeChart,
-			{emoji: this.props.emoji, minuteness: this.minuteness});
-		this.langChart = EmojiDetailPieChart.create(this.langChart,
-			{emoji: this.props.emoji, minuteness: this.minuteness, mode: 'lang'});
-		this.deviceChart = EmojiDetailPieChart.create(this.deviceChart,
-			{emoji: this.props.emoji, minuteness: this.minuteness, mode: 'device'});
+		EmojiDetailTimeChart.create(this.timeChart, {
+			emoji: this.props.emoji,
+			minuteness: this.minuteness,
+		}).then((chart) => {
+			this.setState({
+				isInitialized: true,
+			});
+			return chart;
+		});
+
+		EmojiDetailPieChart.create(this.langChart, {
+			emoji: this.props.emoji,
+			minuteness: this.minuteness,
+			mode: 'lang',
+		});
+
+		EmojiDetailPieChart.create(this.deviceChart, {
+			emoji: this.props.emoji,
+			minuteness: this.minuteness,
+			mode: 'device',
+		});
 	};
 
 	destroy = () => {
@@ -72,7 +90,7 @@ module.exports = class EmojiDetail extends React.Component {
 					</div>
 					<div className="detail-stat">
 						<div
-							className="time-chart exo-2"
+							className={classNames('time-chart', 'exo-2', {initialized: this.state.isInitialized})}
 							ref={(node) => {
 								this.timeChart = node;
 							}}

@@ -303,7 +303,17 @@ svg {
 				.time-chart {
 					flex: 1 1 0;
 					padding: 1em 2em;
-					justify-content: center;
+					opacity: 0;
+					transition: opacity 0.5s;
+
+					&.initialized {
+						opacity: 1;
+					}
+
+					.time-area {
+						animation: animate-time-area 1s;
+						transform-origin: bottom;
+					}
 				}
 
 				.pie-charts {
@@ -319,4 +329,13 @@ svg {
 			}
 		}
     }
+}
+
+@keyframes animate-time-area {
+	from {
+		transform: scale(1, 0);
+	}
+	to {
+		transform: scale(1);
+	}
 }
