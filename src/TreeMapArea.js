@@ -1,7 +1,7 @@
 const ndarray = require('ndarray');
 const D3 = require('d3');
 
-const {selectEmoji, getFileName} = require('./util.js');
+const {selectEmoji, getFileName, HOUR} = require('./util.js');
 
 const WIDTH = 960;
 const HEIGHT = 500;
@@ -26,6 +26,7 @@ module.exports = class TreeMapArea {
 		this.reverseMap = new WeakMap();
 		this.isTooltipShownMap = new WeakMap();
 		this.isEraceCancelledMap = new WeakMap();
+		this.tweetDataMap = new WeakMap();
 		this.hoveredGroups = new Set();
 	}
 
@@ -63,6 +64,10 @@ module.exports = class TreeMapArea {
 			'transform-origin': 'center',
 		});
 
+		this.tweetDataMap.set(group, tweet);
+		this.isTooltipShownMap.set(group, false);
+		this.isEraceCancelledMap.set(group, false);
+
 		const image = group.append('image').attrs({
 			class: 'emoji animated bounceIn',
 			'transform-origin': 'center',
@@ -75,17 +80,6 @@ module.exports = class TreeMapArea {
 			cursor: 'pointer',
 		});
 
-		this.isTooltipShownMap.set(group, false);
-		this.isEraceCancelledMap.set(group, false);
-
-		const erase = () => {
-			image.attr('class', 'emoji animated bounceOut');
-			image.on('mouseover', null);
-			image.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
-				this.remove(group);
-			});
-		};
-
 		image.on('mouseover', () => {
 			this.isTooltipShownMap.set(group, true);
 			this.onEmojiMouseOver({x: (x + 0.5) * UNIT, y: (y + 0.5) * UNIT, group, text: tweet.text, node: this.node});
@@ -97,7 +91,7 @@ module.exports = class TreeMapArea {
 				this.hoveredGroups.delete(group);
 
 				if (this.isEraceCancelledMap.get(group)) {
-					erase();
+					this.softRemove(group);
 				}
 			});
 		});
@@ -106,17 +100,17 @@ module.exports = class TreeMapArea {
 			this.onClickEmoji(emoji);
 		});
 
-		setTimeout(() => {
-			if (this.isTooltipShownMap.get(group)) {
-				this.isEraceCancelledMap.set(group, true);
-				return;
-			}
-
-			erase();
-		}, 3000);
-
 		this.currentView.set(x, y, group);
 		this.reverseMap.set(group, {x, y});
+	}
+
+	softRemove(group) {
+		const image = group.select('image');
+		image.attr('class', 'emoji animated bounceOut');
+		image.on('mouseover', null);
+		image.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
+			this.remove(group);
+		});
 	}
 
 	remove(group) {
@@ -158,6 +152,21 @@ module.exports = class TreeMapArea {
 	}
 
 	updateTime(time) {
+		for (let y = 0; y < this.currentView.shape[1]; y++) {
+			for (let x = 0; x < this.currentView.shape[0]; x++) {
+				if (this.currentView.get(x, y) !== null) {
+					const group = this.currentView.get(x, y);
+					const tweet = this.tweetDataMap.get(group);
 
+					if (time.getTime() > tweet.time.getTime() + HOUR) {
+						if (this.isTooltipShownMap.get(group)) {
+							this.isEraceCancelledMap.set(group, true);
+						} else {
+							this.softRemove(group);
+						}
+					}
+				}
+			}
+		}
 	}
 };

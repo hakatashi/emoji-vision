@@ -228,5 +228,9 @@ module.exports = class TreeMapChart {
 				this.areaMap.get(tweet.entry).showTweet(tweet);
 			}
 		}
+
+		for (const area of this.areaMap.values()) {
+			area.updateTime(time);
+		}
 	}
 };
