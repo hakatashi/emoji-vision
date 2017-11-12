@@ -1,4 +1,5 @@
 const D3 = require('d3');
+require('d3-selection-multi');
 
 const noop = require('lodash/noop');
 
@@ -10,6 +11,7 @@ const client = require('./data-client.js');
 // const DAY = 24 * HOUR;
 
 const emojiToFileName = ([emoji, mode]) => `${mode}/${emoji}.json`;
+
 
 module.exports = class EmojiDetailStat {
 	constructor(props) {
@@ -82,13 +84,20 @@ module.exports = class EmojiDetailStat {
 
 		g.append('g')
 			.attr('transform', `translate(0,${svgHeight})`)
-			.attr('fill', 'white')
 			.call(D3.axisBottom(x));
 
-		g.append('g')
-			.call(D3.axisLeft(y))
+		const yAxis = g.append('g')
+			.call(D3.axisLeft(y));
+
+		svg.selectAll('.domain, line, text')
+			.styles({
+				fill: 'none',
+				stroke: 'white',
+				'stroke-width': 1,
+			});
+
+		yAxis
 			.append('text')
-			.attr('fill', 'white')
 			.attr('transform', 'rotate(-90)')
 			.attr('y', 6)
 			.attr('text-anchor', 'end')
