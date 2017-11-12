@@ -3,7 +3,7 @@ const PropTypes = require('prop-types');
 const Close = require('react-icons/lib/io/close');
 import emojiCodepoints from '../data/emoji_codepoints.json';
 
-const EmojiDetailStat = require('./EmojiDetailStat.js');
+const EmojiDetailTimeChart = require('./EmojiDetailTimeChart.js');
 
 module.exports = class EmojiDetail extends React.Component {
 	static propTypes = {
@@ -33,7 +33,7 @@ module.exports = class EmojiDetail extends React.Component {
 	}
 
 	initialize = () => {
-		this.stat = EmojiDetailStat.create(this.stat,
+		this.timeChart = EmojiDetailTimeChart.create(this.timeChart,
 			{emoji: this.props.emoji, minuteness: this.minuteness});
 		// if (this.isDestroyed) {
 		// 	return;
@@ -69,12 +69,15 @@ module.exports = class EmojiDetail extends React.Component {
 						<div
 							className="time-chart exo2"
 							ref={(node) => {
-								this.stat = node;
+								this.timeChart = node;
 							}}
 						/>
-						<div className="pie-chart">
-							pie
-						</div>
+						<div
+							className="pie-chart"
+							ref={(node) => {
+								this.pieChart = node;
+							}}
+						/>
 					</div>
 				</div>
 			</div>

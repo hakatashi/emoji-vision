@@ -13,7 +13,7 @@ const client = require('./data-client.js');
 const emojiToFileName = ([emoji, minuteness]) => `${minuteness}/${emoji}.json`;
 
 
-module.exports = class EmojiDetailStat {
+module.exports = class EmojiDetailTimeChart {
 	constructor(props) {
 		this.svg = props.svg;
 	}
