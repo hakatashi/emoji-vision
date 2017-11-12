@@ -250,6 +250,7 @@ module.exports = class App extends React.Component {
 						<WorldMap
 							key={this.state.mode}
 							startTime={this.state.startTime}
+							isPausing={this.state.isPausing}
 							onUpdateTime={this.handleUpdateTime}
 							onClickEmoji={this.handleClickEmoji}
 						/>,
@@ -257,6 +258,7 @@ module.exports = class App extends React.Component {
 						<TreeMap
 							key={this.state.mode}
 							startTime={this.state.startTime}
+							isPausing={this.state.isPausing}
 							onUpdateTime={this.handleUpdateTime}
 							onClickEmoji={this.handleClickEmoji}
 							mode={this.state.mode}

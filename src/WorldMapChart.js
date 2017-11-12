@@ -257,7 +257,7 @@ module.exports = class WorldMapChart {
 		for (const group of this.shownEmojis) {
 			const tweet = this.tweetDataMap.get(group);
 
-			if (time.getTime() > tweet.time + HOUR) {
+			if (time.getTime() > tweet.time + HOUR || time.getTime() < tweet.time) {
 				if (this.isTooltipShownMap.get(group)) {
 					this.isEraceCancelledMap.set(group, true);
 				} else {
