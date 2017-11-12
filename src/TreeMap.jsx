@@ -284,12 +284,19 @@ module.exports = class TreeMap extends React.Component {
 
 	render() {
 		return (
-			<div
-				className={classNames('map', {loading: this.state.isLoading})}
-				ref={(node) => {
-					this.map = node;
-				}}
-			/>
+			<div className="map-wrapper">
+				{this.state.isLoading && (
+					<div className="spinner-wrapper">
+						<div className="three-quarters-loader"/>
+					</div>
+				)}
+				<div
+					className={classNames('map', {loading: this.state.isLoading})}
+					ref={(node) => {
+						this.map = node;
+					}}
+				/>
+			</div>
 		);
 	}
 };
