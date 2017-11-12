@@ -13,7 +13,9 @@ def main():
                 latest_subgroup = line.split(': ')[1][:-1]
             if line[0].isdigit():
                 unicode_point = '-'.join(line.split(';')[0].rstrip().split())
-                name = line.split()[-1]
+                name = line.split('# ')[1].split()
+                name.pop(0)
+                name = ' '.join(name)
                 emojis.append({
                     'name': name,
                     'codepoint': unicode_point,
