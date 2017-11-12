@@ -103,7 +103,7 @@ module.exports = class EmojiDetailTimeChart {
 			.attr('text-anchor', 'end')
 			.text('Count');
 
-		return new EmojiDetailStat({
+		return new EmojiDetailTimeChart({
 			svg,
 		});
 	}

@@ -4,6 +4,7 @@ const Close = require('react-icons/lib/io/close');
 import emojiCodepoints from '../data/emoji_codepoints.json';
 
 const EmojiDetailTimeChart = require('./EmojiDetailTimeChart.js');
+const EmojiDetailPieChart = require('./EmojiDetailPieChart.js');
 
 module.exports = class EmojiDetail extends React.Component {
 	static propTypes = {
@@ -35,10 +36,10 @@ module.exports = class EmojiDetail extends React.Component {
 	initialize = () => {
 		this.timeChart = EmojiDetailTimeChart.create(this.timeChart,
 			{emoji: this.props.emoji, minuteness: this.minuteness});
-		// if (this.isDestroyed) {
-		// 	return;
-		// }
-		// this.initTime();
+		this.langChart = EmojiDetailPieChart.create(this.langChart,
+			{emoji: this.props.emoji, minuteness: this.minuteness, mode: 'lang'});
+		this.deviceChart = EmojiDetailPieChart.create(this.deviceChart,
+			{emoji: this.props.emoji, minuteness: this.minuteness, mode: 'device'});
 	};
 
 	destroy = () => {
@@ -67,15 +68,21 @@ module.exports = class EmojiDetail extends React.Component {
 					</div>
 					<div className="detail-stat">
 						<div
-							className="time-chart exo2"
+							className="time-chart exo-2"
 							ref={(node) => {
 								this.timeChart = node;
 							}}
 						/>
 						<div
-							className="pie-chart"
+							className="pie-chart exo-2"
 							ref={(node) => {
-								this.pieChart = node;
+								this.langChart = node;
+							}}
+						/>
+						<div
+							className="pie-chart exo-2"
+							ref={(node) => {
+								this.deviceChart = node;
 							}}
 						/>
 					</div>
