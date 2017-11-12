@@ -3,6 +3,7 @@ const React = require('react');
 const PropTypes = require('prop-types');
 const classNames = require('classnames');
 const last = require('lodash/last');
+const ISO6391 = require('iso-639-1');
 
 const TreeMapChart = require('./TreeMapChart.js');
 const client = require('./data-client.js');
@@ -235,7 +236,13 @@ module.exports = class TreeMap extends React.Component {
 		}
 
 		if (this.props.mode === 'lang') {
-			tweet.entry = tweet.lang;
+			if (tweet.lang === 'und') {
+				tweet.entry = '(No Language)';
+			} else if (tweet.lang === 'in') {
+				tweet.entry = ISO6391.getNativeName('id');
+			} else {
+				tweet.entry = ISO6391.getNativeName(tweet.lang);
+			}
 			return;
 		}
 
@@ -252,7 +259,15 @@ module.exports = class TreeMap extends React.Component {
 		}
 
 		if (this.props.mode === 'lang') {
-			layout.entries = Object.entries(layout.lang).map(([name, count]) => ({name, count}));
+			layout.entries = Object.entries(layout.lang).map(([name, count]) => {
+				if (name === 'und') {
+					return {name: '(No Language)', count};
+				}
+				if (name === 'in') {
+					return {name: ISO6391.getNativeName('id'), count};
+				}
+				return {name: ISO6391.getNativeName(name), count};
+			});
 			return;
 		}
 
