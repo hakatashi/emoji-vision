@@ -2,6 +2,7 @@ const D3 = require('d3');
 require('d3-selection-multi');
 
 const noop = require('lodash/noop');
+const ISO6391 = require('iso-639-1');
 
 const client = require('./data-client.js');
 
@@ -82,7 +83,7 @@ module.exports = class EmojiDetailPieChart {
 		arc.append('text')
 			.attr('transform', (d) => `translate(${label.centroid(d)})`)
 			.attr('dy', '0.35em')
-			.text((d) => d.data[0]);
+			.text((d) => ISO6391.getNativeName(d.data[0]));
 
 		return new EmojiDetailPieChart({
 			svg,
