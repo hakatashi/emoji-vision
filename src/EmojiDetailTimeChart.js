@@ -38,7 +38,7 @@ module.exports = class EmojiDetailTimeChart {
 		const g = svg.append('g');
 
 		g.append('path')
-			.attr('fill', 'steelblue')
+			.attr('fill', '#277b73')
 			.attr('d', area(statData.date.entries))
 			.attr('class', 'time-area');
 
