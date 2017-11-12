@@ -9,6 +9,7 @@ module.exports = class EmojiDetail extends React.Component {
 	static propTypes = {
 		emoji: PropTypes.string,
 		onClickClose: PropTypes.func.isRequired,
+		startTime: PropTypes.number.isRequired,
 	};
 
 	static defaultProps = {
@@ -20,7 +21,9 @@ module.exports = class EmojiDetail extends React.Component {
 
 		this.state = {};
 
+		this.time = this.props.startTime;
 		this.isDestroyed = false;
+		this.mode = 'slim';
 	}
 
 	componentDidMount() {
@@ -32,7 +35,8 @@ module.exports = class EmojiDetail extends React.Component {
 	}
 
 	initialize = () => {
-		this.stat = EmojiDetailStat.create(this.stat, {emoji: this.props.emoji});
+		this.stat = EmojiDetailStat.create(this.stat,
+			{emoji: this.props.emoji, time: this.time, mode: this.mode});
 		// if (this.isDestroyed) {
 		// 	return;
 		// }

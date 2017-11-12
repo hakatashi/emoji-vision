@@ -2,13 +2,51 @@ const D3 = require('d3');
 
 const noop = require('lodash/noop');
 
+const client = require('./data-client.js');
+
+// const SECOND = 1000;
+// const MINUTE = 60 * SECOND;
+// const HOUR = 60 * MINUTE;
+// const DAY = 24 * HOUR;
+
+const emojiToFileName = ([emoji, mode]) => `${mode}/${emoji}.json`;
+
 module.exports = class EmojiDetailStat {
 	constructor(props) {
 		this.svg = props.svg;
 	}
 
-	static create(node, {emoji = noop}) {
-		console.log(emoji);
+	static fetchStatData = async ([emoji, mode]) => {
+		const fileName = emojiToFileName([emoji, mode]);
+		console.info(`Loading ${fileName}...`);
+		await client([
+			'statistics',
+			fileName,
+		].join('/')).catch((error) => {
+			console.error(error);
+			return {
+				count: 0,
+				date: {
+					entries: [],
+					total: 0,
+				},
+				device: {
+					entries: [],
+					total: 0,
+				},
+				group: 'Unknown',
+				hashtag: {
+					entries: [],
+					total: 0,
+				},
+				name: 'Unknown',
+				subgroup: 'Unknown',
+			};
+		});
+	};
+
+	static create(node, {emoji = noop, time = noop, mode = noop}) {
+
 		const svg = D3.select(node).append('svg').attrs({
 			width: '100%',
 			height: '100%',
@@ -26,7 +64,8 @@ module.exports = class EmojiDetailStat {
 			.y0(svgHeight)
 			.y1((ds) => y(ds[1]));
 
-		D3.json(`../data/statistics/slim/${emoji}.json`, (error, data) => {
+		const statData = this.fetchStatData([emoji, mode]);
+		D3.json(statData, (error, data) => {
 			if (error) {
 				console.log(error);
 			}
