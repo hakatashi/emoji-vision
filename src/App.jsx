@@ -6,7 +6,7 @@ const noop = require('lodash/noop');
 
 const WorldMap = require('./WorldMap.jsx');
 const TreeMap = require('./TreeMap.jsx');
-const EmojiStat = require('./EmojiStat.jsx');
+const EmojiDetail = require('./EmojiDetail.jsx');
 
 module.exports = class App extends React.Component {
 	constructor(state, props) {
@@ -230,7 +230,7 @@ module.exports = class App extends React.Component {
 						mountOnEnter
 						unmountOnExit
 					>
-						<EmojiStat
+						<EmojiDetail
 							emoji={this.state.detailedEmoji}
 							onClickClose={this.handleCloseStat}
 						/>
