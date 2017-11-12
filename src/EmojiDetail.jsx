@@ -7,6 +7,7 @@ const client = require('./data-client.js');
 
 const EmojiDetailTimeChart = require('./EmojiDetailTimeChart.js');
 const EmojiDetailPieChart = require('./EmojiDetailPieChart.js');
+const ranking = require('./ranking.js');
 
 const emojiToFileName = ([emoji, minuteness]) => `${minuteness}/${emoji}.json`;
 
@@ -38,6 +39,14 @@ module.exports = class EmojiDetail extends React.Component {
 	componentWillUnmount() {
 		this.destroy();
 	}
+
+	getRankingIndex = () => (
+		ranking.findIndex((rank) => rank.name === this.props.emoji)
+	)
+
+	getRankingEntry = () => (
+		ranking[this.getRankingIndex()]
+	)
 
 	initialize = async () => {
 		const fileName = emojiToFileName([this.props.emoji, this.minuteness]);
@@ -108,7 +117,7 @@ module.exports = class EmojiDetail extends React.Component {
 									{emojiCodepoints[this.props.emoji].name}
 								</div>
 								<div className="sub-info">
-									{emojiCodepoints[this.props.emoji].group} / {emojiCodepoints[this.props.emoji].subgroup}
+									{emojiCodepoints[this.props.emoji].group} / {emojiCodepoints[this.props.emoji].subgroup} / Count: {this.getRankingEntry().count} (#{this.getRankingIndex() + 1})
 								</div>
 							</div>
 						</div>
