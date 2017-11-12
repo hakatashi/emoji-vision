@@ -53,6 +53,12 @@ module.exports = class EmojiDetailPieChart {
 		const radius = Math.min(svgWidth, svgHeight) / 1.5;
 
 		const statData = await this.fetchStatData([emoji, minuteness]);
+		const statDataToShow = statData[mode].entries.slice(0, 10);
+		let sum = 0;
+		statDataToShow.forEach((ds) => {
+			sum += ds[1];
+		});
+		statDataToShow.push(['Others', statData[mode].total - sum]);
 
 		const color = D3.scaleOrdinal(['#98abc5', '#8a89a6', '#7b6888', '#6b486b', '#a05d56', '#d0743c', '#ff8c00']);
 
@@ -72,7 +78,7 @@ module.exports = class EmojiDetailPieChart {
 			.attr('transform', `translate(${svgWidth / 2},${svgHeight / 2})`);
 
 		const arc = g.selectAll('.arc')
-			.data(pie(statData[mode].entries.slice(0, 10)))
+			.data(pie(statDataToShow))
 			.enter()
 			.append('g');
 
@@ -83,7 +89,12 @@ module.exports = class EmojiDetailPieChart {
 		arc.append('text')
 			.attr('transform', (d) => `translate(${label.centroid(d)})`)
 			.attr('dy', '0.35em')
-			.text((d) => ISO6391.getNativeName(d.data[0]));
+			.text((d) => {
+				if (d.data[0] === 'Others') {
+					return 'Others';
+				}
+				return ISO6391.getNativeName(d.data[0]);
+			});
 
 		return new EmojiDetailPieChart({
 			svg,
