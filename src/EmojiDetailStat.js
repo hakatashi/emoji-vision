@@ -10,7 +10,7 @@ const client = require('./data-client.js');
 // const HOUR = 60 * MINUTE;
 // const DAY = 24 * HOUR;
 
-const emojiToFileName = ([emoji, mode]) => `${mode}/${emoji}.json`;
+const emojiToFileName = ([emoji, minuteness]) => `${minuteness}/${emoji}.json`;
 
 
 module.exports = class EmojiDetailStat {
@@ -18,8 +18,8 @@ module.exports = class EmojiDetailStat {
 		this.svg = props.svg;
 	}
 
-	static fetchStatData = async ([emoji, mode]) => {
-		const fileName = emojiToFileName([emoji, mode]);
+	static fetchStatData = async ([emoji, minuteness]) => {
+		const fileName = emojiToFileName([emoji, minuteness]);
 		console.info(`Loading ${fileName}...`);
 		return await client([
 			'statistics',
@@ -47,7 +47,7 @@ module.exports = class EmojiDetailStat {
 		});
 	};
 
-	static async create(node, {emoji = noop, time = noop, mode = noop}) {
+	static async create(node, {emoji = noop, minuteness = noop}) {
 		const svg = D3.select(node).append('svg').attrs({
 			width: '100%',
 			height: '100%',
@@ -65,7 +65,7 @@ module.exports = class EmojiDetailStat {
 			.y0(svgHeight)
 			.y1((ds) => y(ds[1]));
 
-		const statData = await this.fetchStatData([emoji, mode]);
+		const statData = await this.fetchStatData([emoji, minuteness]);
 
 		statData.date.entries.forEach((ds) => {
 			ds[0] = parseTime(ds[0]);
