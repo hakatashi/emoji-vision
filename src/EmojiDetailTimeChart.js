@@ -1,53 +1,12 @@
 const D3 = require('d3');
 require('d3-selection-multi');
 
-const noop = require('lodash/noop');
-
-const client = require('./data-client.js');
-
-// const SECOND = 1000;
-// const MINUTE = 60 * SECOND;
-// const HOUR = 60 * MINUTE;
-// const DAY = 24 * HOUR;
-
-const emojiToFileName = ([emoji, minuteness]) => `${minuteness}/${emoji}.json`;
-
-
 module.exports = class EmojiDetailTimeChart {
 	constructor(props) {
 		this.svg = props.svg;
 	}
 
-	static fetchStatData = async ([emoji, minuteness]) => {
-		const fileName = emojiToFileName([emoji, minuteness]);
-		console.info(`Loading ${fileName}...`);
-		return await client([
-			'statistics',
-			fileName,
-		].join('/')).catch((error) => {
-			console.error(error);
-			return {
-				count: 0,
-				date: {
-					entries: [],
-					total: 0,
-				},
-				device: {
-					entries: [],
-					total: 0,
-				},
-				group: 'Unknown',
-				hashtag: {
-					entries: [],
-					total: 0,
-				},
-				name: 'Unknown',
-				subgroup: 'Unknown',
-			};
-		});
-	};
-
-	static async create(node, {emoji = noop, minuteness = noop}) {
+	static create(node, {data}) {
 		const svg = D3.select(node).append('svg').attrs({
 			width: '100%',
 			height: '100%',
@@ -65,7 +24,7 @@ module.exports = class EmojiDetailTimeChart {
 			.y0(svgHeight)
 			.y1((ds) => y(ds[1]));
 
-		const statData = await this.fetchStatData([emoji, minuteness]);
+		const statData = data;
 
 		statData.date.entries.forEach((ds) => {
 			ds[0] = parseTime(ds[0]);

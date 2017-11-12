@@ -3,9 +3,12 @@ const PropTypes = require('prop-types');
 const Close = require('react-icons/lib/io/close');
 const classNames = require('classnames');
 import emojiCodepoints from '../data/emoji_codepoints.json';
+const client = require('./data-client.js');
 
 const EmojiDetailTimeChart = require('./EmojiDetailTimeChart.js');
 const EmojiDetailPieChart = require('./EmojiDetailPieChart.js');
+
+const emojiToFileName = ([emoji, minuteness]) => `${minuteness}/${emoji}.json`;
 
 module.exports = class EmojiDetail extends React.Component {
 	static propTypes = {
@@ -36,27 +39,49 @@ module.exports = class EmojiDetail extends React.Component {
 		this.destroy();
 	}
 
-	initialize = () => {
-		EmojiDetailTimeChart.create(this.timeChart, {
-			emoji: this.props.emoji,
-			minuteness: this.minuteness,
-		}).then((chart) => {
-			this.setState({
-				isInitialized: true,
-			});
-			return chart;
+	initialize = async () => {
+		const fileName = emojiToFileName([this.props.emoji, this.minuteness]);
+
+		console.info(`Loading ${fileName}...`);
+		const data = await client([
+			'statistics',
+			fileName,
+		].join('/')).catch((error) => {
+			console.error(error);
+			return {
+				count: 0,
+				date: {
+					entries: [],
+					total: 0,
+				},
+				device: {
+					entries: [],
+					total: 0,
+				},
+				group: 'Unknown',
+				hashtag: {
+					entries: [],
+					total: 0,
+				},
+				name: 'Unknown',
+				subgroup: 'Unknown',
+			};
 		});
 
+		EmojiDetailTimeChart.create(this.timeChart, {data});
+
 		EmojiDetailPieChart.create(this.langChart, {
-			emoji: this.props.emoji,
-			minuteness: this.minuteness,
+			data,
 			mode: 'lang',
 		});
 
 		EmojiDetailPieChart.create(this.deviceChart, {
-			emoji: this.props.emoji,
-			minuteness: this.minuteness,
+			data,
 			mode: 'device',
+		});
+
+		this.setState({
+			isInitialized: true,
 		});
 	};
 
