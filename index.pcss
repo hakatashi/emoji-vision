@@ -324,6 +324,12 @@ svg {
 					.pie-chart {
 						width: $size;
 						height: $size;
+						opacity: 0;
+						transition: opacity 0.5s;
+
+						&.initialized {
+							opacity: 1;
+						}
 					}
 					.hashtag-table {
 						padding: 1em;

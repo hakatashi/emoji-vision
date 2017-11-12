@@ -122,13 +122,13 @@ module.exports = class EmojiDetail extends React.Component {
 						/>
 						<div className="specific-charts">
 							<div
-								className="pie-chart exo-2"
+								className={classNames('pie-chart', 'exo-2', {initialized: this.state.isInitialized})}
 								ref={(node) => {
 									this.langChart = node;
 								}}
 							/>
 							<div
-								className="pie-chart exo-2"
+								className={classNames('pie-chart', 'exo-2', {initialized: this.state.isInitialized})}
 								ref={(node) => {
 									this.deviceChart = node;
 								}}
