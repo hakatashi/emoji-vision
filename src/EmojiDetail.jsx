@@ -114,6 +114,11 @@ module.exports = class EmojiDetail extends React.Component {
 						</div>
 					</div>
 					<div className="detail-stat">
+						{!this.state.isInitialized && (
+							<div className="spinner-wrapper">
+								<div className="three-quarters-loader"/>
+							</div>
+						)}
 						<div
 							className={classNames('time-chart', 'exo-2', {initialized: this.state.isInitialized})}
 							ref={(node) => {
