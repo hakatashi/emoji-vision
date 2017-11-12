@@ -64,12 +64,12 @@ module.exports = class EmojiDetailStat {
 			.y1((ds) => y(ds[1]));
 
 		const statData = await this.fetchStatData([emoji, mode]);
-		console.log(statData);
-
 
 		statData.date.entries.forEach((ds) => {
 			ds[0] = parseTime(ds[0]);
 		});
+
+		statData.date.entries.sort((xs, ys) => xs[0] - ys[0]);
 
 		x.domain(D3.extent(statData.date.entries, (ds) => ds[0]));
 		y.domain([0, D3.max(statData.date.entries, (ds) => ds[1])]);
