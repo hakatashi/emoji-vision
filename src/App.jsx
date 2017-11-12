@@ -6,6 +6,7 @@ const {default: Measure} = require('react-measure');
 const CSSTransition = require('react-transition-group/CSSTransition');
 const noop = require('lodash/noop');
 const PropTypes = require('prop-types');
+const classNames = require('classnames');
 
 const WorldMap = require('./WorldMap.jsx');
 const TreeMap = require('./TreeMap.jsx');
@@ -17,7 +18,7 @@ const Switcher = (props) => {
 	};
 
 	return (
-		<div className="switcher" onClick={onClick}>{props.children}</div>
+		<div className={classNames('switcher', props.id, {active: props.active})} onClick={onClick}>{props.children}</div>
 	);
 };
 
@@ -25,6 +26,11 @@ Switcher.propTypes = {
 	onClick: PropTypes.func.isRequired,
 	id: PropTypes.string.isRequired,
 	children: PropTypes.element.isRequired,
+	active: PropTypes.bool,
+};
+
+Switcher.defaultProps = {
+	active: false,
 };
 
 module.exports = class App extends React.Component {
@@ -87,6 +93,10 @@ module.exports = class App extends React.Component {
 	}
 
 	handleClickSwitcher = (id) => {
+		if (this.state.mode === id) {
+			return;
+		}
+
 		this.setState({
 			mode: id,
 			startTime: this.state.time,
@@ -94,7 +104,7 @@ module.exports = class App extends React.Component {
 	}
 
 	render() {
-		const scaleWidth = 800;
+		const scaleWidth = 1200;
 		const scaleHeight = 60;
 
 		const timeStart = Date.UTC(2016, 6, 1);
@@ -223,10 +233,10 @@ module.exports = class App extends React.Component {
 						</div>
 					</div>
 					<div className="switchers">
-						<Switcher id="geo" onClick={this.handleClickSwitcher}>Geo Location</Switcher>
-						<Switcher id="hash" onClick={this.handleClickSwitcher}>Hashtag</Switcher>
-						<Switcher id="lang" onClick={this.handleClickSwitcher}>Language</Switcher>
-						<Switcher id="device" onClick={this.handleClickSwitcher}>Device</Switcher>
+						<Switcher id="geo" onClick={this.handleClickSwitcher} active={this.state.mode === 'geo'}>Geo Location</Switcher>
+						<Switcher id="hash" onClick={this.handleClickSwitcher} active={this.state.mode === 'hash'}>Hashtag</Switcher>
+						<Switcher id="lang" onClick={this.handleClickSwitcher} active={this.state.mode === 'lang'}>Language</Switcher>
+						<Switcher id="device" onClick={this.handleClickSwitcher} active={this.state.mode === 'device'}>Device</Switcher>
 					</div>
 					{this.state.mode === 'geo' ? ([
 						<WorldMap
