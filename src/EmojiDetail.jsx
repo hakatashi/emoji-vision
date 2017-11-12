@@ -77,7 +77,7 @@ module.exports = class EmojiDetail extends React.Component {
 								this.timeChart = node;
 							}}
 						/>
-						<div className="pie-charts">
+						<div className="specific-charts">
 							<div
 								className="pie-chart exo-2"
 								ref={(node) => {
@@ -90,6 +90,9 @@ module.exports = class EmojiDetail extends React.Component {
 									this.deviceChart = node;
 								}}
 							/>
+							<div className="hashtag-table exo-2">
+								hashtag
+							</div>
 						</div>
 					</div>
 				</div>
