@@ -256,7 +256,7 @@ svg {
 		.content {
 			display: flex;
 			flex-direction: column;
-			padding: 2em;
+			padding: 1em 2em;
 			height: 100%;
 			box-sizing: border-box;
 
@@ -298,18 +298,22 @@ svg {
 				justify-content: center;
 				flex-direction: column;
 
+				display: flex;
+
 				.time-chart {
+					flex: 1 1 0;
 					padding: 1em 2em;
 					justify-content: center;
 				}
 
 				.pie-charts {
+					$size: 30vmin;
 					display: flex;
-					height: 320px;
+					height: $size;
 
 					.pie-chart {
-						width: 320px;
-						height: 320px;
+						width: $size;
+						height: $size;
 					}
 				}
 			}
