@@ -25,6 +25,7 @@ const fileToFileName = ([year, month, day]) => (
 module.exports = class WorldMap extends React.Component {
 	static propTypes = {
 		startTime: PropTypes.number.isRequired,
+		isPausing: PropTypes.bool.isRequired,
 		onUpdateTime: PropTypes.func.isRequired,
 		onClickEmoji: PropTypes.func.isRequired,
 	}
@@ -56,6 +57,14 @@ module.exports = class WorldMap extends React.Component {
 		if (this.props.startTime !== nextProps.startTime) {
 			this.handleTimeleap(nextProps.startTime);
 		}
+
+		if (!this.props.isPausing && nextProps.isPausing) {
+			this.pause();
+		}
+
+		if (this.props.isPausing && !nextProps.isPausing) {
+			this.resume();
+		}
 	}
 
 	initialize = async () => {
@@ -66,7 +75,9 @@ module.exports = class WorldMap extends React.Component {
 			return;
 		}
 		this.handleTimeleap(this.time);
-		this.initTime();
+		if (!this.props.isPausing) {
+			this.initTime();
+		}
 	}
 
 	destroy = () => {
@@ -76,6 +87,14 @@ module.exports = class WorldMap extends React.Component {
 		this.loadedFile = null;
 		this.preloadSession = null;
 		this.isDestroyed = true;
+	}
+
+	pause = () => {
+		this.destroyTime();
+	}
+
+	resume = () => {
+		this.initTime();
 	}
 
 	initTime() {

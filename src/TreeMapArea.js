@@ -158,7 +158,7 @@ module.exports = class TreeMapArea {
 					const group = this.currentView.get(x, y);
 					const tweet = this.tweetDataMap.get(group);
 
-					if (time.getTime() > tweet.time.getTime() + HOUR) {
+					if (time.getTime() > tweet.time.getTime() + HOUR || time.getTime() < tweet.time.getTime()) {
 						if (this.isTooltipShownMap.get(group)) {
 							this.isEraceCancelledMap.set(group, true);
 						} else {
