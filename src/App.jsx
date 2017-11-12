@@ -9,10 +9,7 @@ const PropTypes = require('prop-types');
 
 const WorldMap = require('./WorldMap.jsx');
 const TreeMap = require('./TreeMap.jsx');
-<<<<<<< HEAD
 const EmojiDetail = require('./EmojiDetail.jsx');
-=======
-const EmojiStat = require('./EmojiDetail.jsx');
 
 const Switcher = (props) => {
 	const onClick = (event) => {
@@ -29,7 +26,6 @@ Switcher.propTypes = {
 	id: PropTypes.string.isRequired,
 	children: PropTypes.element.isRequired,
 };
->>>>>>> 05fec293d741113c58cd775b574310b912478023
 
 module.exports = class App extends React.Component {
 	constructor(state, props) {
