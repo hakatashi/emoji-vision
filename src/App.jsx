@@ -10,7 +10,7 @@ const classNames = require('classnames');
 
 const WorldMap = require('./WorldMap.jsx');
 const TreeMap = require('./TreeMap.jsx');
-const EmojiStat = require('./EmojiDetail.jsx');
+const EmojiDetail = require('./EmojiDetail.jsx');
 
 const Switcher = (props) => {
 	const onClick = (event) => {
@@ -266,7 +266,7 @@ module.exports = class App extends React.Component {
 						mountOnEnter
 						unmountOnExit
 					>
-						<EmojiStat
+						<EmojiDetail
 							emoji={this.state.detailedEmoji}
 							onClickClose={this.handleCloseStat}
 						/>
