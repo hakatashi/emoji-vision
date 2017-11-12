@@ -1,12 +1,31 @@
+/* eslint react/no-multi-comp: "off" */
+
 const React = require('react');
 const {default: Hammer} = require('react-hammerjs');
 const {default: Measure} = require('react-measure');
 const CSSTransition = require('react-transition-group/CSSTransition');
 const noop = require('lodash/noop');
+const PropTypes = require('prop-types');
 
 const WorldMap = require('./WorldMap.jsx');
 const TreeMap = require('./TreeMap.jsx');
-const EmojiStat = require('./EmojiStat.jsx');
+const EmojiStat = require('./EmojiDetail.jsx');
+
+const Switcher = (props) => {
+	const onClick = (event) => {
+		props.onClick(props.id, event);
+	};
+
+	return (
+		<div className="switcher" onClick={onClick}>{props.children}</div>
+	);
+};
+
+Switcher.propTypes = {
+	onClick: PropTypes.func.isRequired,
+	id: PropTypes.string.isRequired,
+	children: PropTypes.element.isRequired,
+};
 
 module.exports = class App extends React.Component {
 	constructor(state, props) {
@@ -18,7 +37,7 @@ module.exports = class App extends React.Component {
 			startTime: Date.UTC(2017, 5, 2, 6),
 			realScaleWidth: Infinity,
 			isSliding: false,
-			mode: 'tree',
+			mode: 'hash',
 			isModalShowing: false,
 			detailedEmoji: null,
 		};
@@ -67,9 +86,9 @@ module.exports = class App extends React.Component {
 		});
 	}
 
-	handleToggleMode = () => {
+	handleClickSwitcher = (id) => {
 		this.setState({
-			mode: this.state.mode === 'geo' ? 'tree' : 'geo',
+			mode: id,
 			startTime: this.state.time,
 		});
 	}
@@ -196,28 +215,35 @@ module.exports = class App extends React.Component {
 								<div className="decrement"/>
 							</div>
 							<div className="clock-seperator narrow">:</div>
-							<div className="clock-slot minute" onClick={this.handleToggleMode}>
+							<div className="clock-slot minute">
 								<div className="increment"/>
 								{date.getMinutes().toString().padStart(2, '0')}
 								<div className="decrement"/>
 							</div>
 						</div>
 					</div>
-					{this.state.mode === 'geo' && (
+					<div className="switchers">
+						<Switcher id="geo" onClick={this.handleClickSwitcher}>Geo Location</Switcher>
+						<Switcher id="hash" onClick={this.handleClickSwitcher}>Hashtag</Switcher>
+						<Switcher id="lang" onClick={this.handleClickSwitcher}>Language</Switcher>
+						<Switcher id="device" onClick={this.handleClickSwitcher}>Device</Switcher>
+					</div>
+					{this.state.mode === 'geo' ? ([
 						<WorldMap
+							key={this.state.mode}
 							startTime={this.state.startTime}
 							onUpdateTime={this.handleUpdateTime}
 							onClickEmoji={this.handleClickEmoji}
-						/>
-					)}
-					{this.state.mode === 'tree' && (
+						/>,
+					]) : ([
 						<TreeMap
+							key={this.state.mode}
 							startTime={this.state.startTime}
 							onUpdateTime={this.handleUpdateTime}
 							onClickEmoji={this.handleClickEmoji}
-							mode="hash"
-						/>
-					)}
+							mode={this.state.mode}
+						/>,
+					])}
 				</div>
 				<div className="modal-layer">
 					<CSSTransition
