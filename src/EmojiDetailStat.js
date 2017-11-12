@@ -19,7 +19,7 @@ module.exports = class EmojiDetailStat {
 	static fetchStatData = async ([emoji, mode]) => {
 		const fileName = emojiToFileName([emoji, mode]);
 		console.info(`Loading ${fileName}...`);
-		await client([
+		return await client([
 			'statistics',
 			fileName,
 		].join('/')).catch((error) => {
@@ -45,8 +45,7 @@ module.exports = class EmojiDetailStat {
 		});
 	};
 
-	static create(node, {emoji = noop, time = noop, mode = noop}) {
-
+	static async create(node, {emoji = noop, time = noop, mode = noop}) {
 		const svg = D3.select(node).append('svg').attrs({
 			width: '100%',
 			height: '100%',
@@ -64,38 +63,35 @@ module.exports = class EmojiDetailStat {
 			.y0(svgHeight)
 			.y1((ds) => y(ds[1]));
 
-		const statData = this.fetchStatData([emoji, mode]);
-		D3.json(statData, (error, data) => {
-			if (error) {
-				console.log(error);
-			}
+		const statData = await this.fetchStatData([emoji, mode]);
+		console.log(statData);
 
-			data.date.entries.forEach((ds) => {
-				ds[0] = parseTime(ds[0]);
-			});
 
-			x.domain(D3.extent(data.date.entries, (ds) => ds[0]));
-			y.domain([0, D3.max(data.date.entries, (ds) => ds[1])]);
-
-			const g = svg.append('g');
-
-			g.append('path')
-				.attr('fill', 'steelblue')
-				.attr('d', area(data.date.entries));
-
-			g.append('g')
-				.attr('transform', `translate(0,${svgHeight})`)
-				.call(D3.axisBottom(x));
-
-			g.append('g')
-				.call(D3.axisLeft(y))
-				.append('text')
-				.attr('fill', '#000')
-				.attr('transform', 'rotate(-90)')
-				.attr('y', 6)
-				.attr('text-anchor', 'end')
-				.text('Count');
+		statData.date.entries.forEach((ds) => {
+			ds[0] = parseTime(ds[0]);
 		});
+
+		x.domain(D3.extent(statData.date.entries, (ds) => ds[0]));
+		y.domain([0, D3.max(statData.date.entries, (ds) => ds[1])]);
+
+		const g = svg.append('g');
+
+		g.append('path')
+			.attr('fill', 'steelblue')
+			.attr('d', area(statData.date.entries));
+
+		g.append('g')
+			.attr('transform', `translate(0,${svgHeight})`)
+			.call(D3.axisBottom(x));
+
+		g.append('g')
+			.call(D3.axisLeft(y))
+			.append('text')
+			.attr('fill', '#000')
+			.attr('transform', 'rotate(-90)')
+			.attr('y', 6)
+			.attr('text-anchor', 'end')
+			.text('Count');
 
 		return new EmojiDetailStat({
 			svg,
