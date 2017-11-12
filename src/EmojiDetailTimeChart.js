@@ -89,11 +89,15 @@ module.exports = class EmojiDetailTimeChart {
 		const yAxis = g.append('g')
 			.call(D3.axisLeft(y));
 
-		svg.selectAll('.domain, line, text')
+		svg.selectAll('.domain, line')
 			.styles({
 				fill: 'none',
 				stroke: 'white',
-				'stroke-width': 1,
+			});
+
+		svg.selectAll('text')
+			.styles({
+				fill: 'white',
 			});
 
 		yAxis
