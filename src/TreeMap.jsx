@@ -69,6 +69,7 @@ module.exports = class TreeMap extends React.Component {
 	initialize = async () => {
 		this.chart = await TreeMapChart.create(this.map, {
 			onClickEmoji: this.handleClickEmoji,
+			mode: this.props.mode,
 		});
 		if (this.isDestroyed) {
 			return;
