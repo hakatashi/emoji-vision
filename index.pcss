@@ -204,19 +204,19 @@ svg {
         animation-duration : 0.3s;
 
         .close {
-            $ size      : 80px;
+            $size      : 80px;
 
             position    : absolute;
             top         : calc(-$size * 0.3);
             right       : calc(-$size * 0.3);
-            width       : $ size;
-            height      : $ size;
+            width       : $size;
+            height      : $size;
             box-sizing  : border-box;
             border      : 5px solid white;
 
             background  : #222;
 
-            line-height : $ size;
+            line-height : $size;
             text-align  : center;
             cursor      : pointer;
 
@@ -229,12 +229,12 @@ svg {
             display        : flex;
             flex-direction : column;
             padding        : 2em;
+            height     : 100%;
+            box-sizing : border-box;
 
             .basic-info {
                 flex       : 0 0 10em;
                 display    : flex;
-                height     : 100%;
-                box-sizing : border-box;
 
                 img {
                     max-width  : 15vmin;
@@ -254,7 +254,6 @@ svg {
                 flex            : 1 1 0;
                 justify-content : center;
                 padding: 2em;
-            //height: 100%; //box-sizing: border-box; //hoge { //	flex: 1 1 0; //}
             }
         }
     }
