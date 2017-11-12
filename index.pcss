@@ -2,22 +2,22 @@
 @import "node_modules/css-spinners/css/spinner/three-quarters.css";
 
 html, body {
-    padding    : 0;
-    margin     : 0;
-    width      : 100%;
-    height     : 100%;
-    overflow   : hidden;
-    background : #222;
-    color      : white;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: #222;
+	color: white;
 }
 
 svg {
-    overflow : visible;
+	overflow: visible;
 }
 
 .exo-2 {
-    font-family : 'Exo 2', 'Noto Sans CJK JP ExtraLight';
-    font-weight : 100;
+	font-family: 'Exo 2', 'Noto Sans CJK JP ExtraLight';
+	font-weight: 100;
 }
 
 .root, .shortcut-root, .app {
@@ -27,242 +27,270 @@ svg {
 }
 
 .page-layer, .modal-layer {
-    position : absolute;
-    width    : 100%;
-    height   : 100%;
-    top      : 0;
-    left     : 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
 }
 
 .page-layer {
-    display        : flex;
-    flex-direction : column;
+	display: flex;
+	flex-direction: column;
 
-    .controls {
-        flex        : 0 0 80px;
-        height      : 80px;
+	.controls {
+		flex: 0 0 80px;
+		height: 80px;
 
-        display     : flex;
-        align-items : center;
-        padding     : 0 1em;
+		display: flex;
+		align-items: center;
+		padding: 0 1em;
 
-        .slider {
-            height : 100%;
-            flex   : 1 0 0;
+		.slider {
+			height: 100%;
+			flex: 1 0 0;
 
-            .scale-wrap {
-                margin   : 0 30px;
-                height   : 100%;
-                position : relative;
-            }
+			.scale-wrap {
+				margin: 0 30px;
+				height: 100%;
+				position: relative;
+			}
 
-            .scale {
-                width    : 100%;
-                height   : 100%;
-                overflow : visible;
-            }
-        }
+			.scale {
+				width: 100%;
+				height: 100%;
+				overflow: visible;
+			}
+		}
 
-        .clock {
-            display     : flex;
-            color       : white;
-            line-height : 80px;
-            font-size   : 46px;
-            flex        : 0 0 400px;
-            width       : 400px;
+		.clock {
+			display: flex;
+			color: white;
+			line-height: 80px;
+			font-size: 46px;
+			flex: 0 0 400px;
+			width: 400px;
 
-            .clock-slot {
-                text-align : center;
+			.clock-slot {
+				text-align: center;
+				position: relative;
 
-                &.year {
-                    flex-basis : 90px;
-                    width      : 90px;
-                }
+				&.year {
+					flex-basis: 90px;
+					width: 90px;
+				}
 
-                &.month, &.day, &.hour, &.minute {
-                    flex-basis : 50px;
-                    width      : 50px;
-                }
-            }
+				&.month, &.day, &.hour, &.minute {
+					flex-basis: 50px;
+					width: 50px;
+				}
 
-            .clock-seperator {
-                flex       : 0 0 35px;
-                text-align : center;
+				.increment, .decrement {
+					$size: 8px;
 
-                &.narrow {
-                    flex-basis : 15px;
-                }
-            }
-        }
+					position: absolute;
+					left: 50%;
+					top: 50%;
 
-        .pauser {
-            width           : 42px;
-            height          : 42px;
+					width: 0;
+					height: 0;
 
-            display         : flex;
-            justify-content : center;
-            align-items     : center;
+					cursor: pointer;
 
-            border-radius   : 50%;
+					&.increment {
+						transform: translate(-50%, -30px);
+						border-left: $size solid transparent;
+						border-right: $size solid transparent;
+						border-bottom: $size solid rgba(255, 255, 255, 0.4);
+					}
 
-            font-size       : 30px;
-            background      : #FF5722;
-            cursor          : pointer;
-        }
-    }
+					&.decrement {
+						transform: translate(-50%, 28px);
+						border-left: $size solid transparent;
+						border-right: $size solid transparent;
+						border-top: $size solid rgba(255, 255, 255, 0.4);
+					}
+				}
+			}
 
-    .switchers {
-        flex            : 0 0 50px;
-        display         : flex;
-        justify-content : center;
-        align-items     : center;
+			.clock-seperator {
+				flex: 0 0 35px;
+				text-align: center;
 
-        .switcher {
-            padding        : 0.3em 1em;
-            margin         : 0 0.5em;
-            border-radius  : 9999px;
+				&.narrow {
+					flex-basis: 15px;
+				}
+			}
+		}
 
-            font-family    : 'Exo 2';
-            font-weight    : 500;
-            font-size      : 20px;
-            text-transform : uppercase;
+		.pauser {
+			width: 42px;
+			height: 42px;
 
-            cursor         : pointer;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 
-            transition     : opacity 0.3s;
-            opacity        : 0.3;
+			border-radius: 50%;
 
-            &:hover {
-                opacity : 0.5;
-            }
+			font-size: 30px;
+			background: #FF5722;
+			cursor: pointer;
+		}
+	}
 
-            &.active {
-                opacity : 1;
-            }
+	.switchers {
+		flex: 0 0 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
-            &.geo {
-                background-color : #e91e63;
-            }
+		.switcher {
+			padding: 0.3em 1em;
+			margin: 0 0.5em;
+			border-radius: 9999px;
 
-            &.hash {
-                background-color : #673AB7;
-            }
+			font-family: 'Exo 2';
+			font-weight: 500;
+			font-size: 20px;
+			text-transform: uppercase;
 
-            &.lang {
-                background-color : #4CAF50;
-            }
+			cursor: pointer;
 
-            &.device {
-                background-color : #FF9800;
-            }
-        }
-    }
+			transition: opacity 0.3s;
+			opacity: 0.3;
 
-    .map-wrapper {
-        flex     : 1 1 0;
-        height   : 0;
-        position : relative;
+			&:hover {
+				opacity: 0.5;
+			}
 
-        .spinner-wrapper {
-            position  : absolute;
-            top       : 50%;
-            left      : 50%;
-            transform : translate(-50%, -50%);
+			&.active {
+				opacity: 1;
+			}
 
-            & > * {
-                font-size : 6vmin;
-            }
-        }
+			&.geo {
+				background-color: #e91e63;
+			}
 
-        .map {
-            width      : 100%;
-            height     : 100%;
-            transition : 0.5s opacity;
-            opacity    : 1;
+			&.hash {
+				background-color: #673AB7;
+			}
 
-            &.loading {
-                opacity : 0.3;
-            }
-        }
-    }
+			&.lang {
+				background-color: #4CAF50;
+			}
+
+			&.device {
+				background-color: #FF9800;
+			}
+		}
+	}
+
+	.map-wrapper {
+		flex: 1 1 0;
+		height: 0;
+		position: relative;
+
+		.spinner-wrapper {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
+			& > * {
+				font-size: 6vmin;
+			}
+		}
+
+		.map {
+			width: 100%;
+			height: 100%;
+			transition: 0.5s opacity;
+			opacity: 1;
+
+			&.loading {
+				opacity: 0.3;
+			}
+		}
+	}
 }
 
 .modal-layer {
-    pointer-events : none;
-    position       : relative;
+	pointer-events: none;
+	position: relative;
 
-    .emoji-stat {
-        pointer-events     : all;
-        position           : absolute;
-        top                : 10%;
-        left               : 10%;
-        right              : 10%;
-        bottom             : 10%;
-        background         : rgba(34, 34, 34, 0.9);
-        border             : solid 5px white;
+	.emoji-stat {
+		pointer-events: all;
+		position: absolute;
+		top: 10%;
+		left: 10%;
+		right: 10%;
+		bottom: 10%;
+		background: rgba(34, 34, 34, 0.9);
+		border: solid 5px white;
 
-        animation-duration : 0.3s;
+		animation-duration: 0.3s;
 
-        .close {
-            $size      : 80px;
+		.close {
+			$size: 80px;
 
-            position    : absolute;
-            top         : calc(-$size * 0.3);
-            right       : calc(-$size * 0.3);
-            width       : $size;
-            height      : $size;
-            box-sizing  : border-box;
-            border      : 5px solid white;
+			position: absolute;
+			top: calc(-$size * 0.3);
+			right: calc(-$size * 0.3);
+			width: $size;
+			height: $size;
+			box-sizing: border-box;
+			border: 5px solid white;
 
-            background  : #222;
+			background: #222;
 
-            line-height : $size;
-            text-align  : center;
-            cursor      : pointer;
+			line-height: $size;
+			text-align: center;
+			cursor: pointer;
 
-            color       : white;
-            font-size   : 50px;
-            line-height : calc($size * 0.75);
-        }
+			color: white;
+			font-size: 50px;
+			line-height: calc($size * 0.75);
+		}
 
-        .content {
-            display        : flex;
-            flex-direction : column;
-            padding        : 2em;
-            height     : 100%;
-            box-sizing : border-box;
+		.content {
+			display: flex;
+			flex-direction: column;
+			padding: 2em;
+			height: 100%;
+			box-sizing: border-box;
 
-            .basic-info {
-                flex       : 0 0 10em;
-                display    : flex;
+			.basic-info {
+				flex: 0 0 10em;
+				display: flex;
 
-                img {
-                    max-width  : 15vmin;
-                    max-height : 15vmin;
-                }
+				img {
+					max-width: 15vmin;
+					max-height: 15vmin;
+				}
 
-                .basic-stat {
-                    margin-left    : 0.3em;
-                    text-transform : uppercase;
-                    flex-grow      : 1;
+				.basic-stat {
+					margin-left: 0.3em;
+					text-transform: uppercase;
+					flex-grow: 1;
 
-                    font-size      : 4em;
+					font-size: 4em;
 
-                    .sub-info {
-                        margin-top : 0.3em;
-                        text-transform: lowercase;
-                        flex-grow : 1;
+					.sub-info {
+						margin-top: 0.3em;
+						text-transform: lowercase;
+						flex-grow: 1;
 
-                        font-size : 0.5em;
-                    }
-                }
-            }
+						font-size: 0.5em;
+					}
+				}
+			}
 
-            .detail-stat {
-                flex            : 1 1 0;
-                justify-content : center;
-                padding: 2em;
-            }
-        }
-    }
+			.detail-stat {
+				flex: 1 1 0;
+				justify-content: center;
+				padding: 2em;
+			}
+		}
+	}
 }
