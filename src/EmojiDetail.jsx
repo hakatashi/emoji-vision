@@ -67,12 +67,17 @@ module.exports = class EmojiDetail extends React.Component {
 							</div>
 						</div>
 					</div>
-					<div
-						className="detail-stat exo2"
-						ref={(node) => {
-							this.stat = node;
-						}}
-					/>
+					<div className="detail-stat">
+						<div
+							className="time-chart exo2"
+							ref={(node) => {
+								this.stat = node;
+							}}
+						/>
+						<div className="pie-chart">
+							pie
+						</div>
+					</div>
 				</div>
 			</div>
 		);

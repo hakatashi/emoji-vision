@@ -84,7 +84,7 @@ module.exports = class EmojiDetailStat {
 
 		g.append('g')
 			.attr('transform', `translate(0,${svgHeight})`)
-			.call(D3.axisBottom(x))
+			.call(D3.axisBottom(x));
 
 		const yAxis = g.append('g')
 			.call(D3.axisLeft(y));
