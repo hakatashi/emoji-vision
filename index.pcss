@@ -257,6 +257,8 @@ svg {
 			display: flex;
 			flex-direction: column;
 			padding: 2em;
+			height: 100%;
+			box-sizing: border-box;
 
 			.basic-info {
 				flex: 0 0 10em;
@@ -273,7 +275,21 @@ svg {
 					flex-grow: 1;
 
 					font-size: 4em;
+
+					.sub-info {
+						margin-top: 0.3em;
+						text-transform: lowercase;
+						flex-grow: 1;
+
+						font-size: 0.5em;
+					}
 				}
+			}
+
+			.detail-stat {
+				flex: 1 1 0;
+				justify-content: center;
+				padding: 2em;
 			}
 		}
 	}
