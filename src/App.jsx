@@ -235,9 +235,7 @@ module.exports = class App extends React.Component {
 							</div>
 							<div className="clock exo-2">
 								<div className="clock-slot year">
-									<div className="increment"/>
 									{date.getFullYear()}
-									<div className="decrement"/>
 								</div>
 								<div className="clock-seperator">/</div>
 								<div className="clock-slot month">
@@ -259,9 +257,7 @@ module.exports = class App extends React.Component {
 								</div>
 								<div className="clock-seperator narrow">:</div>
 								<div className="clock-slot minute">
-									<div className="increment"/>
 									{date.getMinutes().toString().padStart(2, '0')}
-									<div className="decrement"/>
 								</div>
 							</div>
 							<div className="pauser" onClick={this.handleClickPauser}>
