@@ -3,6 +3,7 @@ const PropTypes = require('prop-types');
 const Close = require('react-icons/lib/io/close');
 const classNames = require('classnames');
 import emojiCodepoints from '../data/emoji_codepoints.json';
+
 const client = require('./data-client.js');
 
 const EmojiDetailTimeChart = require('./EmojiDetailTimeChart.js');
@@ -82,6 +83,7 @@ module.exports = class EmojiDetail extends React.Component {
 
 		this.setState({
 			isInitialized: true,
+			data: data,
 		});
 	};
 
@@ -92,6 +94,22 @@ module.exports = class EmojiDetail extends React.Component {
 	// initTime() {
 	// 	this.timeInterval = setInterval(this.handleTick, 50);
 	// }
+
+	generateHeaders = () => {
+		const cols = ['hashtag', 'counts'];
+
+		return <tr>{cols.map((d) => <th key={d}>{d}</th>)}</tr>;
+	};
+
+	generateRows = () => {
+		const cols = ['hashtag', 'counts'];
+		const data = this.state.data.hashtag.entries;
+
+		return data.map((ds) => {
+			const cells = cols.map((col, i) => <td key={col}>{ds[i]}</td>);
+			return <tr key={ds[0]}>{cells}</tr>;
+		});
+	};
 
 	render() {
 		return (
@@ -108,7 +126,8 @@ module.exports = class EmojiDetail extends React.Component {
 									{emojiCodepoints[this.props.emoji].name}
 								</div>
 								<div className="sub-info">
-									{emojiCodepoints[this.props.emoji].group} / {emojiCodepoints[this.props.emoji].subgroup}
+									{emojiCodepoints[this.props.emoji].group}
+									/ {emojiCodepoints[this.props.emoji].subgroup}
 								</div>
 							</div>
 						</div>
@@ -139,7 +158,12 @@ module.exports = class EmojiDetail extends React.Component {
 								}}
 							/>
 							<div className="hashtag-table exo-2">
-								hashtag
+								{this.state.isInitialized && (
+									<table>
+										<thead>{this.generateHeaders()}</thead>
+										<tbody>{this.generateRows()}</tbody>
+									</table>)
+								}
 							</div>
 						</div>
 					</div>
