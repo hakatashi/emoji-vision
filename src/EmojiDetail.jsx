@@ -1,10 +1,14 @@
 const React = require('react');
 const PropTypes = require('prop-types');
 const Close = require('react-icons/lib/io/close');
+const classNames = require('classnames');
 import emojiCodepoints from '../data/emoji_codepoints.json';
+const client = require('./data-client.js');
 
 const EmojiDetailTimeChart = require('./EmojiDetailTimeChart.js');
 const EmojiDetailPieChart = require('./EmojiDetailPieChart.js');
+
+const emojiToFileName = ([emoji, minuteness]) => `${minuteness}/${emoji}.json`;
 
 module.exports = class EmojiDetail extends React.Component {
 	static propTypes = {
@@ -19,7 +23,9 @@ module.exports = class EmojiDetail extends React.Component {
 	constructor(state, props) {
 		super(state, props);
 
-		this.state = {};
+		this.state = {
+			isInitialized: false,
+		};
 
 		this.isDestroyed = false;
 		this.minuteness = 'slim';
@@ -33,13 +39,50 @@ module.exports = class EmojiDetail extends React.Component {
 		this.destroy();
 	}
 
-	initialize = () => {
-		this.timeChart = EmojiDetailTimeChart.create(this.timeChart,
-			{emoji: this.props.emoji, minuteness: this.minuteness});
-		this.langChart = EmojiDetailPieChart.create(this.langChart,
-			{emoji: this.props.emoji, minuteness: this.minuteness, mode: 'lang'});
-		this.deviceChart = EmojiDetailPieChart.create(this.deviceChart,
-			{emoji: this.props.emoji, minuteness: this.minuteness, mode: 'device'});
+	initialize = async () => {
+		const fileName = emojiToFileName([this.props.emoji, this.minuteness]);
+
+		console.info(`Loading ${fileName}...`);
+		const data = await client([
+			'statistics',
+			fileName,
+		].join('/')).catch((error) => {
+			console.error(error);
+			return {
+				count: 0,
+				date: {
+					entries: [],
+					total: 0,
+				},
+				device: {
+					entries: [],
+					total: 0,
+				},
+				group: 'Unknown',
+				hashtag: {
+					entries: [],
+					total: 0,
+				},
+				name: 'Unknown',
+				subgroup: 'Unknown',
+			};
+		});
+
+		EmojiDetailTimeChart.create(this.timeChart, {data});
+
+		EmojiDetailPieChart.create(this.langChart, {
+			data,
+			mode: 'lang',
+		});
+
+		EmojiDetailPieChart.create(this.deviceChart, {
+			data,
+			mode: 'device',
+		});
+
+		this.setState({
+			isInitialized: true,
+		});
 	};
 
 	destroy = () => {
@@ -71,21 +114,26 @@ module.exports = class EmojiDetail extends React.Component {
 						</div>
 					</div>
 					<div className="detail-stat">
+						{!this.state.isInitialized && (
+							<div className="spinner-wrapper">
+								<div className="three-quarters-loader"/>
+							</div>
+						)}
 						<div
-							className="time-chart exo-2"
+							className={classNames('time-chart', 'exo-2', {initialized: this.state.isInitialized})}
 							ref={(node) => {
 								this.timeChart = node;
 							}}
 						/>
 						<div className="specific-charts">
 							<div
-								className="pie-chart exo-2"
+								className={classNames('pie-chart', 'exo-2', {initialized: this.state.isInitialized})}
 								ref={(node) => {
 									this.langChart = node;
 								}}
 							/>
 							<div
-								className="pie-chart exo-2"
+								className={classNames('pie-chart', 'exo-2', {initialized: this.state.isInitialized})}
 								ref={(node) => {
 									this.deviceChart = node;
 								}}

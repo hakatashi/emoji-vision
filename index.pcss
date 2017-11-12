@@ -222,10 +222,10 @@ svg {
 	.emoji-stat {
 		pointer-events: all;
 		position: absolute;
-		top: 10%;
-		left: 10%;
-		right: 10%;
-		bottom: 10%;
+		top: 5%;
+		left: 5%;
+		right: 5%;
+		bottom: 5%;
 		background: rgba(34, 34, 34, 0.9);
 		border: solid 5px white;
 
@@ -299,11 +299,33 @@ svg {
 				flex-direction: column;
 
 				display: flex;
+				position: relative;
+
+				.spinner-wrapper {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+
+					& > * {
+						font-size: 6vmin;
+					}
+				}
 
 				.time-chart {
 					flex: 1 1 0;
 					padding: 1em 2em;
-					justify-content: center;
+					opacity: 0;
+					transition: opacity 0.5s;
+
+					&.initialized {
+						opacity: 1;
+					}
+
+					.time-area {
+						animation: animate-time-area 1s;
+						transform-origin: bottom;
+					}
 				}
 
 				.specific-charts {
@@ -314,6 +336,12 @@ svg {
 					.pie-chart {
 						width: $size;
 						height: $size;
+						opacity: 0;
+						transition: opacity 0.5s;
+
+						&.initialized {
+							opacity: 1;
+						}
 					}
 					.hashtag-table {
 						padding: 1em;
@@ -322,4 +350,13 @@ svg {
 			}
 		}
     }
+}
+
+@keyframes animate-time-area {
+	from {
+		transform: scale(1, 0);
+	}
+	to {
+		transform: scale(1);
+	}
 }
