@@ -117,7 +117,12 @@ module.exports = class EmojiDetail extends React.Component {
 									{emojiCodepoints[this.props.emoji].name}
 								</div>
 								<div className="sub-info">
-									{emojiCodepoints[this.props.emoji].group} / {emojiCodepoints[this.props.emoji].subgroup} / Count: {this.getRankingEntry().count} (#{this.getRankingIndex() + 1})
+									{[
+										this.props.emoji.split('-').map((emoji) => `U+${emoji}`).join(' '),
+										emojiCodepoints[this.props.emoji].group,
+										emojiCodepoints[this.props.emoji].subgroup,
+										`Count: ${this.getRankingEntry().count} (#${this.getRankingIndex() + 1})`,
+									].join(' / ')}
 								</div>
 							</div>
 						</div>
