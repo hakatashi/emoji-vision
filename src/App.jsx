@@ -7,6 +7,8 @@ const CSSTransition = require('react-transition-group/CSSTransition');
 const noop = require('lodash/noop');
 const PropTypes = require('prop-types');
 const classNames = require('classnames');
+const Play = require('react-icons/lib/io/play');
+const Pause = require('react-icons/lib/io/pause');
 
 const WorldMap = require('./WorldMap.jsx');
 const TreeMap = require('./TreeMap.jsx');
@@ -41,6 +43,7 @@ module.exports = class App extends React.Component {
 			isSliding: false,
 			mode: 'hash',
 			isModalShowing: false,
+			isPausing: false,
 			detailedEmoji: null,
 		};
 
@@ -96,6 +99,12 @@ module.exports = class App extends React.Component {
 		this.setState({
 			mode: id,
 			startTime: this.state.time,
+		});
+	}
+
+	handleClickPauser = () => {
+		this.setState({
+			isPausing: !this.state.isPausing,
 		});
 	}
 
@@ -226,6 +235,9 @@ module.exports = class App extends React.Component {
 								{date.getMinutes().toString().padStart(2, '0')}
 								<div className="decrement"/>
 							</div>
+						</div>
+						<div className="pauser" onClick={this.handleClickPauser}>
+							{this.state.isPausing ? <Play/> : <Pause/>}
 						</div>
 					</div>
 					<div className="switchers">

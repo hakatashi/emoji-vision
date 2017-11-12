@@ -1,18 +1,19 @@
 const ndarray = require('ndarray');
 const D3 = require('d3');
 
-const {selectEmoji} = require('./util.js');
+const {selectEmoji, getFileName, HOUR} = require('./util.js');
 
 const WIDTH = 960;
 const HEIGHT = 500;
 const UNIT = 40;
 
 module.exports = class TreeMapArea {
-	constructor({node, width, height, offset, onEmojiMouseOver, onEmojiMouseLeave, onClickEmoji}) {
+	constructor({node, width, height, offset, emojiMode, onEmojiMouseOver, onEmojiMouseLeave, onClickEmoji}) {
 		this.node = node;
 		this.width = width;
 		this.height = height;
 		this.offset = offset;
+		this.emojiMode = emojiMode;
 		this.onEmojiMouseOver = onEmojiMouseOver;
 		this.onEmojiMouseLeave = onEmojiMouseLeave;
 		this.onClickEmoji = onClickEmoji;
@@ -23,6 +24,9 @@ module.exports = class TreeMapArea {
 
 		this.currentView = this.area.hi(Math.floor(width / UNIT), Math.floor(height / UNIT));
 		this.reverseMap = new WeakMap();
+		this.isTooltipShownMap = new WeakMap();
+		this.isEraceCancelledMap = new WeakMap();
+		this.tweetDataMap = new WeakMap();
 		this.hoveredGroups = new Set();
 	}
 
@@ -60,12 +64,14 @@ module.exports = class TreeMapArea {
 			'transform-origin': 'center',
 		});
 
-		const fileName = emoji.startsWith('00') ? emoji.slice(2).toLowerCase() : emoji.toLowerCase();
+		this.tweetDataMap.set(group, tweet);
+		this.isTooltipShownMap.set(group, false);
+		this.isEraceCancelledMap.set(group, false);
 
 		const image = group.append('image').attrs({
 			class: 'emoji animated bounceIn',
 			'transform-origin': 'center',
-			'xlink:href': `node_modules/twemoji/2/svg/${fileName}.svg`,
+			'xlink:href': getFileName(emoji, this.emojiMode),
 			width: 30,
 			height: 30,
 			x: -15,
@@ -74,29 +80,18 @@ module.exports = class TreeMapArea {
 			cursor: 'pointer',
 		});
 
-		let isTooltipShown = false;
-		let isEraceCancelled = false;
-
-		const erase = () => {
-			image.attr('class', 'emoji animated bounceOut');
-			image.on('mouseover', null);
-			image.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
-				this.remove(group);
-			});
-		};
-
 		image.on('mouseover', () => {
-			isTooltipShown = true;
+			this.isTooltipShownMap.set(group, true);
 			this.onEmojiMouseOver({x: (x + 0.5) * UNIT, y: (y + 0.5) * UNIT, group, text: tweet.text, node: this.node});
 			this.hoveredGroups.add(group);
 
 			image.on('mouseleave', () => {
-				isTooltipShown = false;
+				this.isTooltipShownMap.set(group, false);
 				this.onEmojiMouseLeave({group});
 				this.hoveredGroups.delete(group);
 
-				if (isEraceCancelled) {
-					erase();
+				if (this.isEraceCancelledMap.get(group)) {
+					this.softRemove(group);
 				}
 			});
 		});
@@ -105,17 +100,17 @@ module.exports = class TreeMapArea {
 			this.onClickEmoji(emoji);
 		});
 
-		setTimeout(() => {
-			if (isTooltipShown) {
-				isEraceCancelled = true;
-				return;
-			}
-
-			erase();
-		}, 3000);
-
 		this.currentView.set(x, y, group);
 		this.reverseMap.set(group, {x, y});
+	}
+
+	softRemove(group) {
+		const image = group.select('image');
+		image.attr('class', 'emoji animated bounceOut');
+		image.on('mouseover', null);
+		image.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
+			this.remove(group);
+		});
 	}
 
 	remove(group) {
@@ -151,6 +146,25 @@ module.exports = class TreeMapArea {
 			for (let x = 0; x < this.currentView.shape[0]; x++) {
 				if (this.currentView.get(x, y) !== null) {
 					this.remove(this.currentView.get(x, y));
+				}
+			}
+		}
+	}
+
+	updateTime(time) {
+		for (let y = 0; y < this.currentView.shape[1]; y++) {
+			for (let x = 0; x < this.currentView.shape[0]; x++) {
+				if (this.currentView.get(x, y) !== null) {
+					const group = this.currentView.get(x, y);
+					const tweet = this.tweetDataMap.get(group);
+
+					if (time.getTime() > tweet.time.getTime() + HOUR) {
+						if (this.isTooltipShownMap.get(group)) {
+							this.isEraceCancelledMap.set(group, true);
+						} else {
+							this.softRemove(group);
+						}
+					}
 				}
 			}
 		}

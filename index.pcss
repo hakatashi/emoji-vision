@@ -43,6 +43,8 @@ svg {
 		height: 80px;
 
 		display: flex;
+		align-items: center;
+		padding: 0 1em;
 
 		.slider {
 			height: 100%;
@@ -66,8 +68,8 @@ svg {
 			color: white;
 			line-height: 80px;
 			font-size: 46px;
-			flex: 0 0 420px;
-			width: 420px;
+			flex: 0 0 400px;
+			width: 400px;
 
 			.clock-slot {
 				text-align: center;
@@ -91,6 +93,21 @@ svg {
 					flex-basis: 15px;
 				}
 			}
+		}
+
+		.pauser {
+			width: 42px;
+			height: 42px;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			border-radius: 50%;
+
+			font-size: 30px;
+			background: #FF5722;
+			cursor: pointer;
 		}
 	}
 
@@ -218,8 +235,8 @@ svg {
 				display: flex;
 
 				img {
-					max-width: 10em;
-					max-height: 10em;
+					max-width: 15vmin;
+					max-height: 15vmin;
 				}
 
 				.basic-stat {

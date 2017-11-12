@@ -5,11 +5,7 @@ const last = require('lodash/last');
 
 const WorldMapChart = require('./WorldMapChart.js');
 const client = require('./data-client.js');
-
-const SECOND = 1000;
-const MINUTE = 60 * SECOND;
-const HOUR = 60 * MINUTE;
-const DAY = 24 * HOUR;
+const {DAY, HOUR, MINUTE} = require('./util.js');
 
 const getNextFile = ([year, month, day]) => {
 	const date = new Date(Date.UTC(year, month - 1, day) + DAY);
