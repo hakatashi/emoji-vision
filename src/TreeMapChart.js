@@ -178,10 +178,21 @@ module.exports = class TreeMapChart {
 		newLeaves.append('g').attrs({
 			'clip-path': ({data}) => `url(#clip-${data.id})`,
 		}).each(function (d) {
+			let emojiMode = 'twitter';
+
+			if (d.data.name.match(/android/i)) {
+				emojiMode = 'google';
+			}
+
+			if (d.data.name.match(/(ios|iphone|ipad)/i)) {
+				emojiMode = 'apple';
+			}
+
 			areaMap.set(d.data.name, new TreeMapArea({
 				node: this,
 				width: d.x1 - d.x0,
 				height: d.y1 - d.y0,
+				emojiMode,
 				onEmojiMouseOver: handleEmojiMouseOver,
 				onEmojiMouseLeave: handleEmojiMouseLeave,
 				onClickEmoji,

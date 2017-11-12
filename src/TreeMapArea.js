@@ -1,18 +1,19 @@
 const ndarray = require('ndarray');
 const D3 = require('d3');
 
-const {selectEmoji} = require('./util.js');
+const {selectEmoji, getFileName} = require('./util.js');
 
 const WIDTH = 960;
 const HEIGHT = 500;
 const UNIT = 40;
 
 module.exports = class TreeMapArea {
-	constructor({node, width, height, offset, onEmojiMouseOver, onEmojiMouseLeave, onClickEmoji}) {
+	constructor({node, width, height, offset, emojiMode, onEmojiMouseOver, onEmojiMouseLeave, onClickEmoji}) {
 		this.node = node;
 		this.width = width;
 		this.height = height;
 		this.offset = offset;
+		this.emojiMode = emojiMode;
 		this.onEmojiMouseOver = onEmojiMouseOver;
 		this.onEmojiMouseLeave = onEmojiMouseLeave;
 		this.onClickEmoji = onClickEmoji;
@@ -60,12 +61,10 @@ module.exports = class TreeMapArea {
 			'transform-origin': 'center',
 		});
 
-		const fileName = emoji.startsWith('00') ? emoji.slice(2).toLowerCase() : emoji.toLowerCase();
-
 		const image = group.append('image').attrs({
 			class: 'emoji animated bounceIn',
 			'transform-origin': 'center',
-			'xlink:href': `node_modules/twemoji/2/svg/${fileName}.svg`,
+			'xlink:href': getFileName(emoji, this.emojiMode),
 			width: 30,
 			height: 30,
 			x: -15,

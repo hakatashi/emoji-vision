@@ -5,7 +5,7 @@ const noop = require('lodash/noop');
 require('d3-selection-multi');
 const {textwrap} = require('d3-textwrap');
 
-const {selectEmoji} = require('./util.js');
+const {selectEmoji, getFileName} = require('./util.js');
 
 const mercatorProjection = D3.geoMercator().translate([480, 320]).clipExtent([[0, 0], [960, 500]]);
 
@@ -153,12 +153,10 @@ module.exports = class WorldMapChart {
 				'transform-origin': 'center',
 			});
 
-			const fileName = emoji.startsWith('00') ? emoji.slice(2).toLowerCase() : emoji.toLowerCase();
-
 			const image = group.append('image').attrs({
 				class: 'emoji animated bounceIn',
 				'transform-origin': 'center',
-				'xlink:href': `node_modules/twemoji/2/svg/${fileName}.svg`,
+				'xlink:href': getFileName(emoji, 'twitter'),
 				width: 150,
 				height: 150,
 			}).styles({
