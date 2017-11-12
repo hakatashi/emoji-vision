@@ -59,6 +59,7 @@
     "react-hammerjs": "^1.0.1",
     "react-icons": "^2.2.7",
     "react-measure": "^2.0.2",
+    "react-shortcuts": "^2.0.0",
     "react-spinner": "^0.2.7",
     "react-transition-group": "^2.2.1",
     "split": "^1.0.1",
