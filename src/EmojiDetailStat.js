@@ -82,12 +82,13 @@ module.exports = class EmojiDetailStat {
 
 		g.append('g')
 			.attr('transform', `translate(0,${svgHeight})`)
+			.attr('fill', 'white')
 			.call(D3.axisBottom(x));
 
 		g.append('g')
 			.call(D3.axisLeft(y))
 			.append('text')
-			.attr('fill', '#000')
+			.attr('fill', 'white')
 			.attr('transform', 'rotate(-90)')
 			.attr('y', 6)
 			.attr('text-anchor', 'end')
