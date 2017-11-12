@@ -26,11 +26,7 @@ Switcher.propTypes = {
 	onClick: PropTypes.func.isRequired,
 	id: PropTypes.string.isRequired,
 	children: PropTypes.element.isRequired,
-	active: PropTypes.bool,
-};
-
-Switcher.defaultProps = {
-	active: false,
+	active: PropTypes.bool.isRequired,
 };
 
 module.exports = class App extends React.Component {
