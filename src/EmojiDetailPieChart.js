@@ -92,10 +92,13 @@ module.exports = class EmojiDetailPieChart {
 			.attr('font-weight', '300')
 			.attr('text-anchor', 'middle')
 			.text((d) => {
-				if (d.data[0] === 'Others') {
-					return 'Others';
+				if (mode === 'lang') {
+					if (d.data[0] === 'Others') {
+						return 'Others';
+					}
+					return ISO6391.getNativeName(d.data[0]);
 				}
-				return ISO6391.getNativeName(d.data[0]);
+				return d.data[0];
 			});
 
 		return new EmojiDetailPieChart({
