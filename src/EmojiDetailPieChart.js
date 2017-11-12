@@ -46,11 +46,10 @@ module.exports = class EmojiDetailPieChart {
 		const svg = D3.select(node).append('svg').attrs({
 			width: '100%',
 			height: '100%',
+			viewBox: '0 0 1000 1000',
 		});
 
-		const svgWidth = parseInt(svg.style('width'));
-		const svgHeight = parseInt(svg.style('height'));
-		const radius = Math.min(svgWidth, svgHeight) / 1.5;
+		const radius = 400;
 
 		const statData = await this.fetchStatData([emoji, minuteness]);
 		const statDataToShow = statData[mode].entries.slice(0, 10);
@@ -75,7 +74,7 @@ module.exports = class EmojiDetailPieChart {
 			.innerRadius(radius / 1.5);
 
 		const g = svg.append('g')
-			.attr('transform', `translate(${svgWidth / 2},${svgHeight / 2})`);
+			.attr('transform', 'translate(500, 500)');
 
 		const arc = g.selectAll('.arc')
 			.data(pie(statDataToShow))
@@ -89,6 +88,8 @@ module.exports = class EmojiDetailPieChart {
 		arc.append('text')
 			.attr('transform', (d) => `translate(${label.centroid(d)})`)
 			.attr('dy', '0.35em')
+			.attr('font-size', 100)
+			.attr('text-anchor', 'middle')
 			.text((d) => {
 				if (d.data[0] === 'Others') {
 					return 'Others';

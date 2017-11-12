@@ -60,9 +60,13 @@ module.exports = class EmojiDetail extends React.Component {
 					<div className="basic-info">
 						<img src={`node_modules/twemoji/2/svg/${this.props.emoji.toLowerCase()}.svg`}/>
 						<div className="basic-stat">
-							{emojiCodepoints[this.props.emoji].name}
-							<div className="sub-info">
-								{emojiCodepoints[this.props.emoji].group} / {emojiCodepoints[this.props.emoji].subgroup}
+							<div className="basic-stat-inner">
+								<div className="name">
+									{emojiCodepoints[this.props.emoji].name}
+								</div>
+								<div className="sub-info">
+									{emojiCodepoints[this.props.emoji].group} / {emojiCodepoints[this.props.emoji].subgroup}
+								</div>
 							</div>
 						</div>
 					</div>
@@ -73,18 +77,20 @@ module.exports = class EmojiDetail extends React.Component {
 								this.timeChart = node;
 							}}
 						/>
-						<div
-							className="pie-chart exo-2"
-							ref={(node) => {
-								this.langChart = node;
-							}}
-						/>
-						<div
-							className="pie-chart exo-2"
-							ref={(node) => {
-								this.deviceChart = node;
-							}}
-						/>
+						<div className="pie-charts">
+							<div
+								className="pie-chart exo-2"
+								ref={(node) => {
+									this.langChart = node;
+								}}
+							/>
+							<div
+								className="pie-chart exo-2"
+								ref={(node) => {
+									this.deviceChart = node;
+								}}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
