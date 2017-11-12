@@ -82,7 +82,8 @@ module.exports = class EmojiDetailPieChart {
 		arc.append('text')
 			.attr('transform', (d) => `translate(${label.centroid(d)})`)
 			.attr('dy', '0.35em')
-			.attr('font-size', 100)
+			.attr('font-size', 70)
+			.attr('font-weight', '300')
 			.attr('text-anchor', 'middle')
 			.text((d) => ISO6391.getNativeName(d.data[0]));
 
