@@ -24,6 +24,8 @@ module.exports = class TreeMapArea {
 
 		this.currentView = this.area.hi(Math.floor(width / UNIT), Math.floor(height / UNIT));
 		this.reverseMap = new WeakMap();
+		this.isTooltipShownMap = new WeakMap();
+		this.isEraceCancelledMap = new WeakMap();
 		this.hoveredGroups = new Set();
 	}
 
@@ -73,8 +75,8 @@ module.exports = class TreeMapArea {
 			cursor: 'pointer',
 		});
 
-		let isTooltipShown = false;
-		let isEraceCancelled = false;
+		this.isTooltipShownMap.set(group, false);
+		this.isEraceCancelledMap.set(group, false);
 
 		const erase = () => {
 			image.attr('class', 'emoji animated bounceOut');
@@ -85,16 +87,16 @@ module.exports = class TreeMapArea {
 		};
 
 		image.on('mouseover', () => {
-			isTooltipShown = true;
+			this.isTooltipShownMap.set(group, true);
 			this.onEmojiMouseOver({x: (x + 0.5) * UNIT, y: (y + 0.5) * UNIT, group, text: tweet.text, node: this.node});
 			this.hoveredGroups.add(group);
 
 			image.on('mouseleave', () => {
-				isTooltipShown = false;
+				this.isTooltipShownMap.set(group, false);
 				this.onEmojiMouseLeave({group});
 				this.hoveredGroups.delete(group);
 
-				if (isEraceCancelled) {
+				if (this.isEraceCancelledMap.get(group)) {
 					erase();
 				}
 			});
@@ -105,8 +107,8 @@ module.exports = class TreeMapArea {
 		});
 
 		setTimeout(() => {
-			if (isTooltipShown) {
-				isEraceCancelled = true;
+			if (this.isTooltipShownMap.get(group)) {
+				this.isEraceCancelledMap.set(group, true);
 				return;
 			}
 
@@ -153,5 +155,9 @@ module.exports = class TreeMapArea {
 				}
 			}
 		}
+	}
+
+	updateTime(time) {
+
 	}
 };

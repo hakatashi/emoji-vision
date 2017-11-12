@@ -222,7 +222,7 @@ module.exports = class TreeMapChart {
 		});
 	}
 
-	showTweets({tweets}) {
+	showTweets({tweets, time}) {
 		for (const tweet of tweets) {
 			if (this.areaMap.has(tweet.entry)) {
 				this.areaMap.get(tweet.entry).showTweet(tweet);
