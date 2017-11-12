@@ -261,7 +261,7 @@ svg {
 			box-sizing: border-box;
 
 			.basic-info {
-				flex: 0 0 10em;
+				flex: 0 0 15vmin;
 				display: flex;
 
 				img {
@@ -270,18 +270,25 @@ svg {
 				}
 
 				.basic-stat {
-					margin-left: 0.3em;
-					text-transform: uppercase;
-					flex-grow: 1;
+					display: flex;
+					align-items: center;
+				}
 
-					font-size: 4em;
+				.basic-stat-inner {
+					margin-left: 0.3em;
+					flex: 1 0 0;
+
+					font-size: 5em;
+					font-family: 'Exo 2';
+					font-weight: 200;
+
+					.name {
+						text-transform: uppercase;
+						line-height: 0.9em;
+					}
 
 					.sub-info {
-						margin-top: 0.3em;
-						text-transform: lowercase;
-						flex-grow: 1;
-
-						font-size: 0.5em;
+						font-size: 0.4em;
 					}
 				}
 			}
