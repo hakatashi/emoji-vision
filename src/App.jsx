@@ -34,8 +34,42 @@ const Switcher = (props) => {
 Switcher.propTypes = {
 	onClick: PropTypes.func.isRequired,
 	id: PropTypes.string.isRequired,
-	children: PropTypes.element.isRequired,
+	children: PropTypes.string.isRequired,
 	active: PropTypes.bool.isRequired,
+};
+
+const ClockSlot = (props) => {
+	const onIncrement = (event) => {
+		props.onValueChange(props.id, 'increment', event);
+	};
+
+	const onDecrement = (event) => {
+		props.onValueChange(props.id, 'decrement', event);
+	};
+
+	return (
+		<div className={classNames('clock-slot', props.id)}>
+			{props.showArrows && (
+				<div className="increment" onClick={onIncrement}/>
+			)}
+			{props.children}
+			{props.showArrows && (
+				<div className="decrement" onClick={onDecrement}/>
+			)}
+		</div>
+	);
+};
+
+ClockSlot.propTypes = {
+	onValueChange: PropTypes.func,
+	id: PropTypes.string.isRequired,
+	showArrows: PropTypes.bool,
+	children: PropTypes.string.isRequired,
+};
+
+ClockSlot.defaultProps = {
+	onValueChange: noop,
+	showArrows: false,
 };
 
 module.exports = class App extends React.Component {
@@ -121,6 +155,33 @@ module.exports = class App extends React.Component {
 		this.setState({
 			isPausing: !this.state.isPausing,
 		});
+	}
+
+	handleClockValueChange = (unit, direction) => {
+		if (this.state.isLoading || this.state.isSliding) {
+			return;
+		}
+
+		const delta = direction === 'increment' ? 1 : -1;
+		const time = new Date(this.state.time);
+
+		if (unit === 'month') {
+			time.setMonth(time.getMonth() + delta);
+		}
+
+		if (unit === 'day') {
+			time.setDate(time.getDate() + delta);
+		}
+
+		if (unit === 'hour') {
+			time.setHours(time.getHours() + delta);
+		}
+
+		const timeStart = Date.UTC(2016, 6, 1);
+		const timeEnd = Date.UTC(2017, 6, 1);
+		const targetTime = Math.max(timeStart, Math.min(time.getTime(), timeEnd));
+
+		this.setState({startTime: targetTime});
 	}
 
 	handleShortcuts = (action) => {
@@ -234,31 +295,25 @@ module.exports = class App extends React.Component {
 								</div>
 							</div>
 							<div className="clock exo-2">
-								<div className="clock-slot year">
+								<ClockSlot id="year" onValueChange={this.handleClockValueChange}>
 									{date.getFullYear()}
-								</div>
+								</ClockSlot>
 								<div className="clock-seperator">/</div>
-								<div className="clock-slot month">
-									<div className="increment"/>
+								<ClockSlot id="month" onValueChange={this.handleClockValueChange} showArrows>
 									{(date.getMonth() + 1).toString().padStart(2, '0')}
-									<div className="decrement"/>
-								</div>
+								</ClockSlot>
 								<div className="clock-seperator">/</div>
-								<div className="clock-slot day">
-									<div className="increment"/>
+								<ClockSlot id="day" onValueChange={this.handleClockValueChange} showArrows>
 									{date.getDate().toString().padStart(2, '0')}
-									<div className="decrement"/>
-								</div>
+								</ClockSlot>
 								<div className="clock-seperator narrow"/>
-								<div className="clock-slot hour">
-									<div className="increment"/>
+								<ClockSlot id="hour" onValueChange={this.handleClockValueChange} showArrows>
 									{date.getHours().toString().padStart(2, '0')}
-									<div className="decrement"/>
-								</div>
+								</ClockSlot>
 								<div className="clock-seperator narrow">:</div>
-								<div className="clock-slot minute">
+								<ClockSlot id="minute" onValueChange={this.handleClockValueChange}>
 									{date.getMinutes().toString().padStart(2, '0')}
-								</div>
+								</ClockSlot>
 							</div>
 							<div className="pauser" onClick={this.handleClickPauser}>
 								{this.state.isPausing ? <Play/> : <Pause/>}
