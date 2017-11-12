@@ -179,12 +179,18 @@ module.exports = class WorldMap extends React.Component {
 
 	handleTimeleap = async (time) => {
 		this.setState({isLoading: true});
+
+		const session = Symbol('load session');
+		this.loadSession = session;
+
 		this.props.onUpdateTime(time);
 		this.time = time;
 		this.preloadSession = null;
 		const file = timeToFile(time);
 		const [nextYear, nextMonth, nextDay] = file;
+
 		console.info(`Loading ${fileToFileName(file)}...`);
+
 		const tweets = await client([
 			'selected',
 			'geo-tweets',
@@ -195,6 +201,11 @@ module.exports = class WorldMap extends React.Component {
 			console.error(error);
 			return [];
 		});
+
+		if (session !== this.loadSession) {
+			return;
+		}
+
 		this.loadedFile = file;
 		tweets.forEach((tweet) => {
 			tweet.time = Date.parse(tweet.created_at);

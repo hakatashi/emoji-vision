@@ -18,6 +18,10 @@ const EmojiDetail = require('./EmojiDetail.jsx');
 const shortcutManager = new ShortcutManager({
 	APP: {
 		PAUSE: 'space',
+		SKIP_FORWARD: 'right',
+		SKIP_BACK: 'left',
+		BIG_SKIP_FORWARD: 'shift+right',
+		BIG_SKIP_BACK: 'shift+left',
 	},
 });
 
@@ -187,6 +191,18 @@ module.exports = class App extends React.Component {
 	handleShortcuts = (action) => {
 		if (action === 'PAUSE') {
 			this.handleClickPauser();
+		}
+		if (action === 'SKIP_FORWARD') {
+			this.handleClockValueChange('hour', 'increment');
+		}
+		if (action === 'SKIP_BACK') {
+			this.handleClockValueChange('hour', 'decrement');
+		}
+		if (action === 'BIG_SKIP_FORWARD') {
+			this.handleClockValueChange('day', 'increment');
+		}
+		if (action === 'BIG_SKIP_BACK') {
+			this.handleClockValueChange('day', 'decrement');
 		}
 	}
 

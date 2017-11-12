@@ -204,12 +204,18 @@ module.exports = class TreeMap extends React.Component {
 
 	handleTimeleap = async (time) => {
 		this.setState({isLoading: true});
+
+		const session = Symbol('load session');
+		this.loadSession = session;
+
 		this.props.onUpdateTime(time);
 		this.time = time;
 		this.preloadSession = null;
 		const file = timeToFile(time);
 		const [nextYear, nextMonth, nextDay] = file;
+
 		console.info(`Loading ${fileToFileName(file)}...`);
+
 		const data = await client([
 			'selected',
 			`${this.props.mode}-tweets`,
@@ -220,6 +226,11 @@ module.exports = class TreeMap extends React.Component {
 			console.error(error);
 			return {tweets: [], stats: []};
 		});
+
+		if (session !== this.loadSession) {
+			return;
+		}
+
 		this.loadedFile = file;
 
 		data.tweets.forEach((tweet) => {
