@@ -53,11 +53,11 @@ module.exports = class EmojiDetailPieChart {
 
 		arc.append('text')
 			.attr('transform', (d) => {
-				const midAngle = d.endAngle < Math.PI ? d.startAngle / 2 + d.endAngle / 2 : d.startAngle / 2 + d.endAngle / 2 + Math.PI;
+				const midAngle = ((d.startAngle + d.endAngle) / 2) < Math.PI ? d.startAngle / 2 + d.endAngle / 2 : d.startAngle / 2 + d.endAngle / 2 + Math.PI;
 				return `translate(${label.centroid(d)[0]},${label.centroid(d)[1]}) rotate(-90) rotate(${midAngle * 180 / Math.PI})`;
 			})
 			.attr('dy', '0.35em')
-			.attr('font-size', 25)
+			.attr('font-size', (d) => (d.endAngle - d.startAngle) > (Math.PI / 180 * 20) ? 50 : 25)
 			.attr('font-weight', '300')
 			.attr('text-anchor', 'middle')
 			.attr('fill', 'white')
