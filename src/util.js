@@ -36,3 +36,7 @@ module.exports.SECOND = SECOND;
 module.exports.MINUTE = MINUTE;
 module.exports.HOUR = HOUR;
 module.exports.DAY = DAY;
+
+module.exports.getTimezoneOffset = () => (
+	-new Date().getTimezoneOffset() / 60
+);

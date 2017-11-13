@@ -14,6 +14,7 @@ const {ShortcutManager, Shortcuts} = require('react-shortcuts');
 const WorldMap = require('./WorldMap.jsx');
 const TreeMap = require('./TreeMap.jsx');
 const EmojiDetail = require('./EmojiDetail.jsx');
+const {getTimezoneOffset} = require('./util.js');
 
 const shortcutManager = new ShortcutManager({
 	APP: {
@@ -329,6 +330,9 @@ module.exports = class App extends React.Component {
 								<div className="clock-seperator narrow">:</div>
 								<ClockSlot id="minute" onValueChange={this.handleClockValueChange}>
 									{date.getMinutes().toString().padStart(2, '0')}
+									<div className="timezone">
+										(UTC{getTimezoneOffset() >= 0 ? '+' : '-'}{Math.abs(getTimezoneOffset())})
+									</div>
 								</ClockSlot>
 							</div>
 							<div className="pauser" onClick={this.handleClickPauser}>
