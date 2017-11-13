@@ -36,8 +36,8 @@ module.exports = class EmojiDetailPieChart {
 			.innerRadius(0);
 
 		const label = D3.arc()
-			.outerRadius(radius / 1.5)
-			.innerRadius(radius / 1.5);
+			.outerRadius(radius + 20)
+			.innerRadius(radius + 5);
 
 		const g = svg.append('g')
 			.attr('transform', 'translate(500, 500)');
@@ -52,11 +52,15 @@ module.exports = class EmojiDetailPieChart {
 			.attr('fill', (d) => color(d.data[0]));
 
 		arc.append('text')
-			.attr('transform', (d) => `translate(${label.centroid(d)})`)
+			.attr('transform', (d) => {
+				const midAngle = d.endAngle < Math.PI ? d.startAngle / 2 + d.endAngle / 2 : d.startAngle / 2 + d.endAngle / 2 + Math.PI;
+				return `translate(${label.centroid(d)[0]},${label.centroid(d)[1]}) rotate(-90) rotate(${midAngle * 180 / Math.PI})`;
+			})
 			.attr('dy', '0.35em')
-			.attr('font-size', 70)
+			.attr('font-size', 25)
 			.attr('font-weight', '300')
 			.attr('text-anchor', 'middle')
+			.attr('fill', 'white')
 			.text((d) => {
 				if (mode === 'lang') {
 					if (d.data[0] === 'Others') {
