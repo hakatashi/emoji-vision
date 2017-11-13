@@ -92,7 +92,7 @@ module.exports = class EmojiDetail extends React.Component {
 
 		this.setState({
 			isInitialized: true,
-			data: data,
+			data,
 		});
 	};
 
@@ -111,13 +111,14 @@ module.exports = class EmojiDetail extends React.Component {
 	};
 
 	generateRows = () => {
-		const cols = ['hashtag', 'counts'];
 		const data = this.state.data.hashtag.entries;
 
-		return data.map((ds) => {
-			const cells = cols.map((col, i) => <td key={col}>{ds[i]}</td>);
-			return <tr key={ds[0]}>{cells}</tr>;
-		});
+		return data.map((ds) => (
+			<tr key={ds[0]}>
+				<td>#{ds[0]}</td>
+				<td>{ds[1].toLocaleString('latn')}</td>
+			</tr>
+	   ));
 	};
 
 	render() {
@@ -170,7 +171,7 @@ module.exports = class EmojiDetail extends React.Component {
 									this.deviceChart = node;
 								}}
 							/>
-							<div className="hashtag-table exo-2">
+						<div className={classNames('hashtag-table', 'exo-2', {initialized: this.state.isInitialized})}>
 								{this.state.isInitialized && (
 									<table>
 										<thead>{this.generateHeaders()}</thead>

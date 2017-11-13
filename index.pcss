@@ -343,9 +343,18 @@ svg {
 							opacity: 1;
 						}
 					}
+
 					.hashtag-table {
 						overflow-y: scroll;
-						padding: 1em;
+						margin: 1em;
+						padding: 0 1em;
+						min-width: 18em;
+						opacity: 0;
+						transition: opacity 0.5s;
+
+						&.initialized {
+							opacity: 1;
+						}
 					}
 				}
 			}
