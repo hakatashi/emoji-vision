@@ -2,6 +2,8 @@
 
 Members: 紺野瑛介, 高橋光輝
 
+You can visit the site [here!](http://hakata-public.s3-website-ap-northeast-1.amazonaws.com/infovis/)
+
 ## Build
 
 ### Prerequisites

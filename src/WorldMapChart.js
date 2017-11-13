@@ -1,3 +1,5 @@
+/* eslint no-loop-func: "off" */
+
 const D3 = require('d3');
 const topojson = require('topojson');
 const noop = require('lodash/noop');
@@ -5,7 +7,7 @@ const noop = require('lodash/noop');
 require('d3-selection-multi');
 const {textwrap} = require('d3-textwrap');
 
-const {selectEmoji} = require('./util.js');
+const {selectEmoji, getFileName, HOUR} = require('./util.js');
 
 const mercatorProjection = D3.geoMercator().translate([480, 320]).clipExtent([[0, 0], [960, 500]]);
 
@@ -57,6 +59,11 @@ module.exports = class WorldMapChart {
 		this.tooltipGroup = props.tooltipGroup;
 		this.citiesMap = props.citiesMap;
 		this.onClickEmoji = props.onClickEmoji;
+
+		this.isTooltipShownMap = new WeakMap();
+		this.isEraceCancelledMap = new WeakMap();
+		this.tweetDataMap = new WeakMap();
+		this.shownEmojis = new Set();
 	}
 
 	static async create(node, {onClickEmoji = noop}) {
@@ -153,31 +160,23 @@ module.exports = class WorldMapChart {
 				'transform-origin': 'center',
 			});
 
-			const fileName = emoji.startsWith('00') ? emoji.slice(2).toLowerCase() : emoji.toLowerCase();
+			this.shownEmojis.add(group);
+			this.tweetDataMap.set(group, tweet);
+			this.isTooltipShownMap.set(group, false);
+			this.isEraceCancelledMap.set(group, false);
 
 			const image = group.append('image').attrs({
 				class: 'emoji animated bounceIn',
 				'transform-origin': 'center',
-				'xlink:href': `node_modules/twemoji/2/svg/${fileName}.svg`,
+				'xlink:href': getFileName(emoji, 'twitter'),
 				width: 150,
 				height: 150,
 			}).styles({
 				cursor: 'pointer',
 			});
 
-			let isTooltipShown = false;
-			let isEraceCancelled = false;
-
-			const erase = () => {
-				image.attr('class', 'emoji animated bounceOut');
-				image.on('mouseover', null);
-				image.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
-					group.remove();
-				});
-			};
-
 			image.on('mouseover', () => {
-				isTooltipShown = true;
+				this.isTooltipShownMap.set(group, true);
 
 				const tooltipWidth = 200;
 				const tooltipHeight = 80;
@@ -228,10 +227,10 @@ module.exports = class WorldMapChart {
 					tooltipWrap.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
 						tooltipWrap.remove();
 					});
-					isTooltipShown = false;
+					this.isTooltipShownMap.set(group, false);
 
-					if (isEraceCancelled) {
-						erase();
+					if (this.isEraceCancelledMap.get(group)) {
+						this.softRemove();
 					}
 				});
 			});
@@ -239,15 +238,32 @@ module.exports = class WorldMapChart {
 			image.on('click', () => {
 				this.onClickEmoji(emoji);
 			});
+		}
 
-			setTimeout(() => {
-				if (isTooltipShown) {
-					isEraceCancelled = true;
-					return;
+		this.updateTime(time);
+	}
+
+	softRemove(group) {
+		const image = group.select('image');
+		image.attr('class', 'emoji animated bounceOut');
+		image.on('mouseover', null);
+		image.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
+			group.remove();
+			this.shownEmojis.delete(group);
+		});
+	}
+
+	updateTime(time) {
+		for (const group of this.shownEmojis) {
+			const tweet = this.tweetDataMap.get(group);
+
+			if (time.getTime() > tweet.time + HOUR || time.getTime() < tweet.time) {
+				if (this.isTooltipShownMap.get(group)) {
+					this.isEraceCancelledMap.set(group, true);
+				} else {
+					this.softRemove(group);
 				}
-
-				erase();
-			}, 3000);
+			}
 		}
 	}
 };

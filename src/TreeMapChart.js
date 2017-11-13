@@ -14,12 +14,13 @@ module.exports = class TreeMapChart {
 		this.colorScale = props.colorScale;
 		this.cells = props.cells;
 		this.tooltipGroup = props.tooltipGroup;
+		this.mode = props.mode;
 		this.onClickEmoji = props.onClickEmoji;
 		this.areaMap = new Map();
 		this.tooltipMap = new WeakMap();
 	}
 
-	static create(node, {onClickEmoji = noop}) {
+	static create(node, {onClickEmoji = noop, mode}) {
 		const svg = D3.select(node).append('svg').attrs({
 			width: '100%',
 			height: '100%',
@@ -38,6 +39,7 @@ module.exports = class TreeMapChart {
 			colorScale,
 			cells,
 			tooltipGroup,
+			mode,
 			onClickEmoji,
 		});
 	}
@@ -101,7 +103,7 @@ module.exports = class TreeMapChart {
 	}
 
 	updateLayout(categories) {
-		const {areaMap, handleEmojiMouseOver, handleEmojiMouseLeave, onClickEmoji} = this;
+		const {areaMap, handleEmojiMouseOver, handleEmojiMouseLeave, onClickEmoji, mode} = this;
 
 		const root = D3.hierarchy({
 			name: '',
@@ -178,10 +180,23 @@ module.exports = class TreeMapChart {
 		newLeaves.append('g').attrs({
 			'clip-path': ({data}) => `url(#clip-${data.id})`,
 		}).each(function (d) {
+			let emojiMode = 'twitter';
+
+			if (mode === 'device') {
+				if (d.data.name.match(/android/i)) {
+					emojiMode = 'google';
+				}
+
+				if (d.data.name.match(/(ios|iphone|ipad)/i)) {
+					emojiMode = 'apple';
+				}
+			}
+
 			areaMap.set(d.data.name, new TreeMapArea({
 				node: this,
 				width: d.x1 - d.x0,
 				height: d.y1 - d.y0,
+				emojiMode,
 				onEmojiMouseOver: handleEmojiMouseOver,
 				onEmojiMouseLeave: handleEmojiMouseLeave,
 				onClickEmoji,
@@ -207,11 +222,15 @@ module.exports = class TreeMapChart {
 		});
 	}
 
-	showTweets({tweets}) {
+	showTweets({tweets, time}) {
 		for (const tweet of tweets) {
 			if (this.areaMap.has(tweet.entry)) {
 				this.areaMap.get(tweet.entry).showTweet(tweet);
 			}
+		}
+
+		for (const area of this.areaMap.values()) {
+			area.updateTime(time);
 		}
 	}
 };

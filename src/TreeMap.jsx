@@ -31,6 +31,7 @@ const fileToFileName = ([year, month, day]) => (
 module.exports = class TreeMap extends React.Component {
 	static propTypes = {
 		startTime: PropTypes.number.isRequired,
+		isPausing: PropTypes.bool.isRequired,
 		onUpdateTime: PropTypes.func.isRequired,
 		onClickEmoji: PropTypes.func.isRequired,
 		mode: PropTypes.oneOf(['hash', 'lang', 'device']).isRequired,
@@ -64,17 +65,28 @@ module.exports = class TreeMap extends React.Component {
 		if (this.props.startTime !== nextProps.startTime) {
 			this.handleTimeleap(nextProps.startTime);
 		}
+
+		if (!this.props.isPausing && nextProps.isPausing) {
+			this.pause();
+		}
+
+		if (this.props.isPausing && !nextProps.isPausing) {
+			this.resume();
+		}
 	}
 
 	initialize = async () => {
 		this.chart = await TreeMapChart.create(this.map, {
 			onClickEmoji: this.handleClickEmoji,
+			mode: this.props.mode,
 		});
 		if (this.isDestroyed) {
 			return;
 		}
 		this.handleTimeleap(this.time);
-		this.initTime();
+		if (!this.props.isPausing) {
+			this.initTime();
+		}
 	}
 
 	destroy = () => {
@@ -85,6 +97,14 @@ module.exports = class TreeMap extends React.Component {
 		this.loadedFile = null;
 		this.preloadSession = null;
 		this.isDestroyed = true;
+	}
+
+	pause = () => {
+		this.destroyTime();
+	}
+
+	resume = () => {
+		this.initTime();
 	}
 
 	initTime() {
@@ -184,12 +204,18 @@ module.exports = class TreeMap extends React.Component {
 
 	handleTimeleap = async (time) => {
 		this.setState({isLoading: true});
+
+		const session = Symbol('load session');
+		this.loadSession = session;
+
 		this.props.onUpdateTime(time);
 		this.time = time;
 		this.preloadSession = null;
 		const file = timeToFile(time);
 		const [nextYear, nextMonth, nextDay] = file;
+
 		console.info(`Loading ${fileToFileName(file)}...`);
+
 		const data = await client([
 			'selected',
 			`${this.props.mode}-tweets`,
@@ -200,6 +226,11 @@ module.exports = class TreeMap extends React.Component {
 			console.error(error);
 			return {tweets: [], stats: []};
 		});
+
+		if (session !== this.loadSession) {
+			return;
+		}
+
 		this.loadedFile = file;
 
 		data.tweets.forEach((tweet) => {

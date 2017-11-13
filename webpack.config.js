@@ -1,5 +1,8 @@
 require('dotenv').config();
+
 const webpack = require('webpack');
+const MinifyPlugin = require('babel-minify-webpack-plugin');
+
 module.exports = (env = {}) => ({
 	entry: './index.babel.js',
 	output: {
@@ -50,5 +53,8 @@ module.exports = (env = {}) => ({
 			'process.env.AZURE_STORAGE_ACCOUNT': JSON.stringify(process.env.AZURE_STORAGE_ACCOUNT),
 			'process.env.AZURE_STORAGE_ACCESS_KEY': JSON.stringify(process.env.AZURE_STORAGE_ACCESS_KEY),
 		}),
+		...(env.production ? [
+			new MinifyPlugin({mangle: false}),
+		] : []),
 	],
 });

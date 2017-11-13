@@ -5,11 +5,7 @@ const last = require('lodash/last');
 
 const WorldMapChart = require('./WorldMapChart.js');
 const client = require('./data-client.js');
-
-const SECOND = 1000;
-const MINUTE = 60 * SECOND;
-const HOUR = 60 * MINUTE;
-const DAY = 24 * HOUR;
+const {DAY, HOUR, MINUTE} = require('./util.js');
 
 const getNextFile = ([year, month, day]) => {
 	const date = new Date(Date.UTC(year, month - 1, day) + DAY);
@@ -29,6 +25,7 @@ const fileToFileName = ([year, month, day]) => (
 module.exports = class WorldMap extends React.Component {
 	static propTypes = {
 		startTime: PropTypes.number.isRequired,
+		isPausing: PropTypes.bool.isRequired,
 		onUpdateTime: PropTypes.func.isRequired,
 		onClickEmoji: PropTypes.func.isRequired,
 	}
@@ -60,6 +57,14 @@ module.exports = class WorldMap extends React.Component {
 		if (this.props.startTime !== nextProps.startTime) {
 			this.handleTimeleap(nextProps.startTime);
 		}
+
+		if (!this.props.isPausing && nextProps.isPausing) {
+			this.pause();
+		}
+
+		if (this.props.isPausing && !nextProps.isPausing) {
+			this.resume();
+		}
 	}
 
 	initialize = async () => {
@@ -70,7 +75,9 @@ module.exports = class WorldMap extends React.Component {
 			return;
 		}
 		this.handleTimeleap(this.time);
-		this.initTime();
+		if (!this.props.isPausing) {
+			this.initTime();
+		}
 	}
 
 	destroy = () => {
@@ -80,6 +87,14 @@ module.exports = class WorldMap extends React.Component {
 		this.loadedFile = null;
 		this.preloadSession = null;
 		this.isDestroyed = true;
+	}
+
+	pause = () => {
+		this.destroyTime();
+	}
+
+	resume = () => {
+		this.initTime();
 	}
 
 	initTime() {
@@ -164,12 +179,18 @@ module.exports = class WorldMap extends React.Component {
 
 	handleTimeleap = async (time) => {
 		this.setState({isLoading: true});
+
+		const session = Symbol('load session');
+		this.loadSession = session;
+
 		this.props.onUpdateTime(time);
 		this.time = time;
 		this.preloadSession = null;
 		const file = timeToFile(time);
 		const [nextYear, nextMonth, nextDay] = file;
+
 		console.info(`Loading ${fileToFileName(file)}...`);
+
 		const tweets = await client([
 			'selected',
 			'geo-tweets',
@@ -180,6 +201,11 @@ module.exports = class WorldMap extends React.Component {
 			console.error(error);
 			return [];
 		});
+
+		if (session !== this.loadSession) {
+			return;
+		}
+
 		this.loadedFile = file;
 		tweets.forEach((tweet) => {
 			tweet.time = Date.parse(tweet.created_at);
