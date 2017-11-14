@@ -342,6 +342,17 @@ svg {
 					.time-area {
 						animation: animate-time-area 1s;
 						transform-origin: bottom;
+
+						@at-root {
+							@keyframes animate-time-area {
+								from {
+									transform: scale(1, 0);
+								}
+								to {
+									transform: scale(1);
+								}
+							}
+						}
 					}
 				}
 
@@ -377,13 +388,4 @@ svg {
 			}
 		}
     }
-}
-
-@keyframes animate-time-area {
-	from {
-		transform: scale(1, 0);
-	}
-	to {
-		transform: scale(1);
-	}
 }
