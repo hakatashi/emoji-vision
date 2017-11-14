@@ -52,6 +52,7 @@ module.exports = (env = {}) => ({
 		new webpack.DefinePlugin({
 			'process.env.AZURE_STORAGE_ACCOUNT': JSON.stringify(process.env.AZURE_STORAGE_ACCOUNT),
 			'process.env.AZURE_STORAGE_ACCESS_KEY': JSON.stringify(process.env.AZURE_STORAGE_ACCESS_KEY),
+			'process.env.NODE_ENV': JSON.stringify(env.production ? 'production' : 'development'),
 		}),
 		...(env.production ? [
 			new MinifyPlugin({mangle: false}),
