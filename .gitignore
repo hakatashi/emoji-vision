@@ -67,3 +67,5 @@ data
 .idea/
 index.js
 index.js.map
+index.html
+index.loading.css
