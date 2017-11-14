@@ -229,7 +229,7 @@ module.exports = class WorldMap extends React.Component {
 					</div>
 				)}
 				<div
-					className={classNames('map', {loading: this.state.isLoading})}
+					className={classNames('map', {loading: this.state.isLoading, pausing: this.props.isPausing})}
 					ref={(node) => {
 						this.map = node;
 					}}
