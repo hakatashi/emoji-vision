@@ -9,6 +9,7 @@ const client = require('./data-client.js');
 const EmojiDetailTimeChart = require('./EmojiDetailTimeChart.js');
 const EmojiDetailPieChart = require('./EmojiDetailPieChart.js');
 const ranking = require('./ranking.js');
+const {getFileName} = require('./util.js');
 
 const emojiToFileName = ([emoji, minuteness]) => `${minuteness}/${emoji}.json`;
 
@@ -129,7 +130,7 @@ module.exports = class EmojiDetail extends React.Component {
 				</div>
 				<div className="content">
 					<div className="basic-info">
-						<img src={`node_modules/twemoji/2/svg/${this.props.emoji.toLowerCase()}.svg`}/>
+						<img src={getFileName(this.props.emoji, 'twitter')}/>
 						<div className="basic-stat">
 							<div className="basic-stat-inner">
 								<div className="name">
@@ -171,7 +172,7 @@ module.exports = class EmojiDetail extends React.Component {
 									this.deviceChart = node;
 								}}
 							/>
-						<div className={classNames('hashtag-table', 'exo-2', {initialized: this.state.isInitialized})}>
+							<div className={classNames('hashtag-table', 'exo-2', {initialized: this.state.isInitialized})}>
 								{this.state.isInitialized && (
 									<table>
 										<thead>{this.generateHeaders()}</thead>
