@@ -14,17 +14,19 @@ module.exports.selectEmoji = (emojis) => {
 };
 
 module.exports.getFileName = (emoji, category) => {
+	const baseUrl = process.env.NODE_ENV === 'production' ? 'https://emojivision.azureedge.net/public/node_modules' : 'node_modules';
+
 	if (category === 'twitter') {
 		const basename = emoji.replace(/^00/, '').toLowerCase();
-		return `node_modules/twemoji/2/svg/${basename}.svg`;
+		return `${baseUrl}/twemoji/2/svg/${basename}.svg`;
 	}
 
 	if (category === 'google') {
-		return `node_modules/noto-emoji%23v2017-05-18-cook-color-fix/svg/emoji_u${emoji.replace(/-/g, '_').toLowerCase()}.svg`;
+		return `${baseUrl}/noto-emoji%23v2017-05-18-cook-color-fix/svg/emoji_u${emoji.replace(/-/g, '_').toLowerCase()}.svg`;
 	}
 
 	assert(category === 'apple');
-	return `node_modules/emoji-datasource-apple/img/apple/64/${emoji.toLowerCase()}.png`;
+	return `${baseUrl}/emoji-datasource-apple/img/apple/64/${emoji.toLowerCase()}.png`;
 };
 
 const SECOND = 1000;
