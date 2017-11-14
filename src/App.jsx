@@ -129,6 +129,7 @@ module.exports = class App extends React.Component {
 	}
 
 	handleUpdateTime = (nextTime) => {
+		document.body.classList.remove('loading');
 		this.setState({time: nextTime});
 	}
 
