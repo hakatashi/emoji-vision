@@ -65,3 +65,4 @@ typings/
 data
 .ipynb_checkpoints/
 .idea/
+index.loading.css
