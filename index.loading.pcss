@@ -22,8 +22,12 @@ body.loading {
 		text-align: center;
 
 		&::before {
-			content: svg-load('logo.svg');
+			content: svg-load('logo.svg', fill=white);
 			width: 100%;
+		}
+
+		.loader {
+			margin-top: 2em;
 		}
 	}
 
