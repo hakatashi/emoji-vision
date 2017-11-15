@@ -1,3 +1,5 @@
+@import "node_modules/css-spinners/css/spinner/dots.css";
+
 html, body {
 	padding: 0;
 	margin: 0;
@@ -10,21 +12,26 @@ html, body {
 
 body.loading {
 	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-image: svg-load('logo.svg');
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: 40vw;
+	.load-screen {
+		display: block;
+		width: 40%;
+		text-align: center;
+
+		&::before {
+			content: svg-load('logo.svg');
+			width: 100%;
+		}
 	}
 
 	.root {
 		visibility: hidden;
 	}
+}
+
+.load-screen {
+	display: none;
 }
